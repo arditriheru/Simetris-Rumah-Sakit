@@ -9,18 +9,18 @@ include "controller/anak-controller.php";
 		}, 5000);
 	</script>
 	<div id="antriananak">
-		<font class="antrian">A<?php echo $anak_ant; ?></font><br><br>
+		<font class="antrian">A<?php echo $anak_ant; ?></font><br>
 		<?php
 		if(!$anak_nama_dokter){
 			?>
-			<font class="blacktext" size="6">Tutup</font><br><br>
+			<font class="blacktext" size="4">Tutup</font><br>
 			<?php
 		}else{
 			?>
-			<font class="blacktext" size="6"><?php echo $anak_nama_dokter?></font><br><br>
+			<font class="blacktext" size="4"><?php echo $anak_nama_dokter?></font><br>
 			<?php
 		}
 		?>
-		<font class="greentext" size="6">Total <?php echo $max; ?> Pasien</font>
+		<font class="greentext" size="4">Total <?php echo $max; ?> Pasien</font>
 	</div>
 	<?php include "views/footer.php";?>
