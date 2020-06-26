@@ -1,4 +1,4 @@
-<?php include "../../vendors/copyright.php";?><br><br><!-- /#page-wrapper -->
+<br><?php include "../../system/copyright.php";?><br><br><!-- /#page-wrapper -->
 <!-- JavaScript -->
 <script src="../../vendors/js/jquery-1.10.2.js"></script>
 <script src="../../vendors/js/bootstrap.js"></script>
