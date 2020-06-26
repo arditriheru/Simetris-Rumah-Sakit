@@ -110,12 +110,12 @@
       color: #005082;
     }
     .antrian {
-      font-size: 150px;
+      font-size: 100px;
       color: #000000;
     }
     .marquee1 {
-      font-size: 50px;
-      color: #1a3e59;
+      font-size: 30px;
+      color: #ffffff;
     }
     .marquee2 {
       font-size: 40px;
