@@ -39,38 +39,44 @@ while($value = mysqli_fetch_array($title)){
         $tanggalHariIni=date('Y-m-d');
         $data = mysqli_query($koneksi,
           "SELECT *, inventaris_jenis.nama_jenis, inventaris_ruangan.nama_ruangan,
-          IF (inventaris.kondisi='1', 'Baik', 'Rusak') AS kondisi
+          IF (inventaris.kondisi='1', 'Baik', 'Rusak') AS ifkondisi,
+          IF (inventaris.status='1', 'Baru', 'Bekas') AS ifstatus
           FROM inventaris, inventaris_jenis, inventaris_ruangan
           WHERE inventaris.kode_jenis=inventaris_jenis.kode_jenis
           AND inventaris.kode_ruangan=inventaris_ruangan.kode_ruangan
           AND inventaris.kode_ruangan = '$kode_ruangan'
           ORDER BY inventaris.nama_barang ASC;");
         while($d = mysqli_fetch_array($data)){
-          ?>
-          <tr>
-            <td><center><?php echo $no++; ?></center></td>
-            <td><center><?php echo $d['nomor_inventaris']; ?></center></td>
-            <td><center><?php echo $d['nama_barang']; ?></center></td>
-            <td><center><?php echo $d['nama_jenis']; ?></center></td>
-            <td><center><?php echo $d['nama_ruangan']; ?></center></td>
-            <td><center><?php echo date("d/m/Y",strtotime($d['tanggal_pengadaan']));?></center></td>
-            <td><center><?php echo $d['kondisi']; ?></center></td>
-            <td><center><?php echo $d['status']; ?></center></td>
-            <td><center><?php if($d['tanggal_kalibrasi']=='0000-00-00'){
+            ?>
+            <tr>
+                <td><center><?php echo $no++; ?></center></td>
+                <td><center><?php echo $d['nomor_inventaris']; ?></center></td>
+                <td><center><?php echo $d['nama_barang']; ?></center></td>
+                <td><center><?php echo $d['nama_jenis']; ?></center></td>
+                <td><center><?php echo $d['nama_ruangan']; ?></center></td>
+                <td><center><?php 
+                if($d['tanggal_pengadaan']=='0000-00-00'){
+                    echo "-";
+                }else{
+                    echo date("d/m/Y",strtotime($d['tanggal_pengadaan']));
+                } ?></center></td>
+                <td><center><?php echo $d['ifkondisi']; ?></center></td>
+                <td><center><?php echo $d['ifstatus']; ?></center></td>
+                <td><center><?php if($d['tanggal_kalibrasi']=='0000-00-00'){
+                    echo '-';
+                }else{
+                    echo date("d/m/Y",strtotime($d['tanggal_kalibrasi']));
+                } ?>
+            </center></td>
+            <td><center><?php if($d['kalibrasi_ulang']=='0000-00-00'){
                 echo '-';
             }else{
-                echo date("d/m/Y",strtotime($d['tanggal_kalibrasi']));
+                echo date("d/m/Y",strtotime($d['kalibrasi_ulang']));
             } ?>
         </center></td>
-        <td><center><?php if($d['kalibrasi_ulang']=='0000-00-00'){
-            echo '-';
-        }else{
-            echo date("d/m/Y",strtotime($d['kalibrasi_ulang']));
-        } ?>
-    </center></td>
-    <td><center><?php echo $d['keterangan']; ?></center></td>
-</tr>
-<?php
+        <td><center><?php echo $d['keterangan']; ?></center></td>
+    </tr>
+    <?php
 }
 ?>
 </table>
