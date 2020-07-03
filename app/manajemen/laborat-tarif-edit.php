@@ -8,7 +8,7 @@
         <li><a href="laborat-tarif-tampil"><i class="fa fa-check"></i> Laboratorium</a></li>
         <li class="active"><i class="fa fa-flash"></i> Edit</li>
       </ol>
-      <?php include "../notifikasi1.php"?>
+      <?php include "../../system/welcome.php"?>
     </div>
   </div><!-- /.row -->
   <div class="row">

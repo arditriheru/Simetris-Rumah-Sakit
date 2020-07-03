@@ -55,7 +55,6 @@ header("Content-Disposition: attachment; filename=Rekap Demografi Kecamatan ".da
                   <tbody>
                     <!---------- Batas ----------->
                     <?php 
-                    include '../koneksi.php';
                     $no = 1;
                     $awal = $_POST['awal'];
                     $akhir = $_POST['akhir'];
@@ -89,7 +88,6 @@ header("Content-Disposition: attachment; filename=Rekap Demografi Kecamatan ".da
                             <tbody>
                               <!---------- Batas ----------->
                               <?php 
-                              include '../koneksi.php';
                               $no = 1;
                               $awal = $_POST['awal'];
                               $akhir = $_POST['akhir'];
@@ -123,7 +121,6 @@ header("Content-Disposition: attachment; filename=Rekap Demografi Kecamatan ".da
                                       <tbody>
                                         <!---------- Batas ----------->
                                         <?php 
-                                        include '../koneksi.php';
                                         $no = 1;
                                         $awal = $_POST['awal'];
                                         $akhir = $_POST['akhir'];
@@ -157,7 +154,6 @@ header("Content-Disposition: attachment; filename=Rekap Demografi Kecamatan ".da
                                                 <tbody>
                                                   <!---------- Batas ----------->
                                                   <?php 
-                                                  include '../koneksi.php';
                                                   $no = 1;
                                                   $awal = $_POST['awal'];
                                                   $akhir = $_POST['akhir'];

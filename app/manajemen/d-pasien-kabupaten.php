@@ -7,124 +7,126 @@
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-edit"></i> Kabupaten</li>
       </ol>  
-      <?php include "../notifikasi1.php"?>
+      <?php include "../../system/welcome.php"?>
     </div>
   </div><!-- /.row -->
   <div class="row">
     <div class="col-lg-12">
       <div class="table-responsive">
-       <form method="post" action="kabupaten-export" role="form">
-        <div class="col-lg-6">
-          <div class="form-group">
-            <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">
+        <?php
+        $awal = $_POST['awal'];
+        $akhir = $_POST['akhir'];
+        ?>
+        <form method="post" action="kabupaten-export" role="form">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="hidden" name="akhir" value="<?php echo $akhir?>">
+            </div>
+            <button type="submit" class="btn btn-success">EXPORT</button><br><br>
           </div>
-          <div class="form-group">
-            <input class="form-control" type="hidden" name="akhir" value="<?php echo $akhir?>">
-          </div>
-          <button type="submit" class="btn btn-success">EXPORT</button><br><br>
-        </div>
-      </form>
-      <table class="table table-bordered table-hover table-striped tablesorter">
-        <thead>
-          <tr>
-            <th><center>Kode</center></th>
-            <th><center>Nama Kabupaten</center></th>
-            <th><center>Jumlah</center></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!---------- Batas ----------->
-          <?php
-          $awal = $_POST['awal'];
-          $akhir = $_POST['akhir'];
-          $data = mysqli_query($koneksi,"
-           SELECT COUNT(*) AS a
-           FROM mr_pasien
-           WHERE id_kabupaten = 3471
-           AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
-          while($d = mysqli_fetch_array($data)){
+        </form>
+        <table class="table table-bordered table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th><center>Kode</center></th>
+              <th><center>Nama Kabupaten</center></th>
+              <th><center>Jumlah</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!---------- Batas ----------->
+            <?php
+            $data = mysqli_query($koneksi,"
+             SELECT COUNT(*) AS a
+             FROM mr_pasien
+             WHERE id_kabupaten = 3471
+             AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
+            while($d = mysqli_fetch_array($data)){
+              ?>
+              <tr>
+               <td><center><?php echo "3471" ?></center></td>
+               <td><center><?php echo "Kota Yogyakarta" ?></center></td>
+               <td><center><?php echo $d['a']; ?></center></td>
+             </tr>
+           <?php } ?>
+           <!---------- Batas ----------->
+           <?php 
+           $data = mysqli_query($koneksi,"
+             SELECT COUNT(*) AS b
+             FROM mr_pasien
+             WHERE id_kabupaten = 344
+             AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
+           while($d = mysqli_fetch_array($data)){
             ?>
             <tr>
-             <td><center><?php echo "3471" ?></center></td>
-             <td><center><?php echo "Kota Yogyakarta" ?></center></td>
-             <td><center><?php echo $d['a']; ?></center></td>
+             <td><center><?php echo "344" ?></center></td>
+             <td><center><?php echo "Sleman" ?></center></td>
+             <td><center><?php echo $d['b']; ?></center></td>
            </tr>
          <?php } ?>
          <!---------- Batas ----------->
          <?php 
          $data = mysqli_query($koneksi,"
-           SELECT COUNT(*) AS b
+           SELECT COUNT(*) AS c
            FROM mr_pasien
-           WHERE id_kabupaten = 344
+           WHERE id_kabupaten = 342
            AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
          while($d = mysqli_fetch_array($data)){
           ?>
           <tr>
-           <td><center><?php echo "344" ?></center></td>
-           <td><center><?php echo "Sleman" ?></center></td>
-           <td><center><?php echo $d['b']; ?></center></td>
+           <td><center><?php echo "342" ?></center></td>
+           <td><center><?php echo "Bantul" ?></center></td>
+           <td><center><?php echo $d['c']; ?></center></td>
          </tr>
        <?php } ?>
        <!---------- Batas ----------->
        <?php 
        $data = mysqli_query($koneksi,"
-         SELECT COUNT(*) AS c
+         SELECT COUNT(*) AS d
          FROM mr_pasien
-         WHERE id_kabupaten = 342
+         WHERE id_kabupaten = 341
          AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
        while($d = mysqli_fetch_array($data)){
         ?>
         <tr>
-         <td><center><?php echo "342" ?></center></td>
-         <td><center><?php echo "Bantul" ?></center></td>
-         <td><center><?php echo $d['c']; ?></center></td>
+         <td><center><?php echo "341" ?></center></td>
+         <td><center><?php echo "Kulon Progo" ?></center></td>
+         <td><center><?php echo $d['d']; ?></center></td>
        </tr>
      <?php } ?>
      <!---------- Batas ----------->
      <?php 
      $data = mysqli_query($koneksi,"
-       SELECT COUNT(*) AS d
+       SELECT COUNT(*) AS e
        FROM mr_pasien
-       WHERE id_kabupaten = 341
+       WHERE id_kabupaten = 343
        AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
      while($d = mysqli_fetch_array($data)){
       ?>
       <tr>
-       <td><center><?php echo "341" ?></center></td>
-       <td><center><?php echo "Kulon Progo" ?></center></td>
-       <td><center><?php echo $d['d']; ?></center></td>
+       <td><center><?php echo "343" ?></center></td>
+       <td><center><?php echo "Gunung Kidul" ?></center></td>
+       <td><center><?php echo $d['e']; ?></center></td>
      </tr>
    <?php } ?>
    <!---------- Batas ----------->
    <?php 
    $data = mysqli_query($koneksi,"
-     SELECT COUNT(*) AS e
+     SELECT COUNT(*) AS o
      FROM mr_pasien
-     WHERE id_kabupaten = 343
+     WHERE id_propinsi = 34
      AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
    while($d = mysqli_fetch_array($data)){
     ?>
     <tr>
-     <td><center><?php echo "343" ?></center></td>
-     <td><center><?php echo "Gunung Kidul" ?></center></td>
-     <td><center><?php echo $d['e']; ?></center></td>
-   </tr>
- <?php } ?>
- <!---------- Batas ----------->
- <?php 
- $data = mysqli_query($koneksi,"
-   SELECT COUNT(*) AS o
-   FROM mr_pasien
-   WHERE id_propinsi = 34
-   AND  mr_pasien.tanggal BETWEEN '$awal' AND '$akhir';");
- while($d = mysqli_fetch_array($data)){
-  ?>
-  <tr>
-    <td><center><?php echo "*" ?></center></td>
-    <td><center><?php echo "TOTAL" ?></center></td>
-    <td><center><?php echo $d['o']; ?></center></td>
-  </tr>
-<?php } ?>    
+      <td><center><?php echo "*" ?></center></td>
+      <td><center><?php echo "TOTAL" ?></center></td>
+      <td><center><?php echo $d['o']; ?></center></td>
+    </tr>
+  <?php } ?>    
 </tbody>
 </table>
 </div>

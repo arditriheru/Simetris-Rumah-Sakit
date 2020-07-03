@@ -6,7 +6,7 @@
       <ol class="breadcrumb">
         <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
       </ol>  
-      <?php include "../notifikasi1.php"?>
+      <?php include "../../system/welcome.php"?>
     </div>
   </div><!-- /.row -->
   <div class="row">
@@ -37,7 +37,7 @@
           <li><a href="#5" data-toggle="tab">Gunung Kidul</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
-          <div class="tab-pane fade" id="1">
+          <div class="tab-pane fade active in" id="1" active>
            <div class="row">
              <div class="col-lg-12">
                <div class="table-responsive">

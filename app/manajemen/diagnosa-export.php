@@ -5,6 +5,11 @@ header("Content-Disposition: attachment; filename=Rekap Diagnosa Penyakit ".date
 <!DOCTYPE html>
 <html>
 <body>
+    <?php
+    $id_dokter = $_POST['id_dokter'];
+    $awal = $_POST['awal'];
+    $akhir = $_POST['akhir'];
+    ?>
     <table border="1"  class="table table-bordered table-hover table-striped tablesorter">
         <thead>
            <h2 align="center">Rekap Data</h2>
@@ -21,9 +26,6 @@ header("Content-Disposition: attachment; filename=Rekap Diagnosa Penyakit ".date
     <tbody>
         <?php 
         include '../../config/connect.php';
-        $dokter = $_POST['dokter'];
-        $awal = $_POST['awal'];
-        $akhir = $_POST['akhir'];
         $no = 1;
         $data = mysqli_query($koneksi,"
             SELECT mr_rla.icd, MR_ICD.diagnosa, mr_dokter.nama_dokter,
@@ -32,7 +34,7 @@ header("Content-Disposition: attachment; filename=Rekap Diagnosa Penyakit ".date
             WHERE mr_rla.id_mr_bl = mr_bl.id_mr_bl
             AND mr_bl.id_dokter = mr_dokter.id_dokter
             AND mr_rla.icd = MR_ICD.icd
-            AND mr_bl.id_dokter = '$dokter'
+            AND mr_bl.id_dokter = '$id_dokter'
             AND mr_rla.tanggal BETWEEN '$awal' AND '$akhir'
             GROUP BY icd
             ORDER BY hasil DESC;");
