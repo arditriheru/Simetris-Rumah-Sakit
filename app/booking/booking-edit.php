@@ -117,10 +117,8 @@
           </div>
           <button type="submit" name="submit" class="btn btn-success">Perbarui</button>
           <button type="reset" class="btn btn-warning">Reset</button>  
-        </form>
-      </div>
-    </div><!-- /.row -->
-  <?php } ?>
-</div><br><br><?php include "../copyright.php";?><br><br><!-- /#page-wrapper -->
-</div><!-- /#wrapper -->
-<?php include "views/footer.php"; ?>
+          </form><?php } ?>
+        </div><!-- /.row -->
+      </div><!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+    <?php include "views/footer.php"; ?>

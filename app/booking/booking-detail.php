@@ -136,8 +136,7 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div><!-- /.row -->
-</div><?php include "../copyright.php";?><br><br><!-- /#page-wrapper -->
+    </div><!-- /.row -->
+  </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
 <?php include "views/footer.php"; ?>
