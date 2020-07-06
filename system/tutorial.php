@@ -9,6 +9,6 @@
     $dokumen = $d['dokumen'];
   }
   ?>
-  <embed width="100%" height="1000" src="../applications/ebook/upload/<?php echo $dokumen; ?>"
+  <embed width="100%" height="1000" src="../app/ebook/upload/<?php echo $dokumen; ?>"
   </body>
   </html>
