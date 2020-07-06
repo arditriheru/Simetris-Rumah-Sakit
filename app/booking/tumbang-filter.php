@@ -34,6 +34,19 @@
               <label>Jadwal</label>
               <input class="form-control" type="date" name="jadwal">
             </div>
+            <div class="form-group">
+              <label>Sesi</label>
+              <select class="form-control" type="text" name="id_sesi">
+                <p style="color:red;"><?php echo ($error['sesi']) ? $error['sesi'] : ''; ?></p>
+                <option disabled selected>Pilih</option>
+                <?php 
+                $data = mysqli_query($koneksi,"SELECT * FROM sesi;");
+                while($d = mysqli_fetch_array($data)){
+                  echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+                }
+                ?>
+              </select>
+            </div>
             <button type="submit" class="btn btn-success">Cari</button>
           </form>
         </div>

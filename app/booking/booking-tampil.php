@@ -12,10 +12,10 @@
               <div class="table-responsive">
                 <div class="col-lg-8">
                   <form method="post" action="laporan-booking-hari-ini-export" role="form">
-                    <button type="submit" class="btn btn-success">EXPORT</button>
+                    <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Per Dokter</button>
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-warning">Filter</button>
+                      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">

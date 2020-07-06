@@ -29,8 +29,8 @@ while($b = mysqli_fetch_array($a)){
     <div class="col-lg-12">
       <div class="table-responsive">
         <div class="btn-group">
-          <button type="button" class="btn btn-primary">Per Dokter</button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <button type="button" class="btn btn-warning">Filter</button>
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li disabled selected><a href="dashboard">All</a></li>
             <?php 
