@@ -53,20 +53,12 @@
                 <td><div align="center"><?php echo number_format($d['jasa_rs']); ?></div></td>
                 <td><div align="center"><?php echo number_format($d['tarif']); ?></div></td>
                 <td><div align="center"><a href="laborat-tarif-detail?id=<?php echo $d['id_lab_tarif']; ?>"
-                  <button type="button" class="btn btn-primary">Detail</a></div></td>
-                    <td>
-                      <div align="center">
-                        <a href="laborat-tarif-edit?id=<?php echo $d['id_lab_tarif']; ?>"
-                          <button type="button" class="btn btn-warning">Edit</a><br><br>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php 
-                    }
-                    ?>
-                  </tbody>
-                </table>
-              </div>
+                  <button type="button" class="btn btn-primary">Detail</a></div>
+                  </td>
+                  </tr><?php } ?>
+                </tbody>
+              </table>
             </div>
-          </div><!-- /.row -->
-          <?php include 'views/footer.php';?>
+          </div>
+        </div><!-- /.row -->
+        <?php include 'views/footer.php';?>
