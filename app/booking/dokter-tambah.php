@@ -133,10 +133,10 @@
                                             <td>
                                               <div align="center">
                                                 <a href="dokter-edit?id=<?php echo $d['id_dokter']; ?>"
-                                                  <button type="button" class="btn btn-warning">Edit</a>
+                                                  <button type="button" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
                                                     <a href="dokter-hapus?id=<?php echo $d['id_dokter']; ?>"
                                                      onclick="javascript: return confirm('Anda yakin hapus?')"
-                                                     <button type="button" name="hapus" class="btn btn-danger"><i class="fa fa-trash-o"></i></a><br><br>
+                                                     <button type="button" name="hapus" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                      </div>
                                                    </td>
                                                  </tr>

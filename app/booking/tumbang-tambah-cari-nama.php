@@ -22,7 +22,7 @@
         <table class="table table-bordered table-hover table-striped tablesorter">
           <thead>
             <tr>
-              <th><center>No</center></th>
+              <th><center>#</center></th>
               <th><center>No. RM</center></th>
               <th><center>Nama Pasien</center></th>
               <th><center>T.T.L</center></th>

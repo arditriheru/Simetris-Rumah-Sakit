@@ -55,7 +55,7 @@
           <table class="table table-bordered table-hover table-striped tablesorter">
             <thead>
               <tr>
-                <th><center>No</center></th>
+                <th><center>#</center></th>
                 <th><center>No.RM</center></th>
                 <th><center>Nama</center></th>
                 <th><center>Alamat</center></th>
@@ -94,14 +94,14 @@
                   <td>
                     <div align="center">
                       <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
-                        <button type="button" class="btn btn-warning">Detail</a><br><br>
-                        </div>
-                      </td>
-                      </tr><?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div><!-- /.row -->
-            </div><!-- /#page-wrapper -->
-          </div><!-- /#wrapper -->
-          <?php include "views/footer.php"; ?>
+                        <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                      </div>
+                    </td>
+                    </tr><?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /#page-wrapper -->
+        </div><!-- /#wrapper -->
+        <?php include "views/footer.php"; ?>
