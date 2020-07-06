@@ -48,14 +48,14 @@
                   <table class="table table-bordered table-hover table-striped tablesorter">
                     <thead>
                       <tr>
-                        <th><center>No</center></th>
+                        <th><center>#</center></th>
                         <th><center>No. RM</center></th>
                         <th><center>Nama Pasien</center></th>
+                        <th><center>Kontak</center></th>
                         <th><center>Dokter</center></th>
                         <th><center>Sesi</center></th>
-                        <th><center>Status</center></th>
                         <th><center>Keterangan</center></th>
-                        <th><center>Action</center></th>
+                        <th colspan='2'><center>Action</center></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -70,43 +70,50 @@
                         AND booking.booking_tanggal='$tanggalsekarang'
                         ORDER BY booking.id_sesi, booking.nama ASC;");
                       while($d = mysqli_fetch_array($data)){
+                        $id_booking = $d['id_booking'];
+                        $status     = $d['status'];
                         ?>
                         <tr>
                           <td><center><?php echo $no++; ?></center></td>
                           <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                           <td><center><?php echo $d['nama']; ?></center></td>
+                          <td><center><?php echo $d['kontak']; ?></center></td>
                           <td><center><?php echo $d['nama_dokter']; ?></center></td>
                           <td><center><?php echo $d['nama_sesi']; ?></center></td>
-                          <td><center><?php echo $d['status']; ?></center></td>
                           <td><center><?php echo $d['keterangan']; ?></center></td>
-                          <td>
-                            <div align="center">
-                              <a href="booking-datang-proses?id_booking=<?php echo $d['id_booking']; ?>"
-                               onclick="javascript: return confirm('Sudah Datang?')"
-                               <button type="button" class="btn btn-success">Datang</a><br><br>
-                                <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
-                                  <button type="button" class="btn btn-warning">Detail</a><br><br>
-                                  </div>
-                                </td>
-                              </tr>
-                              <?php 
-                            }
-                            ?>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade in" id="2">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="table-responsive">
-                        <?php include "tumbang-tampil.php";?>
-                      </div>
-                    </div>
-                  </div>
+                          <td><center><?php
+                          if($status=='Datang'){
+                            echo "<a class='whitetext' href='booking-belum-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                          }else{
+                            echo "<a class='whitetext' href='booking-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                          }
+                          ?>
+                        </center></td>
+                        <td>
+                          <div align="center">
+                            <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                              <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <?php 
+                      }
+                      ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="tab-pane fade in" id="2">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="table-responsive">
+                  <?php include "tumbang-tampil.php";?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </div><!-- /.row -->

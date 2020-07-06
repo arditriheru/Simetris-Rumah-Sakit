@@ -37,14 +37,14 @@
           <table class="table table-bordered table-hover table-striped tablesorter">
             <thead>
               <tr>
-                <th><center>No</center></th>
+                <th><center>#</center></th>
                 <th><center>No. RM</center></th>
                 <th><center>Nama Pasien</center></th>
+                <th><center>Kontak</center></th>
                 <th><center>Petugas</center></th>
                 <th><center>Sesi</center></th>
-                <th><center>Status</center></th>
                 <th><center>Keterangan</center></th>
-                <th><center>Action</center></th>
+                <th colspan='2'><center>Action</center></th>
               </tr>
             </thead>
             <tbody>
@@ -59,24 +59,31 @@
                 AND tumbang.jadwal='$tanggalsekarang'
                 ORDER BY tumbang.nama ASC;");
               while($d = mysqli_fetch_array($data)){
+                $id_tumbang = $d['id_tumbang'];
+                $status     = $d['status'];
                 ?>
                 <tr>
                  <td><center><?php echo $no++; ?></center></td>
                  <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                  <td><center><?php echo $d['nama']; ?></center></td>
+                 <td><center><?php echo $d['kontak']; ?></center></td>
                  <td><center><?php echo $d['nama_petugas']; ?></center></td>
                  <td><center><?php echo $d['nama_sesi']; ?></center></td>
-                 <td><center><?php echo $d['status']; ?></center></td>
                  <td><center><?php echo $d['keterangan']; ?></center></td>
-                 <td>
-                  <div align="center">
-                    <a href="tumbang-datang-proses?id_tumbang=<?php echo $d['id_tumbang']; ?>"
-                     onclick="javascript: return confirm('Sudah Datang?')"
-                     <button type="button" class="btn btn-success">Datang</a><br><br>
-                      <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
-                        <button type="button" class="btn btn-warning">Detail</a><br><br>
-                        </div>
-                      </td>
-                      </tr><?php } ?>
-                    </tbody>
-                  </table>
+                 <td><center><?php
+                 if($status=='Datang'){
+                  echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                }else{
+                  echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                }
+                ?>
+              </center></td>
+              <td>
+                <div align="center">
+                  <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                    <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                  </div>
+                </td>
+                </tr><?php } ?>
+              </tbody>
+            </table>
