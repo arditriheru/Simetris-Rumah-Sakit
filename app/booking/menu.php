@@ -51,7 +51,7 @@
             <ul class="dropdown-menu">
               <li class="divider"></li>
               <li>
-                <a href="../dashboard"><i class="fa fa-power-off">
+                <a href="../../dashboard"><i class="fa fa-power-off">
                 </i> Log Out</a>
               </li>
             </ul>
