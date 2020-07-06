@@ -101,8 +101,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
-            </div><!-- /.row -->
-          </div><!-- /#page-wrapper -->
-        </div><!-- /#wrapper -->
-        <?php include "views/footer.php"; ?>
+              </div><!-- /.row -->
+            </div><!-- /#page-wrapper -->
+          </div><!-- /#wrapper -->
+          <?php include "views/footer.php"; ?>
