@@ -27,14 +27,14 @@
         <table class="table table-bordered table-hover table-striped tablesorter">
           <thead>
             <tr>
-              <th><div align="center">No</div></th>
+              <th><div align="center">#</div></th>
               <th><div align="center">Tindakan</div></th>
               <th><div align="center">Alat</div></th>
               <th><div align="center">B.H.P</div></th>
               <th><div align="center">Infrastruktur</div></th>
               <th><div align="center">Jasa RS</div></th>
               <th><div align="center">Tarif</div></th>
-              <th><div align="center">Action</div></th>
+              <th colspan="2"><div align="center">Action</div></th>
             </tr>
           </thead>
           <tbody>
@@ -46,16 +46,16 @@
               ?>
               <tr>
                 <td><div align="center"><?php echo $no++; ?></div></td>
-                <td><div align="center"><?php echo $d['nama']; ?></div></td>
-                <td><div align="center"><?php echo $d['alat']; ?></div></td>
-                <td><div align="center"><?php echo $d['bhp']; ?></div></td>
-                <td><div align="center"><?php echo $d['infrastruktur']; ?></div></td>
-                <td><div align="center"><?php echo $d['jasa_rs']; ?></div></td>
-                <td><div align="center"><?php echo $d['tarif']; ?></div></td>
-                <td>
-                  <div align="center">
-                    <a href="laborat-tarif-detail?id=<?php echo $d['id_lab_tarif']; ?>"
-                      <button type="button" class="btn btn-primary">Detail</a>&nbsp;&nbsp;
+                <td><div align="left"><?php echo $d['nama']; ?></div></td>
+                <td><div align="center"><?php echo number_format($d['alat']); ?></div></td>
+                <td><div align="center"><?php echo number_format($d['bhp']); ?></div></td>
+                <td><div align="center"><?php echo number_format($d['infrastruktur']); ?></div></td>
+                <td><div align="center"><?php echo number_format($d['jasa_rs']); ?></div></td>
+                <td><div align="center"><?php echo number_format($d['tarif']); ?></div></td>
+                <td><div align="center"><a href="laborat-tarif-detail?id=<?php echo $d['id_lab_tarif']; ?>"
+                  <button type="button" class="btn btn-primary">Detail</a></div></td>
+                    <td>
+                      <div align="center">
                         <a href="laborat-tarif-edit?id=<?php echo $d['id_lab_tarif']; ?>"
                           <button type="button" class="btn btn-warning">Edit</a><br><br>
                           </div>

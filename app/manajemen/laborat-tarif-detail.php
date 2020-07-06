@@ -38,23 +38,23 @@
               </tr>
               <tr>
                 <td><b>Alat</b></td>
-                <td>Rp <?php echo $d['alat']; ?>,-</td>
+                <td><?php echo number_format($d['alat']); ?></td>
               </tr>
               <tr>
                 <td><b>B.H.P</b></td>
-                <td>Rp <?php echo $d['bhp']; ?>,-</td>
+                <td><?php echo number_format($d['bhp']); ?></td>
               </tr>
               <tr>
                 <td><b>Infrastruktur</b></td>
-                <td>Rp <?php echo $d['infrastruktur']; ?>,-</td>
+                <td><?php echo number_format($d['infrastruktur']); ?></td>
               </tr>
               <tr>
                 <td><b>Jasa RS</b></td>
-                <td>Rp <?php echo $d['jasa_rs']; ?>,-</td>
+                <td><?php echo number_format($d['jasa_rs']); ?></td>
               </tr>
               <tr>
                 <td><b>Tarif</b></td>
-                <td>Rp <?php echo $d['tarif']; ?>,-</td>
+                <td><?php echo number_format($d['tarif']); ?></td>
               </tr>
               <tr>
                 <td><b>Kode Kelompok</b></td>
