@@ -228,7 +228,7 @@
               <p class="blacktext">Apache/2.4.39 (Win64) OpenSSL/1.1.1c PHP/7.3.6</p></font><br>
 
               <a href="dashboard"
-              <button type="button" class="btn btn-primary">Dashboard</button>
+              <button type="button" class="btn btn-primary"> Go to Dashboard <i class="fa fa-arrow-circle-right"></i></button>
             </a>
             <?php include 'readme.html';?>
           </center>
