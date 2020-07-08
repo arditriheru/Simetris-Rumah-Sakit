@@ -134,7 +134,7 @@
                                     <td><center><?php echo $d['keterangan']; ?></center>
                                     </td>
                                     <td>
-                                      <div align="center"><a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"<button type="button" class="btn btn-warning">Detail</a><br><br></center>
+                                      <div align="center"><a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                       </div>
                                     </td>
                                     </tr><?php } ?>
@@ -194,19 +194,19 @@
                                           <td>
                                             <div align="center">
                                               <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
-                                                <button type="button" class="btn btn-warning">Detail</a><br><br></center>
-                                                </div>
-                                              </td>
-                                              </tr><?php } ?>
-                                            </tbody>
-                                          </table>
-                                        </div>
+                                                <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                              </div>
+                                            </td>
+                                            </tr><?php } ?>
+                                          </tbody>
+                                        </table>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div><!-- /#page-wrapper -->
-                        </div><!-- /#wrapper -->
-                        <?php include "views/footer.php"; ?>
+                          </div>
+                        </div><!-- /#page-wrapper -->
+                      </div><!-- /#wrapper -->
+                      <?php include "views/footer.php"; ?>
