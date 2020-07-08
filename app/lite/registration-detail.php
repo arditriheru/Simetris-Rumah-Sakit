@@ -6,7 +6,7 @@
         <div class="card">
           <?php 
           include 'controller/connection.php';
-          $id_booking = $_GET['id_booking'];
+          $id_booking = $_GET['registration'];
           
           $data = mysqli_query($koneksi,
             "SELECT *, dokter.nama_dokter, sesi.nama_sesi

@@ -40,7 +40,7 @@ if($selisih>30){
                   text: 'Mendaftar Poliklinik',
                   type: 'success'
                   }, function() {
-                    window.location = 'registration-detail?id_booking=$id_booking';
+                    window.location = 'registration-detail?registration=$id_booking';
                     });
                     }, 10);
                     </script>";
