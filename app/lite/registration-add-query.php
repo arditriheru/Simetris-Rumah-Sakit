@@ -29,6 +29,10 @@ if($selisih>30){
               '$kontak','$id_catatan_medik','$booking_tanggal','$tanggal','$jam','$status','$keterangan',
               '$id_dokter','$id_sesi')");
             if($simpan){
+              $a=mysqli_query($koneksi,"SELECT id_booking FROM booking WHERE id_catatan_medik='$id_catatan_medik' AND booking_tanggal='$booking_tanggal' AND id_dokter='$id_dokter' AND id_sesi='$id_sesi'");
+              while($b = mysqli_fetch_array($a)){
+                $id_booking = $b['id_booking'];
+              }
               echo "<script>
               setTimeout(function() {
                 swal({
@@ -36,7 +40,7 @@ if($selisih>30){
                   text: 'Mendaftar Poliklinik',
                   type: 'success'
                   }, function() {
-                    window.location = 'registration';
+                    window.location = 'registration-detail?id_booking=$id_booking';
                     });
                     }, 10);
                     </script>";

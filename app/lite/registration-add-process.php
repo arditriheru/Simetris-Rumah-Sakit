@@ -91,7 +91,7 @@ if($kuota_status == 0){
           text: 'Silahkan Re-Schedule!',
           type: 'error'
           }, function() {
-            window.location = 'booking-tambah';
+            window.location = 'registration';
             });
             }, 10);
             </script>";
