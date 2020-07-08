@@ -15,7 +15,7 @@ $id_sesi          = $_POST['id_sesi'];
 $tanggal          = $tanggal;
 $jam              = $jam;
 $status           = '2';
-$keterangan       = $_POST['keterangan'];
+$keterangan       = 'DAFTAR MANDIRI';
 
 $tglsekarang  = new DateTime();
 $jadwal     = new DateTime("$booking_tanggal");
