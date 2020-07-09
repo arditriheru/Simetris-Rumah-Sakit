@@ -68,7 +68,7 @@
                         WHERE booking.id_dokter=dokter.id_dokter
                         AND booking.id_sesi=sesi.id_sesi
                         AND booking.booking_tanggal='$tanggalsekarang'
-                        ORDER BY booking.id_sesi, booking.nama ASC;");
+                        ORDER BY booking.id_sesi, dokter.id_dokter, booking.nama ASC;");
                       while($d = mysqli_fetch_array($data)){
                         $id_booking = $d['id_booking'];
                         $status     = $d['status'];
