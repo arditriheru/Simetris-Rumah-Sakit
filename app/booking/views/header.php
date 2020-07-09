@@ -12,8 +12,12 @@
     <!-- Add custom CSS here -->
     <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
+    <script src="../../vendors/js/font-awesome.js"></script>
     <link rel="stylesheet" type="text/css" href="../../vendors/css/sweetalert.css">
     <style>
+        .whitetext {
+            color: #ffffff;
+        }
         .bluetext {
             color: #008cba;
         }
