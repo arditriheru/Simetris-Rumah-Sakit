@@ -17,20 +17,20 @@
     </div>
   </div><!-- /.row -->
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6">
       <div class="table-responsive">
         <div clas="row">
           <div class="col-lg-6">
             <a href="booking-datang-proses?id_booking=<?php echo $id_booking; ?>"
               <button onclick="javascript: return confirm('Sudah Datang?')"
-              type="button" class="btn btn-success">Datang</button>
+              type="button" class="btn btn-success"><i class="fa fa-check"></i></button>
             </a>
             <a href="booking-belum-datang-proses?id_booking=<?php echo $id_booking; ?>"
               <button onclick="javascript: return confirm('Ubah Belum Datang?')"
-              type="button" class="btn btn-warning">Belum Datang</button>
+              type="button" class="btn btn-warning"><i class="fa fa-times"></i></button>
             </a>
             <a href="booking-edit?id_booking=<?php echo $id_booking; ?>"
-              <button type="button" class="btn btn-primary">Edit</button>
+              <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</button>
             </a>
           </div>
           <div align="right" class="col-lg-6">

@@ -55,7 +55,7 @@
                         <th><center>Dokter</center></th>
                         <th><center>Sesi</center></th>
                         <th><center>Keterangan</center></th>
-                        <th colspan='2'><center>Action</center></th>
+                        <th colspan='3'><center>Action</center></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -91,29 +91,35 @@
                         </center></td>
                         <td>
                           <div align="center">
-                            <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
-                              <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                            <a href="booking-edit?id_booking=<?php echo $id_booking; ?>"
+                              <button type="button" class="btn btn-primary"><i class='fa fa-pencil'></i></button></a>
                             </div>
                           </td>
-                        </tr>
-                        <?php 
-                      }
-                      ?>
-                    </tbody>
-                  </table>
+                          <td>
+                            <div align="center">
+                              <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <?php 
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab-pane fade in" id="2">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="table-responsive">
-                  <?php include "tumbang-tampil.php";?>
+            <div class="tab-pane fade in" id="2">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="table-responsive">
+                    <?php include "tumbang-tampil.php";?>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 </div><!-- /.row -->
