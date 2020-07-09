@@ -14,8 +14,8 @@ header("Content-Disposition: attachment; filename=list-permintaan-rekam-medis ".
             <th><center>No</center></th>
             <th><center>No. RM</center></th>
             <th><center>Nama Pasien</center></th>
+            <th><center>Dokter</center></th>
             <th><center>Sesi</center></th>
-            <th><center>Status</center></th>
         </tr>
         <?php
         include '../../config/connect.php';
@@ -27,7 +27,7 @@ header("Content-Disposition: attachment; filename=list-permintaan-rekam-medis ".
             WHERE booking.id_dokter=dokter.id_dokter
             AND booking.id_sesi=sesi.id_sesi
             AND booking.booking_tanggal='$tanggalHariIni'
-            ORDER BY booking.id_sesi ASC;");
+            ORDER BY booking.id_sesi, dokter.id_dokter, booking.nama ASC;");
         while($d = mysqli_fetch_array($data)){
             $tanggal = $d['tanggal'];
             ?>
@@ -36,8 +36,8 @@ header("Content-Disposition: attachment; filename=list-permintaan-rekam-medis ".
                 <td><center><?php echo $no++; ?></center></td>
                 <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                 <td><center><?php echo $d['nama']; ?></center></td>
+                <td><center><?php echo $d['nama_dokter']; ?></center></td>
                 <td><center><?php echo $d['nama_sesi']; ?></center></td>
-                <td><center><?php echo $d['status']; ?></center></td>
             </tr>
             <?php
         }
