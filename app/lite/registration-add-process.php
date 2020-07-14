@@ -16,6 +16,7 @@ $tanggal          = $tanggal;
 $jam              = $jam;
 $status           = '2';
 $keterangan       = 'DAFTAR MANDIRI';
+$mandiri          = '1';
 
 $tglsekarang  = new DateTime();
 $jadwal     = new DateTime("$booking_tanggal");

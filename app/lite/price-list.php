@@ -4,9 +4,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                        <strong></strong>
-                    </div>
                     <div class="card-body">
                         <img class="img-responsive" src="images/price-list.jpg" width="100%" alt="Koneksi internet lambat..">
                     </div>
