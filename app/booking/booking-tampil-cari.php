@@ -6,9 +6,20 @@
 </nav>
 <div id="page-wrapper">
   <div class="row">
-    <?php $cari = $_POST['cari']; ?>
+    <?php
+    $carirm   = $_POST['carirm'];
+    $carinama = $_POST['carinama'];
+    ?>
     <div class="col-lg-12">
-      <h1>Hasil Pencarian <small><?php echo '"'.$cari.'"'; ?></small></h1>
+      <h1>Hasil Pencarian <small>"
+        <?php
+        if(!$carirm){
+          echo $carinama;
+        }else{
+          echo $carirm;
+        }
+        ?>
+      "</small></h1>
       <ol class="breadcrumb">
         <li><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-search"></i> Pencarian</li>
@@ -23,10 +34,30 @@
           <div class="col-lg-12">
             <div class="table-responsive">
               <div class="row">
-                <div align="right" class="col-lg-6">
+                <div align="right" class="col-lg-4">
                   <form method="post" action="booking-tampil-cari" role="form">
                     <div class="form-group input-group">
-                      <input type="text" class="form-control" name="cari" value="<?php echo $cari?>">
+                      <?php
+                      if(!$carirm){ ?>
+                        <input type="text" class="form-control" name="carirm" placeholder=" Pencarian No.RM Pasien..">
+                      <?php }else{ ?>
+                        <input type="text" class="form-control" name="carirm" value="<?php echo $carirm ?>">
+                      <?php }
+                      ?>
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div align="right" class="col-lg-4">
+                    <div class="form-group input-group">
+                      <?php
+                      if(!$carinama){ ?>
+                        <input type="text" class="form-control" name="carinama" placeholder=" Pencarian Nama Pasien..">
+                      <?php }else{ ?>
+                        <input type="text" class="form-control" name="carinama" value="<?php echo $carinama ?>">
+                      <?php }
+                      ?>
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
                       </span>
@@ -50,15 +81,27 @@
                 <tbody>
                   <?php 
                   $no = 1;
-                  $data = mysqli_query($koneksi,
-                    "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
-                    IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-                    FROM booking, dokter, sesi
-                    WHERE booking.id_dokter=dokter.id_dokter
-                    AND booking.id_sesi=sesi.id_sesi
-                    AND booking.booking_tanggal='$tanggalsekarang'
-                    AND nama LIKE '%' '$cari' '%'
-                    ORDER BY booking.id_sesi, dokter.id_dokter, booking.nama ASC;");
+                  if(!$carirm){
+                    $data = mysqli_query($koneksi,
+                      "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
+                      IF (booking.status='1', 'Datang', 'Belum Datang') AS status
+                      FROM booking, dokter, sesi
+                      WHERE booking.id_dokter=dokter.id_dokter
+                      AND booking.id_sesi=sesi.id_sesi
+                      AND booking.booking_tanggal='$tanggalsekarang'
+                      AND nama LIKE '%' '$carinama' '%'
+                      ORDER BY booking.id_sesi, dokter.id_dokter, booking.nama ASC;");
+                  }else{
+                    $data = mysqli_query($koneksi,
+                      "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
+                      IF (booking.status='1', 'Datang', 'Belum Datang') AS status
+                      FROM booking, dokter, sesi
+                      WHERE booking.id_dokter=dokter.id_dokter
+                      AND booking.id_sesi=sesi.id_sesi
+                      AND booking.booking_tanggal='$tanggalsekarang'
+                      AND id_catatan_medik = '$carirm'
+                      ORDER BY booking.id_sesi, dokter.id_dokter, booking.nama ASC;");
+                  }
                   while($d = mysqli_fetch_array($data)){
                     $id_booking = $d['id_booking'];
                     $status     = $d['status'];

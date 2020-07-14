@@ -1,38 +1,42 @@
-        <div class="col-lg-8">
-          <form method="post" action="laporan-tumbang-hari-ini-export" role="form">
-            <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button>
-            <div class="btn-group">
-              <button type="button" class="btn btn-warning">Filter</button>
-              <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li disabled selected><a>All</a></li>
-                <?php
-                include '../../config/connect.php';
-                $data = mysqli_query($koneksi,
-                  "SELECT *, tumbang_petugas.nama_petugas
-                  FROM tumbang, tumbang_petugas
-                  WHERE tumbang.id_petugas=tumbang_petugas.id_petugas
-                  AND tumbang.jadwal='$tanggalsekarang'
-                  GROUP BY tumbang.id_petugas;");
-                while($d = mysqli_fetch_array($data)){
-                  echo "<li><a href='tumbang-tab?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
-                }
-                ?>
-              </ul>
-            </div><!-- /btn-group -->
-          </form>
+         <div class="row">
+          <div class="col-lg-12">
+            <form method="post" action="laporan-tumbang-hari-ini-export" role="form">
+              <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button>
+              <div class="btn-group">
+                <button type="button" class="btn btn-warning">Filter</button>
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li disabled selected><a>All</a></li>
+                  <?php
+                  include '../../config/connect.php';
+                  $data = mysqli_query($koneksi,
+                    "SELECT *, tumbang_petugas.nama_petugas
+                    FROM tumbang, tumbang_petugas
+                    WHERE tumbang.id_petugas=tumbang_petugas.id_petugas
+                    AND tumbang.jadwal='$tanggalsekarang'
+                    GROUP BY tumbang.id_petugas;");
+                  while($d = mysqli_fetch_array($data)){
+                    echo "<li><a href='tumbang-tab?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
+                  }
+                  ?>
+                </ul>
+              </div><!-- /btn-group -->
+            </form>
+          </div>
         </div>
-        <div align="right" class="col-lg-4">
-          <?php 
-          $data = mysqli_query($koneksi,
-            "SELECT COUNT(id_tumbang) AS total
-            FROM tumbang
-            WHERE tumbang.jadwal='$tanggalsekarang';");
-          while($d = mysqli_fetch_array($data)){
-            ?>
-            <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+        <div class="row">
+          <div align="right" class="col-lg-12">
+            <?php 
+            $data = mysqli_query($koneksi,
+              "SELECT COUNT(id_tumbang) AS total
+              FROM tumbang
+              WHERE tumbang.jadwal='$tanggalsekarang';");
+            while($d = mysqli_fetch_array($data)){
+              ?>
+              <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+            </div>
           </div>
           <table class="table table-bordered table-hover table-striped tablesorter">
             <thead>
