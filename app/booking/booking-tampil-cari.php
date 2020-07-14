@@ -26,7 +26,7 @@
                 <div align="right" class="col-lg-6">
                   <form method="post" action="booking-tampil-cari" role="form">
                     <div class="form-group input-group">
-                      <input type="text" class="form-control" name="cari" placeholder="Pencarian Nama Pasien..">
+                      <input type="text" class="form-control" name="cari" value="<?php echo $cari?>">
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
                       </span>
