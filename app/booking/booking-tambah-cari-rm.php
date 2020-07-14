@@ -41,6 +41,7 @@
           $jam              = $jamsekarang;
           $status           = '2';
           $keterangan       = $_POST['keterangan'];
+          $mandiri          = '0';
           $tglsekarang      = new DateTime();
           $jadwal           = new DateTime("$booking_tanggal");
           $selisih          = $tglsekarang->diff($jadwal)->format("%a");
