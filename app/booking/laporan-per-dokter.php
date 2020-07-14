@@ -13,6 +13,51 @@
         <li class="active"><i class="fa fa-search"></i> Cari</li>
       </ol>
       <?php include "../../system/welcome.php"?>
+      <?php 
+      $m = 31;
+      $n = 7;
+      $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
+      $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
+      $mak   = date("Y-m-d", $nextN);
+      $min   = date("Y-m-d", $prevN);
+
+      function format_mak($mak)
+      {
+        $bulan = array (1 =>   'Januari',
+          'Februari',
+          'Maret',
+          'April',
+          'Mei',
+          'Juni',
+          'Juli',
+          'Agustus',
+          'September',
+          'Oktober',
+          'November',
+          'Desember'
+        );
+        $split = explode('-', $mak);
+        return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+      }
+      function format_min($min)
+      {
+        $bulan = array (1 =>   'Januari',
+          'Februari',
+          'Maret',
+          'April',
+          'Mei',
+          'Juni',
+          'Juli',
+          'Agustus',
+          'September',
+          'Oktober',
+          'November',
+          'Desember'
+        );
+        $split = explode('-', $min);
+        return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+      }
+      ?>
       <div class="alert alert-warning alert-dismissable">
        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
        <font size='3'>Pencarian data registrasi minimal tanggal <b><?php echo format_min($min).'</b> dan maksimal tanggal <b>'.format_mak($mak);?></font></b>
@@ -26,51 +71,6 @@
         <div class="tab-pane fade active in" id="1">
           <div class="row">
             <div class="table-responsive">
-              <?php 
-              $m = 31;
-              $n = 7;
-              $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
-              $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
-              $mak   = date("Y-m-d", $nextN);
-              $min   = date("Y-m-d", $prevN);
-
-              function format_mak($mak)
-              {
-                $bulan = array (1 =>   'Januari',
-                  'Februari',
-                  'Maret',
-                  'April',
-                  'Mei',
-                  'Juni',
-                  'Juli',
-                  'Agustus',
-                  'September',
-                  'Oktober',
-                  'November',
-                  'Desember'
-                );
-                $split = explode('-', $mak);
-                return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
-              }
-              function format_min($min)
-              {
-                $bulan = array (1 =>   'Januari',
-                  'Februari',
-                  'Maret',
-                  'April',
-                  'Mei',
-                  'Juni',
-                  'Juli',
-                  'Agustus',
-                  'September',
-                  'Oktober',
-                  'November',
-                  'Desember'
-                );
-                $split = explode('-', $min);
-                return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
-              }
-              ?>
               <form method="post" action="laporan-per-dokter-tampil" role="form">
                 <div class="col-lg-6">
                   <div class="form-group">
