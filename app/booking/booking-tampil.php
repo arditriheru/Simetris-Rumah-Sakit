@@ -35,15 +35,27 @@
                     </div><!-- /btn-group -->
                   </form>
                 </div>
-                <div align="right" class="col-lg-4">
-                  <?php 
-                  $data = mysqli_query($koneksi,
-                    "SELECT COUNT(id_booking) AS total
-                    FROM booking
-                    WHERE booking.booking_tanggal='$tanggalsekarang';");
-                  while($d = mysqli_fetch_array($data)){
-                    ?>
-                    <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                <div class="row">
+                  <div align="right" class="col-lg-6"><br>
+                    <form method="post" action="booking-tampil-cari" role="form">
+                      <div class="form-group input-group">
+                        <input type="text" class="form-control" name="cari" placeholder="Pencarian Nama Pasien..">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                  <div align="right" class="col-lg-6">
+                    <?php 
+                    $data = mysqli_query($koneksi,
+                      "SELECT COUNT(id_booking) AS total
+                      FROM booking
+                      WHERE booking.booking_tanggal='$tanggalsekarang';");
+                    while($d = mysqli_fetch_array($data)){
+                      ?>
+                      <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                    </div>
                   </div>
                   <table class="table table-bordered table-hover table-striped tablesorter">
                     <thead>
