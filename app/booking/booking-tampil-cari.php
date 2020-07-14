@@ -37,7 +37,7 @@
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
                   <tr>
-                    <th><center>#</center></th>
+                    <!-- <th><center>#</center></th> -->
                     <th><center>No. RM</center></th>
                     <th><center>Nama Pasien</center></th>
                     <th><center>Kontak</center></th>
@@ -64,7 +64,7 @@
                     $status     = $d['status'];
                     ?>
                     <tr>
-                      <td><center><?php echo $no++; ?></center></td>
+                      <!-- <td><center><?php echo $no++; ?></center></td> -->
                       <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                       <td><center><?php echo $d['nama']; ?></center></td>
                       <td><center><?php echo $d['kontak']; ?></center></td>
