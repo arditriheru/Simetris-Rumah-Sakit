@@ -45,7 +45,7 @@
                 <form method="post" action="" role="form">
                   <div class="form-group">
                     <label>Nama Petugas</label>
-                    <input class="form-control" type="text" name="nama_petugas" placeholder="Contoh : Heru Sarmuji, S.Kom">
+                    <input class="form-control" type="text" name="nama_petugas" placeholder="Contoh : Heru Sarmuji, S.Psi">
                     <p style="color:blue">Tuliskan nama petugas sesuai di SIMRS!!!
                       <p style="color:red;"><?php echo ($error['nama_petugas']) ? $error['nama_petugas'] : ''; ?></p>
                     </div>
