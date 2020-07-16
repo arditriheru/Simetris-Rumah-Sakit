@@ -1,7 +1,7 @@
          <div class="row">
           <div class="col-lg-12">
             <form method="post" action="laporan-tumbang-hari-ini-export" role="form">
-              <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button>
+              <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
               <div class="btn-group">
                 <button type="button" class="btn btn-warning">Filter</button>
                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">

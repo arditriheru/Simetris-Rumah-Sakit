@@ -52,11 +52,11 @@ $id_sesi    = $_POST['id_sesi'];
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Pencarian <small> <?php echo awal($awal);?> - <?php echo akhir($akhir);?></small></h1>
+      <h1>Pencarian <small> Poliklinik</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Cari</a></li>
-        <li class="active"><i class="fa fa-list"></i> List</li>
+        <li class="active"><i class="fa fa-list"></i> <?php echo awal($awal);?> - <?php echo akhir($akhir);?></li>
       </ol>  
       <?php include "../../system/welcome.php"?>
     </div>
