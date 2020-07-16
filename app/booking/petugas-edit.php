@@ -25,7 +25,8 @@
         ?>
         <?php
         if(isset($_POST['submit'])){
-          $nama_petugas 	= $_POST['nama_petugas'];
+          $nama_petugas = $_POST['nama_petugas'];
+          $pelayanan    = $_POST['pelayanan'];
           $status 		  = $_POST['status'];
 
           $error=array();
@@ -33,7 +34,7 @@
             $error['nama_petugas']='Nama Petugas Harus Diisi!!!';
           }if(empty($error)){
             $simpan=mysqli_query($koneksi,"UPDATE mr_petugas 
-             SET nama_petugas='$nama_petugas',status='$status'
+             SET nama_petugas='$nama_petugas',status='$status',pelayanan='$pelayanan'
              WHERE id_petugas='$id_petugas'");
             if($simpan){
               echo '<script>
@@ -69,6 +70,15 @@
                         value="<?php echo $d['nama_petugas']; ?>" required="">
                         <p style="color:blue">Tuliskan nama dokter sesuai di SIMRS!!!
                           <p style="color:red;"><?php echo ($error['nama_petugas']) ? $error['nama_petugas'] : ''; ?></p>
+                        </div>
+                        <div class="form-group">
+                          <label>Pelayanan</label>
+                          <select class="form-control" type="text" name="pelayanan" required="">
+                            <p style="color:red;"><?php echo ($error['pelayanan']) ? $error['pelayanan'] : ''; ?></p>
+                            <option disabled selected>Pilih</option>
+                            <option value='1'>Tumbuh Kembang</option>
+                            <option value='2'>Antenatal Care</option>"
+                          </select>
                         </div>
                         <div class="form-group">
                           <label>Status</label>
