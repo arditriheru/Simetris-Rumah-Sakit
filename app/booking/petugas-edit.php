@@ -20,7 +20,7 @@
       <?php
       $id_petugas = $_GET['id'];
       $data = mysqli_query($koneksi,
-        "SELECT * FROM tumbang_petugas WHERE id_petugas='$id_petugas';");
+        "SELECT * FROM mr_petugas WHERE id_petugas='$id_petugas';");
       while($d = mysqli_fetch_array($data)){
         ?>
         <?php
@@ -32,7 +32,7 @@
           if (empty($nama_petugas)){
             $error['nama_petugas']='Nama Petugas Harus Diisi!!!';
           }if(empty($error)){
-            $simpan=mysqli_query($koneksi,"UPDATE tumbang_petugas 
+            $simpan=mysqli_query($koneksi,"UPDATE mr_petugas 
              SET nama_petugas='$nama_petugas',status='$status'
              WHERE id_petugas='$id_petugas'");
             if($simpan){
@@ -77,7 +77,7 @@
                             <?php 
                             $data = mysqli_query($koneksi,
                               "SELECT status, IF(status='1', 'Aktif', 'Nonaktif') AS nama_status
-                              FROM tumbang_petugas WHERE id_petugas='$id_petugas';");
+                              FROM mr_petugas WHERE id_petugas='$id_petugas';");
                             while($d = mysqli_fetch_array($data)){
                               echo "<option selected value='".$d['status']."'>".$d['nama_status']."</option>";
                             }

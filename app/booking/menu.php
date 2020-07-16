@@ -32,29 +32,37 @@
               <li><a href="tumbang-tambah">Tambah</a></li>
             </ul>
           </li>
-          <li><a href="covid-skrining"><i class="fa fa-thumb-tack"></i> Skrining</a></li>
-          <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Dokter</a></li>
-          <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
-          <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
-          <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
-          <li><a href="../../system/tutorial?id_buku=50">
-            <i class="fa fa-file"></i> Dokumentasi</a>
-          </li>
-          <li>
-            <a href="zona-merah">
-              <button type="submit" class="btn btn-danger">COVID-19</button>
-            </a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right navbar-user">
-          <li class="dropdown user-dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i>&nbsp;<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="divider"></li>
-              <li>
-                <a href="../../dashboard"><i class="fa fa-power-off">
-                </i> Log Out</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-plus"></i> Antenatal Care <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="anc-filter">Lihat</a></li>
+                <li><a href="anc-tambah">Tambah</a></li>
+              </ul>
+            </li>
+            <li><a href="covid-skrining"><i class="fa fa-thumb-tack"></i> Skrining</a></li>
+            <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Dokter</a></li>
+            <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
+            <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
+            <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
+            <li><a href="../../system/tutorial?id_buku=50">
+              <i class="fa fa-file"></i> Dokumentasi</a>
+            </li>
+            <li>
+              <a href="zona-merah">
+                <button type="submit" class="btn btn-danger">COVID-19</button>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i>&nbsp;<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="divider"></li>
+                <li>
+                  <a href="../../dashboard"><i class="fa fa-power-off">
+                  </i> Log Out</a>
+                </li>
+              </ul>
+            </li>
+          </ul>

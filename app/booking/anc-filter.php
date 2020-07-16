@@ -7,7 +7,7 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Antrian <small>Tumbuh Kembang</small></h1>
+      <h1>Antrian <small>Antenatal Care</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-search"></i> Cari</li>
@@ -17,13 +17,13 @@
     <div class="col-lg-6">
       <div class="table-responsive">
         <div id="myTabContent" class="tab-content">
-          <form method="post" action="tumbang-filter-tampil" role="form">
+          <form method="post" action="anc-filter-tampil" role="form">
             <div class="form-group">
               <label>Nama Petugas</label>
               <select class="form-control" type="text" name="id_petugas">
                 <option disabled selected>Pilih</option>
                 <?php 
-                $data = mysqli_query($koneksi,"SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=1;");
+                $data = mysqli_query($koneksi,"SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=2;");
                 while($d = mysqli_fetch_array($data)){
                   echo "<option value='".$d['id_petugas']."'>".$d['nama_petugas']."</option>";
                 }

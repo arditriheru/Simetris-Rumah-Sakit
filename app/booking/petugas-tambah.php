@@ -1,17 +1,20 @@
 <div class="row">
   <div class="table-responsive">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
      <?php
      if(isset($_POST['tambah'])){
       $nama_petugas = $_POST['nama_petugas'];
+      $pelayanan = $_POST['pelayanan'];
       $status       = '1';
 
       $error=array();
       if (empty($nama_petugas)){
         $error['nama_petugas']='Nama Petugas Harus Diisi!!!';
+      }if (empty($pelayanan)){
+        $error['pelayanan']='Pelayanan Petugas Harus Diisi!!!';
       }if(empty($error)){
-        $simpan=mysqli_query($koneksi,"INSERT INTO tumbang_petugas (id_petugas, nama_petugas, status)
-          VALUES('','$nama_petugas','$status')");
+        $simpan=mysqli_query($koneksi,"INSERT INTO mr_petugas (id_petugas, nama_petugas, status, pelayanan)
+          VALUES('','$nama_petugas','$status','$pelayanan')");
         if($simpan){
           echo '<script>
           setTimeout(function() {
@@ -46,6 +49,15 @@
                     <p style="color:blue">Tuliskan nama petugas sesuai di SIMRS!!!
                       <p style="color:red;"><?php echo ($error['nama_petugas']) ? $error['nama_petugas'] : ''; ?></p>
                     </div>
+                    <div class="form-group">
+                      <label>Pelayanan</label>
+                      <select class="form-control" type="text" name="pelayanan" required="">
+                        <p style="color:red;"><?php echo ($error['pelayanan']) ? $error['pelayanan'] : ''; ?></p>
+                        <option disabled selected>Pilih</option>
+                        <option value='1'>Tumbuh Kembang</option>
+                        <option value='2'>Antenatal Care</option>"
+                      </select>
+                    </div>
                     <button type="submit" name="tambah" class="btn btn-success">Tambah</button>
                     <button type="reset" class="btn btn-warning">Reset</button>  
                   </form><br>
@@ -56,6 +68,7 @@
                       <tr>
                         <th><center>No</center></th>
                         <th><center>Nama Petugas</center></th>
+                        <th><center>Pelayanan</center></th>
                         <th><center>Status</center></th>
                         <th colspan="2"><center>Action</center></th>
                       </tr>
@@ -64,13 +77,22 @@
                       <?php 
                       $no = 1;
                       $data = mysqli_query($koneksi,
-                        "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status FROM tumbang_petugas;");
+                        "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status FROM mr_petugas;");
                       while($d = mysqli_fetch_array($data)){
                         $status = $d['status'];
                         ?>
                         <tr>
                           <td><center><?php echo $no++; ?></center></td>
                           <td><left><?php echo $d['nama_petugas']; ?></left></td>
+                          <td><center>
+                            <?php 
+                            if($d['pelayanan']==1){
+                              echo 'Tumbuh Kembang';
+                            }elseif($d['pelayanan']==2){
+                              echo 'Antenatal Care';
+                            }
+                            ?>
+                          </center></td>
                           <td><center>
                             <?php
                             if($status='1'){

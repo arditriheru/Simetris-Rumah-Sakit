@@ -13,8 +13,8 @@
       $id_sesi     = $_POST['id_sesi'];
 
       $a = mysqli_query($koneksi,
-        "SELECT COUNT(id_tumbang) AS total
-        FROM tumbang
+        "SELECT COUNT(id_anc) AS total
+        FROM anc
         WHERE jadwal = '$jadwal'
         AND id_sesi = '$id_sesi'
         AND id_petugas='$id_petugas';");
@@ -72,13 +72,13 @@
               $no = 1;
               $data = mysqli_query($koneksi,
                 "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                FROM tumbang, mr_petugas, sesi
-                WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                AND tumbang.id_sesi=sesi.id_sesi
-                AND tumbang.id_sesi = '$id_sesi'
-                AND tumbang.jadwal = '$jadwal'
-                AND tumbang.id_petugas='$id_petugas' ORDER BY tumbang.id_tumbang ASC;");
+                IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                FROM anc, mr_petugas, sesi
+                WHERE anc.id_petugas=mr_petugas.id_petugas
+                AND anc.id_sesi=sesi.id_sesi
+                AND anc.id_sesi = '$id_sesi'
+                AND anc.jadwal = '$jadwal'
+                AND anc.id_petugas='$id_petugas' ORDER BY anc.id_anc ASC;");
               while($d = mysqli_fetch_array($data)){
                 ?>
                 <tr>
@@ -93,7 +93,7 @@
                   <td><center><?php echo $d['keterangan']; ?></center></td>
                   <td>
                     <div align="center">
-                      <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                      <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                       </div>
                     </td>

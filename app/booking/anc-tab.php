@@ -36,12 +36,12 @@ while($b = mysqli_fetch_array($a)){
             <?php 
             $data = mysqli_query($koneksi,
               "SELECT *, mr_petugas.nama_petugas
-              FROM tumbang, mr_petugas
-              WHERE tumbang.id_petugas=mr_petugas.id_petugas
-              AND tumbang.jadwal='$tanggalsekarang'
-              GROUP BY tumbang.id_petugas;");
+              FROM anc, mr_petugas
+              WHERE anc.id_petugas=mr_petugas.id_petugas
+              AND anc.jadwal='$tanggalsekarang'
+              GROUP BY anc.id_petugas;");
             while($d = mysqli_fetch_array($data)){
-              echo "<li><a href='tumbang-tab?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
+              echo "<li><a href='anc-tab?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
             }
             ?>
           </ul>
@@ -64,9 +64,9 @@ while($b = mysqli_fetch_array($a)){
                         <?php 
                         $data = mysqli_query($koneksi,
                           "SELECT COUNT(*) AS total
-                          FROM tumbang
-                          WHERE tumbang.id_petugas='$id_petugas'
-                          AND tumbang.jadwal='$tanggalsekarang';");
+                          FROM anc
+                          WHERE anc.id_petugas='$id_petugas'
+                          AND anc.jadwal='$tanggalsekarang';");
                         while($d = mysqli_fetch_array($data)){
                           ?>
                           <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -89,14 +89,15 @@ while($b = mysqli_fetch_array($a)){
                             $no = 1;
                             $data = mysqli_query($koneksi,
                               "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                              IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                              FROM tumbang, mr_petugas, sesi
-                              WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                              AND tumbang.id_sesi=sesi.id_sesi
-                              AND tumbang.jadwal='$tanggalsekarang'
-                              ORDER BY tumbang.nama ASC;");
+                              IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                              FROM anc, mr_petugas, sesi
+                              WHERE anc.id_petugas=mr_petugas.id_petugas
+                              AND anc.id_sesi=sesi.id_sesi
+                              AND anc.id_petugas='$id_petugas'
+                              AND anc.jadwal='$tanggalsekarang'
+                              ORDER BY anc.nama ASC;");
                             while($d = mysqli_fetch_array($data)){
-                              $id_tumbang = $d['id_tumbang'];
+                              $id_anc = $d['id_anc'];
                               $status     = $d['status'];
                               ?>
                               <tr>
@@ -109,15 +110,15 @@ while($b = mysqli_fetch_array($a)){
                                <td><center><?php echo $d['keterangan']; ?></center></td>
                                <td><center><?php
                                if($status=='Datang'){
-                                echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                               }else{
-                                echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                               }
                               ?>
                             </center></td>
                             <td>
                               <div align="center">
-                                <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                 </div>
                               </td>
@@ -136,10 +137,10 @@ while($b = mysqli_fetch_array($a)){
                             <?php 
                             $data = mysqli_query($koneksi,
                               "SELECT COUNT(*) AS total
-                              FROM tumbang
-                              WHERE tumbang.id_petugas='$id_petugas'
-                              AND tumbang.id_sesi=1
-                              AND tumbang.jadwal='$tanggalsekarang';");
+                              FROM anc
+                              WHERE anc.id_petugas='$id_petugas'
+                              AND anc.id_sesi=1
+                              AND anc.jadwal='$tanggalsekarang';");
                             while($d = mysqli_fetch_array($data)){
                               ?>
                               <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -162,15 +163,16 @@ while($b = mysqli_fetch_array($a)){
                                 $no = 1;
                                 $data = mysqli_query($koneksi,
                                   "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                                  IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                                  FROM tumbang, mr_petugas, sesi
-                                  WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                                  AND tumbang.id_sesi=sesi.id_sesi
-                                  AND tumbang.id_sesi=1
-                                  AND tumbang.jadwal='$tanggalsekarang'
-                                  ORDER BY tumbang.nama ASC;");
+                                  IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                                  FROM anc, mr_petugas, sesi
+                                  WHERE anc.id_petugas=mr_petugas.id_petugas
+                                  AND anc.id_sesi=sesi.id_sesi
+                                  AND anc.id_sesi=1
+                                  AND anc.id_petugas='$id_petugas'
+                                  AND anc.jadwal='$tanggalsekarang'
+                                  ORDER BY anc.nama ASC;");
                                 while($d = mysqli_fetch_array($data)){
-                                  $id_tumbang = $d['id_tumbang'];
+                                  $id_anc = $d['id_anc'];
                                   $status     = $d['status'];
                                   ?>
                                   <tr>
@@ -183,15 +185,15 @@ while($b = mysqli_fetch_array($a)){
                                    <td><center><?php echo $d['keterangan']; ?></center></td>
                                    <td><center><?php
                                    if($status=='Datang'){
-                                    echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                   }else{
-                                    echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                   }
                                   ?>
                                 </center></td>
                                 <td>
                                   <div align="center">
-                                    <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                    <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                                       <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                     </div>
                                   </td>
@@ -210,10 +212,10 @@ while($b = mysqli_fetch_array($a)){
                               <?php 
                               $data = mysqli_query($koneksi,
                                 "SELECT COUNT(*) AS total
-                                FROM tumbang
-                                WHERE tumbang.id_petugas='$id_petugas'
-                                AND tumbang.id_sesi=2
-                                AND tumbang.jadwal='$tanggalsekarang';");
+                                FROM anc
+                                WHERE anc.id_petugas='$id_petugas'
+                                AND anc.id_sesi=2
+                                AND anc.jadwal='$tanggalsekarang';");
                               while($d = mysqli_fetch_array($data)){
                                 ?>
                                 <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -236,15 +238,16 @@ while($b = mysqli_fetch_array($a)){
                                   $no = 1;
                                   $data = mysqli_query($koneksi,
                                     "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                                    IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                                    FROM tumbang, mr_petugas, sesi
-                                    WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                                    AND tumbang.id_sesi=sesi.id_sesi
-                                    AND tumbang.id_sesi=2
-                                    AND tumbang.jadwal='$tanggalsekarang'
-                                    ORDER BY tumbang.nama ASC;");
+                                    IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                                    FROM anc, mr_petugas, sesi
+                                    WHERE anc.id_petugas=mr_petugas.id_petugas
+                                    AND anc.id_sesi=sesi.id_sesi
+                                    AND anc.id_sesi=2
+                                    AND anc.id_petugas='$id_petugas'
+                                    AND anc.jadwal='$tanggalsekarang'
+                                    ORDER BY anc.nama ASC;");
                                   while($d = mysqli_fetch_array($data)){
-                                    $id_tumbang = $d['id_tumbang'];
+                                    $id_anc = $d['id_anc'];
                                     $status     = $d['status'];
                                     ?>
                                     <tr>
@@ -257,15 +260,15 @@ while($b = mysqli_fetch_array($a)){
                                      <td><center><?php echo $d['keterangan']; ?></center></td>
                                      <td><center><?php
                                      if($status=='Datang'){
-                                      echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                      echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                     }else{
-                                      echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                      echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                     }
                                     ?>
                                   </center></td>
                                   <td>
                                     <div align="center">
-                                      <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                      <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                       </div>
                                     </td>
@@ -284,10 +287,10 @@ while($b = mysqli_fetch_array($a)){
                                  <?php 
                                  $data = mysqli_query($koneksi,
                                   "SELECT COUNT(*) AS total
-                                  FROM tumbang
-                                  WHERE tumbang.id_petugas='$id_petugas'
-                                  AND tumbang.id_sesi=3
-                                  AND tumbang.jadwal='$tanggalsekarang';");
+                                  FROM anc
+                                  WHERE anc.id_petugas='$id_petugas'
+                                  AND anc.id_sesi=3
+                                  AND anc.jadwal='$tanggalsekarang';");
                                  while($d = mysqli_fetch_array($data)){
                                   ?>
                                   <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -310,15 +313,16 @@ while($b = mysqli_fetch_array($a)){
                                     $no = 1;
                                     $data = mysqli_query($koneksi,
                                       "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                                      IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                                      FROM tumbang, mr_petugas, sesi
-                                      WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                                      AND tumbang.id_sesi=sesi.id_sesi
-                                      AND tumbang.id_sesi=3
-                                      AND tumbang.jadwal='$tanggalsekarang'
-                                      ORDER BY tumbang.nama ASC;");
+                                      IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                                      FROM anc, mr_petugas, sesi
+                                      WHERE anc.id_petugas=mr_petugas.id_petugas
+                                      AND anc.id_sesi=sesi.id_sesi
+                                      AND anc.id_sesi=3
+                                      AND anc.id_petugas='$id_petugas'
+                                      AND anc.jadwal='$tanggalsekarang'
+                                      ORDER BY anc.nama ASC;");
                                     while($d = mysqli_fetch_array($data)){
-                                      $id_tumbang = $d['id_tumbang'];
+                                      $id_anc = $d['id_anc'];
                                       $status     = $d['status'];
                                       ?>
                                       <tr>
@@ -331,15 +335,15 @@ while($b = mysqli_fetch_array($a)){
                                        <td><center><?php echo $d['keterangan']; ?></center></td>
                                        <td><center><?php
                                        if($status=='Datang'){
-                                        echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                        echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                       }else{
-                                        echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                        echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                       }
                                       ?>
                                     </center></td>
                                     <td>
                                       <div align="center">
-                                        <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                        <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                                           <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                         </div>
                                       </td>
@@ -358,10 +362,10 @@ while($b = mysqli_fetch_array($a)){
                                   <?php 
                                   $data = mysqli_query($koneksi,
                                     "SELECT COUNT(*) AS total
-                                    FROM tumbang
-                                    WHERE tumbang.id_petugas='$id_petugas'
-                                    AND tumbang.id_sesi=4
-                                    AND tumbang.jadwal='$tanggalsekarang';");
+                                    FROM anc
+                                    WHERE anc.id_petugas='$id_petugas'
+                                    AND anc.id_sesi=4
+                                    AND anc.jadwal='$tanggalsekarang';");
                                   while($d = mysqli_fetch_array($data)){
                                     ?>
                                     <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -384,15 +388,16 @@ while($b = mysqli_fetch_array($a)){
                                       $no = 1;
                                       $data = mysqli_query($koneksi,
                                         "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                                        IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-                                        FROM tumbang, mr_petugas, sesi
-                                        WHERE tumbang.id_petugas=mr_petugas.id_petugas
-                                        AND tumbang.id_sesi=sesi.id_sesi
-                                        AND tumbang.id_sesi=4
-                                        AND tumbang.jadwal='$tanggalsekarang'
-                                        ORDER BY tumbang.nama ASC;");
+                                        IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                                        FROM anc, mr_petugas, sesi
+                                        WHERE anc.id_petugas=mr_petugas.id_petugas
+                                        AND anc.id_sesi=sesi.id_sesi
+                                        AND anc.id_sesi=4
+                                        AND anc.id_petugas='$id_petugas'
+                                        AND anc.jadwal='$tanggalsekarang'
+                                        ORDER BY anc.nama ASC;");
                                       while($d = mysqli_fetch_array($data)){
-                                        $id_tumbang = $d['id_tumbang'];
+                                        $id_anc = $d['id_anc'];
                                         $status     = $d['status'];
                                         ?>
                                         <tr>
@@ -405,15 +410,15 @@ while($b = mysqli_fetch_array($a)){
                                          <td><center><?php echo $d['keterangan']; ?></center></td>
                                          <td><center><?php
                                          if($status=='Datang'){
-                                          echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                          echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                         }else{
-                                          echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                          echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                         }
                                         ?>
                                       </center></td>
                                       <td>
                                         <div align="center">
-                                          <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                          <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                           </div>
                                         </td>

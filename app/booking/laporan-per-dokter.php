@@ -66,6 +66,7 @@
       <ul class="nav nav-pills" style="margin-bottom: 15px;">
         <li class="active"><a href="#1" data-toggle="tab">Poliklinik</a></li>
         <li><a href="#2" data-toggle="tab">Tumbuh Kembang</a></li>
+        <li><a href="#3" data-toggle="tab">Antenatal Care</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="1">
@@ -146,7 +147,7 @@
                       <option disabled selected>Pilih</option>
                       <?php 
                       $data = mysqli_query($koneksi,
-                        "SELECT * FROM tumbang_petugas WHERE status=1;");
+                        "SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=1;");
                       while($d = mysqli_fetch_array($data)){
                         echo "<option value='".$d['id_petugas']."'>".$d['nama_petugas']."</option>";
                       }
@@ -161,6 +162,20 @@
                     <label>Sampai Tanggal</label>
                     <input class="form-control" type="date" name="akhir">
                   </div>
+                  <div class="form-group">
+                    <label>Sesi</label>
+                    <select class="form-control" type="text" name="id_sesi">
+                      <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
+                      <option disabled selected>Pilih</option>
+                      <?php 
+                      $data = mysqli_query($koneksi,
+                        "SELECT * FROM sesi;");
+                      while($d = mysqli_fetch_array($data)){
+                        echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
                   <button type="submit" class="btn btn-success">Cari</button>
                 </div>
               </form>
@@ -174,6 +189,72 @@
                   </div>
                 </form><br>
                 <form method="post" action="tumbang-cari-nama" role="form">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label>Nama Pasien</label>
+                      <input class="form-control" type="text" name="nama" placeholder="Nama Pasien"">
+                    </div><button type="submit" class="btn btn-success">Cari</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade in" id="3">
+          <div class="row">
+            <div class="table-responsive">
+              <form method="post" action="laporan-per-petugas-tampil" role="form">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Nama Petugas</label>
+                    <select class="form-control" type="text" name="id_petugas">
+                      <p style="color:red;"><?php echo ($error['id_petugas']) ? $error['id_petugas'] : ''; ?></p>
+                      <option disabled selected>Pilih</option>
+                      <?php 
+                      $data = mysqli_query($koneksi,
+                        "SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=2;");
+                      while($d = mysqli_fetch_array($data)){
+                        echo "<option value='".$d['id_petugas']."'>".$d['nama_petugas']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Dari Tanggal</label>
+                    <input class="form-control" type="date" name="awal">
+                  </div>
+                  <div class="form-group">
+                    <label>Sampai Tanggal</label>
+                    <input class="form-control" type="date" name="akhir">
+                  </div>
+                  <div class="form-group">
+                    <label>Sesi</label>
+                    <select class="form-control" type="text" name="id_sesi">
+                      <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
+                      <option disabled selected>Pilih</option>
+                      <?php 
+                      $data = mysqli_query($koneksi,
+                        "SELECT * FROM sesi;");
+                      while($d = mysqli_fetch_array($data)){
+                        echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-success">Cari</button>
+                </div>
+              </form>
+              <div class="col-lg-6">
+                <form method="post" action="anc-cari-rm" role="form">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label>Nomor RM</label>
+                      <input class="form-control" type="text" name="id_catatan_medik" placeholder="Nomor Rekam Medik">
+                    </div><button type="submit" class="btn btn-success">Cari</button>
+                  </div>
+                </form><br>
+                <form method="post" action="anc-cari-nama" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nama Pasien</label>

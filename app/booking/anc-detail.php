@@ -7,7 +7,7 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Detail <small>Tumbuh Kembang</small></h1>
+      <h1>Detail <small>Antenatal Care</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-flash"></i> Detail</li>
@@ -19,22 +19,22 @@
     <div class="col-lg-12">
       <div class="table-responsive">
         <div clas="row">
-          <?php $id_tumbang = $_GET['id_tumbang']; ?>
+          <?php $id_anc = $_GET['id_anc']; ?>
           <div class="col-lg-6">
-            <a href="tumbang-datang-proses?id_tumbang=<?php echo $id_tumbang; ?>"
+            <a href="anc-datang-proses?id_anc=<?php echo $id_anc; ?>"
               <button onclick="javascript: return confirm('Sudah Datang?')"
               type="button" class="btn btn-success">Datang</button>
             </a>
-            <a href="tumbang-belum-datang-proses?id_tumbang=<?php echo $id_tumbang; ?>"
+            <a href="anc-belum-datang-proses?id_anc=<?php echo $id_anc; ?>"
               <button onclick="javascript: return confirm('Ubah Belum Datang?')"
               type="button" class="btn btn-warning">Belum Datang</button>
             </a>
-            <a href="tumbang-edit?id_tumbang=<?php echo $id_tumbang; ?>"
+            <a href="anc-edit?id_anc=<?php echo $id_anc; ?>"
               <button type="button" class="btn btn-primary">Edit</button>
             </a>
           </div>
           <div align="right" class="col-lg-6">
-            <a href="tumbang-hapus?id_tumbang=<?php echo $id_tumbang; ?>"
+            <a href="anc-hapus?id_anc=<?php echo $id_anc; ?>"
               onclick="javascript: return confirm('Anda yakin hapus?')">
               <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
             </a>
@@ -44,11 +44,11 @@
           <?php 
           $data = mysqli_query($koneksi,
             "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-            IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-            FROM tumbang, mr_petugas, sesi
-            WHERE tumbang.id_petugas=mr_petugas.id_petugas
-            AND tumbang.id_sesi=sesi.id_sesi
-            AND tumbang.id_tumbang=$id_tumbang;");
+            IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+            FROM anc, mr_petugas, sesi
+            WHERE anc.id_petugas=mr_petugas.id_petugas
+            AND anc.id_sesi=sesi.id_sesi
+            AND anc.id_anc=$id_anc;");
           while($d = mysqli_fetch_array($data)){
             $jadwal = $d['jadwal'];
             function format_jadwal($jadwal)

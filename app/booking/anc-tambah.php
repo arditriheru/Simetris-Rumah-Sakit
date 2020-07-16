@@ -31,7 +31,7 @@ function format_mak($mak)
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Daftar <small>Tumbuh Kembang</small></h1>
+      <h1>Daftar <small>Antenatal Care</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-plus"></i> Tambah</li>
@@ -45,7 +45,7 @@ function format_mak($mak)
   </div><!-- /.row -->
   <div class="row">
     <div class="table-responsive">
-      <form method="post" action="tumbang-tambah-cari-rm" role="form">
+      <form method="post" action="anc-tambah-cari-rm" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nomor RM</label>
@@ -53,7 +53,7 @@ function format_mak($mak)
           </div><button type="submit" class="btn btn-success">Cari</button>
         </div>
       </form>
-      <form method="post" action="tumbang-tambah-cari-nama" role="form">
+      <form method="post" action="anc-tambah-cari-nama" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nama</label>
@@ -63,7 +63,7 @@ function format_mak($mak)
       </form>
       <div class="col-lg-6">
         <?php
-        if(isset($_POST['tumbangsubmit'])){
+        if(isset($_POST['ancsubmit'])){
           $id_catatan_medik = '0';
           $nama             = $_POST['nama'];
           $alamat           = $_POST['alamat'];
@@ -82,7 +82,7 @@ function format_mak($mak)
 
           $a = mysqli_query($koneksi,
             "SELECT COUNT(*) AS antrian
-            FROM tumbang
+            FROM anc
             WHERE id_petugas='$id_petugas'
             AND jadwal='$jadwal'
             AND id_sesi='$id_sesi';");
@@ -104,20 +104,20 @@ function format_mak($mak)
             }if (empty($id_sesi)){
               $error['id_sesi']='Sesi Harus Diisi!!!';
             }if($selisih>30){
-              echo "<script>alert('GAGAL!!! Lebih dari 30 Hari!');document.location='tumbang-tambah'</script>";
+              echo "<script>alert('GAGAL!!! Lebih dari 30 Hari!');document.location='anc-tambah'</script>";
               break;
             }if(empty($error)){
-              $simpan=mysqli_query($koneksi,"INSERT INTO tumbang (id_tumbang, id_catatan_medik, id_petugas, nama, alamat, kontak, jadwal, id_sesi, tanggal, jam, status, keterangan)
+              $simpan=mysqli_query($koneksi,"INSERT INTO anc (id_anc, id_catatan_medik, id_petugas, nama, alamat, kontak, jadwal, id_sesi, tanggal, jam, status, keterangan)
                 VALUES('','$id_catatan_medik','$id_petugas','$nama','$alamat','$kontak','$jadwal','$id_sesi','$tanggal','$jam','$status','$keterangan')");
               if($simpan){
                 echo "<script>
                 setTimeout(function() {
                   swal({
                     title: 'Antrian $antrian',
-                    text: 'Mendaftar Tumbuh Kembang',
+                    text: 'Mendaftar Antenatal Care',
                     type: 'success'
                     }, function() {
-                      window.location = 'tumbang-tambah';
+                      window.location = 'anc-tambah';
                       });
                       }, 10);
                       </script>";
@@ -129,7 +129,7 @@ function format_mak($mak)
                           text: 'Hilangkan Tanda Petik di Nama Pasien',
                           type: 'error'
                           }, function() {
-                            window.location = 'tumbang-tambah';
+                            window.location = 'anc-tambah';
                             });
                             }, 10);
                             </script>";
@@ -161,7 +161,7 @@ function format_mak($mak)
                           <option disabled selected>Pilih</option>
                           <?php 
                           $data = mysqli_query($koneksi,
-                            "SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=1;");
+                            "SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=2;");
                           while($d = mysqli_fetch_array($data)){
                             echo "<option value='".$d['id_petugas']."'>".$d['nama_petugas']."</option>";
                           }
@@ -192,7 +192,7 @@ function format_mak($mak)
                         <label>Keterangan</label>
                         <input class="form-control" type="text" name="keterangan" placeholder="Masukkan..">
                       </div>
-                      <button type="submit" name="tumbangsubmit" class="btn btn-success">Tambah</button>
+                      <button type="submit" name="ancsubmit" class="btn btn-success">Tambah</button>
                       <button type="reset" class="btn btn-warning">Reset</button>  
                     </form>
                   </div>

@@ -10,7 +10,7 @@
       <h1>Edit <small>Registrasi</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="tumbang-detail?id_tumbang=<?php echo $id_tumbang?>"><i class="fa fa-eye"></i> Detail</a></li>
+        <li><a href="anc-detail?id_anc=<?php echo $id_anc?>"><i class="fa fa-eye"></i> Detail</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -21,14 +21,14 @@
     </div>
   </div><!-- /.row -->
   <?php 
-  $id_tumbang = $_GET['id_tumbang'];
+  $id_anc = $_GET['id_anc'];
   $data = mysqli_query($koneksi,
     "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-    IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
-    FROM tumbang, mr_petugas, sesi
-    WHERE tumbang.id_petugas=mr_petugas.id_petugas
-    AND tumbang.id_sesi=sesi.id_sesi
-    AND tumbang.id_tumbang=$id_tumbang;");
+    IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+    FROM anc, mr_petugas, sesi
+    WHERE anc.id_petugas=mr_petugas.id_petugas
+    AND anc.id_sesi=sesi.id_sesi
+    AND anc.id_anc=$id_anc;");
   while($d = mysqli_fetch_array($data)){
     $jadwal = $d['jadwal'];
 
@@ -53,19 +53,19 @@
     ?>
     <?php
     if(isset($_POST['submit'])){
-      $id_tumbang       = $_GET['id_tumbang'];
+      $id_anc       = $_GET['id_anc'];
       $id_catatan_medik = $_POST['id_catatan_medik'];
       $nama             = $_POST['nama'];
       $alamat           = $_POST['alamat'];
       $kontak           = $_POST['kontak'];
       $keterangan       = $_POST['keterangan'];
 
-      $edit=mysqli_query($koneksi,"UPDATE tumbang SET nama='$nama',alamat='$alamat',kontak='$kontak',keterangan='$keterangan' WHERE id_tumbang='$id_tumbang'");
+      $edit=mysqli_query($koneksi,"UPDATE anc SET nama='$nama',alamat='$alamat',kontak='$kontak',keterangan='$keterangan' WHERE id_anc='$id_anc'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='tumbang-detail?id_tumbang=$id_tumbang'</script>";
+        document.location='anc-detail?id_anc=$id_anc'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='tumbang-edit?id_tumbang=$id_tumbang'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='anc-edit?id_anc=$id_anc'</script>";
       }
     }
     ?>

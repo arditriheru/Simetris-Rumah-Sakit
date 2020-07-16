@@ -4,6 +4,7 @@
       <ul class="nav nav-pills" style="margin-bottom: 15px;">
         <li class="active"><a href="#1" data-toggle="tab">Poliklinik</a></li>
         <li><a href="#2" data-toggle="tab">Tumbuh Kembang</a></li>
+        <li><a href="#3" data-toggle="tab">Antenatal Care</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="1">
@@ -136,6 +137,15 @@
               <div class="col-lg-12">
                 <div class="table-responsive">
                   <?php include "tumbang-tampil.php";?>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade in" id="3">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="table-responsive">
+                  <?php include "anc-tampil.php";?>
                 </div>
               </div>
             </div>

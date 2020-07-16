@@ -18,15 +18,15 @@
       <div class="table-responsive">
 
         <ul class="nav nav-pills" style="margin-bottom: 15px;">
-          <li class="active"><a href="#1" data-toggle="tab">Poliklinik</a></li>
-          <li><a href="#2" data-toggle="tab">Tumbuh Kembang</a></li>
+          <li class="active"><a href="#1" data-toggle="tab">Dokter</a></li>
+          <li><a href="#2" data-toggle="tab">Petugas</a></li>
         </ul>
 
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active in" id="1">
             <div class="row">
               <div class="table-responsive">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                  <?php
                  if(isset($_POST['tambah'])){
                   $nama_dokter = $_POST['nama_dokter'];

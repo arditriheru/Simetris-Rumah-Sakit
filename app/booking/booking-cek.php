@@ -19,7 +19,8 @@
         <ul class="nav nav-pills" style="margin-bottom: 15px;">
           <li class="active"><a href="#1" data-toggle="tab">Poliklinik</a></li>
           <li><a href="#2" data-toggle="tab">Tumbuh Kembang</a></li>
-          <li><a href="#3" data-toggle="tab">Daftar Mandiri</a></li>
+          <li><a href="#3" data-toggle="tab">Antenatal Care</a></li>
+          <li><a href="#4" data-toggle="tab">Daftar Mandiri</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active in" id="1">
@@ -111,8 +112,8 @@
                               <tbody>
                                 <?php 
                                 $no = 1;
-                                $data = mysqli_query($koneksi,"SELECT *, tumbang_petugas.nama_petugas, sesi.nama_sesi FROM tumbang, tumbang_petugas, sesi
-                                  WHERE tumbang.id_petugas=tumbang_petugas.id_petugas
+                                $data = mysqli_query($koneksi,"SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi FROM tumbang, mr_petugas, sesi
+                                  WHERE tumbang.id_petugas=mr_petugas.id_petugas
                                   AND tumbang.id_sesi=sesi.id_sesi
                                   AND tumbang.tanggal = '$tanggalsekarang'
                                   ORDER BY tumbang.id_tumbang DESC;");
@@ -151,9 +152,9 @@
                               <div class="table-responsive">
                                 <div align="right">
                                   <?php 
-                                  $data = mysqli_query($koneksi,"SELECT COUNT(id_booking) AS total
-                                    FROM booking
-                                    WHERE booking.keterangan = 'DAFTAR MANDIRI';");
+                                  $data = mysqli_query($koneksi,"SELECT COUNT(id_anc) AS total
+                                    FROM anc
+                                    WHERE anc.tanggal='$tanggalsekarang';");
                                   while($d = mysqli_fetch_array($data)){
                                     ?>
                                     <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -164,7 +165,7 @@
                                         <th><center>No. RM</center></th>
                                         <th><center>Nama Pasien</center></th>
                                         <th><center>Kontak</center></th>
-                                        <th><center>Dokter</center></th>
+                                        <th><center>Petugas</center></th>
                                         <th><center>Jadwal</center></th>
                                         <th><center>Sesi</center></th>
                                         <th><center>Keterangan</center></th>
@@ -174,39 +175,103 @@
                                     <tbody>
                                       <?php 
                                       $no = 1;
-                                      $data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter, sesi.nama_sesi
-                                        FROM booking, dokter, sesi
-                                        WHERE booking.id_dokter=dokter.id_dokter
-                                        AND booking.id_sesi=sesi.id_sesi
-                                        AND booking.keterangan = 'DAFTAR MANDIRI'
-                                        ORDER BY booking.id_booking DESC;");
+                                      $data = mysqli_query($koneksi,"SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi FROM anc, mr_petugas, sesi
+                                        WHERE anc.id_petugas=mr_petugas.id_petugas
+                                        AND anc.id_sesi=sesi.id_sesi
+                                        AND anc.tanggal = '$tanggalsekarang'
+                                        ORDER BY anc.id_anc DESC;");
                                       while($d = mysqli_fetch_array($data)){
-                                        $booking_tanggal = $d['booking_tanggal'];
+                                        $jadwal = $d['jadwal'];
                                         ?>
                                         <tr>
-                                          <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-                                          <td><center><?php echo $d['nama']; ?></center></td>
-                                          <td><center><?php echo $d['kontak']; ?></center></td>
-                                          <td><center><?php echo $d['nama_dokter']; ?></center></td>
-                                          <td><center><?php echo date("d/m/Y", strtotime($booking_tanggal)); ?></center></td>
-                                          <td><center><?php echo $d['nama_sesi']; ?></center></td>
-                                          <td><center><?php echo $d['keterangan']; ?></center></td>
+                                          <td><center><?php echo $d['id_catatan_medik']; ?></center>
+                                          </td>
+                                          <td><center><?php echo $d['nama']; ?></center>
+                                          </td>
+                                          <td><center><?php echo $d['kontak']; ?></center>
+                                          </td>
+                                          <td><center><?php echo $d['nama_petugas']; ?></center>
+                                          </td>
+                                          <td><center><?php echo date("d/m/Y", strtotime($jadwal)); ?></center></td>
+                                          <td><center><?php echo $d['nama_sesi']; ?></center>
+                                          </td>
+                                          <td><center><?php echo $d['keterangan']; ?></center>
+                                          </td>
                                           <td>
-                                            <div align="center">
-                                              <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
-                                                <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
-                                              </div>
-                                            </td>
-                                            </tr><?php } ?>
-                                          </tbody>
-                                        </table>
-                                      </div>
+                                            <div align="center"><a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                            </div>
+                                          </td>
+                                          </tr><?php } ?>
+                                        </tbody>
+                                      </table>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </div><!-- /#page-wrapper -->
-                      </div><!-- /#wrapper -->
-                      <?php include "views/footer.php"; ?>
+
+                              <div class="tab-pane fade in" id="4">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                      <div align="right">
+                                        <?php 
+                                        $data = mysqli_query($koneksi,"SELECT COUNT(id_booking) AS total
+                                          FROM booking
+                                          WHERE booking.mandiri = '1';");
+                                        while($d = mysqli_fetch_array($data)){
+                                          ?>
+                                          <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                        </div>
+                                        <table class="table table-bordered table-hover table-striped tablesorter">
+                                          <thead>
+                                            <tr>
+                                              <th><center>No. RM</center></th>
+                                              <th><center>Nama Pasien</center></th>
+                                              <th><center>Kontak</center></th>
+                                              <th><center>Dokter</center></th>
+                                              <th><center>Jadwal</center></th>
+                                              <th><center>Sesi</center></th>
+                                              <th><center>Keterangan</center></th>
+                                              <th><center>Action</center></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php 
+                                            $no = 1;
+                                            $data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter, sesi.nama_sesi
+                                              FROM booking, dokter, sesi
+                                              WHERE booking.id_dokter=dokter.id_dokter
+                                              AND booking.id_sesi=sesi.id_sesi
+                                              AND booking.mandiri = '1'
+                                              ORDER BY booking.id_booking DESC;");
+                                            while($d = mysqli_fetch_array($data)){
+                                              $booking_tanggal = $d['booking_tanggal'];
+                                              ?>
+                                              <tr>
+                                                <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                                <td><center><?php echo $d['nama']; ?></center></td>
+                                                <td><center><?php echo $d['kontak']; ?></center></td>
+                                                <td><center><?php echo $d['nama_dokter']; ?></center></td>
+                                                <td><center><?php echo date("d/m/Y", strtotime($booking_tanggal)); ?></center></td>
+                                                <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                                <td><center><?php echo $d['keterangan']; ?></center></td>
+                                                <td>
+                                                  <div align="center">
+                                                    <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                      <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                    </div>
+                                                  </td>
+                                                  </tr><?php } ?>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div><!-- /#page-wrapper -->
+                            </div><!-- /#wrapper -->
+                            <?php include "views/footer.php"; ?>

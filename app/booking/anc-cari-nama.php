@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Hasil <small>Pencarian</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Cari</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
@@ -33,15 +33,15 @@
           <tbody>
             <?php 
             $no = 1;
-            $id_catatan_medik = $_POST['id_catatan_medik'];
+            $nama = $_POST['nama'];
             $data = mysqli_query($koneksi,
-              "SELECT mr_petugas.nama_petugas, tumbang.id_tumbang,
-              tumbang.id_catatan_medik, tumbang.nama,
-              tumbang.jadwal
-              FROM tumbang, mr_petugas
-              WHERE tumbang.id_petugas = mr_petugas.id_petugas
-              AND tumbang.id_catatan_medik = $id_catatan_medik
-              ORDER BY tumbang.jadwal DESC;");
+              "SELECT mr_petugas.nama_petugas, anc.id_anc,
+              anc.id_catatan_medik, anc.nama,
+              anc.jadwal
+              FROM anc, mr_petugas
+              WHERE anc.id_petugas = mr_petugas.id_petugas
+              AND anc.nama LIKE '%' '$nama' '%'
+              ORDER BY anc.jadwal DESC;");
             while($d = mysqli_fetch_array($data)){
               $jadwal = $d['jadwal'];
               ?>
@@ -53,18 +53,15 @@
                 <td><center><?php echo date("d/m/Y", strtotime($jadwal)); ?></center></td>
                 <td>
                   <div align="center">
-                    <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                    <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
                       <button type="button" class="btn btn-warning">Detail</a><br><br>
                       </div>
                     </td>
-                  </tr>
-                  <?php 
-                }
-                ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div><!-- /.row -->
-    </div><!-- /#wrapper -->
-    <?php include "views/footer.php"; ?>
+                    </tr><?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div><!-- /.row -->
+        </div><!-- /#wrapper -->
+      <?php include "views/footer.php"; ?>

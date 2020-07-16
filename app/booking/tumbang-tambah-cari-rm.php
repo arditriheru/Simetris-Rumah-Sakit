@@ -85,7 +85,7 @@
               text: 'Lebih dari 30 Hari',
               type: 'error'
               }, function() {
-                window.location = 'booking-tambah';
+                window.location = 'tumbang-tambah';
                 });
                 }, 10);
                 </script>";
@@ -97,7 +97,7 @@
                     text: 'Sudah Mendaftar Sebelumnya',
                     type: 'error'
                     }, function() {
-                      window.location = 'booking-tambah';
+                      window.location = 'tumbang-tambah';
                       });
                       }, 10);
                       </script>";
@@ -164,7 +164,7 @@
                                     <option disabled selected>Pilih</option>
                                     <?php 
                                     $data = mysqli_query($koneksi,
-                                      "SELECT * FROM tumbang_petugas WHERE status=1;");
+                                      "SELECT * FROM mr_petugas WHERE status=1 AND pelayanan=1;");
                                     while($d = mysqli_fetch_array($data)){
                                       echo "<option value='".$d['id_petugas']."'>".$d['nama_petugas']."</option>";
                                     }
