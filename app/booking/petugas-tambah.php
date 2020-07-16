@@ -77,7 +77,7 @@
                       <?php 
                       $no = 1;
                       $data = mysqli_query($koneksi,
-                        "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status FROM mr_petugas;");
+                        "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status FROM mr_petugas ORDER BY pelayanan, nama_petugas ASC;");
                       while($d = mysqli_fetch_array($data)){
                         $status = $d['status'];
                         ?>
