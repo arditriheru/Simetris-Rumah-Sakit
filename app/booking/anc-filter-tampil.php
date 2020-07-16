@@ -40,7 +40,7 @@
           return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
         }
         ?>
-        <h1>Antrian <small> <?php echo $total;}?> Pasien</small></h1>
+        <h1><?php echo $total;}?> Pasien<small> Terdaftar</small></h1>
         <ol class="breadcrumb">
           <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
           <li><a href="booking-filter"><i class="fa fa-search"></i> Cari</a></li>
