@@ -355,6 +355,21 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
+                    <div class="col-xs-4"><a href="app/covid">
+                      <i class="fa fa-arrow-circle-right fa-5x"></i>
+                    </div>
+                    <div class="col-xs-8 text-right">
+                      <h1>Rapid Test</h1>
+                      <p class="announcement-text">Modul Poliklinik</p>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
                     <div class="col-xs-4"><a href="http://192.168.1.250:8080/mr">
                       <i class="fa fa-arrow-circle-right fa-5x"></i>
                     </div>
