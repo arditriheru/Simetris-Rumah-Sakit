@@ -58,43 +58,49 @@
                 $today        = new DateTime();
                 $umur         = $today->diff($lahir);
 
-              ?>
-              <div align="right" class="col-lg-12">
-                <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-              </div>
-              <table class="table table-bordered table-hover table-striped tablesorter">
-                <thead>
+                ?>
+                <div align="right" class="col-lg-12">
+                  <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+                </div>
+                <table class="table table-bordered table-hover table-striped tablesorter">
+                  <thead>
+                    <tr>
+                     <th><center>#</center></th>
+                     <th><center>No. RM</center></th>
+                     <th><center>Nama Pasien</center></th>
+                     <th><center>Dokter</center></th>
+                     <th><center>IgM</center></th>
+                     <th><center>IgG</center></th>
+                     <th><center>Tanggal Input</center></th>
+                     <th colspan='3'><center>Action</center></th>
+                   </tr>
+                 </thead>
+                 <tbody>
                   <tr>
-                   <th><center>#</center></th>
-                   <th><center>No. RM</center></th>
-                   <th><center>Nama Pasien</center></th>
-                   <th><center>Dokter</center></th>
-                   <th><center>IgM</center></th>
-                   <th><center>IgG</center></th>
-                   <th><center>Tanggal Input</center></th>
-                   <th colspan='3'><center>Action</center></th>
-                 </tr>
-               </thead>
-               <tbody>
-                <tr>
-                  <td><center><?php echo $no++; ?></center></td>
-                  <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-                  <td><center><?php echo $d['nama']; ?></center></td>
-                  <td><center><?php echo $d['nama_dokter']; ?></center></td>
-                  <td><center><?php echo $d['nama_igm']; ?></center></td>
-                  <td><center><?php echo $d['nama_igg']; ?></center></td>
-                  <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
-                  <td>
-                    <div align="center">
-                      <a href="covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>"
-                        <button type="button" class="btn btn-primary"><i class='fa fa-print'></i> Print</button></a>
-                      </div>
-                    </td>
-                    </tr><?php }} ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div><!-- /.row -->
-        </div><!-- /#wrapper -->
-        <?php include "views/footer.php"; ?>
+                    <td><center><?php echo $no++; ?></center></td>
+                    <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                    <td><center><?php echo $d['nama']; ?></center></td>
+                    <td><center><?php echo $d['nama_dokter']; ?></center></td>
+                    <td><center><?php echo $d['nama_igm']; ?></center></td>
+                    <td><center><?php echo $d['nama_igg']; ?></center></td>
+                    <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
+                    <td>
+                      <div align="center">
+                        <a href="covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>"
+                          <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
+                        </div>
+                      </td>
+                      <td>
+                        <div align="center">
+                          <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
+                            <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                          </div>
+                        </td>
+                        </tr><?php }} ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- /.row -->
+            </div><!-- /#wrapper -->
+            <?php include "views/footer.php"; ?>

@@ -40,7 +40,7 @@
              <th><center>IgM</center></th>
              <th><center>IgG</center></th>
              <th><center>Tanggal Input</center></th>
-             <th colspan='3'><center>Action</center></th>
+             <th colspan='2'><center>Action</center></th>
            </tr>
          </thead>
          <tbody>
@@ -72,11 +72,17 @@
               <td>
                 <div align="center">
                   <a href="covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>"
-                    <button type="button" class="btn btn-primary"><i class='fa fa-print'></i> Print</button></a>
-                 </div>
-               </td>
-               </tr><?php } ?>
-             </tbody>
-           </table>
-         </div>
+                    <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
+                  </div>
+                </td>
+                <td>
+                  <div align="center">
+                    <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
+                      <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                    </div>
+                  </td>
+                  </tr><?php } ?>
+                </tbody>
+              </table>
+            </div>
 </div><!-- /.row -->

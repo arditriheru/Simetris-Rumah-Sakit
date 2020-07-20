@@ -90,7 +90,7 @@ function format_mak($mak)
           <td>
             <div align="center">
               <a href="covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>"
-                <button type="button" class="btn btn-primary"><i class='fa fa-print'></i> Print</button></a>
+                <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
               </div>
             </td>
             </tr><?php } ?>
