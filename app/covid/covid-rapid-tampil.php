@@ -3,7 +3,7 @@
     <div class="table-responsive">
       <div class="row">
         <form method="post" action="covid-rapid-cari-tampil" role="form">
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
               <span class="input-group-btn">
@@ -12,7 +12,7 @@
             </div>
           </div>
         </form>
-        <div align="right" class="col-lg-8">
+        <div align="right" class="col-lg-6">
           <?php
           $m = 31;
           $n = 7;
@@ -26,8 +26,9 @@
             FROM rapidtest
             WHERE tanggal BETWEEN '$min' AND '$mak';");
           while($d = mysqli_fetch_array($data)){
+            $total = $d['total'];
             ?>
-            <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+            <h1><small>Total <?php echo $total; }?> Pasien</small></h1>
           </div>
         </div>
         <table class="table table-bordered table-hover table-striped tablesorter">
@@ -45,7 +46,7 @@
          </thead>
          <tbody>
           <?php
-          $no=1;
+          $no=$total;
           $data = mysqli_query($koneksi,
             "SELECT *, mr_dokter.nama_dokter,
             IF(rapidtest.igm='1', 'Reaktif', 'Non Reaktif') AS nama_igm,
@@ -62,7 +63,7 @@
             $umur         = $today->diff($lahir);
             ?>
             <tr>
-              <td><center><?php echo $no++; ?></center></td>
+              <td><center><?php echo $no--; ?></center></td>
               <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
               <td><center><?php echo $d['nama']; ?></center></td>
               <td><center><?php echo $d['nama_dokter']; ?></center></td>
@@ -78,7 +79,7 @@
                 <td>
                   <div align="center">
                     <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
-                      <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                      <button type="button" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
                     </div>
                   </td>
                   </tr><?php } ?>

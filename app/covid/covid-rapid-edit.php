@@ -7,7 +7,7 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Edit <small>Rapid Test</small></h1>
+      <h1>Tambah <small>Rapid Test</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
@@ -16,9 +16,9 @@
     </div>
     <div class="col-lg-6">
       <div class="table-responsive">
-        <?php 
+        <?php
         $id_rapidtest = $_GET['id'];
-        $c = mysqli_query($koneksi,
+        $a = mysqli_query($koneksi,
          "SELECT *, mr_dokter.nama_dokter, mr_unit.nama_unit,
          IF(rapidtest.sex='1', 'Laki-laki', 'Perempuan') AS nama_sex,
          IF(rapidtest.igm='1', 'Reaktif', 'Non Reaktif') AS nama_igm,
@@ -28,38 +28,39 @@
          WHERE rapidtest.id_dokter=mr_dokter.id_dokter
          AND rapidtest.id_unit=mr_unit.id_unit
          AND rapidtest.id_rapidtest='$id_rapidtest';");
-        while($d = mysqli_fetch_array($c)){
-          $id_catatan_medik1 = $d['id_catatan_medik'];
-          $nama1             = $d['nama'];
-          $alamat1           = $d['alamat'];
-          $tgl_lahir1        = $d['tgl_lahir'];
-          $sex1              = $d['sex'];
-          $nama_sex1         = $d['nama_sex'];
-          $id_dokter1        = $d['id_dokter'];
-          $nama_dokter1      = $d['nama_dokter'];
-          $id_unit1          = $d['id_unit'];
-          $nama_unit1        = $d['nama_unit'];
-          $sampel1           = $d['sampel'];
-          $pemeriksaan1      = $d['pemeriksaan'];
-          $igm1              = $d['igm'];
-          $nama_igm1         = $d['nama_igm'];
-          $metode1           = $d['metode'];
-          $pemeriksa1        = $d['pemeriksa'];
-          $tgl_periksa1      = $d['tgl_periksa'];
-          $jam_periksa1      = $d['jam_periksa'];
-          $igg1              = $d['igg'];
-          $nama_igg1         = $d['nama_igg'];
+        while($b = mysqli_fetch_array($a)){
+          $id_catatan_medik = $b['id_catatan_medik'];
+          $nama             = $b['nama'];
+          $alamat           = $b['alamat'];
+          $tgl_lahir        = $b['tgl_lahir'];
+          $sex              = $b['sex'];
+          $nama_sex         = $b['nama_sex'];
+          $id_dokter        = $b['id_dokter'];
+          $nama_dokter      = $b['nama_dokter'];
+          $id_unit          = $b['id_unit'];
+          $nama_unit        = $b['nama_unit'];
+          $sampel           = $b['sampel'];
+          $pemeriksaan      = $b['pemeriksaan'];
+          $igm              = $b['igm'];
+          $nama_igm         = $b['nama_igm'];
+          $metode           = $b['metode'];
+          $pemeriksa        = $b['pemeriksa'];
+          $tgl_periksa      = $b['tgl_periksa'];
+          $jam_periksa      = $b['jam_periksa'];
+          $igg              = $b['igg'];
+          $nama_igg         = $b['nama_igg'];
         }
 
         if(isset($_POST['rapidsubmit'])){
           $id_dokter        = $_POST['id_dokter'];
           $id_unit          = $_POST['id_unit'];
-          $igm              = $_POST['igm'];
           $tgl_periksa      = $_POST['tgl_periksa'];
           $jam_periksa      = $_POST['jam_periksa'];
+          $igm              = $_POST['igm'];
           $igg              = $_POST['igg'];
-
-          $simpan=mysqli_query($koneksi,"UPDATE rapidtest SET id_dokter='$id_dokter',id_unit='$id_unit',igm='$igm',tgl_periksa='$tgl_periksa',jam_periksa='$jam_periksa',igg='$igg')");
+          $simpan=mysqli_query($koneksi,"UPDATE rapidtest 
+            SET id_dokter='$id_dokter', id_unit='$id_unit', tgl_periksa='$tgl_periksa', jam_periksa='$jam_periksa', igm='$igm', igg='$igg'
+            WHERE id_rapidtest='$id_rapidtest'");
           if($simpan){
             echo "<script>
             setTimeout(function() {
@@ -80,7 +81,7 @@
                       text: 'Coba Sekali Lagi',
                       type: 'error'
                       }, function() {
-                        window.location = 'covid-rapid-tambah';
+                        window.location = 'covid-rapid-edit?id=$id_rapidtest';
                         });
                         }, 10);
                         </script>";
@@ -91,107 +92,88 @@
                       <div class="form-group">
                         <label>Nomor Rekam Medik</label>
                         <input class="form-control" type="text" name="id_catatan_medik"
-                        value="<?php echo $id_catatan_medik1; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['id_catatan_medik']) ? $error['id_catatan_medik'] : ''; ?></p>
+                        value="<?php echo $id_catatan_medik; ?>" readonly>
                       </div>
                       <div class="form-group">
                         <label>Nama</label>
                         <input class="form-control" type="text" name="nama"
-                        value="<?php echo $nama1; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['nama']) ? $error['nama'] : ''; ?></p>
+                        value="<?php echo $nama; ?>" readonly>
                       </div>
                       <div class="form-group">
                         <label>Jenis Kelamin</label>
                         <input class="form-control hidden" type="text" name="sex"
                         value="<?php echo $sex1; ?>" readonly>
-                        <input class="form-control" type="text" value="<?php echo $nama_sex1; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['sex']) ? $error['sex'] : ''; ?></p>
+                        <input class="form-control" type="text"
+                        value="<?php echo $nama_sex; ?>" readonly>
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
                         <input class="form-control" type="text" name="alamat"
-                        value="<?php echo $alamat1; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['alamat']) ? $error['alamat'] : ''; ?></p>
+                        value="<?php echo $alamat; ?>" readonly>
                       </div>
                       <div class="form-group">
                         <label>Dokter</label>
-                        <select class="form-control" type="text" name="id_dokter"
-                        value="<?php echo $d['id_dokter']; ?>" required="">
-                        <p style="color:red;"><?php echo ($error['id_dokter']) ? $error['id_dokter'] : ''; ?></p>
-                        <option selected value='<?php echo $id_dokter1; ?>'><?php echo $nama_dokter1; ?></option>
+                        <select class="form-control" type="text" name="id_dokter" required="">
+                          <option selected value='<?php echo $id_dokter; ?>'><?php echo $nama_dokter; ?></option>
+                          <?php 
+                          $data = mysqli_query($koneksi,
+                            "SELECT id_dokter, nama_dokter FROM mr_dokter;");
+                          while($d = mysqli_fetch_array($data)){
+                            echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                          }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Asal</label>
+                        <select class="form-control" type="text" name="id_unit"
+                        value="<?php echo $b['id_unit']; ?>" required="">
+                        <option selected value='<?php echo $id_unit; ?>'><?php echo $nama_unit; ?></option>
                         <?php 
                         $data = mysqli_query($koneksi,
-                          "SELECT * FROM mr_dokter;");
+                          "SELECT id_unit, nama_unit FROM mr_unit;");
                         while($d = mysqli_fetch_array($data)){
-                          echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                          echo "<option value='".$d['id_unit']."'>".$d['nama_unit']."</option>";
                         }
                         ?>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label>Asal</label>
-                      <select class="form-control" type="text" name="id_unit"
-                      value="<?php echo $d['id_unit']; ?>" required="">
-                      <p style="color:red;"><?php echo ($error['id_unit']) ? $error['id_unit'] : ''; ?></p>
-                      <option selected value='<?php echo $id_unit1; ?>'><?php echo $nama_unit1; ?></option>
-                      <?php 
-                      $data = mysqli_query($koneksi,
-                        "SELECT * FROM mr_unit;");
-                      while($d = mysqli_fetch_array($data)){
-                        echo "<option value='".$d['id_unit']."'>".$d['nama_unit']."</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Tanggal Periksa</label>
-                    <input class="form-control" type="date" name="tgl_periksa" value="<?php echo $tgl_periksa1; ?>" required="">
-                    <p style="color:red;"><?php echo ($error['tgl_periksa']) ? $error['tgl_periksa'] : ''; ?></p>
-                  </div>
-                  <div class="form-group">
-                    <label>Jam Periksa</label>
-                    <input class="form-control" type="text" name="jam_periksa" value="<?php echo $jam_periksa1; ?>">
-                    <p style="color:red;"><?php echo ($error['jam_periksa']) ? $error['jam_periksa'] : ''; ?></p>
-                  </div>
-                  <div class="form-group">
-                    <label>Sampel</label>
-                    <input class="form-control" type="text" name="sampel"
-                    value="Darah" readonly>
-                    <p style="color:red;"><?php echo ($error['sampel']) ? $error['sampel'] : ''; ?></p>
-                  </div>
-                  <div class="form-group">
-                    <label>Metode</label>
-                    <input class="form-control" type="text" name="metode"
-                    value="<?php echo $metode1; ?>" readonly>
-                    <p style="color:red;"><?php echo ($error['metode']) ? $error['Metode'] : ''; ?></p>
-                  </div>
-                  <div class="form-group">
-                    <label>IgM</label>
-                    <select class="form-control" type="text" name="igm" required="">
-                      <p style="color:red;"><?php echo ($error['igm']) ? $error['igm'] : ''; ?></p>
-                      <option selected value='<?php echo $igm1; ?>'><?php echo $nama_igm1; ?></option>
-                      <option value='0'>Non Reaktif</option>
-                      <option value='1'>Reaktif</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>IgG</label>
-                    <select class="form-control" type="text" name="igg" required="">
-                      <p style="color:red;"><?php echo ($error['igg']) ? $error['igg'] : ''; ?></p>
-                      <option selected value='<?php echo $igg1; ?>'><?php echo $nama_igg1; ?></option>
-                      <option value='0'>Non Reaktif</option>
-                      <option value='1'>Reaktif</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Petugas</label>
-                    <input class="form-control" type="text" name="pemeriksa" value="<?php echo $pemeriksa1; ?>" readonly="">
-                    <p style="color:red;"><?php echo ($error['pemeriksa']) ? $error['pemeriksa'] : ''; ?></p>
-                  </div>
-                  <button type="submit" name="rapidsubmit" class="btn btn-success">Tambah</button>
-                </form>   
+                      <label>Tanggal Periksa</label>
+                      <input class="form-control" type="date" name="tgl_periksa" value="<?php echo $tgl_periksa; ?>" required="">
+                    </div>
+                    <div class="form-group">
+                      <label>Jam Periksa</label>
+                      <input class="form-control" type="text" name="jam_periksa" value="<?php echo $jam_periksa; ?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Sampel</label>
+                      <input class="form-control" type="text" name="sampel" value="Darah" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label>IgM</label>
+                      <select class="form-control" type="text" name="igm" required="">
+                        <option selected value='<?php echo $igm; ?>'><?php echo $nama_igm; ?></option>
+                        <option value='0'>Non Reaktif</option>
+                        <option value='1'>Reaktif</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>IgG</label>
+                      <select class="form-control" type="text" name="igg" required="">
+                        <option selected value='<?php echo $igg; ?>'><?php echo $nama_igg; ?></option>
+                        <option value='0'>Non Reaktif</option>
+                        <option value='1'>Reaktif</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Petugas</label>
+                      <input class="form-control" type="text" name="pemeriksa" value="<?php echo $pemeriksa; ?>" readonly="">
+                    </div>
+                    <button type="submit" name="rapidsubmit" class="btn btn-success">Tambah</button>
+                  </form>   
+                </div>
               </div>
-            </div>
-          </div><!-- /.row -->
-        </div><!-- /#wrapper -->
-        <?php include "views/footer.php"; ?>
+            </div><!-- /.row -->
+          </div><!-- /#wrapper -->
+          <?php include "views/footer.php"; ?>

@@ -24,10 +24,8 @@
       </li>s
     </ul>
     <ul class="nav navbar-nav navbar-right navbar-user">
-      <li><a href="logout"><i class="fa fa-user-circle"></i> <?php echo $nama_login;?></a>
-      </li>
       <li class="dropdown user-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i>&nbsp;<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $nama_login;?>&nbsp;<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li class="divider"></li>
           <li>

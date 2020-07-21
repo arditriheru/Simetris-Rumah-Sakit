@@ -40,20 +40,40 @@ function format_mak($mak)
     </div>
   </div><!-- /.row -->
   <div class="row">
-    <form method="post" action="covid-rapid-tambah-cari-rm" role="form">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label>Nomor RM</label>
-          <input class="form-control" type="text" name="id_catatan_medik" placeholder="Nomor Rekam Medik">
-        </div><button type="submit" class="btn btn-success">Cari</button>
-      </div>
-    </form>
-  </div><br><!-- /.row -->
-  <div class="row">
    <div class="col-lg-12">
+    <div class="row">
+        <form method="post" action="covid-rapid-tambah-cari-rm" role="form">
+          <div class="col-lg-6">
+            <div class="form-group input-group">
+              <input type="text" class="form-control" name="id_catatan_medik" placeholder="Nomor Rekam Medik..">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button>
+              </span>
+            </div>
+          </div>
+        </form>
+        <div align="right" class="col-lg-6">
+          <?php
+          $m = 31;
+          $n = 7;
+          $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
+          $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
+          $mak   = date("Y-m-d", $nextN);
+          $min   = date("Y-m-d", $prevN);
+          $data = mysqli_query($koneksi,
+            "SELECT COUNT(id_rapidtest) AS total
+            FROM rapidtest
+            WHERE tanggal BETWEEN '$min' AND '$mak';");
+          while($d = mysqli_fetch_array($data)){
+            $total = $d['total'];
+            ?>
+            <h1><small>Total <?php echo $total; }?> Pasien</small></h1>
+          </div>
+        </div>
     <table class="table table-bordered table-hover table-striped tablesorter">
       <thead>
         <tr>
+          <th><center>#</center></th>
          <th><center>No. RM</center></th>
          <th><center>Nama Pasien</center></th>
          <th><center>Dokter</center></th>
@@ -65,6 +85,7 @@ function format_mak($mak)
      </thead>
      <tbody>
       <?php
+      $no=$total;
       $data = mysqli_query($koneksi,
         "SELECT *, mr_dokter.nama_dokter,
         IF(rapidtest.igm='1', 'Reaktif', 'Non Reaktif') AS nama_igm,
@@ -81,6 +102,7 @@ function format_mak($mak)
         $umur         = $today->diff($lahir);
         ?>
         <tr>
+          <td><center><?php echo $no--; ?></center></td>
           <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
           <td><center><?php echo $d['nama']; ?></center></td>
           <td><center><?php echo $d['nama_dokter']; ?></center></td>

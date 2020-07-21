@@ -143,16 +143,17 @@
                 <th><center>Nilai Rujukan</center></th>
                 <th><center>Metode</center></th>
               </tr>
+              <tr><td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $d['pemeriksaan']; ?></td></tr>
             </thead>
             <tbody>
               <tr>
-                <td><center><?php echo $d['pemeriksaan']; ?> <strong>(IgM)</strong></center></td>
+                <td><center>(IgM)</center></td>
                 <td><center><?php echo $d['nama_igm']; ?></center></td>
                 <td><center><?php echo $d['nama_nilai_rujukan']; ?></center></td>
                 <td><center><?php echo $d['metode']; ?></center></td>
               </tr>
               <tr>
-                <td><center><?php echo $d['pemeriksaan']; ?> <strong>(IgG)</strong></center></td>
+                <td><center>(IgG)</center></td>
                 <td><center><?php echo $d['nama_igg']; ?></center></td>
                 <td><center><?php echo $d['nama_nilai_rujukan']; ?></center></td>
                 <td><center><?php echo $d['metode']; ?></center></td>
