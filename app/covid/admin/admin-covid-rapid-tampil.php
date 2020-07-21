@@ -74,8 +74,40 @@
               <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
               <td><center><?php echo $d['nama']; ?></center></td>
               <td><center><?php echo $d['nama_dokter']; ?></center></td>
-              <td><center><?php echo $d['nama_igm']; ?></center></td>
-              <td><center><?php echo $d['nama_igg']; ?></center></td>
+              <td><center>
+                <?php
+                if($d['igm']==1){
+                  ?>
+                  <font class="redtext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }elseif($d['igm']==0){
+                  ?>
+                  <font class="greentext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }else{
+                  ?>
+                  <font class="blacktext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }
+                ?>
+              </center></td>
+              <td><center>
+                <?php
+                if($d['igg']==1){
+                  ?>
+                  <font class="redtext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }elseif($d['igg']==0){
+                  ?>
+                  <font class="greentext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }else{
+                  ?>
+                  <font class="blacktext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }
+                ?>
+              </center></td>
               <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
               <td>
                 <div align="center">
