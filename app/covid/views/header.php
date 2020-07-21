@@ -1,7 +1,4 @@
-<?php
-error_reporting(0);
-include "../../system/session-start.php";
-?>
+<?php error_reporting(0); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +8,12 @@ include "../../system/session-start.php";
     <meta name="author" content="">
     <title>SIMETRIS | COVID-19</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../vendors/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../vendors/css/bootstrap.css" rel="stylesheet">
     <!-- Add custom CSS here -->
-    <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
-    <script src="../../vendors/js/font-awesome.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../vendors/css/sweetalert.css">
+    <link href="../../../vendors/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../vendors/font-awesome/css/font-awesome.min.css">
+    <script src="../../../vendors/js/font-awesome.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../vendors/css/sweetalert.css">
     <style>
         .whitetext {
             color: #ffffff;
@@ -26,6 +23,12 @@ include "../../system/session-start.php";
         }
         .redtext {
             color: #e71414;
+        }
+        .greentext {
+            color: #14b1ab;
+        }
+        .yellowtext {
+            color: #f3c623;
         }
         .navbar-rachmi{
             background-color:#e67e22;
@@ -38,7 +41,7 @@ include "../../system/session-start.php";
     </style>
 </head>
 <?php
-include '../../config/connect.php';
+include '../../../config/connect.php';
 date_default_timezone_set("Asia/Jakarta");
 $tanggalsekarang    =   date('Y-m-d');
 $jamsekarang        =   date("H:i:s");
