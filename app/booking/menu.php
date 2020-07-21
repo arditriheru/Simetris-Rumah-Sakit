@@ -40,19 +40,13 @@
                 <li><a href="anc-tambah">Tambah</a></li>
               </ul>
             </li>
-            <li><a href="covid-skrining"><i class="fa fa-thumb-tack"></i> Skrining</a></li>
+            <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
             <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Petugas Medis</a></li>
             <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
             <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
             <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
-            <li><a href="../../system/tutorial?id_buku=50">
-              <i class="fa fa-file"></i> Dokumentasi</a>
-            </li>
-            <li>
-              <a href="zona-merah">
-                <button type="submit" class="btn btn-danger">COVID-19</button>
-              </a>
-            </li>
+            <li><a href="../../system/tutorial?id_buku=50"><i class="fa fa-file"></i> Dokumentasi</a></li>
+            <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown user-dropdown">
