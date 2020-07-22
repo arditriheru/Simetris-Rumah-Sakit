@@ -3,7 +3,7 @@
     <div class="table-responsive">
       <div class="row">
         <form method="post" action="operator-covid-rapid-cari-tampil" role="form">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
               <span class="input-group-btn">
@@ -12,7 +12,7 @@
             </div>
           </div>
         </form>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           <button name="next" type="submit" 
           class="btn btn-primary" onClick="window.location.reload()">Refresh</button>
         </div>
@@ -44,7 +44,7 @@
              <th><center>Dokter</center></th>
              <th><center>IgM</center></th>
              <th><center>IgG</center></th>
-             <th><center>Register</center></th>
+             <th><center>Registrasi</center></th>
            </tr>
          </thead>
          <tbody>
