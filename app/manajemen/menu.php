@@ -42,28 +42,27 @@
               </ul>
             </li>
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-check-square-o"></i> Penjualan Obat <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="penjualan-obat-rajal-cari">Rawat Jalan</a></li>
-                <li><a href="penjualan-obat-ranap-cari">Rawat Inap</a></li>
-              </ul>
-            </li>
-            <li><a href="pendidikan-cari"><i class="fa fa-check-square-o"></i> Pendidikan</a></li>
-            <li><a href="kuesioner-cari"><i class="fa fa-check-square-o"></i> Kuesioner</a></li>
-            <li><a href="laborat-tarif-tampil"><i class="fa fa-check-square-o"></i> Tarif Laboratorium</a></li>
-          </ul>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-check-square-o"></i> Penjualan Obat <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="penjualan-obat-rajal-cari">Rawat Jalan</a></li>
+                  <li><a href="penjualan-obat-ranap-cari">Rawat Inap</a></li>
+                </ul>
+              </li>
+              <li><a href="pendidikan-cari"><i class="fa fa-check-square-o"></i> Pendidikan</a></li>
+              <li><a href="kuesioner-cari"><i class="fa fa-check-square-o"></i> Kuesioner</a></li>
+              <li><a href="laborat-tarif-tampil"><i class="fa fa-check-square-o"></i> Tarif Laboratorium</a></li>
+            </ul>
 
-          <ul class="nav navbar-nav navbar-right navbar-user">
-            <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="divider"></li>
-                <li><a href="../dokumentasi-tampil?id_buku=49">
-                  <i class="fa fa-book"></i> Dokumentasi</a>
-                </li>
-                <li><a href="logout">
-                  <i class="fa fa-power-off"></i> Log Out</a></li>
+            <ul class="nav navbar-nav navbar-right navbar-user">
+              <li class="dropdown user-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $nama_login;?>&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="divider"></li>
+                  <li>
+                    <a href="logout"><i class="fa fa-power-off">
+                    </i> Log Out</a>
+                  </li>
                 </ul>
               </li>
             </ul>
