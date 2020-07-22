@@ -232,13 +232,14 @@
                                               <th><center>Jadwal</center></th>
                                               <th><center>Sesi</center></th>
                                               <th><center>Keterangan</center></th>
-                                              <th><center>Action</center></th>
+                                              <th colspan="2"><center>Action</center></th>
                                             </tr>
                                           </thead>
                                           <tbody>
                                             <?php 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter, sesi.nama_sesi
+                                            $data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter, sesi.nama_sesi,
+                                              IF (booking.status='1', 'Datang', 'Belum Datang') AS status
                                               FROM booking, dokter, sesi
                                               WHERE booking.id_dokter=dokter.id_dokter
                                               AND booking.id_sesi=sesi.id_sesi
@@ -246,6 +247,7 @@
                                               ORDER BY booking.id_booking DESC;");
                                             while($d = mysqli_fetch_array($data)){
                                               $booking_tanggal = $d['booking_tanggal'];
+                                              $status = $d['status'];
                                               ?>
                                               <tr>
                                                 <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
@@ -255,23 +257,31 @@
                                                 <td><center><?php echo date("d/m/Y", strtotime($booking_tanggal)); ?></center></td>
                                                 <td><center><?php echo $d['nama_sesi']; ?></center></td>
                                                 <td><center><?php echo $d['keterangan']; ?></center></td>
-                                                <td>
-                                                  <div align="center">
-                                                    <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
-                                                      <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
-                                                    </div>
-                                                  </td>
-                                                  </tr><?php } ?>
-                                                </tbody>
-                                              </table>
-                                            </div>
+                                                <td><center><?php
+                                                if($status=='Datang'){
+                                                  echo "<button type='button' class='btn btn-success'><i class='fa fa-check'></i></button>";
+                                                }else{
+                                                  echo "<button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button>";
+                                                }
+                                                ?>
+                                              </center></td>
+                                              <td>
+                                                <div align="center">
+                                                  <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                    <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                  </div>
+                                                </td>
+                                                </tr><?php } ?>
+                                              </tbody>
+                                            </table>
                                           </div>
                                         </div>
                                       </div>
-
                                     </div>
+
                                   </div>
                                 </div>
-                              </div><!-- /#page-wrapper -->
-                            </div><!-- /#wrapper -->
-                            <?php include "views/footer.php"; ?>
+                              </div>
+                            </div><!-- /#page-wrapper -->
+                          </div><!-- /#wrapper -->
+                          <?php include "views/footer.php"; ?>
