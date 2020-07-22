@@ -44,12 +44,20 @@ if(isset($_POST['submit'])){
         UPDATE dokter 
         SET aktif = 1, ket = 1
         WHERE id_dokter='$anak_id_dokter'");
+      mysqli_query($koneksi,"
+        UPDATE ant_anak 
+        SET id_sesi = $anak_id_sesi, id_dokter = $anak_id_dokter
+        WHERE id_ant_anak=0");
       header("location:anak-dashboard");
     }else{
       mysqli_query($koneksi,"
         UPDATE dokter 
         SET aktif = 1, ket = 1
         WHERE id_dokter='$anak_id_dokter'");
+      mysqli_query($koneksi,"
+        UPDATE ant_anak 
+        SET id_sesi = $anak_id_sesi, id_dokter = $anak_id_dokter
+        WHERE id_ant_anak=0");
       header("location:anak-dashboard");
     }
   }else{
@@ -65,7 +73,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
   <div class="kotak_login">
-    <p class="tulisan_login"><b>PILIH DOKTER</b></p>
+    <p class="tulisan_login"><b>POLI ANAK</b></p>
     <form method="post" action="" role="form">
       <label>Dokter</label>
       <select class="form_login" type="text" name="anak_id_dokter">

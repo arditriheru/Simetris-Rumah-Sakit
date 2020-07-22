@@ -44,12 +44,20 @@ if(isset($_POST['submit'])){
         UPDATE dokter 
         SET aktif = 1, ket = 2
         WHERE id_dokter='$kandungan_id_dokter'");
+      mysqli_query($koneksi,"
+        UPDATE ant_kandungan 
+        SET id_sesi = $kandungan_id_sesi, id_dokter = $kandungan_id_dokter
+        WHERE id_ant_kandungan=0");
       header("location:kandungan-dashboard");
     }else{
       mysqli_query($koneksi,"
         UPDATE dokter 
         SET aktif = 1, ket = 2
         WHERE id_dokter='$kandungan_id_dokter'");
+      mysqli_query($koneksi,"
+        UPDATE ant_kandungan 
+        SET id_sesi = $kandungan_id_sesi, id_dokter = $kandungan_id_dokter
+        WHERE id_ant_kandungan=0");
       header("location:kandungan-dashboard");
     }
   }else{
