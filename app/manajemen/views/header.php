@@ -1,4 +1,7 @@
-<?php error_reporting(0); ?>
+<?php
+error_reporting(0);
+include "../../system/session-start.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <!-- Add custom CSS here -->
     <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
+    <script src="../../vendors/js/font-awesome.js"></script>
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
     <script type="text/javascript" src="../../vendors/chartjs/Chart.js"></script>
