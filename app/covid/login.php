@@ -88,7 +88,7 @@
 												<input type="submit" class="tombol_login" name="login" value="LOGIN">
 												<br><br>			
 											</form>
-											<a href="../">Kembali</a>
+											<a href="../../dashboard"><i class="fa fa-arrow-left"></i> Back</a>
 										</div>
 										<script src="../../vendors/js/sweetalert.min.js"></script>
 									</body>
