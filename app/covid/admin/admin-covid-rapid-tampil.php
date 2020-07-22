@@ -41,7 +41,7 @@
              <th><center>IgM</center></th>
              <th><center>IgG</center></th>
              <th><center>Registrasi</center></th>
-             <th colspan='2'><center>Action</center></th>
+             <th colspan='3'><center>Action</center></th>
            </tr>
          </thead>
          <tbody>
@@ -111,18 +111,18 @@
               <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
               <td>
                 <div align="center">
-                  <a href="admin-covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>"
+                  <a href="admin-covid-rapid-detail?id=<?php echo $d['id_rapidtest']; ?>">
                     <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                   </div>
                 </td>
                 <td>
                   <div align="center">
-                    <a href="admin-covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
-                      <button type="button" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                    <a href="admin-covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>">
+                      <button type="button" class="btn btn-warning"><i class='fa fa-edit'></i></button></a>
                     </div>
                   </td>
                   </tr><?php } ?>
                 </tbody>
               </table>
             </div>
-</div><!-- /.row -->
+          </div><!-- /.row -->

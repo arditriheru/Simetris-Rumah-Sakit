@@ -63,28 +63,28 @@ include "../views/header.php";
 
                 ?>
                 <div class="row">
-        <form method="post" action="admin-covid-rapid-cari-tampil" role="form">
-          <div class="col-lg-6">
-            <div class="form-group input-group">
-              <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik?>">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
-              </span>
-            </div>
-          </div>
-        </form>
-        <div align="right" class="col-lg-6">
-          <?php
-          $m = 31;
-          $n = 7;
-          $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
-          $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
-          $mak   = date("Y-m-d", $nextN);
-          $min   = date("Y-m-d", $prevN);
-            ?>
-            <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-          </div>
-        </div>
+                  <form method="post" action="admin-covid-rapid-cari-tampil" role="form">
+                    <div class="col-lg-6">
+                      <div class="form-group input-group">
+                        <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik?>">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                  <div align="right" class="col-lg-6">
+                    <?php
+                    $m = 31;
+                    $n = 7;
+                    $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
+                    $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
+                    $mak   = date("Y-m-d", $nextN);
+                    $min   = date("Y-m-d", $prevN);
+                    ?>
+                    <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+                  </div>
+                </div>
                 <table class="table table-bordered table-hover table-striped tablesorter">
                   <thead>
                     <tr>

@@ -18,9 +18,17 @@ include "../views/header.php";
       <?php include "../../../system/welcome.php"?>
     </div>
     <div class="col-lg-6">
+      <td>
+        <?php $id_rapidtest = $_GET['id']; ?>
+        <div align="right">
+          <a href="admin-covid-rapid-hapus?id=<?php echo $id_rapidtest; ?>"
+            onclick="javascript: return confirm('Anda yakin hapus?')">
+            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+          </a>
+        </div>
+      </td>
       <div class="table-responsive">
         <?php
-        $id_rapidtest = $_GET['id'];
         $a = mysqli_query($koneksi,
          "SELECT *, mr_dokter.nama_dokter, mr_unit.nama_unit,
          IF(rapidtest.sex='1', 'Laki-laki', 'Perempuan') AS nama_sex,
