@@ -94,7 +94,7 @@ include "../views/header.php";
                         text: 'Menambah Hasil Rapid test',
                         type: 'success'
                         }, function() {
-                          window.location = 'admin-covid-rapid-detail?id=$id_rapidtest';
+                          window.location = 'admin-covid-rapid-tambah';
                           });
                           }, 10);
                           </script>";

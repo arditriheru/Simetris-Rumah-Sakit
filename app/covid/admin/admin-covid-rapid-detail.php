@@ -23,7 +23,7 @@ include "../views/header.php";
         <div class="form-group">
           <input class="form-control" type="hidden" name="id_rapidtest" value="<?php echo $id_rapidtest?>">
         </div>
-        <button type="submit" class="btn btn-success"><i class='fa fa-print'></i> Print</button>
+        <button type="submit" class="btn btn-primary"><i class='fa fa-print'></i> Print</button>
       </form>
     </div>
     <div class="col-lg-12">
@@ -200,7 +200,7 @@ include "../views/header.php";
         <div class="col-lg-6"><br><br>
           <p>
             <div align="center">
-              <strong>Yogyakarta, <?php echo format_tanggal($d['tanggal']); ?></strong><br><br><br><br><br><br>
+              Yogyakarta, <?php echo format_tanggal($d['tanggal']); ?><br><strong>Penanggung jawab,</strong><br><br><br><br><br>
               dr. Indah Ajeng Ebtasari, M.Sc.,Sp.PK.
             </div>
           </p>

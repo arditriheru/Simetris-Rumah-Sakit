@@ -40,7 +40,7 @@ include "../views/header.php";
             text: 'Pasien Belum Terdaftar',
             type: 'error'
             }, function() {
-              window.location = 'dashboard';
+              window.location = 'admin-dashboard';
               });
               }, 10);
               </script>";
@@ -62,9 +62,29 @@ include "../views/header.php";
                 $umur         = $today->diff($lahir);
 
                 ?>
-                <div align="right" class="col-lg-12">
-                  <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-                </div>
+                <div class="row">
+        <form method="post" action="admin-covid-rapid-cari-tampil" role="form">
+          <div class="col-lg-6">
+            <div class="form-group input-group">
+              <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik?>">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+              </span>
+            </div>
+          </div>
+        </form>
+        <div align="right" class="col-lg-6">
+          <?php
+          $m = 31;
+          $n = 7;
+          $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
+          $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
+          $mak   = date("Y-m-d", $nextN);
+          $min   = date("Y-m-d", $prevN);
+            ?>
+            <h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+          </div>
+        </div>
                 <table class="table table-bordered table-hover table-striped tablesorter">
                   <thead>
                     <tr>
@@ -74,7 +94,7 @@ include "../views/header.php";
                      <th><center>Dokter</center></th>
                      <th><center>IgM</center></th>
                      <th><center>IgG</center></th>
-                     <th><center>Tanggal Input</center></th>
+                     <th><center>Register</center></th>
                      <th colspan='3'><center>Action</center></th>
                    </tr>
                  </thead>

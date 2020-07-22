@@ -2,8 +2,8 @@
   <div class="col-lg-12">
     <div class="table-responsive">
       <div class="row">
-        <form method="post" action="covid-rapid-cari-tampil" role="form">
-          <div class="col-lg-6">
+        <form method="post" action="admin-covid-rapid-cari-tampil" role="form">
+          <div class="col-lg-4">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
               <span class="input-group-btn">
@@ -12,7 +12,7 @@
             </div>
           </div>
         </form>
-        <div align="right" class="col-lg-6">
+        <div align="right" class="col-lg-8">
           <?php
           $m = 31;
           $n = 7;
@@ -40,7 +40,7 @@
              <th><center>Dokter</center></th>
              <th><center>IgM</center></th>
              <th><center>IgG</center></th>
-             <th><center>Register</center></th>
+             <th><center>Registrasi</center></th>
              <th colspan='2'><center>Action</center></th>
            </tr>
          </thead>

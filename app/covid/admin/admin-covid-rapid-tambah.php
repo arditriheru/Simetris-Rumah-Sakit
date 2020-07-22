@@ -44,7 +44,7 @@ function format_mak($mak)
    <div class="col-lg-12">
     <div class="row">
       <form method="post" action="admin-covid-rapid-tambah-cari-rm" role="form">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
           <div class="form-group input-group">
             <input type="text" class="form-control" name="id_catatan_medik" placeholder="Nomor Rekam Medik..">
             <span class="input-group-btn">
@@ -53,7 +53,7 @@ function format_mak($mak)
           </div>
         </div>
       </form>
-      <div align="right" class="col-lg-6">
+      <div align="right" class="col-lg-8">
         <?php
         $m = 31;
         $n = 7;
@@ -80,7 +80,7 @@ function format_mak($mak)
             <th><center>Dokter</center></th>
             <th><center>IgM</center></th>
             <th><center>IgG</center></th>
-            <th><center>Tanggal Input</center></th>
+            <th><center>Registrasi</center></th>
             <th colspan='3'><center>Action</center></th>
           </tr>
         </thead>
@@ -107,8 +107,40 @@ function format_mak($mak)
               <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
               <td><center><?php echo $d['nama']; ?></center></td>
               <td><center><?php echo $d['nama_dokter']; ?></center></td>
-              <td><center><?php echo $d['nama_igm']; ?></center></td>
-              <td><center><?php echo $d['nama_igg']; ?></center></td>
+              <td><center>
+                <?php
+                if($d['igm']==1){
+                  ?>
+                  <font class="redtext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }elseif($d['igm']==0){
+                  ?>
+                  <font class="greentext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }else{
+                  ?>
+                  <font class="blacktext"><?php echo $d['nama_igm']; ?></font>
+                  <?php
+                }
+                ?>
+              </center></td>
+              <td><center>
+                <?php
+                if($d['igg']==1){
+                  ?>
+                  <font class="redtext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }elseif($d['igg']==0){
+                  ?>
+                  <font class="greentext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }else{
+                  ?>
+                  <font class="blacktext"><?php echo $d['nama_igg']; ?></font>
+                  <?php
+                }
+                ?>
+              </center></td>
               <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
               <td>
                 <div align="center">
@@ -116,6 +148,12 @@ function format_mak($mak)
                     <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                   </div>
                 </td>
+                <td>
+                  <div align="center">
+                    <a href="admin-covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
+                      <button type="button" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a>
+                    </div>
+                  </td>
                 </tr><?php } ?>
               </tbody>
             </table>

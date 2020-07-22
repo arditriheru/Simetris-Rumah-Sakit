@@ -118,7 +118,7 @@
 								<th><center>Nilai Rujukan</center></th>
 								<th><center>Metode</center></th>
 							</tr>
-							<tr><td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $d['pemeriksaan']; ?></td></tr>
+							<tr><td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $d['pemeriksaan']; ?></td></tr>
 						</thead>
 						<tbody>
 							<tr>
@@ -157,7 +157,7 @@
 							<tr>
 								<td><center><strong>Petugas,</strong><br><br><br><br><br><br>
 									<?php echo $d['pemeriksa']; ?></center></td>
-									<td><center><strong>Yogyakarta, <?php echo format_tanggal($d['tanggal']); ?></strong><br><br><br><br><br><br>
+									<td><center>Yogyakarta, <?php echo format_tanggal($d['tanggal']); ?><br><strong>Penanggung jawab,</strong><br><br><br><br><br>
 									dr. Indah Ajeng Ebtasari, M.Sc.,Sp.PK.</center></td>
 								</tr>
 							</tbody>
