@@ -46,7 +46,7 @@ include "../views/header.php";
               text: 'Curiga Pasien Dalam Pengawasan',
               type: 'error'
               }, function() {
-                window.location = 'booking-tambah';
+                window.location = 'admin-covid-skrining';
                 });
                 }, 10);
                 </script>";
@@ -61,7 +61,7 @@ include "../views/header.php";
                     text: 'Curiga Orang Dalam Pengawasan',
                     type: 'warning'
                     }, function() {
-                      window.location = 'booking-tambah';
+                      window.location = 'admin-covid-skrining';
                       });
                       }, 10);
                       </script>";
@@ -73,7 +73,7 @@ include "../views/header.php";
                           text: 'Curiga Orang Tanpa Gejala',
                           type: 'warning'
                           }, function() {
-                            window.location = 'booking-tambah';
+                            window.location = 'admin-covid-skrining';
                             });
                             }, 10);
                             </script>";
@@ -85,7 +85,7 @@ include "../views/header.php";
                                 text: 'Bismillah, Inshaallah Pasien Aman',
                                 type: 'success'
                                 }, function() {
-                                  window.location = 'booking-tambah';
+                                  window.location = 'admin-covid-skrining';
                                   });
                                   }, 10);
                                   </script>";
