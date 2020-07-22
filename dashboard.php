@@ -115,7 +115,7 @@
                 <div class="panel-heading">
                   <div class="row">
                     <div class="col-xs-2"><a href="http://192.168.1.250:8080/bangsal">
-                      <i class="fa fa-hospital-o fa-4x"></i>
+                      <i class="fa fa-heartbeat fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
                       <h2>Bangsal</h2>
@@ -222,7 +222,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
@@ -235,7 +235,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
