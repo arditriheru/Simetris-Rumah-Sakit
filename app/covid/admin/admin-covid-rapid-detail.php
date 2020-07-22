@@ -172,7 +172,7 @@ include "../views/header.php";
             </tbody>
           </table>
           <div align="right">
-            <p>Printed : <?php include "../../../system/date-time.php";?> / <?php echo $jamsekarang;?></p>
+            <small>Printed : <?php include "../../../system/date-time.php";?> / <?php echo $jamsekarang;?></small>
           </div>
         </div>
         <div class="col-lg-12">

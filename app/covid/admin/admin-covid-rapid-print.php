@@ -136,7 +136,7 @@
 						</tbody>
 					</table>
 					<div align="right">
-						<p>Printed : <?php include "../../../system/date-time.php";?> / <?php echo $jamsekarang;?></p>
+						<small>Printed : <?php include "../../../system/date-time.php";?> / <?php echo $jamsekarang;?></small>
 					</div>
 					<table>
 						<tbody>
