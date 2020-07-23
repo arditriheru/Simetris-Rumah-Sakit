@@ -1,4 +1,7 @@
-<?php error_reporting(0); ?>
+<?php
+error_reporting(0);
+include "session-start.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
