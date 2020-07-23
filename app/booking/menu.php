@@ -14,7 +14,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li><a href="booking-cek"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -50,11 +50,11 @@
           </ul>
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i>&nbsp;<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $nama_login;?>&nbsp;<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
-                  <a href="../../dashboard"><i class="fa fa-power-off">
+                  <a href="logout"><i class="fa fa-power-off">
                   </i> Log Out</a>
                 </li>
               </ul>
