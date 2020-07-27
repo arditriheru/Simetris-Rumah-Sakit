@@ -2,7 +2,7 @@
 include '../../config/connect.php';
 $lokasi_file 	= $_FILES['dokumen']['tmp_name'];
 $nama_file   	= $_FILES['dokumen']['name'];
-$folder 		= "upload/$nama_file";
+$folder 		= "../../../ebook-file-upload/$nama_file";
 $judul 			= $_POST['judul'];
 $penulis 		= $_POST['penulis'];
 $penerbit 		= $_POST['penerbit'];

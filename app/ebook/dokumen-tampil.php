@@ -9,6 +9,6 @@ while($d = mysqli_fetch_array($data)){
 <!DOCTYPE html>
 <html lang="en">
 <body>
-  <embed width="100%" height="1000" src="upload/<?php echo $dokumen ?>"
+  <embed width="100%" height="1000" src="../../../ebook-file-upload/<?php echo $dokumen ?>"
   </body>
   </html>
