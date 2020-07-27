@@ -56,6 +56,7 @@ while($b = mysqli_fetch_array($a)){
               <li><a href="#4" data-toggle="tab">Malam</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
+             <?php if($status=='Admin'){ ?>
               <div class="tab-pane fade active in" id="0">
                 <div class="row">
                   <div class="col-lg-12">
@@ -424,10 +425,340 @@ while($b = mysqli_fetch_array($a)){
                                 </div>
                               </div>
                             </div>
-                          </div><!-- /.row -->
-                        </div>
-                      </div>
-                    </div><!-- /.row -->
-                  </div><!-- /#page-wrapper -->
-                </div><!-- /#wrapper -->
-                <?php include "views/footer.php"; ?>
+                          <?php }else{ ?>
+                            <div class="tab-pane fade active in" id="0">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="table-responsive">
+                                    <div align="right">
+                                      <?php 
+                                      $data = mysqli_query($koneksi,
+                                        "SELECT COUNT(*) AS total
+                                        FROM tumbang
+                                        WHERE tumbang.id_petugas='$id_petugas'
+                                        AND tumbang.jadwal='$tanggalsekarang';");
+                                      while($d = mysqli_fetch_array($data)){
+                                        ?>
+                                        <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                      </div>
+                                      <table class="table table-bordered table-hover table-striped tablesorter">
+                                        <thead>
+                                          <tr>
+                                            <th><center>No</center></th>
+                                            <th><center>No. RM</center></th>
+                                            <th><center>Nama Pasien</center></th>
+                                            <th><center>Kontak</center></th>
+                                            <th><center>Petugas</center></th>
+                                            <th><center>Sesi</center></th>
+                                            <th><center>Keterangan</center></th>
+                                            <th colspan='2'><center>Action</center></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <?php 
+                                          $no = 1;
+                                          $data = mysqli_query($koneksi,
+                                            "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                                            IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
+                                            FROM tumbang, mr_petugas, sesi
+                                            WHERE tumbang.id_petugas=mr_petugas.id_petugas
+                                            AND tumbang.id_sesi=sesi.id_sesi
+                                            AND tumbang.jadwal='$tanggalsekarang'
+                                            ORDER BY tumbang.nama ASC;");
+                                          while($d = mysqli_fetch_array($data)){
+                                            $id_tumbang = $d['id_tumbang'];
+                                            $status     = $d['status'];
+                                            ?>
+                                            <tr>
+                                             <td><center><?php echo $no++; ?></center></td>
+                                             <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                             <td><center><?php echo $d['nama']; ?></center></td>
+                                             <td><center><?php echo $d['kontak']; ?></center></td>
+                                             <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                                             <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                             <td><center><?php echo $d['keterangan']; ?></center></td>
+                                             <td>
+                                              <div align="center">
+                                                <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                                  <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                </div>
+                                              </td>
+                                              </tr><?php } ?>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="tab-pane fade" id="1">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                          <div align="right" class="col-lg-12">
+                                            <?php 
+                                            $data = mysqli_query($koneksi,
+                                              "SELECT COUNT(*) AS total
+                                              FROM tumbang
+                                              WHERE tumbang.id_petugas='$id_petugas'
+                                              AND tumbang.id_sesi=1
+                                              AND tumbang.jadwal='$tanggalsekarang';");
+                                            while($d = mysqli_fetch_array($data)){
+                                              ?>
+                                              <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                            </div>
+                                            <table class="table table-bordered table-hover table-striped tablesorter">
+                                              <thead>
+                                                <tr>
+                                                  <th><center>No</center></th>
+                                                  <th><center>No. RM</center></th>
+                                                  <th><center>Nama Pasien</center></th>
+                                                  <th><center>Kontak</center></th>
+                                                  <th><center>Petugas</center></th>
+                                                  <th><center>Sesi</center></th>
+                                                  <th><center>Keterangan</center></th>
+                                                  <th colspan='2'><center>Action</center></th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php 
+                                                $no = 1;
+                                                $data = mysqli_query($koneksi,
+                                                  "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                                                  IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
+                                                  FROM tumbang, mr_petugas, sesi
+                                                  WHERE tumbang.id_petugas=mr_petugas.id_petugas
+                                                  AND tumbang.id_sesi=sesi.id_sesi
+                                                  AND tumbang.id_sesi=1
+                                                  AND tumbang.jadwal='$tanggalsekarang'
+                                                  ORDER BY tumbang.nama ASC;");
+                                                while($d = mysqli_fetch_array($data)){
+                                                  $id_tumbang = $d['id_tumbang'];
+                                                  $status     = $d['status'];
+                                                  ?>
+                                                  <tr>
+                                                   <td><center><?php echo $no++; ?></center></td>
+                                                   <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                                   <td><center><?php echo $d['nama']; ?></center></td>
+                                                   <td><center><?php echo $d['kontak']; ?></center></td>
+                                                   <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                                                   <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                                   <td><center><?php echo $d['keterangan']; ?></center></td>
+                                                   <td>
+                                                    <div align="center">
+                                                      <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                                        <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                      </div>
+                                                    </td>
+                                                    </tr><?php } ?>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="2">
+                                          <div class="row">
+                                            <div class="col-lg-12">
+                                              <div class="table-responsive">
+                                               <div align="right" class="col-lg-12">
+                                                <?php 
+                                                $data = mysqli_query($koneksi,
+                                                  "SELECT COUNT(*) AS total
+                                                  FROM tumbang
+                                                  WHERE tumbang.id_petugas='$id_petugas'
+                                                  AND tumbang.id_sesi=2
+                                                  AND tumbang.jadwal='$tanggalsekarang';");
+                                                while($d = mysqli_fetch_array($data)){
+                                                  ?>
+                                                  <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                                </div>
+                                                <table class="table table-bordered table-hover table-striped tablesorter">
+                                                  <thead>
+                                                    <tr>
+                                                      <th><center>No</center></th>
+                                                      <th><center>No. RM</center></th>
+                                                      <th><center>Nama Pasien</center></th>
+                                                      <th><center>Kontak</center></th>
+                                                      <th><center>Petugas</center></th>
+                                                      <th><center>Sesi</center></th>
+                                                      <th><center>Keterangan</center></th>
+                                                      <th colspan='2'><center>Action</center></th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <?php 
+                                                    $no = 1;
+                                                    $data = mysqli_query($koneksi,
+                                                      "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                                                      IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
+                                                      FROM tumbang, mr_petugas, sesi
+                                                      WHERE tumbang.id_petugas=mr_petugas.id_petugas
+                                                      AND tumbang.id_sesi=sesi.id_sesi
+                                                      AND tumbang.id_sesi=2
+                                                      AND tumbang.jadwal='$tanggalsekarang'
+                                                      ORDER BY tumbang.nama ASC;");
+                                                    while($d = mysqli_fetch_array($data)){
+                                                      $id_tumbang = $d['id_tumbang'];
+                                                      $status     = $d['status'];
+                                                      ?>
+                                                      <tr>
+                                                       <td><center><?php echo $no++; ?></center></td>
+                                                       <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                                       <td><center><?php echo $d['nama']; ?></center></td>
+                                                       <td><center><?php echo $d['kontak']; ?></center></td>
+                                                       <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                                                       <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                                       <td><center><?php echo $d['keterangan']; ?></center></td>
+                                                       <td>
+                                                        <div align="center">
+                                                          <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                                            <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                          </div>
+                                                        </td>
+                                                        </tr><?php } ?>
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="3">
+                                              <div class="row">
+                                                <div class="col-lg-12">
+                                                  <div class="table-responsive">
+                                                   <div align="right" class="col-lg-12">
+                                                     <?php 
+                                                     $data = mysqli_query($koneksi,
+                                                      "SELECT COUNT(*) AS total
+                                                      FROM tumbang
+                                                      WHERE tumbang.id_petugas='$id_petugas'
+                                                      AND tumbang.id_sesi=3
+                                                      AND tumbang.jadwal='$tanggalsekarang';");
+                                                     while($d = mysqli_fetch_array($data)){
+                                                      ?>
+                                                      <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                                    </div>
+                                                    <table class="table table-bordered table-hover table-striped tablesorter">
+                                                      <thead>
+                                                        <tr>
+                                                          <th><center>No</center></th>
+                                                          <th><center>No. RM</center></th>
+                                                          <th><center>Nama Pasien</center></th>
+                                                          <th><center>Kontak</center></th>
+                                                          <th><center>Petugas</center></th>
+                                                          <th><center>Sesi</center></th>
+                                                          <th><center>Keterangan</center></th>
+                                                          <th colspan='2'><center>Action</center></th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <?php 
+                                                        $no = 1;
+                                                        $data = mysqli_query($koneksi,
+                                                          "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                                                          IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
+                                                          FROM tumbang, mr_petugas, sesi
+                                                          WHERE tumbang.id_petugas=mr_petugas.id_petugas
+                                                          AND tumbang.id_sesi=sesi.id_sesi
+                                                          AND tumbang.id_sesi=3
+                                                          AND tumbang.jadwal='$tanggalsekarang'
+                                                          ORDER BY tumbang.nama ASC;");
+                                                        while($d = mysqli_fetch_array($data)){
+                                                          $id_tumbang = $d['id_tumbang'];
+                                                          $status     = $d['status'];
+                                                          ?>
+                                                          <tr>
+                                                           <td><center><?php echo $no++; ?></center></td>
+                                                           <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                                           <td><center><?php echo $d['nama']; ?></center></td>
+                                                           <td><center><?php echo $d['kontak']; ?></center></td>
+                                                           <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                                                           <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                                           <td><center><?php echo $d['keterangan']; ?></center></td>
+                                                           <td>
+                                                            <div align="center">
+                                                              <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                                                <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                              </div>
+                                                            </td>
+                                                            </tr><?php } ?>
+                                                          </tbody>
+                                                        </table>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="4">
+                                                  <div class="row">
+                                                    <div class="col-lg-12">
+                                                      <div class="table-responsive">
+                                                       <div align="right" class="col-lg-12">
+                                                        <?php 
+                                                        $data = mysqli_query($koneksi,
+                                                          "SELECT COUNT(*) AS total
+                                                          FROM tumbang
+                                                          WHERE tumbang.id_petugas='$id_petugas'
+                                                          AND tumbang.id_sesi=4
+                                                          AND tumbang.jadwal='$tanggalsekarang';");
+                                                        while($d = mysqli_fetch_array($data)){
+                                                          ?>
+                                                          <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
+                                                        </div>
+                                                        <table class="table table-bordered table-hover table-striped tablesorter">
+                                                          <thead>
+                                                            <tr>
+                                                              <th><center>No</center></th>
+                                                              <th><center>No. RM</center></th>
+                                                              <th><center>Nama Pasien</center></th>
+                                                              <th><center>Kontak</center></th>
+                                                              <th><center>Petugas</center></th>
+                                                              <th><center>Sesi</center></th>
+                                                              <th><center>Keterangan</center></th>
+                                                              <th colspan='2'><center>Action</center></th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <?php 
+                                                            $no = 1;
+                                                            $data = mysqli_query($koneksi,
+                                                              "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                                                              IF (tumbang.status='1', 'Datang', 'Belum Datang') AS status
+                                                              FROM tumbang, mr_petugas, sesi
+                                                              WHERE tumbang.id_petugas=mr_petugas.id_petugas
+                                                              AND tumbang.id_sesi=sesi.id_sesi
+                                                              AND tumbang.id_sesi=4
+                                                              AND tumbang.jadwal='$tanggalsekarang'
+                                                              ORDER BY tumbang.nama ASC;");
+                                                            while($d = mysqli_fetch_array($data)){
+                                                              $id_tumbang = $d['id_tumbang'];
+                                                              $status     = $d['status'];
+                                                              ?>
+                                                              <tr>
+                                                               <td><center><?php echo $no++; ?></center></td>
+                                                               <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                                                               <td><center><?php echo $d['nama']; ?></center></td>
+                                                               <td><center><?php echo $d['kontak']; ?></center></td>
+                                                               <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                                                               <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                                                               <td><center><?php echo $d['keterangan']; ?></center></td>
+                                                               <td>
+                                                                <div align="center">
+                                                                  <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                                                    <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                                                  </div>
+                                                                </td>
+                                                                </tr><?php } ?>
+                                                              </tbody>
+                                                            </table>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  <?php } ?>
+                                                </div><!-- /.row -->
+                                              </div>
+                                            </div>
+                                          </div><!-- /.row -->
+                                        </div><!-- /#page-wrapper -->
+                                      </div><!-- /#wrapper -->
+                                      <?php include "views/footer.php"; ?>

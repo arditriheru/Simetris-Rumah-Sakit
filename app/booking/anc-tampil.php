@@ -69,43 +69,78 @@
                 <th colspan='2'><center>Action</center></th>
               </tr>
             </thead>
-            <tbody>
-              <?php 
-              $no = 1;
-              $data = mysqli_query($koneksi,
-                "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
-                IF (anc.status='1', 'Datang', 'Belum Datang') AS status
-                FROM anc, mr_petugas, sesi
-                WHERE anc.id_petugas=mr_petugas.id_petugas
-                AND anc.id_sesi=sesi.id_sesi
-                AND anc.jadwal='$tanggalsekarang'
-                ORDER BY anc.id_sesi, anc.id_petugas, anc.nama ASC;");
-              while($d = mysqli_fetch_array($data)){
-                $id_anc = $d['id_anc'];
-                $status     = $d['status'];
-                ?>
-                <tr>
-                 <td><center><?php echo $no++; ?></center></td>
-                 <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-                 <td><center><?php echo $d['nama']; ?></center></td>
-                 <td><center><?php echo $d['kontak']; ?></center></td>
-                 <td><center><?php echo $d['nama_petugas']; ?></center></td>
-                 <td><center><?php echo $d['nama_sesi']; ?></center></td>
-                 <td><center><?php echo $d['keterangan']; ?></center></td>
-                 <td><center><?php
-                 if($status=='Datang'){
-                  echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
-                }else{
-                  echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
-                }
-                ?>
-              </center></td>
-              <td>
-                <div align="center">
-                  <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
-                    <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
-                  </div>
-                </td>
-                </tr><?php } ?>
-              </tbody>
-            </table>
+            <?php if($status=='Admin'){ ?>
+              <tbody>
+                <?php 
+                $no = 1;
+                $data = mysqli_query($koneksi,
+                  "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                  IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                  FROM anc, mr_petugas, sesi
+                  WHERE anc.id_petugas=mr_petugas.id_petugas
+                  AND anc.id_sesi=sesi.id_sesi
+                  AND anc.jadwal='$tanggalsekarang'
+                  ORDER BY anc.id_sesi, anc.id_petugas, anc.nama ASC;");
+                while($d = mysqli_fetch_array($data)){
+                  $id_anc = $d['id_anc'];
+                  $status     = $d['status'];
+                  ?>
+                  <tr>
+                   <td><center><?php echo $no++; ?></center></td>
+                   <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                   <td><center><?php echo $d['nama']; ?></center></td>
+                   <td><center><?php echo $d['kontak']; ?></center></td>
+                   <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                   <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                   <td><center><?php echo $d['keterangan']; ?></center></td>
+                   <td><center><?php
+                   if($status=='Datang'){
+                    echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                  }else{
+                    echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                  }
+                  ?>
+                </center></td>
+                <td>
+                  <div align="center">
+                    <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                      <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                    </div>
+                  </td>
+                  </tr><?php } ?>
+                </tbody>
+              <?php }else{ ?>
+                <tbody>
+                  <?php 
+                  $no = 1;
+                  $data = mysqli_query($koneksi,
+                    "SELECT *, mr_petugas.nama_petugas, sesi.nama_sesi,
+                    IF (anc.status='1', 'Datang', 'Belum Datang') AS status
+                    FROM anc, mr_petugas, sesi
+                    WHERE anc.id_petugas=mr_petugas.id_petugas
+                    AND anc.id_sesi=sesi.id_sesi
+                    AND anc.jadwal='$tanggalsekarang'
+                    ORDER BY anc.id_sesi, anc.id_petugas, anc.nama ASC;");
+                  while($d = mysqli_fetch_array($data)){
+                    $id_anc = $d['id_anc'];
+                    $status     = $d['status'];
+                    ?>
+                    <tr>
+                     <td><center><?php echo $no++; ?></center></td>
+                     <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+                     <td><center><?php echo $d['nama']; ?></center></td>
+                     <td><center><?php echo $d['kontak']; ?></center></td>
+                     <td><center><?php echo $d['nama_petugas']; ?></center></td>
+                     <td><center><?php echo $d['nama_sesi']; ?></center></td>
+                     <td><center><?php echo $d['keterangan']; ?></center></td>
+                     <td>
+                      <div align="center">
+                        <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                          <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                        </div>
+                      </td>
+                      </tr><?php } ?>
+                    </tbody>
+                  <?php } ?>
+
+                </table>
