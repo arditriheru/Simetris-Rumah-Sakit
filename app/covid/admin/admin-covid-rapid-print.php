@@ -141,22 +141,40 @@
 					<table>
 						<tbody>
 							<tr>
-								<td><left><p>
-									<strong>Catatan :</strong><br>
-									1. Pemeriksaan Rapid ke 1<br>
-									2. Hasil Non reaktif tidak menyingkirkan kemungkinan infeksi SARS CoV-2<br>
-									3. Hasil Non Reaktif dapat terjadi pada kondisi :<br>
-									&nbsp; &nbsp; - Sesorang belum / tidak terinfeksi<br>
-									&nbsp; &nbsp; - Window Period (Terinfeksi namun antibody belum terbentuk)<br>
-									&nbsp; &nbsp; - Immunocompromised<br>
-									4. Saran :<br>
-									&nbsp; &nbsp; - Ulangi pemeriksaan rapid test antibody 7-10 hari kemudian<br>
-									&nbsp; &nbsp; - Pertahankan perilaku hidup bersih dan physical distancing<br><br><br>
-								</p></letf></td>
+								<?php
+								if( $d['igm']==1 || $d['igg']==1){ ?>
+									<td><left><p>
+										<strong>Catatan :</strong><br>
+										1. Pemeriksaan Rapid ke 1<br>
+										2. Hasil Rapid Test Antibody Reaktif belum dapat memastikan adanya Infeksi SARS Cov-2<br>
+										3. Pemeriksaan Konfirmasi dengan pemeriksaan <b>RT PCR</b><br>
+										4. Lakukan karantina mandiri  dengan menerapkan PHBS (Perilaku Hidup Bersih dan Sehat : Mencuci tangan, menerapkan etika batuk, menggunakan masker), dan menjaga Physical Distancing<br>
+										5. Bila muncul gejala atau gejala memberat selama isolasi segera menuju ke RS Rujukan Covid-19<br>
+									</p></letf></td>
+								<?php }else{ ?>
+									<td><left><p>
+										<strong>Catatan :</strong><br>
+										1. Pemeriksaan Rapid ke 1<br>
+										2. Hasil Non reaktif tidak menyingkirkan kemungkinan infeksi SARS CoV-2<br>
+										3. Hasil Non Reaktif dapat terjadi pada kondisi :<br>
+										&nbsp; &nbsp; - Sesorang belum / tidak terinfeksi<br>
+										&nbsp; &nbsp; - Window Period (Terinfeksi namun antibody belum terbentuk)<br>
+										&nbsp; &nbsp; - Immunocompromised<br>
+										4. Saran :<br>
+										&nbsp; &nbsp; - Ulangi pemeriksaan rapid test antibody 7-10 hari kemudian<br>
+										&nbsp; &nbsp; - Pertahankan perilaku hidup bersih dan physical distancing<br><br><br>
+									</p></letf></td>
+								<?php } ?>
 							</tr>
+						</table>
+					</tbody><br>
+					<table>
+						<tbody>
 							<tr>
+								<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
 								<td><center><strong>Petugas,</strong><br><br><br><br><br><br>
 									<?php echo $d['pemeriksa']; ?></center></td>
+									<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
 									<td><center>Yogyakarta, <?php echo format_tanggal($d['tanggal']); ?><br><strong>Penanggung jawab,</strong><br><br><br><br><br>
 									dr. Indah Ajeng Ebtasari, M.Sc.,Sp.PK.</center></td>
 								</tr>
