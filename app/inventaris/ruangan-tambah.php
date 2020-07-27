@@ -96,39 +96,37 @@
                             <table class="table table-bordered table-hover table-striped tablesorter">
                               <thead>
                                 <tr>
-                                  <th><center>No</th>
-                                    <th><center>Kode Ruangan</th>
-                                      <th><center>Nama Ruangan</th>
-                                        <th><center>Action</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php 
-                                        $no = 1;
-                                        $data = mysqli_query($koneksi,
-                                          "SELECT * FROM inventaris_ruangan ORDER BY nama_ruangan ASC;");
-                                        while($d = mysqli_fetch_array($data)){
-                                          $status = $d['status'];
-                                          ?>
-                                          <tr>
-                                            <td><center><?php echo $no++; ?></td>
-                                              <td><center><?php echo $d['kode_ruangan']; ?></td>
-                                                <td><left><?php echo $d['nama_ruangan']; ?></td>
-                                                  <td>
-                                                    <div align="center">
-                                                      <a href="ruangan-hapus?id=<?php echo $d['kode_ruangan']; ?>"
-                                                       onclick="javascript: return confirm('Anda yakin hapus?')"
-                                                       <button type="button" name="hapus" class="btn btn-danger">Hapus</a><br><br>
-                                                       </div>
-                                                     </td>
-                                                   </tr>
-                                                   <?php 
-                                                 }
-                                                 ?>
-                                               </tbody>
-                                             </table>
+                                  <th><center>No</center></th>
+                                  <th><center>Kode Ruangan</center></th>
+                                  <th><center>Nama Ruangan</center></th>
+                                  <th><center>Action</center></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php 
+                                $no = 1;
+                                $data = mysqli_query($koneksi,
+                                  "SELECT * FROM inventaris_ruangan ORDER BY nama_ruangan ASC;");
+                                while($d = mysqli_fetch_array($data)){
+                                  $status = $d['status'];
+                                  ?>
+                                  <tr>
+                                    <td><center><?php echo $no++; ?></center></td>
+                                    <td><center><?php echo $d['kode_ruangan']; ?></center></td>
+                                    <td><left><?php echo $d['nama_ruangan']; ?></center></td>
+                                      <td>
+                                        <div align="center">
+                                          <a href="ruangan-hapus?id=<?php echo $d['kode_ruangan']; ?>"
+                                           onclick="javascript: return confirm('Anda yakin hapus?')"
+                                           <button type="button" name="hapus" class="btn btn-danger">Hapus</a><br><br>
                                            </div>
-                                         </div>
-                                       </div><!-- /.row -->
-                                     </div><!-- /#wrapper -->
-                                     <?php include "views/footer.php"; ?> 
+                                         </td>
+                                       </tr>
+                                     <?php } ?>
+                                   </tbody>
+                                 </table>
+                               </div>
+                             </div>
+                           </div><!-- /.row -->
+                         </div><!-- /#wrapper -->
+                         <?php include "views/footer.php"; ?> 
