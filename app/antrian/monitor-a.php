@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-lg-3">
 							<div class="row">
 								<div align="center" class="panel-queue panel-primary-queue">
 									<div class="panel-heading">
@@ -33,7 +33,7 @@
 							<div class="row">
 								<div align="center" class="panel-queue panel-primary-queue">
 									<div class="panel-heading">
-										<h3>Poli Anak</h3>
+										<h3>Poli Kandungan</h3>
 									</div>
 									<div class="bs-example">
 										<?php 
@@ -43,8 +43,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-8">
-							<video width="100%" height="665px" controls loop>
+						<div class="col-lg-9">
+							<video width="100%" height="770px" controls loop>
 								<source src="../../../video/Profil.mp4" type=video/mp4>
 								</video>
 							</div>
@@ -53,11 +53,9 @@
 				</div><!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="col-lg-11">
-							<marquee direction="right" bgcolor="#248ea9" width="auto"><font class="marquee1">Melayani Dengan Kasih dan Sayang</font></marquee>
-						</div>
+						<marquee direction="right" bgcolor="#248ea9" width="auto"><font class="marquee1">Melayani Dengan Kasih dan Sayang</font></marquee>
 					</div>
-				</div><br><br>
+				</div>
 				<div id="page-wrapper">
 					<div class="row">
 						<div align="right"><h4><b class="whitetext">Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> | <a expr:href='data:blog.homepageUrl'><data:blog.title/></a> <a class="whitetext" href="https://instagram.com/arditriheru">Tim Teknologi Informasi</b></a></h4></div>

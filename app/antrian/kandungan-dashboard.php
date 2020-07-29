@@ -80,19 +80,18 @@ include "controller/kandungan-controller.php";
 					</div>
 				</div>
 			</div>
-			</div><?php include "../copyright.php";?>
+			<?php include '../../system/copyright.php';?>
 		</div>
-	</div>
-	<script type="text/javascript">
-		function onWindowClosing() {
-			if (window.event.clientX < 0 || window.event.clientY < 0) {
-				$.ajax({
-					type: "POST",
-					url: "/Account/OnWindowClosing"
-				});
-			}
-		};
-		function onKeydown(evt) {
+		<script type="text/javascript">
+			function onWindowClosing() {
+				if (window.event.clientX < 0 || window.event.clientY < 0) {
+					$.ajax({
+						type: "POST",
+						url: "/Account/OnWindowClosing"
+					});
+				}
+			};
+			function onKeydown(evt) {
             if (evt != undefined && evt.altKey && evt.keyCode == 115) //Alt + F4 
             {
             	$.ajax({
@@ -106,4 +105,3 @@ include "controller/kandungan-controller.php";
     </script>
     <?php include "controller/suara.php";?><br><br><!-- /#page-wrapper -->
     <?php include "views/footer.php"; ?>
-    <div class="col-xs-12 hidden-md hidden-lg"><?php include "kandungan-add.php";?></div>

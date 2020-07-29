@@ -13,14 +13,15 @@ include "controller/kandungan-controller.php";
 		<?php
 		if(!$kandungan_nama_dokter){
 			?>
-			<font class="blacktext" size="4">Tutup</font><br>
+			<font class="blacktext" size="5">Tutup</font><br>
+			<font class="greentext" size="4"><strong>Total 0 Pasien</strong></font>
 			<?php
 		}else{
 			?>
-			<font class="blacktext" size="4"><?php echo $kandungan_nama_dokter?></font><br>
+			<font class="blacktext" size="3"><?php echo $kandungan_nama_dokter?></font><br>
+			<font class="greentext" size="4"><strong>Total <?php echo $total_kandungan_antrian; ?> Pasien</strong></font>
 			<?php
 		}
 		?>
-		<font class="greentext" size="4">Total <?php echo $max; ?> Pasien</font>
 	</div>
 	<?php include "views/footer.php";?>

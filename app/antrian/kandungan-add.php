@@ -1,10 +1,10 @@
 <?php include "controller/kandungan-controller.php";?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	var kandunganadd = setInterval(
 		function(){
 			$('#kandunganadd').load('kandungan-add.php').fadeIn("slow");
 		}, 1000);
-	</script>
+	</script> -->
 	<div id="kandunganadd">
 		<?php 
 		if($total>$max){
