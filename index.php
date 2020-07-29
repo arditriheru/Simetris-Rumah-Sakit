@@ -7,14 +7,11 @@
   <meta name="author" content="">
   <title>SIMETRIS - RSKIA Rachmi Yogyakarta</title>
   <!-- Bootstrap core CSS -->
-  <link href="vendors/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="vendors/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/bootstrap.css">
   <!-- Add custom CSS here -->
-  <link href="vendors/css/sb-admin.css" rel="stylesheet">
-  <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
-  <!-- Page Specific CSS -->
-  <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-  <script type="text/javascript" src="chartjs/Chart.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
   <style>
     .blacktext {
       color: #272727;
@@ -266,14 +263,14 @@
         document.getElementById("myDiv").style.display = "block";
       }
     </script>
-    <script src="vendors/js/jquery-1.10.2.js"></script>
-    <script src="vendors/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/font-awesome.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/sweetalert.min.js"></script>
     <!-- Page Specific Plugins -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-    <script src="vendors/js/morris/chart-data-morris.js"></script>
-    <script src="vendors/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="vendors/js/tablesorter/tables.js"></script>
-
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/chartjs/Chart.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/morris/chart-data-morris.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/tables.js"></script>
   </body>
   </html>
