@@ -8,14 +8,11 @@
   <meta name="author" content="">
   <title>SIMETRIS - Antrian</title>
   <!-- Bootstrap core CSS -->
-  <link href="../../vendors/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../../vendors/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/bootstrap.css">
   <!-- Add custom CSS here -->
-  <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../vendors/font-awesome/css/font-awesome.min.css">
-  <!-- Page Specific CSS -->
-  <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-  <script type="text/javascript" src="../../vendors/chartjs/Chart.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
   <script type="text/javascript" >
     $(document).ready(function(){
       $("#play").click(function(){
@@ -110,7 +107,7 @@
       color: #005082;
     }
     .antrian {
-      font-size: 100px;
+      font-size: 120px;
       color: #000000;
     }
     .marquee1 {
