@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="text/javascript" src="../js/chartjs/Chart.js"></script>
+  <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/chartjs/Chart.js"></script>
 </head>
 <body>
   <?php include '../../config/connect.php'; ?>
