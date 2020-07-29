@@ -1,8 +1,20 @@
+<?php error_reporting(0); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="../../vendors/css/style.css">
-	<link rel="stylesheet" type="text/css" href="../../vendors/css/sweetalert.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>SIMETRIS | Ebook</title>
+	<!-- Login page CSS -->
+	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/style.css">
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/bootstrap.css">
+	<!-- Add custom CSS here -->
+	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
+	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
 </head>
 <body>
 	<div class="kotak_login">
