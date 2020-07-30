@@ -9,12 +9,11 @@
     <meta name="author" content="">
     <title>SIMETRIS | Inventaris</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../vendors/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/bootstrap.css">
     <!-- Add custom CSS here -->
-    <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../vendors/css/sweetalert.css">
-    <script type="text/javascript" src="../../vendors/js/chartjs/Chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
     <style>
         .bluetext {
             color: #008cba;
