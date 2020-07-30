@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.5  (32 bit)
-MySQL - 5.6.24-0ubuntu2 : Database - simetris
+SQLyog Ultimate v12.5.1 (64 bit)
+MySQL - 5.6.24-0ubuntu2 : Database - dbrachmi
 *********************************************************************
 */
 
@@ -12,9 +12,9 @@ MySQL - 5.6.24-0ubuntu2 : Database - simetris
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`simetris` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbrachmi` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `simetris`;
+USE `dbrachmi`;
 
 /*Table structure for table `FAR_DET_NOSP` */
 
@@ -243,10 +243,29 @@ CREATE TABLE `admin` (
   `id_admin` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
-  `id_unit` int(11) DEFAULT NULL,
   `nama` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `anc` */
+
+DROP TABLE IF EXISTS `anc`;
+
+CREATE TABLE `anc` (
+  `id_anc` int(100) NOT NULL AUTO_INCREMENT,
+  `id_catatan_medik` int(8) NOT NULL,
+  `id_petugas` int(10) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `kontak` varchar(15) NOT NULL,
+  `jadwal` date NOT NULL,
+  `id_sesi` int(1) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` varchar(8) NOT NULL,
+  `status` int(1) NOT NULL COMMENT '0=Belum Datang, 1=Datang',
+  `keterangan` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_anc`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `ant_anak` */
 
@@ -363,8 +382,9 @@ CREATE TABLE `booking` (
   `keterangan` varchar(200) NOT NULL,
   `id_dokter` int(10) NOT NULL,
   `id_sesi` int(1) DEFAULT NULL,
+  `mandiri` int(1) DEFAULT NULL COMMENT '0=cs, 1=mandiri',
   PRIMARY KEY (`id_booking`)
-) ENGINE=InnoDB AUTO_INCREMENT=12287 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13378 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `buku` */
 
@@ -488,7 +508,7 @@ CREATE TABLE `far_det_nosp` (
   PRIMARY KEY (`id_det_no_sp`),
   KEY `no_sp` (`no_sp`),
   KEY `id_barang` (`id_barang`)
-) ENGINE=MyISAM AUTO_INCREMENT=21738 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21988 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_det_nosp_inap` */
 
@@ -524,7 +544,7 @@ CREATE TABLE `far_det_nosp_inap` (
   PRIMARY KEY (`id_det_no_sp`),
   KEY `no_sp` (`no_sp`),
   KEY `id_barang` (`id_barang`)
-) ENGINE=MyISAM AUTO_INCREMENT=5633 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5710 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_det_trn` */
 
@@ -548,7 +568,7 @@ CREATE TABLE `far_det_trn` (
   `embalase` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_far_det_trn`),
   KEY `NO_TRN` (`id_far_trn`)
-) ENGINE=MyISAM AUTO_INCREMENT=156061 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=158722 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_det_trn_copy` */
 
@@ -622,7 +642,7 @@ CREATE TABLE `far_det_trn_fix` (
   `embalase` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_far_det_trn`),
   KEY `NO_TRN` (`id_far_trn`)
-) ENGINE=MyISAM AUTO_INCREMENT=169547 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=172210 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_det_trn_stok_keluar` */
 
@@ -715,7 +735,7 @@ CREATE TABLE `far_kel` (
   `id_far_kel` int(11) NOT NULL AUTO_INCREMENT,
   `nama` char(30) NOT NULL,
   PRIMARY KEY (`id_far_kel`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_kel_stok` */
 
@@ -858,7 +878,7 @@ CREATE TABLE `far_lap_stok_elk` (
   `tgl_akhir` char(10) DEFAULT NULL,
   `nama_petugas` char(50) DEFAULT NULL,
   PRIMARY KEY (`id_far_lap_stok_elk`)
-) ENGINE=MyISAM AUTO_INCREMENT=32920 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33873 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_lap_stok_limit` */
 
@@ -912,7 +932,7 @@ CREATE TABLE `far_log_stok` (
   `stok_inap` double DEFAULT NULL,
   `kode` char(10) DEFAULT NULL,
   PRIMARY KEY (`id_far_log_stok`)
-) ENGINE=InnoDB AUTO_INCREMENT=108313 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=111403 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_navi_pinjam` */
 
@@ -954,7 +974,7 @@ CREATE TABLE `far_nosp` (
   KEY `tanggal_faktur` (`tanggal_faktur`),
   KEY `id_petugas` (`id_petugas`),
   KEY `faktur` (`faktur`)
-) ENGINE=MyISAM AUTO_INCREMENT=8326 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8436 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_nosp_inap` */
 
@@ -986,7 +1006,7 @@ CREATE TABLE `far_nosp_inap` (
   KEY `id_petugas` (`id_petugas`),
   KEY `tanggal_faktur` (`tanggal_faktur`),
   KEY `faktur` (`faktur`)
-) ENGINE=MyISAM AUTO_INCREMENT=3149 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3198 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_nota_tmp` */
 
@@ -1217,7 +1237,7 @@ CREATE TABLE `far_stok` (
   `stok_depo_inap` int(11) DEFAULT NULL,
   `batas_stok_depo_inap` int(11) DEFAULT NULL,
   PRIMARY KEY (`no_urut`)
-) ENGINE=MyISAM AUTO_INCREMENT=1102 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1107 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_stok-lal` */
 
@@ -1389,7 +1409,7 @@ CREATE TABLE `far_stok_elk` (
   PRIMARY KEY (`id_far_stok_elk`),
   KEY `no_reg` (`id_register`),
   KEY `no_trn` (`id_trn`)
-) ENGINE=MyISAM AUTO_INCREMENT=205145 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=208186 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_stok_opname` */
 
@@ -1482,7 +1502,7 @@ CREATE TABLE `far_trn` (
   `diskon` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_far_trn`),
   KEY `no_reg` (`id_register`)
-) ENGINE=MyISAM AUTO_INCREMENT=53534 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=54404 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `far_trn_stok_keluar` */
 
@@ -1709,7 +1729,7 @@ CREATE TABLE `igd_register` (
   `suhu` decimal(10,1) DEFAULT NULL,
   `nadi` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_igd_register`)
-) ENGINE=MyISAM AUTO_INCREMENT=3204 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3239 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `igd_tindak_lanjut` */
 
@@ -1934,7 +1954,7 @@ CREATE TABLE `ksr_ctk_nota_tmp` (
   `titip` int(11) DEFAULT NULL,
   `bayar` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_ctk_nota_tmp`)
-) ENGINE=MyISAM AUTO_INCREMENT=1020 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1026 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_det_faktur` */
 
@@ -1952,7 +1972,7 @@ CREATE TABLE `ksr_det_faktur` (
   `id_suplier` int(11) DEFAULT NULL,
   `id_ksr_faktur` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_det_faktur`)
-) ENGINE=MyISAM AUTO_INCREMENT=6834 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6963 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_det_faktur_inap` */
 
@@ -1970,7 +1990,7 @@ CREATE TABLE `ksr_det_faktur_inap` (
   `id_suplier` int(11) DEFAULT NULL,
   `id_ksr_faktur` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_det_faktur`)
-) ENGINE=MyISAM AUTO_INCREMENT=2741 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2801 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_det_piutang` */
 
@@ -2045,7 +2065,7 @@ CREATE TABLE `ksr_det_trn` (
   KEY `kode` (`id_ass_2`),
   KEY `id_dokter_operator` (`id_operator`),
   KEY `id_dokter_anestesi` (`id_dokter_sp_anak`)
-) ENGINE=MyISAM AUTO_INCREMENT=279202 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=283812 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_det_trn_copy` */
 
@@ -2154,7 +2174,7 @@ CREATE TABLE `ksr_detil_jurnal_pembelian_farmasi_ralan` (
   `awal` int(1) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_detil_jurnal_pembelian_farmasi_ralan`),
   KEY `id_ksr_jurnal` (`id_ksr_jurnal_pembelian_farmasi_ralan`)
-) ENGINE=InnoDB AUTO_INCREMENT=31423 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31913 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_detil_jurnal_pembelian_farmasi_ranap` */
 
@@ -2170,7 +2190,7 @@ CREATE TABLE `ksr_detil_jurnal_pembelian_farmasi_ranap` (
   `awal` int(1) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_detil_jurnal_farmasi_ranap`),
   KEY `id_ksr_jurnal` (`id_ksr_jurnal_pembelian_farmasi_ranap`)
-) ENGINE=InnoDB AUTO_INCREMENT=6893 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6981 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_faktur` */
 
@@ -2186,7 +2206,7 @@ CREATE TABLE `ksr_faktur` (
   `lunas` int(11) DEFAULT NULL COMMENT '1=luns 0 = belum',
   `id_suplier` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_faktur`)
-) ENGINE=InnoDB AUTO_INCREMENT=6697 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6826 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_faktur_inap` */
 
@@ -2202,7 +2222,7 @@ CREATE TABLE `ksr_faktur_inap` (
   `lunas` int(11) DEFAULT NULL COMMENT '1=luns 0 = belum',
   `id_suplier` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_faktur`)
-) ENGINE=MyISAM AUTO_INCREMENT=2682 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2740 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_inkaso` */
 
@@ -2248,7 +2268,7 @@ CREATE TABLE `ksr_jurnal_pembelian_farmasi_ralan` (
   `iol` int(1) DEFAULT NULL,
   `no_inkaso` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_jurnal_pembelian_farmasi_ralan`)
-) ENGINE=MyISAM AUTO_INCREMENT=14591 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14825 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_jurnal_pembelian_farmasi_ranap` */
 
@@ -2264,7 +2284,7 @@ CREATE TABLE `ksr_jurnal_pembelian_farmasi_ranap` (
   `iol` int(1) DEFAULT NULL,
   `no_inkaso` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_jurnal_pembelian_farmasi_ranap`)
-) ENGINE=MyISAM AUTO_INCREMENT=3044 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3085 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_jurnal_posisi` */
 
@@ -2594,7 +2614,7 @@ CREATE TABLE `ksr_pend_per_para` (
   `on_loop` int(11) DEFAULT NULL,
   `insentif` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_pend_per_para`)
-) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=915 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_petugas_luar` */
 
@@ -2685,7 +2705,7 @@ CREATE TABLE `ksr_rekap_farmasi_tmp` (
   `tarif` int(11) DEFAULT NULL,
   `no_inkaso` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_rekap_tmp`)
-) ENGINE=MyISAM AUTO_INCREMENT=40441 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=40843 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_rekap_tmp` */
 
@@ -2735,7 +2755,7 @@ CREATE TABLE `ksr_sub` (
   `id_ksr_sub` int(11) NOT NULL AUTO_INCREMENT,
   `nama_sub` char(40) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_sub`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_tarif` */
 
@@ -2777,7 +2797,7 @@ CREATE TABLE `ksr_tarif` (
   `ass_petugas_luar` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_ksr_tarif`),
   KEY `kode` (`kode`)
-) ENGINE=MyISAM AUTO_INCREMENT=456 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=458 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_tarif_13-11-14` */
 
@@ -3242,7 +3262,7 @@ CREATE TABLE `ksr_trn` (
   KEY `id_asuransi` (`id_asuransi`),
   KEY `id_dokter` (`id_dokter`),
   KEY `id_pengirim` (`id_pengirim`)
-) ENGINE=MyISAM AUTO_INCREMENT=80230 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=81303 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `ksr_val_faktur` */
 
@@ -3300,7 +3320,7 @@ CREATE TABLE `lab_det_trn` (
   KEY `id_register` (`id_register`),
   KEY `id_lab_trn` (`id_lab_trn`),
   KEY `id_lab_tarif` (`id_lab_tarif`)
-) ENGINE=MyISAM AUTO_INCREMENT=110200 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=111998 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `lab_lap_kunj_poli_inap` */
 
@@ -3516,7 +3536,7 @@ CREATE TABLE `lab_trn` (
   KEY `id_dokter` (`id_dokter`),
   KEY `id_pengirim` (`id_pengirim`),
   KEY `id_sampel` (`id_sampel`)
-) ENGINE=MyISAM AUTO_INCREMENT=10006 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10178 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `log_mr_tt_pindah` */
 
@@ -3533,7 +3553,7 @@ CREATE TABLE `log_mr_tt_pindah` (
   `no_bed_akhir` char(3) DEFAULT NULL,
   `id_petugas` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_log_mr_tt_pindah`)
-) ENGINE=InnoDB AUTO_INCREMENT=386 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=393 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `log_transaksi` */
 
@@ -3549,7 +3569,7 @@ CREATE TABLE `log_transaksi` (
   `id_catatan_medik` int(11) DEFAULT NULL,
   `id_register` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_log_transaksi`)
-) ENGINE=MyISAM AUTO_INCREMENT=1038 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1055 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_agama` */
 
@@ -3602,7 +3622,7 @@ CREATE TABLE `mr_alergi` (
   `nama_obat` char(150) DEFAULT NULL,
   PRIMARY KEY (`id_alergi`),
   KEY `id_catatan_medik` (`id_catatan_medik`)
-) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_asuransi` */
 
@@ -3629,7 +3649,7 @@ CREATE TABLE `mr_batal_periksa` (
   `id_register` int(11) DEFAULT NULL,
   `id_petugas` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_mr_batala_periksa`)
-) ENGINE=InnoDB AUTO_INCREMENT=2261 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2283 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_bl` */
 
@@ -3677,7 +3697,7 @@ CREATE TABLE `mr_bl` (
   KEY `asuransi` (`id_asuransi`),
   KEY `dokter` (`id_dokter`),
   KEY `no_cm` (`id_catatan_medik`)
-) ENGINE=MyISAM AUTO_INCREMENT=81209 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=82288 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_bl_copy` */
 
@@ -3850,7 +3870,7 @@ CREATE TABLE `mr_dokter` (
   `id_dokter` int(11) NOT NULL AUTO_INCREMENT,
   `nama_dokter` char(50) NOT NULL,
   PRIMARY KEY (`id_dokter`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_golongan_darah` */
 
@@ -4184,7 +4204,7 @@ CREATE TABLE `mr_lap_kunjungan_dokter` (
   `total` int(11) NOT NULL,
   `id_dokter` int(11) NOT NULL,
   PRIMARY KEY (`id_lap_kunjungan_dokter`)
-) ENGINE=MyISAM AUTO_INCREMENT=13350 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16322 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_lap_kunjungan_kecamatan` */
 
@@ -4218,7 +4238,7 @@ CREATE TABLE `mr_lap_kunjungan_per_dokter` (
   `nama_asuransi` char(50) NOT NULL,
   `id_asuransi` int(11) NOT NULL,
   PRIMARY KEY (`id_kunjungan_per_dokter`)
-) ENGINE=MyISAM AUTO_INCREMENT=1067214 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1067725 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_lap_kunjungan_per_kecamatan` */
 
@@ -4276,7 +4296,7 @@ CREATE TABLE `mr_lap_per_diagnosa_ralan_ranap` (
   `rawat` char(30) DEFAULT NULL,
   `sex` char(20) DEFAULT NULL,
   PRIMARY KEY (`id_lap_per_diagnosa_ralan_ranap`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_laporan_baru_lama` */
 
@@ -4332,7 +4352,7 @@ CREATE TABLE `mr_log_edit_pasien_inap` (
   `tanggal` date DEFAULT NULL,
   `jam` char(8) DEFAULT NULL,
   PRIMARY KEY (`id_log_pasien_inap`)
-) ENGINE=InnoDB AUTO_INCREMENT=519 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=525 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_log_pasien_inap` */
 
@@ -4347,7 +4367,7 @@ CREATE TABLE `mr_log_pasien_inap` (
   `id_asuransi` int(11) NOT NULL DEFAULT '0',
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_log_pasien_inap`)
-) ENGINE=MyISAM AUTO_INCREMENT=4097 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4154 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_menikah` */
 
@@ -4436,7 +4456,7 @@ CREATE TABLE `mr_pasien` (
   KEY `id_pengirim` (`id_pengirim`),
   KEY `id_petugas` (`id_petugas`),
   KEY `id_register` (`id_register`)
-) ENGINE=MyISAM AUTO_INCREMENT=19576 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19795 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_pasien_copy` */
 
@@ -4584,7 +4604,7 @@ CREATE TABLE `mr_pasien_pulang` (
   `tgl_kunjungan` date DEFAULT NULL,
   `jam_kunjungan` char(8) DEFAULT NULL,
   PRIMARY KEY (`id_pasien_pulang`)
-) ENGINE=MyISAM AUTO_INCREMENT=81522 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=82742 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_pasien_tmp` */
 
@@ -4690,7 +4710,19 @@ CREATE TABLE `mr_pengirim` (
   `alamat_pengirim` char(60) NOT NULL DEFAULT '-',
   `telp` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pengirim`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `mr_petugas` */
+
+DROP TABLE IF EXISTS `mr_petugas`;
+
+CREATE TABLE `mr_petugas` (
+  `id_petugas` int(10) NOT NULL AUTO_INCREMENT,
+  `nama_petugas` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL COMMENT '1=Aktif, 0=Nonaktif',
+  `pelayanan` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id_petugas`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `mr_poli_inap` */
 
@@ -4775,7 +4807,7 @@ CREATE TABLE `mr_rla` (
   `jam` char(8) DEFAULT NULL,
   `0_6hr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_rla`)
-) ENGINE=MyISAM AUTO_INCREMENT=85368 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=86824 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_rla_copy` */
 
@@ -5064,7 +5096,7 @@ CREATE TABLE `mr_unit` (
   `tiga` int(11) NOT NULL,
   `aktif` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_unit`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mr_unit_copy` */
 
@@ -5342,7 +5374,7 @@ CREATE TABLE `psdi_riw_aplikasi` (
   `laporan` int(1) DEFAULT NULL,
   `hapus` int(1) DEFAULT NULL,
   PRIMARY KEY (`id_riw_aplikasi`)
-) ENGINE=InnoDB AUTO_INCREMENT=265 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=268 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `psdi_rs` */
 
@@ -5388,6 +5420,33 @@ CREATE TABLE `psdi_status_petugas` (
   `nama_status` char(20) NOT NULL,
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `rapidtest` */
+
+DROP TABLE IF EXISTS `rapidtest`;
+
+CREATE TABLE `rapidtest` (
+  `id_rapidtest` int(100) NOT NULL AUTO_INCREMENT,
+  `id_catatan_medik` int(8) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `sex` int(1) NOT NULL COMMENT '1. Laki-laki, 2. Perempuan',
+  `id_dokter` int(11) NOT NULL,
+  `id_unit` int(10) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` varchar(8) NOT NULL,
+  `sampel` varchar(20) NOT NULL,
+  `pemeriksaan` varchar(50) NOT NULL,
+  `igm` int(1) NOT NULL COMMENT '0. Non-Reaktif, 1. Reaktif',
+  `nilai_rujukan` int(1) NOT NULL COMMENT '	0. Non-Reaktif, 1. Reaktif	',
+  `metode` varchar(20) NOT NULL COMMENT '1. ICT',
+  `pemeriksa` varchar(50) NOT NULL,
+  `tgl_periksa` date NOT NULL,
+  `jam_periksa` varchar(8) NOT NULL,
+  `igg` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id_rapidtest`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `ro_cetak_trn` */
 
@@ -5790,18 +5849,7 @@ CREATE TABLE `tumbang` (
   `status` int(1) NOT NULL COMMENT '0=Belum Datang, 1=Datang',
   `keterangan` varchar(50) NOT NULL,
   PRIMARY KEY (`id_tumbang`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4;
-
-/*Table structure for table `tumbang_petugas` */
-
-DROP TABLE IF EXISTS `tumbang_petugas`;
-
-CREATE TABLE `tumbang_petugas` (
-  `id_petugas` int(10) NOT NULL AUTO_INCREMENT,
-  `nama_petugas` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL COMMENT '1=Aktif, 0=Nonaktif',
-  PRIMARY KEY (`id_petugas`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `v_far_faktur_total_poli` */
 
