@@ -5,15 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SIMETRIS | RSKIA Rachmi Yogyakarta</title>
-  <meta name="description" content="Pendaftaran Online | RSKIA Rachmi terletak di Jalan Wachid Hasyim Nomor 47 Yogyakarta yang merupakan jalan utama di kota Yogyakarta. Letak Rumah Sakit di kota Yogyakarta bagian Barat yang berdekatan dengan wilayah perbatasan kabupaten Bantul begitu juga selatan berbatasan dengan wilayah kabupaten Bantul.
-
-  Lokasi yang berada di jalan utama merupakan tempat strategis untuk dapat dilalui oleh semua jenis kendaraan dan akses yang mudah berdekatan dengan taman parkir Ngabean. Untuk RS yang satu tipe dengan RSKIA Rachmi, jaraknya masih cukup jauh, sehingga RSKIA Rachmi memiliki posisi yang sangai strategis. Selain itu jaraknya pun berdekatan dengan berbagai perumahan, instansi pendidikan, dan mempunyai akses yang mudah untuk mencapainya.
-
-  Keunggulan pelayanan yang RSKIA Rachmi tawarkan ialah pelayanan kesehatan dengan sistem homecare sehingga pasien mendapatkan kemudahan tanpa harus datang ke Rumah Sakit untuk kontrol, dalam hal ini pasien cukup menelepon RSKIA Rachmi dan memberitahukan alamat rumah, maka petugas akan segera datang dan melayani pasien di rumah, juga dengan memberikan harga yang kompetitif dan berkualitas.
-
-  RSKIA Rachmi Yogyakarta menyediakan fasilitas unggulan USG 4 Dimensi yang didukung oleh Dokter Kandungan dan Kebidanan Konsultan Fetomaternal serta pelayanan persalinan dengan teknologi baru yaitu persalinan normal dan operasi bedah sesar dengan nyaman dan rasa sakit yang seminimal mungkin.
-
-  RSKIA Rachmi merupakan rumah sakit yang telah lulus akreditasi SNARS 2012 yang dilakukan oleh Komisi Akreditasi Rumah Sakit.">
+  <meta name="description" content="Sistem Informasi Rumah Sakit RSKIA Rachmi Yogyakarta - Pendaftaran Online">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon.ico">
   <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -137,7 +129,7 @@
       <div class="header-menu">
         <div class="col-sm-12">
           <div class="user-area float-left">
-            <a href="https://www.rskiarachmi.co.id">
+            <a href="https://www.pendaftaran.rskiarachmi.co.id">
               <img src="images/logo.jpg" alt="Rachmi Online">
             </a>
           </div>

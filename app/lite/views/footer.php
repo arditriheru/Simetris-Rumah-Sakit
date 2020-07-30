@@ -1,4 +1,13 @@
-<div align="center"><p>Developed by Ardi Tri Heru<br>Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script><a expr:href='data:blog.homepageUrl'><data:blog.title/>.</a> All rights reserved.<br><font face="consolas" >Version 1.0.Beta</font></div><br><br>
+<!--
+  Name        : SIMETRIS
+  Description : Sistem Informasi Rumah Sakit.
+  Date        : 2019
+  Developer   : Ardi Tri Heru
+  Phone/WA    : 0896-2967-1717
+  Email       : arditriheruh@gmail.com
+  Website     : https://www.arditriheru.com
+-->
+<div align="center">&#169;<script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script><a expr:href='data:blog.homepageUrl'><data:blog.title/></a> <a class="blacktext" href="https://instagram.com/arditriheru">IT RSKIA Rachmi</a><br>v1.0.Beta</p></div><br><br>
 </div><!-- Right Panel -->
 <!-- footer -->
 <script>
@@ -12,12 +21,12 @@
         document.getElementById("myDiv").style.display = "block";
       }
       $(document).ready(function(){
-    $(".fancybox").fancybox({
-        openEffect: "none",
-        closeEffect: "none"
-          });
+        $(".fancybox").fancybox({
+          openEffect: "none",
+          closeEffect: "none"
+        });
       });
-   
+
     </script>
     <script src="vendors/sweetalert/sweetalert.min.js"></script>
     <script src="vendors/jquery/dist/jquery.min.js"></script>
