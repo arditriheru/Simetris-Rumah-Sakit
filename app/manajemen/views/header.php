@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-include "../../system/session-start.php";
+include "session-start.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
