@@ -11,16 +11,11 @@ include "../../system/session-start.php";
     <meta name="author" content="">
     <title>SIMETRIS - Manajemen</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../vendors/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/bootstrap.css">
     <!-- Add custom CSS here -->
-    <link href="../../vendors/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../vendors/font-awesome/css/font-awesome.min.css">
-    <script src="../../vendors/js/font-awesome.js"></script>
-    <!-- Page Specific CSS -->
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-    <script type="text/javascript" src="../../vendors/chartjs/Chart.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../vendors/css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
     <style>
         .bluetext {
             color: #008cba;
