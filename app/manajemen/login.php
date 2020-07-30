@@ -63,7 +63,7 @@
 							setTimeout(function() {
 								swal({
 									title: 'Stop',
-									text: 'Anda Tidak Memiliki Akses',
+									text: 'Anda tidak memiliki akses',
 									type: 'error'
 									}, function() {
 										window.location = 'login';
@@ -99,7 +99,6 @@
 											<a href="../../dashboard"><i class="fa fa-arrow-left"></i> Back</a>
 										</div>
 										<?php include "../../system/copyright.php";?>
-										<script src="../../vendors/js/sweetalert.min.js"></script>
 										<!-- JavaScript -->
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/font-awesome.js"></script>
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/jquery-1.10.2.js"></script>
