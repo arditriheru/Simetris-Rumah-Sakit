@@ -75,14 +75,13 @@ include "controller/anak-controller.php";
 						<font size="10"><?php echo $total;?></font><br>
 						<font size="6">Pasien</font><br><br>
 						<button name="next" type="submit" 
-							class="btn btn-warning btn-lg" onClick="window.location.reload()">Refresh</button>
-							<br><br>
-						</div>
+						class="btn btn-warning btn-lg" onClick="window.location.reload()">Refresh</button>
+						<br><br>
 					</div>
 				</div>
-				</div><?php include "../copyright.php";?>
 			</div>
-		</div>
+			<?php include '../../system/copyright.php';?>
+		</div>			
 		<script type="text/javascript">
 			function onWindowClosing() {
 				if (window.event.clientX < 0 || window.event.clientY < 0) {
@@ -106,4 +105,3 @@ include "controller/anak-controller.php";
     </script>
     <?php include "controller/suara.php";?><br><br><!-- /#page-wrapper -->
     <?php include "views/footer.php"; ?>
-    <div class="col-xs-12 hidden-md hidden-lg"><?php include "anak-add.php";?></div>

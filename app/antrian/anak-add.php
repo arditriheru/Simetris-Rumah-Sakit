@@ -1,10 +1,10 @@
 <?php include "controller/anak-controller.php";?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	var anakadd = setInterval(
 		function(){
 			$('#anakadd').load('anak-add.php').fadeIn("slow");
 		}, 1000);
-	</script>
+	</script> -->
 	<div id="anakadd">
 		<?php 
 		if($total>$max){
