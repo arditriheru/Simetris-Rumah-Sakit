@@ -44,9 +44,9 @@
 		$cek = mysqli_num_rows($a);
 		if($cek > 0){
 			if($akses > 0){
-				$_SESSION['admin_username'] = $nama_user;
-				$_SESSION['admin_nama_login'] = $nama_login;
-				$_SESSION['admin_status'] = "login";
+				$_SESSION['username'] = $nama_user;
+				$_SESSION['nama_login'] = $nama_login;
+				$_SESSION['status'] = "Admin";
 				echo "<script>
 				setTimeout(function() {
 					swal({
@@ -54,14 +54,14 @@
 						text: 'Selamat Datang $nama_login',
 						type: 'success'
 						}, function() {
-							window.location = 'admin/admin-dashboard';
+							window.location = 'dashboard';
 							});
 							}, 10);
 							</script>";
 						}else{
-							$_SESSION['operator_username'] = $nama_user;
-							$_SESSION['operator_nama_login'] = $nama_login;
-							$_SESSION['operator_status'] = "login";
+							$_SESSION['username'] = $nama_user;
+							$_SESSION['nama_login'] = $nama_login;
+							$_SESSION['status'] = "Operator";
 							echo "<script>
 							setTimeout(function() {
 								swal({
@@ -69,7 +69,7 @@
 									text: 'Selamat Datang $nama_login',
 									type: 'success'
 									}, function() {
-										window.location = 'operator/operator-dashboard';
+										window.location = 'dashboard';
 										});
 										}, 10);
 										</script>";
@@ -112,6 +112,5 @@
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/morris/chart-data-morris.js"></script>
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/jquery.tablesorter.js"></script>
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/tables.js"></script>
-
 									</body>
 									</html>
