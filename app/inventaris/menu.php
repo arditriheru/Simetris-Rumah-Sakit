@@ -25,9 +25,6 @@
         </li>
         <li><a href="jenis-tambah"><i class="fa fa-tag"></i> Jenis</a></li>
         <li><a href="ruangan-tambah"><i class="fa fa-home"></i> Ruangan</a></li>
-        <li><a href="../../system/tutorial?id_buku=50">
-          <i class="fa fa-file"></i> Dokumentasi</a>
-        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
         <li class="dropdown user-dropdown">
