@@ -1,7 +1,7 @@
-<?php include "../views/header.php"; ?>
+<?php include "views/header.php"; ?>
 <nav>
   <div id="wrapper">
-    <?php include "admin-menu.php"; ?>   
+    <?php include "menu.php"; ?>   
   </div><!-- /.navbar-collapse -->
 </nav>
 <div id="page-wrapper">
@@ -12,7 +12,7 @@
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
-      <?php include "../../../system/welcome.php"?>
+      <?php include "../../system/welcome.php"?>
     </div>
     <div class="col-lg-6">
       <div class="table-responsive">
@@ -91,7 +91,7 @@
                         text: 'Menambah Hasil Rapid test',
                         type: 'success'
                         }, function() {
-                          window.location = 'admin-covid-rapid-tambah';
+                          window.location = 'covid-rapid-tambah';
                           });
                           }, 10);
                           </script>";
@@ -103,7 +103,7 @@
                               text: 'Coba Sekali Lagi',
                               type: 'error'
                               }, function() {
-                                window.location = 'admin-covid-rapid-tambah';
+                                window.location = 'covid-rapid-tambah';
                                 });
                                 }, 10);
                                 </script>";
@@ -214,4 +214,4 @@
                   </div>
                 </div><!-- /.row -->
               </div><!-- /#wrapper -->
-              <?php include "../views/footer.php"; ?>
+              <?php include "views/footer.php"; ?>
