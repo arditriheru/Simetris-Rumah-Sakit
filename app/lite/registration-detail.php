@@ -56,6 +56,10 @@
                             <td>Reservasi</td>
                             <td><?php echo format_indo($d['tanggal']); ?> / <?php echo $d['jam']; ?></td>
                           </tr>
+                          <tr>
+                            <td>Keterangan</td>
+                            <td><?php echo $d['keterangan']; ?></td>
+                          </tr>
                         </tbody>
                         </table> <?php } ?>
                       </div>

@@ -15,7 +15,7 @@ $id_sesi          = $_POST['id_sesi'];
 $tanggal          = $tanggal;
 $jam              = $jam;
 $status           = '2';
-$keterangan       = 'DAFTAR MANDIRI';
+$keterangan       = 'DAFTAR MANDIRI, AMAN';
 $mandiri          = '1';
 
 $tglsekarang  = new DateTime();
