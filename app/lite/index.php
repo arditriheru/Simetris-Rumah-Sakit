@@ -1,7 +1,4 @@
 <?php include "views/header.php"; ?>
-<div class="form-group text-center">
-  <img src="images/logo-rachmi-akreditasi-kars-1.png" alt="Rachmi Online">
-</div>
 <div class="content mt-3">
   <div class="row">
     <div class="col">
