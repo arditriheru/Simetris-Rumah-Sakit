@@ -152,7 +152,7 @@
                                     </div><br>
                                     <div>
                                         <button id="diagnosa" name="diagnosa" type="submit" class="btn btn-lg btn-info btn-block">
-                                            <span id="search-schedule-amount">Diagnosa</span>
+                                            <span id="search-schedule-amount">Diagnosis</span>
                                             <span id="search-schedule-sending" style="display:none;">Sending…</span>
                                         </button>
                                     </div>
