@@ -7,7 +7,7 @@
   Email       : arditriheruh@gmail.com
   Website     : https://www.arditriheru.com
 -->
-<div align="center">&#169;<script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script><a expr:href='data:blog.homepageUrl'><data:blog.title/></a> <a class="blacktext" href="https://instagram.com/arditriheru">IT RSKIA Rachmi</a><br>v1.0.Beta</p></div><br><br>
+<div align="center"><small>&#169;<script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script><a expr:href='data:blog.homepageUrl'><data:blog.title/></a> <a class="blacktext" href="https://instagram.com/arditriheru">IT RSKIA Rachmi</a><br>v1.0.Beta</p></small></div><br><br>
 </div><!-- Right Panel -->
 <!-- footer -->
 <script>
