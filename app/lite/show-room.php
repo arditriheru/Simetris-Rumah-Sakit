@@ -4,57 +4,36 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header">
-            <strong>Ketersediaan Kamar</strong>
-          </div>
           <div class="card-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col"><center>Kamar</th>
-                    <th scope="col"><center>Bed</th>
-                      <th scope="col"><center>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!---------- Batas ----------->
-                      <?php 
-                      $no = 1;
-                      $data = mysqli_query($koneksi,
-                       "SELECT mr_tt.kelas, mr_unit.nama_unit, mr_tt.no_bed, mr_tt.id_register,
-                       IF(mr_tt.no_bed='1', 'A', 'B') AS bed
-                       FROM mr_tt, mr_unit
-                       WHERE mr_tt.id_unit = mr_unit.id_unit
-                       AND mr_tt.id_unit = 6;");
-                      while($d = mysqli_fetch_array($data)){
-                        $id_register = $d['id_register'];
-                        ?>
-                        <tr>
-                          <td><left><font class="bluetext"><?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
-                            <td><center><?php echo $d['bed']; ?></td>
-                              <td><center>
-                                <?php
-                                if($id_register=='123'){
-                                  ?>
-                                  <font class="greentext">Kosong</font>
-                                  <?php
-                                }else{
-                                  ?>
-                                  <font class="redtext">Terpakai</font>
-                                  <?php
-                                }
-                                ?>
-                              </td>
-                            </tr>
-                          <?php } ?>
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+              <div class="card-body">
+                <div class="form-group text-center">
+                  <img src="images/logo-rachmi-akreditasi-kars.png" alt="Rachmi Online">
+                </div>
+                <div class="card-title">
+                  <h4 class="text-center">Ketersediaan Kamar</h4>
+                </div>
+                <hr>
+                <table class="table">
+
+                  <thead>
+                    <tr>
+                      <th scope="col"><center>Kamar</th>
+                        <th scope="col"><center>Bed</th>
+                          <th scope="col"><center>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
                           <!---------- Batas ----------->
                           <?php 
+                          $no = 1;
                           $data = mysqli_query($koneksi,
                            "SELECT mr_tt.kelas, mr_unit.nama_unit, mr_tt.no_bed, mr_tt.id_register,
                            IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                            FROM mr_tt, mr_unit
                            WHERE mr_tt.id_unit = mr_unit.id_unit
-                           AND mr_tt.id_unit = 29;");
+                           AND mr_tt.id_unit = 6;");
                           while($d = mysqli_fetch_array($data)){
                             $id_register = $d['id_register'];
                             ?>
@@ -83,7 +62,7 @@
                                IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                FROM mr_tt, mr_unit
                                WHERE mr_tt.id_unit = mr_unit.id_unit
-                               AND mr_tt.id_unit = 24;");
+                               AND mr_tt.id_unit = 29;");
                               while($d = mysqli_fetch_array($data)){
                                 $id_register = $d['id_register'];
                                 ?>
@@ -112,7 +91,7 @@
                                    IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                    FROM mr_tt, mr_unit
                                    WHERE mr_tt.id_unit = mr_unit.id_unit
-                                   AND mr_tt.id_unit = 26;");
+                                   AND mr_tt.id_unit = 24;");
                                   while($d = mysqli_fetch_array($data)){
                                     $id_register = $d['id_register'];
                                     ?>
@@ -141,7 +120,7 @@
                                        IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                        FROM mr_tt, mr_unit
                                        WHERE mr_tt.id_unit = mr_unit.id_unit
-                                       AND mr_tt.id_unit = 7;");
+                                       AND mr_tt.id_unit = 26;");
                                       while($d = mysqli_fetch_array($data)){
                                         $id_register = $d['id_register'];
                                         ?>
@@ -170,12 +149,12 @@
                                            IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                            FROM mr_tt, mr_unit
                                            WHERE mr_tt.id_unit = mr_unit.id_unit
-                                           AND mr_tt.id_unit = 28;");
+                                           AND mr_tt.id_unit = 7;");
                                           while($d = mysqli_fetch_array($data)){
                                             $id_register = $d['id_register'];
                                             ?>
                                             <tr>
-                                              <td><left><font class="bluetext">Kelas <?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
+                                              <td><left><font class="bluetext"><?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
                                                 <td><center><?php echo $d['bed']; ?></td>
                                                   <td><center>
                                                     <?php
@@ -199,7 +178,7 @@
                                                IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                                FROM mr_tt, mr_unit
                                                WHERE mr_tt.id_unit = mr_unit.id_unit
-                                               AND mr_tt.id_unit = 27;");
+                                               AND mr_tt.id_unit = 28;");
                                               while($d = mysqli_fetch_array($data)){
                                                 $id_register = $d['id_register'];
                                                 ?>
@@ -228,7 +207,7 @@
                                                    IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                                    FROM mr_tt, mr_unit
                                                    WHERE mr_tt.id_unit = mr_unit.id_unit
-                                                   AND mr_tt.id_unit = 31;");
+                                                   AND mr_tt.id_unit = 27;");
                                                   while($d = mysqli_fetch_array($data)){
                                                     $id_register = $d['id_register'];
                                                     ?>
@@ -257,7 +236,7 @@
                                                        IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                                        FROM mr_tt, mr_unit
                                                        WHERE mr_tt.id_unit = mr_unit.id_unit
-                                                       AND mr_tt.id_unit = 30;");
+                                                       AND mr_tt.id_unit = 31;");
                                                       while($d = mysqli_fetch_array($data)){
                                                         $id_register = $d['id_register'];
                                                         ?>
@@ -286,35 +265,66 @@
                                                            IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                                                            FROM mr_tt, mr_unit
                                                            WHERE mr_tt.id_unit = mr_unit.id_unit
-                                                           AND mr_tt.id_unit = 25
-                                                           ORDER BY mr_tt.no_bed ASC;");
+                                                           AND mr_tt.id_unit = 30;");
                                                           while($d = mysqli_fetch_array($data)){
-                                                           $id_register = $d['id_register'];
-                                                           ?>
-                                                           <tr>
-                                                            <td><left><font class="bluetext">Kelas <?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
-                                                              <td><center><?php echo $d['bed']; ?></td>
-                                                                <td><center>
-                                                                  <?php
-                                                                  if($id_register=='123'){
-                                                                    ?>
-                                                                    <font class="greentext">Kosong</font>
+                                                            $id_register = $d['id_register'];
+                                                            ?>
+                                                            <tr>
+                                                              <td><left><font class="bluetext">Kelas <?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
+                                                                <td><center><?php echo $d['bed']; ?></td>
+                                                                  <td><center>
                                                                     <?php
-                                                                  }else{
+                                                                    if($id_register=='123'){
+                                                                      ?>
+                                                                      <font class="greentext">Kosong</font>
+                                                                      <?php
+                                                                    }else{
+                                                                      ?>
+                                                                      <font class="redtext">Terpakai</font>
+                                                                      <?php
+                                                                    }
                                                                     ?>
-                                                                    <font class="redtext">Terpakai</font>
-                                                                    <?php
-                                                                  }
-                                                                  ?>
-                                                                </td>
-                                                              </tr>
-                                                            <?php } ?>
-                                                          </tbody>
-                                                        </table>
+                                                                  </td>
+                                                                </tr>
+                                                              <?php } ?>
+                                                              <!---------- Batas ----------->
+                                                              <?php 
+                                                              $data = mysqli_query($koneksi,
+                                                               "SELECT mr_tt.kelas, mr_unit.nama_unit, mr_tt.no_bed, mr_tt.id_register,
+                                                               IF(mr_tt.no_bed='1', 'A', 'B') AS bed
+                                                               FROM mr_tt, mr_unit
+                                                               WHERE mr_tt.id_unit = mr_unit.id_unit
+                                                               AND mr_tt.id_unit = 25
+                                                               ORDER BY mr_tt.no_bed ASC;");
+                                                              while($d = mysqli_fetch_array($data)){
+                                                               $id_register = $d['id_register'];
+                                                               ?>
+                                                               <tr>
+                                                                <td><left><font class="bluetext">Kelas <?php echo $d['kelas'];?></font> <?php echo $d['nama_unit']; ?></td>
+                                                                  <td><center><?php echo $d['bed']; ?></td>
+                                                                    <td><center>
+                                                                      <?php
+                                                                      if($id_register=='123'){
+                                                                        ?>
+                                                                        <font class="greentext">Kosong</font>
+                                                                        <?php
+                                                                      }else{
+                                                                        ?>
+                                                                        <font class="redtext">Terpakai</font>
+                                                                        <?php
+                                                                      }
+                                                                      ?>
+                                                                    </td>
+                                                                  </tr>
+                                                                <?php } ?>
+                                                              </tbody>
+                                                            </table>
+                                                          </div>
+                                                        </div>
                                                       </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
+                                                    </div><!-- .card -->
+                                                  </div><!--/.col-->
+                                                </div><!--/.row-->
                                               </div>
                                             </div>
                                             <nav class="nav-bottom">

@@ -5,11 +5,20 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <img class="img-responsive" src="images/price-list.jpg" width="100%" alt="Koneksi internet lambat..">
+                        <!-- Credit Card -->
+                        <div id="pay-invoice">
+                            <div class="card-body">
+                                <div class="form-group text-center">
+                                    <img src="images/logo-rachmi-akreditasi-kars.png" alt="Rachmi Online">
+                                </div>
+                                <hr>
+                                <img class="img-responsive" src="images/price-list.jpg" width="100%" alt="Koneksi internet lambat.."><br>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div><!-- .card -->
+            </div><!--/.col-->
+        </div><!--/.row-->
     </div>
 </div>
 <nav class="nav-bottom">
