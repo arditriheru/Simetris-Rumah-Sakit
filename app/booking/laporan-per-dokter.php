@@ -96,7 +96,7 @@
                     <label>Sampai Tanggal</label>
                     <input class="form-control" type="date" name="akhir">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>Sesi</label>
                     <select class="form-control" type="text" name="id_sesi">
                       <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
@@ -109,7 +109,7 @@
                       }
                       ?>
                     </select>
-                  </div>
+                  </div> -->
                   <button type="submit" class="btn btn-success">Cari</button>
                 </div>
               </form>
