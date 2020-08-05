@@ -24,10 +24,10 @@
                   AND jadwal.id_dokter = $id_dokter;");
                 while($d = mysqli_fetch_array($data)){
                   ?>
+                  <hr>
                   <div class="card-title">
-                    <b><center><?php echo $d['nama_dokter']; ?></b>
+                    <b class="bluetext"><center><?php echo $d['nama_dokter']; ?></b>
                     </div>
-                    <hr>
                     <div class="card-body">
                       <table class="table">
                         <thead>

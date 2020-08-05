@@ -11,6 +11,7 @@
                 <div class="form-group text-center">
                   <img src="images/logo-rachmi-akreditasi-kars.png" alt="Rachmi Online">
                 </div>
+                <hr>
                 <div class="card-title">
                   <h4 class="text-center">Skrining COVID-19</h4>
                 </div>

@@ -11,12 +11,14 @@
                 <div class="form-group text-center">
                   <img src="images/logo-rachmi-akreditasi-kars.png" alt="Rachmi Online">
                 </div>
+               <!--  <hr>
                 <div class="card-title">
                   <h4 class="text-center">Ketersediaan Kamar</h4>
-                </div>
+                </div> -->
+                <hr>
+                <center><i class="fa fa-check"></i> = Tersedia &nbsp; <i class="fa fa-close"></i> = Terpakai</center>
                 <hr>
                 <table class="table">
-
                   <thead>
                     <tr>
                       <th scope="col"><center>Kamar</th>
@@ -44,11 +46,11 @@
                                     <?php
                                     if($id_register=='123'){
                                       ?>
-                                      <font class="greentext">Kosong</font>
+                                      <i class="fa fa-check"></i>
                                       <?php
                                     }else{
                                       ?>
-                                      <font class="redtext">Terpakai</font>
+                                      <i class="fa fa-close"></i>
                                       <?php
                                     }
                                     ?>
@@ -73,11 +75,11 @@
                                         <?php
                                         if($id_register=='123'){
                                           ?>
-                                          <font class="greentext">Kosong</font>
+                                          <i class="fa fa-check"></i>
                                           <?php
                                         }else{
                                           ?>
-                                          <font class="redtext">Terpakai</font>
+                                          <i class="fa fa-close"></i>
                                           <?php
                                         }
                                         ?>
@@ -102,11 +104,11 @@
                                             <?php
                                             if($id_register=='123'){
                                               ?>
-                                              <font class="greentext">Kosong</font>
+                                              <i class="fa fa-check"></i>
                                               <?php
                                             }else{
                                               ?>
-                                              <font class="redtext">Terpakai</font>
+                                              <i class="fa fa-close"></i>
                                               <?php
                                             }
                                             ?>
@@ -131,11 +133,11 @@
                                                 <?php
                                                 if($id_register=='123'){
                                                   ?>
-                                                  <font class="greentext">Kosong</font>
+                                                  <i class="fa fa-check"></i>
                                                   <?php
                                                 }else{
                                                   ?>
-                                                  <font class="redtext">Terpakai</font>
+                                                  <i class="fa fa-close"></i>
                                                   <?php
                                                 }
                                                 ?>
@@ -160,11 +162,11 @@
                                                     <?php
                                                     if($id_register=='123'){
                                                       ?>
-                                                      <font class="greentext">Kosong</font>
+                                                      <i class="fa fa-check"></i>
                                                       <?php
                                                     }else{
                                                       ?>
-                                                      <font class="redtext">Terpakai</font>
+                                                      <i class="fa fa-close"></i>
                                                       <?php
                                                     }
                                                     ?>
@@ -189,11 +191,11 @@
                                                         <?php
                                                         if($id_register=='123'){
                                                           ?>
-                                                          <font class="greentext">Kosong</font>
+                                                          <i class="fa fa-check"></i>
                                                           <?php
                                                         }else{
                                                           ?>
-                                                          <font class="redtext">Terpakai</font>
+                                                          <i class="fa fa-close"></i>
                                                           <?php
                                                         }
                                                         ?>
@@ -218,11 +220,11 @@
                                                             <?php
                                                             if($id_register=='123'){
                                                               ?>
-                                                              <font class="greentext">Kosong</font>
+                                                              <i class="fa fa-check"></i>
                                                               <?php
                                                             }else{
                                                               ?>
-                                                              <font class="redtext">Terpakai</font>
+                                                              <i class="fa fa-close"></i>
                                                               <?php
                                                             }
                                                             ?>
@@ -247,11 +249,11 @@
                                                                 <?php
                                                                 if($id_register=='123'){
                                                                   ?>
-                                                                  <font class="greentext">Kosong</font>
+                                                                  <i class="fa fa-check"></i>
                                                                   <?php
                                                                 }else{
                                                                   ?>
-                                                                  <font class="redtext">Terpakai</font>
+                                                                  <i class="fa fa-close"></i>
                                                                   <?php
                                                                 }
                                                                 ?>
@@ -276,11 +278,11 @@
                                                                     <?php
                                                                     if($id_register=='123'){
                                                                       ?>
-                                                                      <font class="greentext">Kosong</font>
+                                                                      <i class="fa fa-check"></i>
                                                                       <?php
                                                                     }else{
                                                                       ?>
-                                                                      <font class="redtext">Terpakai</font>
+                                                                      <i class="fa fa-close"></i>
                                                                       <?php
                                                                     }
                                                                     ?>
@@ -306,11 +308,11 @@
                                                                       <?php
                                                                       if($id_register=='123'){
                                                                         ?>
-                                                                        <font class="greentext">Kosong</font>
+                                                                        <i class="fa fa-check"></i>
                                                                         <?php
                                                                       }else{
                                                                         ?>
-                                                                        <font class="redtext">Terpakai</font>
+                                                                        <i class="fa fa-close"></i>
                                                                         <?php
                                                                       }
                                                                       ?>

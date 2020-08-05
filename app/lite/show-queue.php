@@ -21,10 +21,10 @@ include "controller/kandungan-controller.php";
                         <div class="form-group text-center">
                           <img src="images/logo-rachmi-akreditasi-kars.png" alt="Rachmi Online">
                       </div>
+                      <hr>
                       <div class="card-title">
                           <h4 class="text-center">Antrian Pasien</h4>
                       </div>
-                      <hr>
                       <table class="table">
                           <thead>
                             <tr>
