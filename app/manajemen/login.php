@@ -90,9 +90,9 @@
 											<p class="tulisan_login">Silahkan login</p>
 											<form method="post">
 												<label>Username</label>
-												<input type="text" name="nama_user" class="form_login" placeholder="Masukkan ..">
+												<input type="text" name="nama_user" class="form_login" placeholder="Masukkan .." required>
 												<label>Password</label>
-												<input type="password" name="password" class="form_login" placeholder="Masukkan ..">
+												<input type="password" name="password" class="form_login" placeholder="Masukkan .." required>
 												<input type="submit" class="tombol_login" name="login" value="LOGIN">
 												<br><br>			
 											</form>
@@ -109,6 +109,5 @@
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/morris/chart-data-morris.js"></script>
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/jquery.tablesorter.js"></script>
 										<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/tables.js"></script>
-
 									</body>
 									</html>
