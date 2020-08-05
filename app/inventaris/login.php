@@ -62,9 +62,9 @@
 								<p class="tulisan_login">Silahkan login</p>
 								<form method="post">
 									<label>Username</label>
-									<input type="text" name="username" class="form_login" placeholder="Masukkan ..">
+									<input type="text" name="username" class="form_login" placeholder="Masukkan .." required>
 									<label>Password</label>
-									<input type="password" name="password" class="form_login" placeholder="Masukkan ..">
+									<input type="password" name="password" class="form_login" placeholder="Masukkan .." required>
 									<input type="submit" class="tombol_login" name="login" value="LOGIN">
 									<br><br>			
 								</form>
