@@ -92,7 +92,7 @@
                                           <ol>
                                             <div class="form-group">
                                               <label><li></li></label> Apakah pasien (termasuk pendamping) merasa demam >38&deg;C / riwayat demam <14 hari?
-                                              <select class="form-control" type="text" name="a1" required>
+                                              <select class="form-control" type="text" name="a1" required="">
                                                <option value="">Pilih</option>
                                                <option value='1'>Ya</option>
                                                <option value='0'>Tidak</option>"
@@ -100,7 +100,7 @@
                                            </div>
                                            <div class="form-group">
                                             <label><li></li></label> Apakah pasien (termasuk pendamping) merasa batuk / pilek / sakit tenggorokan / sesak nafas <14 hari?
-                                            <select class="form-control" type="text" name="a2" required>
+                                            <select class="form-control" type="text" name="a2" required="">
                                              <option value="">Pilih</option>
                                              <option value='1'>Ya</option>
                                              <option value='0'>Tidak</option>"
@@ -108,7 +108,7 @@
                                          </div>
                                          <div class="form-group">
                                           <label><li></li></label> Apakah pasien (termasuk pendamping) merasakan nafas cepat / terasa berat <14 hari?<br>
-                                            <select class="form-control" type="text" name="a3" required>
+                                            <select class="form-control" type="text" name="a3" required="">
                                              <option value="">Pilih</option>
                                              <option value='1'>Ya</option>
                                              <option value='0'>Tidak</option>"
@@ -119,7 +119,7 @@
                                        <ol>
                                         <div class="form-group">
                                           <label><li></li></label> Tidak ada penyebab lain berdasarkan gambaran klinis yang meyakinkan
-                                          <select class="form-control" type="text" name="b1" required>
+                                          <select class="form-control" type="text" name="b1" required="">
                                             <option value='1' selected >Ya (Otomatis)</option>
                                           </select>
                                         </div>
@@ -128,7 +128,7 @@
                                       <ol>
                                         <div class="form-group">
                                           <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat perjalanan / tinggal di luar negeri dalam waktu 14 hari sebelum timbul gejala?
-                                          <select class="form-control" type="text" name="c1" required>
+                                          <select class="form-control" type="text" name="c1" required="">
                                            <option value="">Pilih</option>
                                            <option value='1'>Ya</option>
                                            <option value='0'>Tidak</option>"
@@ -136,7 +136,7 @@
                                        </div>
                                        <div class="form-group">
                                         <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat bepergian dari area transmisi lokal di Indonesia / dari luar kota Yogyakarta / Indogrosir Yogyakarta, dalam waktu 14 hari sebelum timbul gejala?
-                                        <select class="form-control" type="text" name="c2" required>
+                                        <select class="form-control" type="text" name="c2" required="">
                                          <option value="">Pilih</option>
                                          <option value='1'>Ya</option>
                                          <option value='0'>Tidak</option>"
@@ -144,7 +144,7 @@
                                      </div>
                                      <div class="form-group">
                                       <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat kontak erat dengan pasien yang diduga maupun yang positif COVID-19?<br>
-                                      <select class="form-control" type="text" name="c3" required>
+                                      <select class="form-control" type="text" name="c3" required="">
                                        <option value="">Pilih</option>
                                        <option value='1'>Ya</option>
                                        <option value='0'>Tidak</option>"
@@ -165,18 +165,19 @@
                     </div><!--/.row-->
                   </div>
                 </div>
-                <nav class="nav-bottom">
-                  <a href="help" class="nav-bottom__link">
-                    <i class="material-icons nav-bottom__icon">help_outline</i>
-                    <span class="nav-bottom__text">Help</span>
-                  </a>
-                  <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
-                    <i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav-bottom__text">Home</span>
-                  </a>
-                  <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link">
-                    <i class="material-icons nav-bottom__icon">arrow_back</i>
-                    <span class="nav-bottom__text">Back</span>
-                  </a>
-                </nav>
-                <?php include "views/footer.php"; ?> 
+              </div>
+              <nav class="nav-bottom">
+                <a href="help" class="nav-bottom__link">
+                  <i class="material-icons nav-bottom__icon">help_outline</i>
+                  <span class="nav-bottom__text">Help</span>
+                </a>
+                <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
+                  <i class="material-icons nav__icon">dashboard</i>
+                  <span class="nav-bottom__text">Home</span>
+                </a>
+                <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link">
+                  <i class="material-icons nav-bottom__icon">arrow_back</i>
+                  <span class="nav-bottom__text">Back</span>
+                </a>
+              </nav>
+              <?php include "views/footer.php"; ?> 
