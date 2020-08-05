@@ -44,7 +44,7 @@
               text: 'Curiga Pasien Dalam Pengawasan',
               type: 'error'
               }, function() {
-                window.location = 'booking-tambah';
+                window.location = 'covid-skrining';
                 });
                 }, 10);
                 </script>";
@@ -59,7 +59,7 @@
                     text: 'Curiga Orang Dalam Pengawasan',
                     type: 'warning'
                     }, function() {
-                      window.location = 'booking-tambah';
+                      window.location = 'covid-skrining';
                       });
                       }, 10);
                       </script>";
@@ -71,7 +71,7 @@
                           text: 'Curiga Orang Tanpa Gejala',
                           type: 'warning'
                           }, function() {
-                            window.location = 'booking-tambah';
+                            window.location = 'covid-skrining';
                             });
                             }, 10);
                             </script>";
@@ -95,24 +95,24 @@
                                 <ol>
                                   <div class="form-group">
                                     <label><li></li></label> Apakah pasien (termasuk pendamping) merasa demam >38&deg;C / riwayat demam <14 hari?
-                                    <select class="form-control" type="text" name="a1">
-                                      <option disabled selected>Pilih</option>
+                                    <select class="form-control" type="text" name="a1" required>
+                                      <option value="">Pilih</option>
                                       <option value='1'>Ya</option>
                                       <option value='0'>Tidak</option>"
                                     </select>
                                   </div>
                                   <div class="form-group">
                                     <label><li></li></label> Apakah pasien (termasuk pendamping) merasa batuk / pilek / sakit tenggorokan / sesak nafas <14 hari?
-                                    <select class="form-control" type="text" name="a2">
-                                      <option disabled selected>Pilih</option>
+                                    <select class="form-control" type="text" name="a2" required>
+                                      <option value="">Pilih</option>
                                       <option value='1'>Ya</option>
                                       <option value='0'>Tidak</option>"
                                     </select>
                                   </div>
                                   <div class="form-group">
                                     <label><li></li></label> Apakah pasien (termasuk pendamping) merasakan nafas cepat / terasa berat <14 hari?<br>
-                                      <select class="form-control" type="text" name="a3">
-                                        <option disabled selected>Pilih</option>
+                                      <select class="form-control" type="text" name="a3" required>
+                                        <option value="">Pilih</option>
                                         <option value='1'>Ya</option>
                                         <option value='0'>Tidak</option>"
                                       </select>
@@ -122,7 +122,7 @@
                                   <ol>
                                     <div class="form-group">
                                       <label><li></li></label> Tidak ada penyebab lain berdasarkan gambaran klinis yang meyakinkan
-                                      <select class="form-control" type="text" name="b1">
+                                      <select class="form-control" type="text" name="b1" required>
                                         <option value='1' selected >Ya (Otomatis)</option>
                                       </select>
                                     </div>
@@ -133,24 +133,24 @@
                                   <ol>
                                     <div class="form-group">
                                       <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat perjalanan / tinggal di luar negeri dalam waktu 14 hari sebelum timbul gejala?
-                                      <select class="form-control" type="text" name="c1">
-                                        <option disabled selected>Pilih</option>
+                                      <select class="form-control" type="text" name="c1" required>
+                                        <option value="">Pilih</option>
                                         <option value='1'>Ya</option>
                                         <option value='0'>Tidak</option>"
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat bepergian dari area transmisi lokal di Indonesia / dari luar kota Yogyakarta / Indogrosir Yogyakarta, dalam waktu 14 hari sebelum timbul gejala?
-                                      <select class="form-control" type="text" name="c2">
-                                        <option disabled selected>Pilih</option>
+                                      <select class="form-control" type="text" name="c2" required>
+                                        <option value="">Pilih</option>
                                         <option value='1'>Ya</option>
                                         <option value='0'>Tidak</option>"
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label><li></li></label> Apakah pasien (termasuk pendamping) memiliki riwayat kontak erat dengan pasien yang diduga maupun yang positif COVID-19?<br>
-                                      <select class="form-control" type="text" name="c3">
-                                        <option disabled selected>Pilih</option>
+                                      <select class="form-control" type="text" name="c3" required>
+                                        <option value="">Pilih</option>
                                         <option value='1'>Ya</option>
                                         <option value='0'>Tidak</option>"
                                       </select>
