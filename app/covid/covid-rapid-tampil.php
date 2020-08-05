@@ -14,8 +14,8 @@
         </form>
         <div align="right" class="col-lg-8">
           <?php
-          $m = 31;
-          $n = 7;
+          $m = 30;
+          $n = 30;
           $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
           $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
           $mak   = date("Y-m-d", $nextN);
@@ -62,6 +62,7 @@
               END AS nama_igg
               FROM rapidtest, mr_dokter
               WHERE rapidtest.id_dokter=mr_dokter.id_dokter
+              AND tanggal BETWEEN '$min' AND '$mak'
               ORDER BY rapidtest.id_rapidtest DESC");
             while($d = mysqli_fetch_array($data)){
               $tgl_periksa  = $d['tgl_periksa'];
