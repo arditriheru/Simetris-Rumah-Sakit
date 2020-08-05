@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SIMETRIS | RSKIA Rachmi Yogyakarta</title>
+  <title>Rachmi Online | RSKIA Rachmi Yogyakarta</title>
   <meta name="description" content="Sistem Informasi Rumah Sakit RSKIA Rachmi Yogyakarta - Pendaftaran Online">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon.ico">
