@@ -16,24 +16,26 @@
     </div>
   </div><!-- /.row -->
   <?php
+  $id_dokter  = $_GET['id_dokter'];
+  $data = mysqli_query($koneksi,
+    "SELECT nama_dokter
+    FROM dokter
+    WHERE id_dokter = '$id_dokter';");
+  while($d = mysqli_fetch_array($data)){
+    $nama_dokter = $d['nama_dokter'];
+  }
   if(isset($_POST['submit'])){
-    $id_dokter  = $_POST['id_dokter'];
-    $senin      = $_POST['senin'];
-    $selasa     = $_POST['selasa'];
-    $rabu       = $_POST['rabu'];
-    $kamis      = $_POST['kamis'];
-    $jumat      = $_POST['jumat'];
-    $sabtu      = $_POST['sabtu'];
-    $minggu     = $_POST['minggu'];
-    $sp         = $_GET['sp'];
+    $hari     = $_POST['hari'];
+    $jam      = $_POST['jam'];
+    $id_sesi  = $_POST['id_sesi'];
 
-    $tambah=mysqli_query($koneksi,"INSERT INTO jadwal (id_jadwal, id_dokter, sen, sel, rab, kam, jum, sab, min, sp)
-      VALUES('','$id_dokter','$senin','$selasa','$rabu','$kamis','$jumat','$sabtu','$minggu','$sp')");
+    $tambah=mysqli_query($koneksi,"INSERT INTO dokter_jadwal(id_jadwal, id_dokter, id_sesi, hari, jam)
+      VALUES('','$id_dokter','$id_sesi','$hari','$jam')");
     if($tambah){
       echo "<script>alert('Berhasil Menambah Jadwal!!!');
-      document.location='jadwal-dokter'</script>";
+      document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
     }else{
-      echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-tambah</script>";
+      echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
     }
   }
   ?>
@@ -42,46 +44,40 @@
       <form method="post" action="" role="form">
         <div class="form-group">
           <label>Nama Dokter</label>
-          <select class="form-control" type="text" name="id_dokter" required="">
-            <p style="color:red;"><?php echo ($error['id_dokter']) ? $error['id_dokter'] : ''; ?></p>
-            <option disabled selected>Pilih</option>
-            <?php 
-            include '../koneksi.php';
-            $data = mysqli_query($koneksi,
-              "SELECT * FROM dokter WHERE status=1;");
-            while($d = mysqli_fetch_array($data)){
-              echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
-            }
-            ?>
+          <input class="form-control" type="text" name="id_dokter"
+          value="<?php echo $nama_dokter; ?>" readonly>
+        </div>
+        <div class="form-group">
+          <label>Hari</label>
+          <select class="form-control" type="text" name="hari" required="">
+            <option value=''>Pilih</option>
+            <option value='1'>Senin</option>
+            <option value='2'>Selasa</option>
+            <option value='3'>Rabu</option>
+            <option value='4'>Kamis</option>
+            <option value='5'>Jumat</option>
+            <option value='6'>Sabtu</option>
+            <option value='7'>Minggu</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Senin</label>
-          <input class="form-control" type="text" name="senin">
+          <label>Jam</label>
+          <input class="form-control" type="text" name="jam" placeholder="Masukkan Jam Poli.." required="">
         </div>
         <div class="form-group">
-          <label>Selasa</label>
-          <input class="form-control" type="text" name="selasa">
-        </div>
-        <div class="form-group">
-          <label>Rabu</label>
-          <input class="form-control" type="text" name="rabu">
-        </div>
-        <div class="form-group">
-          <label>Kamis</label>
-          <input class="form-control" type="text" name="kamis">
-        </div>
-        <div class="form-group">
-          <label>Jumat</label>
-          <input class="form-control" type="text" name="jumat">
-        </div>
-        <div class="form-group">
-          <label>Sabtu</label>
-          <input class="form-control" type="text" name="sabtu">
-        </div>
-        <div class="form-group">
-          <label>Minggu</label>
-          <input class="form-control" type="text" name="minggu">
+          <label>Sesi</label>
+          <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>
+          <select class="form-control" type="text" name="id_sesi" required="">
+            <option value=''>Pilih</option>
+            <?php 
+            include '../koneksi.php';
+            $data = mysqli_query($koneksi,
+              "SELECT * FROM sesi;");
+            while($d = mysqli_fetch_array($data)){
+              echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+            }
+            ?>
+          </select>
         </div>
         <button type="submit" name="submit" class="btn btn-success">Tambah</button>
         <button type="reset" class="btn btn-warning">Reset</button>  

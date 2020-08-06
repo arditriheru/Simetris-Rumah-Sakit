@@ -24,29 +24,35 @@
   </div><!-- /.row -->
   <?php 
   $data = mysqli_query($koneksi,
-    "SELECT *, dokter.nama_dokter
-    FROM jadwal, dokter
-    WHERE jadwal.id_dokter=dokter.id_dokter
-    AND jadwal.id_jadwal='$id_jadwal';");
+    "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
+    CASE
+    WHEN dokter_jadwal.hari='1' THEN 'Senin'
+    WHEN dokter_jadwal.hari='2' THEN 'Selasa'
+    WHEN dokter_jadwal.hari='3' THEN 'Rabu'
+    WHEN dokter_jadwal.hari='4' THEN 'Kamis'
+    WHEN dokter_jadwal.hari='5' THEN 'Jumat'
+    WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
+    WHEN dokter_jadwal.hari='7' THEN 'Minggu'
+    END AS nama_hari
+    FROM dokter_jadwal, dokter, sesi
+    WHERE dokter_jadwal.id_dokter=dokter.id_dokter
+    AND dokter_jadwal.id_sesi=sesi.id_sesi
+    AND dokter_jadwal.id_jadwal='$id_jadwal';");
   while($d = mysqli_fetch_array($data)){
+    $id_dokter = $d['id_dokter'];
     ?>
     <?php
     if(isset($_POST['submit'])){
-      $senin      = $_POST['senin'];
-      $selasa     = $_POST['selasa'];
-      $rabu       = $_POST['rabu'];
-      $kamis      = $_POST['kamis'];
-      $jumat      = $_POST['jumat'];
-      $sabtu      = $_POST['sabtu'];
-      $minggu     = $_POST['minggu'];
+      $hari    = $_POST['hari'];
+      $jam     = $_POST['jam'];
+      $id_sesi = $_POST['id_sesi'];
 
-      $edit=mysqli_query($koneksi,"UPDATE jadwal SET sen='$senin',sel='$selasa',rab='$rabu',
-        kam='$kamis',jum='$jumat',sab='$sabtu',min='$minggu' WHERE id_jadwal='$id_jadwal'");
+      $edit=mysqli_query($koneksi,"UPDATE dokter_jadwal SET id_sesi='$id_sesi', hari='$hari', jam='$jam' WHERE id_jadwal='$id_jadwal'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='jadwal-dokter'</script>";
+        document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-edit?id_jadwal=$id_jadwal'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
       }
     }
     ?>
@@ -59,39 +65,39 @@
             value="<?php echo $d['nama_dokter']; ?>" readonly>
           </div>
           <div class="form-group">
-            <label>Senin</label>
-            <input class="form-control" type="text" name="senin"
-            value="<?php echo $d['sen']; ?>">
+            <label>Hari</label>
+            <select class="form-control" type="text" name="hari" required="">
+              <p style="color:red;"><?php echo ($error['hari']) ? $error['hari'] : ''; ?></p>
+              <option value='<?php echo $d['hari']; ?>' selected><?php echo $d['nama_hari']; ?></option>
+              <option value='1'>Senin</option>
+              <option value='2'>Selasa</option>
+              <option value='3'>Rabu</option>
+              <option value='4'>Kamis</option>
+              <option value='5'>Jumat</option>
+              <option value='6'>Sabtu</option>
+              <option value='7'>Minggu</option>
+            </select>
           </div>
           <div class="form-group">
-            <label>Selasa</label>
-            <input class="form-control" type="text" name="selasa"
-            value="<?php echo $d['sel']; ?>">
+            <label>Jam</label>
+            <input class="form-control" type="text" name="jam"
+            value="<?php echo $d['jam']; ?>">
           </div>
           <div class="form-group">
-            <label>Rabu</label>
-            <input class="form-control" type="text" name="rabu"
-            value="<?php echo $d['rab']; ?>">
-          </div>
-          <div class="form-group">
-            <label>Kamis</label>
-            <input class="form-control" type="text" name="kamis"
-            value="<?php echo $d['kam']; ?>">
-          </div>
-          <div class="form-group">
-            <label>Jumat</label>
-            <input class="form-control" type="text" name="jumat"
-            value="<?php echo $d['jum']; ?>">
-          </div>
-          <div class="form-group">
-            <label>Sabtu</label>
-            <input class="form-control" type="text" name="sabtu"
-            value="<?php echo $d['sab']; ?>">
-          </div>
-          <div class="form-group">
-            <label>Minggu</label>
-            <input class="form-control" type="text" name="minggu"
-            value="<?php echo $d['min']; ?>">
+            <label>Sesi</label>
+            <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>
+            <select class="form-control" type="text" name="id_sesi" required="">
+              <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
+              <option value='<?php echo $d['id_sesi']; ?>' selected><?php echo $d['nama_sesi']; ?></option>
+              <?php 
+              include '../koneksi.php';
+              $data = mysqli_query($koneksi,
+                "SELECT * FROM sesi;");
+              while($d = mysqli_fetch_array($data)){
+                echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+              }
+              ?>
+            </select>
           </div>
           <button type="submit" name="submit" class="btn btn-success">Perbarui</button>
           <button type="reset" class="btn btn-warning">Reset</button>  

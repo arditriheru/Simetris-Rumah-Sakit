@@ -17,95 +17,194 @@
   </div><!-- /.row -->
   <div class="row">
     <div class="col-lg-12">
+      <form method="post" action="" role="form">
+        <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
+        <div class="btn-group">
+          <?php
+          $id_dokter = $_GET['id_dokter'];
+          $a = mysqli_query($koneksi,
+            "SELECT  nama_dokter
+            FROM dokter
+            WHERE id_dokter = '$id_dokter';");
+          while($b = mysqli_fetch_array($a)){ 
+            ?>
+            <button type="button" class="btn btn-primary"><?php echo $b['nama_dokter']; ?></button>
+          <?php } ?>
+          <button type="button" class="btn btn-warning">Pilih Dokter</button>
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" onclick="myFunction()">
+            <?php 
+            $c = mysqli_query($koneksi,
+              "SELECT id_dokter, nama_dokter
+              FROM dokter
+              GROUP BY id_dokter;");
+            while($d = mysqli_fetch_array($c)){
+              echo "<li><a href='jadwal-dokter?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+            }
+            ?>
+          </ul>
+        </div><!-- /btn-group -->
+      </form>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-lg-12">
       <div class="row">
         <div class="col-xs-12">
-          <h4 class="bluetext"><b>Dokter Spesialis Anak</b></h4>
+         <?php 
+         $no = 1;
+         date_default_timezone_set("Asia/Jakarta");
+         $tanggalHariIni=date('Y-m-d');
+         $a = mysqli_query($koneksi,
+          "SELECT nama_dokter, dokter.nama_dokter
+          FROM dokter_jadwal, dokter
+          WHERE dokter_jadwal.id_dokter = dokter.id_dokter
+          AND dokter_jadwal.id_dokter = $id_dokter
+          GROUP BY dokter_jadwal.id_dokter ASC;");
+         while($b = mysqli_fetch_array($a)){}
+          ?>
           <table class="table table-bordered table-hover table-striped tablesorter">
             <thead>
               <tr>
-                <th><center>No</center></th>
-                <th><center>Nama Dokter</center></th>
-                <th><center>Senin</center></th>
-                <th><center>Selasa</center></th>
-                <th><center>Rabu</center></th>
-                <th><center>Kamis</center></th>
-                <th><center>Jumat</center></th>
-                <th><center>Sabtu</center></th>
-                <th><center>Minggu</center></th>
+                <th scope="col"><center>Hari</center></th>
+                <th scope="col"><center>Pukul</center></th>
+                <th scope="col"><center>Sesi</center></th>
               </tr>
             </thead>
-            <?php 
-            $no = 1;
-            $data = mysqli_query($koneksi,
-              "SELECT *, dokter.nama_dokter
-              FROM jadwal, dokter
-              WHERE jadwal.id_dokter=dokter.id_dokter
-              AND jadwal.sp=1 ORDER BY jadwal.id_dokter ASC;");
-            while($d = mysqli_fetch_array($data)){
-              ?>
-              <tbody>
-                <tr>
-                  <td><center><?php echo $no++; ?></td>
-                    <td><left>
-                      <a href="jadwal-edit?id_jadwal=<?php echo $d['id_jadwal'];?>"><?php echo $d['nama_dokter']; ?></a>
-                    </td>
-                    <td><center><?php echo $d['sen']; ?></center></td>
-                    <td><center><?php echo $d['sel']; ?></center></td>
-                    <td><center><?php echo $d['rab']; ?></center></td>
-                    <td><center><?php echo $d['kam']; ?></center></td>
-                    <td><center><?php echo $d['jum']; ?></center></td>
-                    <td><center><?php echo $d['sab']; ?></center></td>
-                    <td><center><?php echo $d['min']; ?></center></td>
-                  </tr>
-                </tbody>
-              <?php }?>
-            </table>
-            <a href="jadwal-tambah?sp=1"><button type="button" class="btn btn-success">Tambah</button></a>
-          </div><br>
-          <div class="col-xs-12"><h4 class="bluetext"><b>Dokter Spesialis Kebidanan dan Kandungan</b></h4>
-            <table class="table table-bordered table-hover table-striped tablesorter">
-              <thead>
-                <tr>
-                  <th><center>No</center></th>
-                  <th><center>Nama Dokter</center></th>
-                  <th><center>Senin</center></th>
-                  <th><center>Selasa</center></th>
-                  <th><center>Rabu</center></th>
-                  <th><center>Kamis</center></th>
-                  <th><center>Jumat</center></th>
-                  <th><center>Sabtu</center></th>
-                  <th><center>Minggu</center></th>
+            <tbody>
+              <tr>
+                <?php
+                $hari = mysqli_query($koneksi,
+                  "SELECT *, sesi.nama_sesi
+                  FROM dokter_jadwal, sesi
+                  WHERE dokter_jadwal.id_dokter = $id_dokter
+                  AND dokter_jadwal.id_sesi = sesi.id_sesi
+                  AND dokter_jadwal.hari=1;");
+                while($dt = mysqli_fetch_array($hari)){
+                  ?>
+                  <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
+                  <td><center>
+                    <?php echo $dt['jam']; ?>
+                  </center></td>
+                  <td><center>
+                    <?php echo $dt['nama_sesi']; } ?>
+                  </center></td>
                 </tr>
-              </thead>
-              <?php 
-              $no = 1;
-              $data = mysqli_query($koneksi,
-                "SELECT *, dokter.nama_dokter
-                FROM jadwal, dokter
-                WHERE jadwal.id_dokter=dokter.id_dokter
-                AND jadwal.sp=2 ORDER BY jadwal.id_dokter ASC;");
-              while($d = mysqli_fetch_array($data)){
-                ?>
-                <tbody>
+                <tr>
+                  <?php
+                  $hari = mysqli_query($koneksi,
+                    "SELECT *, sesi.nama_sesi
+                    FROM dokter_jadwal, sesi
+                    WHERE dokter_jadwal.id_dokter = $id_dokter
+                    AND dokter_jadwal.id_sesi = sesi.id_sesi
+                    AND dokter_jadwal.hari=2;");
+                  while($dt = mysqli_fetch_array($hari)){
+                    ?>
+                    <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
+                    <td><center>
+                      <?php echo $dt['jam']; ?>
+                    </center></td>
+                    <td><center>
+                      <?php echo $dt['nama_sesi']; } ?>
+                    </center></td>
+                  </tr>
                   <tr>
-                    <td><center><?php echo $no++; ?></td>
-                      <td><left>
-                        <a href="jadwal-edit?id_jadwal=<?php echo $d['id_jadwal'];?>"><?php echo $d['nama_dokter']; ?></a>
-                      </td>
-                      <td><center><?php echo $d['sen']; ?></center></td>
-                      <td><center><?php echo $d['sel']; ?></center></td>
-                      <td><center><?php echo $d['rab']; ?></center></td>
-                      <td><center><?php echo $d['kam']; ?></center></td>
-                      <td><center><?php echo $d['jum']; ?></center></td>
-                      <td><center><?php echo $d['sab']; ?></center></td>
-                      <td><center><?php echo $d['min']; ?></center></td>
+                    <?php
+                    $hari = mysqli_query($koneksi,
+                      "SELECT *, sesi.nama_sesi
+                      FROM dokter_jadwal, sesi
+                      WHERE dokter_jadwal.id_dokter = $id_dokter
+                      AND dokter_jadwal.id_sesi = sesi.id_sesi
+                      AND dokter_jadwal.hari=3;");
+                    while($dt = mysqli_fetch_array($hari)){
+                      ?>
+                      <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
+                      <td><center>
+                        <?php echo $dt['jam']; ?>
+                      </center></td>
+                      <td><center>
+                        <?php echo $dt['nama_sesi']; } ?>
+                      </center></td>
                     </tr>
-                  </tbody>
-                <?php }?>
-              </table>
-              <a href="jadwal-tambah?sp=2"><button type="button" class="btn btn-success">Tambah</button></a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /#wrapper -->
-      <?php include "views/footer.php"; ?> 
+                    <tr>
+                      <?php
+                      $hari = mysqli_query($koneksi,
+                        "SELECT *, sesi.nama_sesi
+                        FROM dokter_jadwal, sesi
+                        WHERE dokter_jadwal.id_dokter = $id_dokter
+                        AND dokter_jadwal.id_sesi = sesi.id_sesi
+                        AND dokter_jadwal.hari=4;");
+                      while($dt = mysqli_fetch_array($hari)){
+                        ?>
+                        <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
+                        <td><center>
+                          <?php echo $dt['jam']; ?>
+                        </center></td>
+                        <td><center>
+                          <?php echo $dt['nama_sesi']; } ?>
+                        </center></td>
+                      </tr>
+                      <tr>
+                        <?php
+                        $hari = mysqli_query($koneksi,
+                          "SELECT *, sesi.nama_sesi
+                          FROM dokter_jadwal, sesi
+                          WHERE dokter_jadwal.id_dokter = $id_dokter
+                          AND dokter_jadwal.id_sesi = sesi.id_sesi
+                          AND dokter_jadwal.hari=5;");
+                        while($dt = mysqli_fetch_array($hari)){
+                          ?>
+                          <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
+                          <td><center>
+                            <?php echo $dt['jam']; ?>
+                          </center></td>
+                          <td><center>
+                            <?php echo $dt['nama_sesi']; } ?>
+                          </center></td>
+                        </tr>
+                        <tr>
+                          <?php
+                          $hari = mysqli_query($koneksi,
+                            "SELECT *, sesi.nama_sesi
+                            FROM dokter_jadwal, sesi
+                            WHERE dokter_jadwal.id_dokter = $id_dokter
+                            AND dokter_jadwal.id_sesi = sesi.id_sesi
+                            AND dokter_jadwal.hari=6;");
+                          while($dt = mysqli_fetch_array($hari)){
+                            ?>
+                            <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
+                            <td><center>
+                              <?php echo $dt['jam']; ?>
+                            </center></td>
+                            <td><center>
+                              <?php echo $dt['nama_sesi']; } ?>
+                            </center></td>
+                          </tr>
+                          <tr>
+                            <?php
+                            $hari = mysqli_query($koneksi,
+                              "SELECT *, sesi.nama_sesi
+                              FROM dokter_jadwal, sesi
+                              WHERE dokter_jadwal.id_dokter = $id_dokter
+                              AND dokter_jadwal.id_sesi = sesi.id_sesi
+                              AND dokter_jadwal.hari=7;");
+                            while($dt = mysqli_fetch_array($hari)){
+                              ?>
+                              <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
+                              <td><center>
+                                <?php echo $dt['jam']; ?>
+                              </center></td>
+                              <td><center>
+                                <?php echo $dt['nama_sesi']; } ?>
+                              </center></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success">Tambah</button></a>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- /#wrapper -->
+                <?php include "views/footer.php"; ?> 
