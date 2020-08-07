@@ -26,13 +26,13 @@
   $data = mysqli_query($koneksi,
     "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
     CASE
-    WHEN dokter_jadwal.hari='1' THEN 'Senin'
-    WHEN dokter_jadwal.hari='2' THEN 'Selasa'
-    WHEN dokter_jadwal.hari='3' THEN 'Rabu'
-    WHEN dokter_jadwal.hari='4' THEN 'Kamis'
-    WHEN dokter_jadwal.hari='5' THEN 'Jumat'
-    WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
-    WHEN dokter_jadwal.hari='7' THEN 'Minggu'
+    WHEN dokter_jadwal.hari='2' THEN 'Senin'
+    WHEN dokter_jadwal.hari='3' THEN 'Selasa'
+    WHEN dokter_jadwal.hari='4' THEN 'Rabu'
+    WHEN dokter_jadwal.hari='5' THEN 'Kamis'
+    WHEN dokter_jadwal.hari='6' THEN 'Jumat'
+    WHEN dokter_jadwal.hari='7' THEN 'Sabtu'
+    WHEN dokter_jadwal.hari='1' THEN 'Minggu'
     END AS nama_hari
     FROM dokter_jadwal, dokter, sesi
     WHERE dokter_jadwal.id_dokter=dokter.id_dokter
@@ -69,13 +69,13 @@
             <select class="form-control" type="text" name="hari" required="">
               <p style="color:red;"><?php echo ($error['hari']) ? $error['hari'] : ''; ?></p>
               <option value='<?php echo $d['hari']; ?>' selected><?php echo $d['nama_hari']; ?></option>
-              <option value='1'>Senin</option>
-              <option value='2'>Selasa</option>
-              <option value='3'>Rabu</option>
-              <option value='4'>Kamis</option>
-              <option value='5'>Jumat</option>
-              <option value='6'>Sabtu</option>
-              <option value='7'>Minggu</option>
+              <option value='2'>Senin</option>
+              <option value='3'>Selasa</option>
+              <option value='4'>Rabu</option>
+              <option value='5'>Kamis</option>
+              <option value='6'>Jumat</option>
+              <option value='7'>Sabtu</option>
+              <option value='1'>Minggu</option>
             </select>
           </div>
           <div class="form-group">

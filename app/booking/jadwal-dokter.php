@@ -81,7 +81,7 @@
                   FROM dokter_jadwal, sesi
                   WHERE dokter_jadwal.id_dokter = $id_dokter
                   AND dokter_jadwal.id_sesi = sesi.id_sesi
-                  AND dokter_jadwal.hari=1;");
+                  AND dokter_jadwal.hari=2;");
                 while($dt = mysqli_fetch_array($hari)){
                   ?>
                   <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
@@ -99,7 +99,7 @@
                     FROM dokter_jadwal, sesi
                     WHERE dokter_jadwal.id_dokter = $id_dokter
                     AND dokter_jadwal.id_sesi = sesi.id_sesi
-                    AND dokter_jadwal.hari=2;");
+                    AND dokter_jadwal.hari=3;");
                   while($dt = mysqli_fetch_array($hari)){
                     ?>
                     <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
@@ -117,7 +117,7 @@
                       FROM dokter_jadwal, sesi
                       WHERE dokter_jadwal.id_dokter = $id_dokter
                       AND dokter_jadwal.id_sesi = sesi.id_sesi
-                      AND dokter_jadwal.hari=3;");
+                      AND dokter_jadwal.hari=4;");
                     while($dt = mysqli_fetch_array($hari)){
                       ?>
                       <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
@@ -135,7 +135,7 @@
                         FROM dokter_jadwal, sesi
                         WHERE dokter_jadwal.id_dokter = $id_dokter
                         AND dokter_jadwal.id_sesi = sesi.id_sesi
-                        AND dokter_jadwal.hari=4;");
+                        AND dokter_jadwal.hari=5;");
                       while($dt = mysqli_fetch_array($hari)){
                         ?>
                         <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
@@ -153,7 +153,7 @@
                           FROM dokter_jadwal, sesi
                           WHERE dokter_jadwal.id_dokter = $id_dokter
                           AND dokter_jadwal.id_sesi = sesi.id_sesi
-                          AND dokter_jadwal.hari=5;");
+                          AND dokter_jadwal.hari=6;");
                         while($dt = mysqli_fetch_array($hari)){
                           ?>
                           <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
@@ -171,7 +171,7 @@
                             FROM dokter_jadwal, sesi
                             WHERE dokter_jadwal.id_dokter = $id_dokter
                             AND dokter_jadwal.id_sesi = sesi.id_sesi
-                            AND dokter_jadwal.hari=6;");
+                            AND dokter_jadwal.hari=7;");
                           while($dt = mysqli_fetch_array($hari)){
                             ?>
                             <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
@@ -189,7 +189,7 @@
                               FROM dokter_jadwal, sesi
                               WHERE dokter_jadwal.id_dokter = $id_dokter
                               AND dokter_jadwal.id_sesi = sesi.id_sesi
-                              AND dokter_jadwal.hari=7;");
+                              AND dokter_jadwal.hari=1;");
                             while($dt = mysqli_fetch_array($hari)){
                               ?>
                               <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
