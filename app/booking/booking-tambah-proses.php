@@ -3,8 +3,8 @@ if($selisih>30){
  echo "<script>
  setTimeout(function() {
   swal({
-    title: 'Gagal',
-    text: 'Lebih dari 30 Hari',
+    title: 'Diatas 30 Hari',
+    text: 'Silahkan Re-Schedule',
     type: 'error'
     }, function() {
       window.location = 'booking-tambah';
@@ -15,8 +15,8 @@ if($selisih>30){
       echo "<script>
       setTimeout(function() {
         swal({
-          title: 'Gagal',
-          text: 'Sudah Mendaftar Sebelumnya',
+          title: 'Sudah Tendaftar',
+          text: 'Silahkan Periksa Kembali',
           type: 'error'
           }, function() {
             window.location = 'booking-tambah';

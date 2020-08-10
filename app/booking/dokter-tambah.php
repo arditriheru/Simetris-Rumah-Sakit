@@ -32,19 +32,15 @@
                   $nama_dokter = $_POST['nama_dokter'];
                   $status = '1';
                   $id_unit = $_POST['id_unit'];
-                  $aktif = '0';
-                  $ket = '0';
-                  $kuota_status = '0';
-                  $kuota = '0';
-
+                  
                   $error=array();
                   if (empty($nama_dokter)){
                     $error['nama_dokter']='Nama Dokter Harus Diisi!!!';
                   }if (empty($id_unit)){
                     $error['id_unit']='Unit Dokter Harus Diisi!!!';
                   }if(empty($error)){
-                    $simpan=mysqli_query($koneksi,"INSERT INTO dokter (id_dokter, nama_dokter, status, id_unit, aktif, ket)
-                      VALUES('','$nama_dokter','$status','$id_unit','$aktif','$ket')");
+                    $simpan=mysqli_query($koneksi,"INSERT INTO dokter (id_dokter, nama_dokter, status, id_unit)
+                      VALUES('','$nama_dokter','$status','$id_unit')");
                     if($simpan){
                       echo '<script>
                       setTimeout(function() {
@@ -98,10 +94,8 @@
                                   <tr>
                                     <th><center>No</center></th>
                                     <th><center>Nama Dokter</center></th>
-                                    <th><center>Status Dokter</center></th>
-                                    <th><center>Kuota Pasien</center></th>
-                                    <th><center>Status Kuota</center></th>
-                                    <th><center>Kuota Hari</center></th>
+                                    <th><center>Spesialis</center></th>
+                                    <th><center>Status</center></th>
                                     <th colspan="2"><center>Action</center></th>
                                   </tr>
                                 </thead>
@@ -109,13 +103,14 @@
                                   <?php 
                                   $no = 1;
                                   $data = mysqli_query($koneksi,
-                                    "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status,IF (kuota_status='1', 'Aktif', 'Nonaktif') AS kuota_status FROM dokter;");
+                                    "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status,IF(id_unit='1', 'Dokter Anak', 'Dokter Kandungan') AS nama_unit FROM dokter;");
                                   while($d = mysqli_fetch_array($data)){
                                     $status = $d['status'];
                                     ?>
                                     <tr>
                                       <td><center><?php echo $no++; ?></center></td>
                                       <td><left><?php echo $d['nama_dokter']; ?></left></td>
+                                       <td><center><?php echo $d['nama_unit']; ?></center></td>
                                       <td><center>
                                         <?php
                                         if($status='1'){
@@ -124,11 +119,7 @@
                                           echo $d['nama_dokter'];
                                         }
                                         ?>
-
                                       </td>
-                                      <td><center><?php echo $d['kuota']; ?> Pasien</center></td>
-                                      <td><center><?php echo $d['kuota_status']; ?></center></td>
-                                      <td><center><?php echo $d['kuota_hari']; ?></center></td>
                                       <td><center><a href="dokter-edit?id=<?php echo $d['id_dokter']; ?>"
                                         <button type="button" class="btn btn-warning"><i class='fa fa-pencil'></i></button></a></center></td>
                                         <td>

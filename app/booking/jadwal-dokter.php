@@ -16,7 +16,10 @@
     </div>
   </div><!-- /.row -->
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-1">
+      <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success">Tambah</button></a>
+    </div>
+    <div class="col-lg-11">
       <form method="post" action="" role="form">
         <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
         <div class="btn-group">
@@ -28,13 +31,13 @@
             WHERE id_dokter = '$id_dokter';");
           while($b = mysqli_fetch_array($a)){ 
             ?>
-            <button type="button" class="btn btn-primary"><?php echo $b['nama_dokter']; ?></button>
+            <button type="button" class="btn btn-warning"><?php echo $b['nama_dokter']; ?></button>
           <?php } ?>
           <button type="button" class="btn btn-warning">Pilih Dokter</button>
           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" onclick="myFunction()">
+          <ul class="dropdown-menu">
             <?php 
             $c = mysqli_query($koneksi,
               "SELECT id_dokter, nama_dokter
@@ -65,15 +68,37 @@
           GROUP BY dokter_jadwal.id_dokter ASC;");
          while($b = mysqli_fetch_array($a)){}
           ?>
-          <table class="table table-bordered table-hover table-striped tablesorter">
-            <thead>
-              <tr>
-                <th scope="col"><center>Hari</center></th>
-                <th scope="col"><center>Pukul</center></th>
-                <th scope="col"><center>Sesi</center></th>
+        <table class="table table-bordered table-hover table-striped tablesorter">
+          <thead>
+            <tr>
+              <th scope="col"><center>Hari</center></th>
+              <th scope="col"><center>Pukul</center></th>
+              <th scope="col"><center>Sesi</center></th>
+              <th scope="col"><center>Kuota</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <?php
+              $hari = mysqli_query($koneksi,
+                "SELECT *, sesi.nama_sesi
+                FROM dokter_jadwal, sesi
+                WHERE dokter_jadwal.id_dokter = $id_dokter
+                AND dokter_jadwal.id_sesi = sesi.id_sesi
+                AND dokter_jadwal.hari=1;");
+              while($dt = mysqli_fetch_array($hari)){
+                ?>
+                <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
+                <td><center>
+                  <?php echo $dt['jam']; ?>
+                </center></td>
+                <td><center>
+                  <?php echo $dt['nama_sesi']; ?>
+                </center></td>
+                <td><center>
+                  <?php echo $dt['kuota']." Pasien"; } ?>
+                </center></td>
               </tr>
-            </thead>
-            <tbody>
               <tr>
                 <?php
                 $hari = mysqli_query($koneksi,
@@ -84,12 +109,15 @@
                   AND dokter_jadwal.hari=2;");
                 while($dt = mysqli_fetch_array($hari)){
                   ?>
-                  <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
+                  <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
                   <td><center>
                     <?php echo $dt['jam']; ?>
                   </center></td>
                   <td><center>
-                    <?php echo $dt['nama_sesi']; } ?>
+                    <?php echo $dt['nama_sesi']; ?>
+                  </center></td>
+                  <td><center>
+                    <?php echo $dt['kuota']." Pasien"; } ?>
                   </center></td>
                 </tr>
                 <tr>
@@ -102,12 +130,15 @@
                     AND dokter_jadwal.hari=3;");
                   while($dt = mysqli_fetch_array($hari)){
                     ?>
-                    <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
+                    <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
                     <td><center>
                       <?php echo $dt['jam']; ?>
                     </center></td>
                     <td><center>
-                      <?php echo $dt['nama_sesi']; } ?>
+                      <?php echo $dt['nama_sesi']; ?>
+                    </center></td>
+                    <td><center>
+                      <?php echo $dt['kuota']." Pasien"; } ?>
                     </center></td>
                   </tr>
                   <tr>
@@ -120,12 +151,15 @@
                       AND dokter_jadwal.hari=4;");
                     while($dt = mysqli_fetch_array($hari)){
                       ?>
-                      <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
+                      <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
                       <td><center>
                         <?php echo $dt['jam']; ?>
                       </center></td>
                       <td><center>
-                        <?php echo $dt['nama_sesi']; } ?>
+                        <?php echo $dt['nama_sesi']; ?>
+                      </center></td>
+                      <td><center>
+                        <?php echo $dt['kuota']." Pasien"; } ?>
                       </center></td>
                     </tr>
                     <tr>
@@ -138,12 +172,15 @@
                         AND dokter_jadwal.hari=5;");
                       while($dt = mysqli_fetch_array($hari)){
                         ?>
-                        <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
+                        <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
                         <td><center>
                           <?php echo $dt['jam']; ?>
                         </center></td>
                         <td><center>
-                          <?php echo $dt['nama_sesi']; } ?>
+                          <?php echo $dt['nama_sesi']; ?>
+                        </center></td>
+                        <td><center>
+                          <?php echo $dt['kuota']." Pasien"; } ?>
                         </center></td>
                       </tr>
                       <tr>
@@ -156,12 +193,15 @@
                           AND dokter_jadwal.hari=6;");
                         while($dt = mysqli_fetch_array($hari)){
                           ?>
-                          <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
+                          <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
                           <td><center>
                             <?php echo $dt['jam']; ?>
                           </center></td>
                           <td><center>
-                            <?php echo $dt['nama_sesi']; } ?>
+                            <?php echo $dt['nama_sesi']; ?>
+                          </center></td>
+                          <td><center>
+                            <?php echo $dt['kuota']." Pasien"; } ?>
                           </center></td>
                         </tr>
                         <tr>
@@ -174,37 +214,21 @@
                             AND dokter_jadwal.hari=7;");
                           while($dt = mysqli_fetch_array($hari)){
                             ?>
-                            <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
+                            <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
                             <td><center>
                               <?php echo $dt['jam']; ?>
                             </center></td>
                             <td><center>
-                              <?php echo $dt['nama_sesi']; } ?>
+                              <?php echo $dt['nama_sesi']; ?>
+                            </center></td>
+                            <td><center>
+                              <?php echo $dt['kuota']." Pasien"; } ?>
                             </center></td>
                           </tr>
-                          <tr>
-                            <?php
-                            $hari = mysqli_query($koneksi,
-                              "SELECT *, sesi.nama_sesi
-                              FROM dokter_jadwal, sesi
-                              WHERE dokter_jadwal.id_dokter = $id_dokter
-                              AND dokter_jadwal.id_sesi = sesi.id_sesi
-                              AND dokter_jadwal.hari=1;");
-                            while($dt = mysqli_fetch_array($hari)){
-                              ?>
-                              <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
-                              <td><center>
-                                <?php echo $dt['jam']; ?>
-                              </center></td>
-                              <td><center>
-                                <?php echo $dt['nama_sesi']; } ?>
-                              </center></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success">Tambah</button></a>
-                      </div>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                </div><!-- /#wrapper -->
-                <?php include "views/footer.php"; ?> 
+                </div>
+              </div><!-- /#wrapper -->
+              <?php include "views/footer.php"; ?> 
