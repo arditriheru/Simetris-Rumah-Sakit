@@ -67,8 +67,8 @@
                                                     <form action="queue-check" method="post" role="form">
                                                         <div class="form-group">
                                                             <label>Nama Dokter</label>
-                                                            <select class="form-control" type="text" name="id_dokter">
-                                                                <option disabled selected>Pilih</option>
+                                                            <select class="form-control" type="text" name="id_dokter" required="">
+                                                                <option value="">Pilih</option>
                                                                 <?php 
                                                                 include 'controller/connection.php';
                                                                 $data = mysqli_query($koneksi,
@@ -85,8 +85,8 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Sesi</label>
-                                                            <select class="form-control" type="text" name="id_sesi">
-                                                                <option disabled selected>Pilih</option>
+                                                            <select class="form-control" type="text" name="id_sesi" required="">
+                                                                <option value="">Pilih</option>
                                                                 <?php 
                                                                 include 'controller/connection.php';
                                                                 $data = mysqli_query($koneksi,
@@ -110,8 +110,8 @@
                                                 <div class="col-md-12">
                                                     <b class="bluetext">Ketentuan Umum Pendaftaran Online</b><br><br>
                                                     <ol>
-                                                      <li>Pendaftaran Online sementara ini hanya berlaku bagi Pasien yang telah memiliki Nomor Rekam Medik RSKIA Rachmi yang akan berobat Rawat Jalan.</li>
-                                                      <li>Bagi pasien baru yang belum pernah mendaftar di RSKIA Rachmi harap datang langsung ke bagian pendaftaran.</li>
+                                                      <li>Pendaftaran Online sementara ini hanya berlaku bagi Pasien yang telah memiliki Nomor Rekam Medis RSKIA Rachmi yang akan berobat Rawat Jalan.</li>
+                                                      <li>Bagi pasien baru yang belum pernah mendaftar di RSKIA Rachmi harap datang langsung ke bagian pendaftaran dengan membawa 1 lembar FC KTP.</li>
                                                       <li>Pendaftaran Online dapat dilakukan untuk kontrol Poli dengan Jadwal H-30 s.d hari H saat jadwal kontrol dilakukan dengan memasukkan : Nomor RM , Tanggal Lahir, Pilihan Hari Kontrol dan Dokter untuk poli reguler. Dokter yang ditunjuk adalah dokter DPJP (Dokter Penanggung Jawab Pelayanan).</li>
                                                       <li>Pasien hanya dapat mendaftar sekali pada Dokter, Jadwal dan Sesi yang sama.</li>
                                                       <li>Jadwal Dokter dapat berubah sewaktu waktu.</li>
@@ -121,17 +121,24 @@
                                                       <li>Untuk kasus Gawat Darurat silakan datang ke UGD RSKIA Rachmi.</li>
                                                       <li>Bukti Pendaftaran Online dibawa di loket Pendaftaran RSKIA Rachmi.</li>
                                                       <li>Pasien yang telah melakukan registrasi online diharapkan datang tepat waktu.</li>
+                                                  </ol>
+                                                  <b class="bluetext">Ketentuan Khusus</b><br><br>
+                                                  <ol>
+                                                      <li>Pasien dari luar kota wajib membawa hasil Non-Reaktif Rapid Test.</li>
+                                                      <li>Periksa Poli Anak pendamping 1 orang.</li>
+                                                      <li>Periksa Poli Kandungan pendamping menunggu diluar.</li>
+                                                      <li>Selama pandemi tidak melayani USG 4D sampai batas waktu yang belum ditentukan.</li>
                                                   </ol><hr>
                                               </div><br>
                                               <div class="card-body card-block">
-                                                <form action="registration-add" method="post" role="form">
-                                                 <div class="form-group">
+                                                <form action="registration-a" method="post" role="form">
+                                                   <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
-                                                    <input name="id_catatan_medik" type="text" class="form-control" placeholder="Masukkan Nomor RM Anda">
+                                                    <input name="id_catatan_medik" type="text" class="form-control" required="" placeholder="Masukkan Nomor RM Anda">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1">Tanggal Lahir</label>
-                                                    <input name="tgl_lahir" type="date" class="form-control" placeholder="Masukkan Tanggal Lahir">
+                                                    <input name="tgl_lahir" type="date" class="form-control" required="" placeholder="Masukkan Tanggal Lahir">
                                                 </div>
                                                 <div>
                                                     <button id="registration" name="add" type="submit" class="btn btn-lg btn-info btn-block">
