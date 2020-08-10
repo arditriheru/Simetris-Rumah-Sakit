@@ -16,15 +16,18 @@
     </div>
   </div><!-- /.row -->
   <div class="row">
-    <div class="col-lg-1">
+    <?php
+    $id_dokter = $_GET['id_dokter'];
+    if(isset($id_dokter)){ ?>
+      <div class="col-lg-1">
       <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success">Tambah</button></a>
-    </div>
+      </div>
+    <?php } ?>
     <div class="col-lg-11">
       <form method="post" action="" role="form">
         <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
         <div class="btn-group">
           <?php
-          $id_dokter = $_GET['id_dokter'];
           $a = mysqli_query($koneksi,
             "SELECT  nama_dokter
             FROM dokter
