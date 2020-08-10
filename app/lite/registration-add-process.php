@@ -3,7 +3,7 @@ include 'views/header.php';
 include 'controller/connection.php';
 date_default_timezone_set("Asia/Jakarta");
 $tanggal=date('Y-m-d');
-$jam=date("h:i:sa");
+$jam=date("G:i:s");
                 // menangkap data yang di kirim dari form
 $id_catatan_medik = $_POST['id_catatan_medik'];
 $nama             = $_POST['nama'];
