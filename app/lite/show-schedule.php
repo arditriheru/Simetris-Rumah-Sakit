@@ -18,41 +18,24 @@
                 date_default_timezone_set("Asia/Jakarta");
                 $tanggalHariIni=date('Y-m-d');
                 $a = mysqli_query($koneksi,
-                  "SELECT nama_dokter, dokter.nama_dokter
-                  FROM dokter_jadwal, dokter
-                  WHERE dokter_jadwal.id_dokter = dokter.id_dokter
-                  AND dokter_jadwal.id_dokter = $id_dokter
-                  GROUP BY dokter_jadwal.id_dokter ASC;");
-                while($b = mysqli_fetch_array($a)){}
+                  "SELECT nama_dokter
+                  FROM dokter
+                  WHERE id_dokter = $id_dokter;");
+                while($b = mysqli_fetch_array($a)){
                   ?>
-                <hr>
-                <div class="card-title">
-                  <b class="bluetext"><center><?php echo $d['nama_dokter']; ?></b>
-                  </div>
-                  <div class="card-body">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col"><center>Hari</center></th>
-                          <th scope="col"><center>Pukul</center></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <?php
-                          $hari = mysqli_query($koneksi,
-                            "SELECT *, sesi.nama_sesi
-                            FROM dokter_jadwal, sesi
-                            WHERE dokter_jadwal.id_dokter = $id_dokter
-                            AND dokter_jadwal.id_sesi = sesi.id_sesi
-                            AND dokter_jadwal.hari=2;");
-                          while($dt = mysqli_fetch_array($hari)){
-                            ?>
-                            <td><center>Senin</center></td>
-                            <td><center>
-                              <?php echo $dt['jam']; } ?>
-                            </center></td>
+                  <hr>
+                  <div class="card-title">
+                    <b class="bluetext"><center><?php echo $b['nama_dokter']; } ?></b>
+                    </div>
+                    <div class="card-body">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"><center>Hari</center></th>
+                            <th scope="col"><center>Pukul</center></th>
                           </tr>
+                        </thead>
+                        <tbody>
                           <tr>
                             <?php
                             $hari = mysqli_query($koneksi,
@@ -60,10 +43,10 @@
                               FROM dokter_jadwal, sesi
                               WHERE dokter_jadwal.id_dokter = $id_dokter
                               AND dokter_jadwal.id_sesi = sesi.id_sesi
-                              AND dokter_jadwal.hari=3;");
+                              AND dokter_jadwal.hari=1;");
                             while($dt = mysqli_fetch_array($hari)){
                               ?>
-                              <td><center>Selasa</center></td>
+                              <td><center>Senin</center></td>
                               <td><center>
                                 <?php echo $dt['jam']; } ?>
                               </center></td>
@@ -75,10 +58,10 @@
                                 FROM dokter_jadwal, sesi
                                 WHERE dokter_jadwal.id_dokter = $id_dokter
                                 AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                AND dokter_jadwal.hari=4;");
+                                AND dokter_jadwal.hari=2;");
                               while($dt = mysqli_fetch_array($hari)){
                                 ?>
-                                <td><center>Rabu</center></td>
+                                <td><center>Selasa</center></td>
                                 <td><center>
                                   <?php echo $dt['jam']; } ?>
                                 </center></td>
@@ -90,10 +73,10 @@
                                   FROM dokter_jadwal, sesi
                                   WHERE dokter_jadwal.id_dokter = $id_dokter
                                   AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                  AND dokter_jadwal.hari=5;");
+                                  AND dokter_jadwal.hari=3;");
                                 while($dt = mysqli_fetch_array($hari)){
                                   ?>
-                                  <td><center>Kamis</center></td>
+                                  <td><center>Rabu</center></td>
                                   <td><center>
                                     <?php echo $dt['jam']; } ?>
                                   </center></td>
@@ -105,10 +88,10 @@
                                     FROM dokter_jadwal, sesi
                                     WHERE dokter_jadwal.id_dokter = $id_dokter
                                     AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                    AND dokter_jadwal.hari=6;");
+                                    AND dokter_jadwal.hari=4;");
                                   while($dt = mysqli_fetch_array($hari)){
                                     ?>
-                                    <td><center>Jumat</center></td>
+                                    <td><center>Kamis</center></td>
                                     <td><center>
                                       <?php echo $dt['jam']; } ?>
                                     </center></td>
@@ -120,10 +103,10 @@
                                       FROM dokter_jadwal, sesi
                                       WHERE dokter_jadwal.id_dokter = $id_dokter
                                       AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                      AND dokter_jadwal.hari=7;");
+                                      AND dokter_jadwal.hari=5;");
                                     while($dt = mysqli_fetch_array($hari)){
                                       ?>
-                                      <td><center>Sabtu</center></td>
+                                      <td><center>Jumat</center></td>
                                       <td><center>
                                         <?php echo $dt['jam']; } ?>
                                       </center></td>
@@ -135,37 +118,52 @@
                                         FROM dokter_jadwal, sesi
                                         WHERE dokter_jadwal.id_dokter = $id_dokter
                                         AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                        AND dokter_jadwal.hari=1;");
+                                        AND dokter_jadwal.hari=6;");
                                       while($dt = mysqli_fetch_array($hari)){
                                         ?>
-                                        <td><center>Minggu</center></td>
+                                        <td><center>Sabtu</center></td>
                                         <td><center>
                                           <?php echo $dt['jam']; } ?>
                                         </center></td>
                                       </tr>
-                                    </tbody>
-                                  </table>
+                                      <tr>
+                                        <?php
+                                        $hari = mysqli_query($koneksi,
+                                          "SELECT *, sesi.nama_sesi
+                                          FROM dokter_jadwal, sesi
+                                          WHERE dokter_jadwal.id_dokter = $id_dokter
+                                          AND dokter_jadwal.id_sesi = sesi.id_sesi
+                                          AND dokter_jadwal.hari=7;");
+                                        while($dt = mysqli_fetch_array($hari)){
+                                          ?>
+                                          <td><center>Minggu</center></td>
+                                          <td><center>
+                                            <?php echo $dt['jam']; } ?>
+                                          </center></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div><!-- .card -->
-                      </div><!--/.col-->
-                    </div><!--/.row-->
+                          </div><!-- .card -->
+                        </div><!--/.col-->
+                      </div><!--/.row-->
+                    </div>
                   </div>
-                </div>
-                <nav class="nav-bottom">
-                  <a href="help" class="nav-bottom__link">
-                    <i class="material-icons nav-bottom__icon">help_outline</i>
-                    <span class="nav-bottom__text">Help</span>
+                  <nav class="nav-bottom">
+                    <a href="help" class="nav-bottom__link">
+                      <i class="material-icons nav-bottom__icon">help_outline</i>
+                      <span class="nav-bottom__text">Help</span>
 
-                    <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
-                      <i class="material-icons nav__icon">dashboard</i>
-                      <span class="nav-bottom__text">Home</span>
+                      <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
+                        <i class="material-icons nav__icon">dashboard</i>
+                        <span class="nav-bottom__text">Home</span>
 
-                      <a href="search-schedule" class="nav-bottom__link">
-                        <i class="material-icons nav-bottom__icon">arrow_back</i>
-                        <span class="nav-bottom__text">Back</span>
+                        <a href="search-schedule" class="nav-bottom__link">
+                          <i class="material-icons nav-bottom__icon">arrow_back</i>
+                          <span class="nav-bottom__text">Back</span>
 
-                      </nav>
-                      <?php include "views/footer.php"; ?> 
+                        </nav>
+                        <?php include "views/footer.php"; ?> 
