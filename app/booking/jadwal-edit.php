@@ -32,7 +32,7 @@
     WHEN dokter_jadwal.hari='4' THEN 'Kamis'
     WHEN dokter_jadwal.hari='5' THEN 'Jumat'
     WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
-    WHEN dokter_jadwal.hari='7' THEN 'Minggu'
+    WHEN dokter_jadwal.hari='0' THEN 'Minggu'
     END AS nama_hari
     FROM dokter_jadwal, dokter, sesi
     WHERE dokter_jadwal.id_dokter=dokter.id_dokter
@@ -76,7 +76,7 @@
               <option value='4'>Kamis</option>
               <option value='5'>Jumat</option>
               <option value='6'>Sabtu</option>
-              <option value='7'>Minggu</option>
+              <option value='0'>Minggu</option>
             </select>
           </div>
           <div class="form-group">

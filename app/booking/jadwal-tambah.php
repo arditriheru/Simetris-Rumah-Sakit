@@ -57,7 +57,7 @@
             <option value='4'>Kamis</option>
             <option value='5'>Jumat</option>
             <option value='6'>Sabtu</option>
-            <option value='7'>Minggu</option>
+            <option value='0'>Minggu</option>
           </select>
         </div>
         <div class="form-group">
