@@ -133,7 +133,7 @@
                                           FROM dokter_jadwal, sesi
                                           WHERE dokter_jadwal.id_dokter = $id_dokter
                                           AND dokter_jadwal.id_sesi = sesi.id_sesi
-                                          AND dokter_jadwal.hari=7;");
+                                          AND dokter_jadwal.hari=0;");
                                         while($dt = mysqli_fetch_array($hari)){
                                           ?>
                                           <td><center>Minggu</center></td>

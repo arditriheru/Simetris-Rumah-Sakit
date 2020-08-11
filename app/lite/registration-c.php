@@ -49,7 +49,7 @@
                   text: 'Silahkan pilih hari lain',
                   type: 'error'
                   }, function() {
-                    window.location = 'registration';
+                    window.location = 'javascript: history.back()';
                     });
                     }, 10);
                     </script>";
@@ -126,7 +126,7 @@
       <i class="material-icons nav__icon">dashboard</i>
       <span class="nav-bottom__text">Home</span>
     </a>
-    <a href="registration" class="nav-bottom__link">
+    <a href="javascript: history.back()" class="nav-bottom__link">
       <i class="material-icons nav-bottom__icon">arrow_back</i>
       <span class="nav-bottom__text">Back</span>
     </a>

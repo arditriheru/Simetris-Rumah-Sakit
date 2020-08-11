@@ -41,6 +41,20 @@
                 while($f = mysqli_fetch_array($e)){
                   $jam = $f['jam'];
                 }
+                $g = mysqli_query($koneksi,
+                  "SELECT COUNT(id_booking) AS cek FROM booking WHERE booking_tanggal='$booking_tanggal' AND id_dokter='$id_dokter' AND id_sesi='$id_sesi';");
+                while($h = mysqli_fetch_array($g)){
+                  $cek = $h['cek'];
+                }
+                $hari = date('w', strtotime($booking_tanggal));
+                $i = mysqli_query($koneksi,
+                  "SELECT kuota FROM dokter_jadwal WHERE hari='$hari' AND id_dokter='$id_dokter'AND id_sesi='$id_sesi';");
+                while($j = mysqli_fetch_array($i)){
+                  $kuota = $j['kuota'];
+                }
+                if($cek==$kuota){
+                  $notifpenuh = "Kuota Penuh";
+                }
                 ?>
                 <form action="registration-add-process" method="post" class="">
                   <div class="form-group">
@@ -83,10 +97,16 @@
                     value="<?php echo $jam; ?>" readonly>
                   </div><br>
                   <div>
-                    <button id="add" name="add" type="submit" class="btn btn-lg btn-info btn-block">
-                      <span id="search-schedule-amount">Daftar Sekarang</span>
-                      <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                    </button>
+                    <?php if(isset($notifpenuh)){ ?>
+                      <button type="button" class="btn btn-lg btn-danger btn-block">Kuota Penuh</button>
+                      <p align="center" class="blacktext">Silahkan Re-Schedule</p>
+                    <?php }else{ ?>
+                      <p>**Pastikan data sudah terisi dengan benar..</p>
+                      <button id="add" name="add" type="submit" class="btn btn-lg btn-info btn-block">
+                        <span id="search-schedule-amount">Daftar Sekarang</span>
+                        <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                      </button>
+                    <?php } ?>
                   </div>
                 </form>
               </div>
@@ -106,7 +126,7 @@
     <i class="material-icons nav__icon">dashboard</i>
     <span class="nav-bottom__text">Home</span>
   </a>
-  <a href="registration" class="nav-bottom__link">
+  <a href="javascript: history.back()" class="nav-bottom__link">
     <i class="material-icons nav-bottom__icon">arrow_back</i>
     <span class="nav-bottom__text">Back</span>
   </a>

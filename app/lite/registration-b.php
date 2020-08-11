@@ -63,7 +63,7 @@
                       WHEN dokter_jadwal.hari='4' THEN 'Kamis'
                       WHEN dokter_jadwal.hari='5' THEN 'Jumat'
                       WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
-                      WHEN dokter_jadwal.hari='7' THEN 'Minggu'
+                      WHEN dokter_jadwal.hari='0' THEN 'Minggu'
                       END AS nama_hari
                       FROM dokter_jadwal WHERE id_dokter='$id_dokter'
                       GROUP BY hari;");
@@ -105,7 +105,7 @@
     <i class="material-icons nav__icon">dashboard</i>
     <span class="nav-bottom__text">Home</span>
   </a>
-  <a href="registration" class="nav-bottom__link">
+  <a href="javascript: history.back()" class="nav-bottom__link">
     <i class="material-icons nav-bottom__icon">arrow_back</i>
     <span class="nav-bottom__text">Back</span>
   </a>

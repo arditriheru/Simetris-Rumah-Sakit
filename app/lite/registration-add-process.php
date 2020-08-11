@@ -18,9 +18,9 @@ $status           = '2';
 $keterangan       = 'DAFTAR MANDIRI, AMAN';
 $mandiri          = '1';
 
-$tglsekarang  = new DateTime();
-$jadwal     = new DateTime("$booking_tanggal");
-$selisih      = $tglsekarang->diff($jadwal)->format("%a");
+$tglsekarang      = new DateTime();
+$jadwal           = new DateTime("$booking_tanggal");
+$selisih          = $tglsekarang->diff($jadwal)->format("%a");
                 // cek antrian
 $a = mysqli_query($koneksi,
   "SELECT COUNT(*) AS antrian

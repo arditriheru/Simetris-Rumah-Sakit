@@ -187,7 +187,7 @@
     <i class="material-icons nav__icon">dashboard</i>
     <span class="nav-bottom__text">Home</span>
 </a>
-<a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link">
+<a href="javascript: history.back()" class="nav-bottom__link">
     <i class="material-icons nav-bottom__icon">arrow_back</i>
     <span class="nav-bottom__text">Back</span>
 </a>
