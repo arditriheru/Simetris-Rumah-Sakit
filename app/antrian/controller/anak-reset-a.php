@@ -12,7 +12,7 @@ if($anakreseta){
 		session_start();
 		unset($_SESSION['anak_id_dokter']);
 		header("location:../../../dashboard");
-		}
+	}
 }else{
 	header("location:anak-reset-a");
 }

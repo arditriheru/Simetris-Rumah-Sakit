@@ -1,6 +1,10 @@
 <?php
 include 'controller/anak-session.php';
 include '../../config/connect.php';
+
+date_default_timezone_set("Asia/Jakarta");
+$tanggalsekarang    =   date('Y-m-d');
+
 $a = mysqli_query($koneksi,
 	"SELECT COUNT(id_dokter) AS ket
 	FROM dokter
@@ -78,4 +82,22 @@ while($o = mysqli_fetch_array($n)){
 	$ket = $o['ket'];
 }
 
+$p = mysqli_query($koneksi,
+	"SELECT id_sesi, id_dokter
+	FROM ant_anak
+	WHERE id_ant_anak = 0;");
+while($q = mysqli_fetch_array($p)){
+	$total_anak_id_sesi   = $q['id_sesi'];
+	$total_anak_id_dokter = $q['id_dokter'];
+}
+
+$r = mysqli_query($koneksi,
+	"SELECT COUNT(id_booking) AS total_anak_antrian
+	FROM booking
+	WHERE id_dokter = '$total_anak_id_dokter'
+	AND id_sesi = '$total_anak_id_sesi'
+	AND booking_tanggal = '$tanggalsekarang' ;");
+while($s = mysqli_fetch_array($r)){
+	$total_anak_antrian   = $s['total_anak_antrian'];
+}
 ?>

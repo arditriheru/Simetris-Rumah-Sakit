@@ -1,6 +1,10 @@
 <?php
 include 'controller/kandungan-session.php';
 include '../../config/connect.php';
+
+date_default_timezone_set("Asia/Jakarta");
+$tanggalsekarang    =   date('Y-m-d');
+
 $a = mysqli_query($koneksi,
 	"SELECT COUNT(id_dokter) AS ket
 	FROM dokter
@@ -76,6 +80,25 @@ $n = mysqli_query($koneksi,
 	AND ket = 2;");
 while($o = mysqli_fetch_array($n)){
 	$ket = $o['ket'];
+}
+
+$p = mysqli_query($koneksi,
+	"SELECT id_sesi, id_dokter
+	FROM ant_kandungan
+	WHERE id_ant_kandungan = 0;");
+while($q = mysqli_fetch_array($p)){
+	$total_kandungan_id_sesi   = $q['id_sesi'];
+	$total_kandungan_id_dokter = $q['id_dokter'];
+}
+
+$r = mysqli_query($koneksi,
+	"SELECT COUNT(id_booking) AS total_kandungan_antrian
+	FROM booking
+	WHERE id_dokter = '$total_kandungan_id_dokter'
+	AND id_sesi = '$total_kandungan_id_sesi'
+	AND booking_tanggal = '$tanggalsekarang' ;");
+while($s = mysqli_fetch_array($r)){
+	$total_kandungan_antrian   = $s['total_kandungan_antrian'];
 }
 
 ?>
