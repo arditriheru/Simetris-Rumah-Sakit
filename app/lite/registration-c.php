@@ -78,57 +78,81 @@
                       <input class="form-control" type="text" name='booking_tanggal'
                       value="<?php echo $booking_tanggal; ?>" readonly>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label mb-1">Sesi Jam</label>
-                      <select class="form-control" type="text" name="id_sesi" required="">
-                        <option value="">Pilih</option>
-                        <?php
-                        $namahari = date('l', strtotime($booking_tanggal));
-                        $daftar_hari = array(
-                          'Sunday'    => '7',
-                          'Monday'    => '1',
-                          'Tuesday'   => '2',
-                          'Wednesday' => '3',
-                          'Thursday'  => '4',
-                          'Friday'    => '5',
-                          'Saturday'  => '6'
-                        );
-                        $hari = $daftar_hari[$namahari];
-                        $data = mysqli_query($koneksi,
-                          "SELECT id_sesi, jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hari';");
-                        while($d = mysqli_fetch_array($data)){
-                          echo "<option value='".$d['id_sesi']."'>".$d['jam']."</option>";
-                        }
-                        ?>
-                      </select>
-                    </div><br>
-                    <div>
-                      <button id="add" name="add" type="submit" class="btn btn-lg btn-info btn-block">
-                        <span id="search-schedule-amount">Lanjutkan</span>
-                        <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                      </button>
+                    <?php
+                    $hari = date('w', strtotime($booking_tanggal));
+                    $g = mysqli_query($koneksi,
+                     "SELECT dokter_jadwal.`ims`, dokter.`id_unit`
+                     FROM dokter_jadwal, dokter
+                     WHERE dokter_jadwal.`id_dokter`=dokter.`id_dokter`
+                     AND dokter_jadwal.`id_dokter`='$id_dokter'
+                     AND dokter_jadwal.`hari`='$hari'
+                     GROUP BY dokter.`id_unit`;");
+                    while($h = mysqli_fetch_array($g)){
+                     $id_unit = $h['id_unit'];
+                     $ims     = $h['ims'];
+                   }
+                   if($id_dokter==5 && $hari==3){ ?>
+                    <div class="alert alert-warning" role="alert">
+                      <h4 class="alert-heading">Pemberitahuan</h4><hr>
+                      <p class="blacktext">Jadwal pelayanan khusus imunisasi.</p>
                     </div>
-                  </form>
-                </div>
+                  <?php }elseif($id_unit==1 && $ims==1){ ?>
+                    <div class="alert alert-warning" role="alert">
+                      <h4 class="alert-heading">Pemberitahuan</h4><hr>
+                      <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
+                    </div>
+                  <?php } ?>
+                  <div class="form-group">
+                    <label class="control-label mb-1">Jam Praktek</label>
+                    <select class="form-control" type="text" name="id_sesi" required="">
+                      <option value="">Pilih</option>
+                      <?php
+                      $namahari = date('l', strtotime($booking_tanggal));
+                      $daftar_hari = array(
+                        'Sunday'    => '7',
+                        'Monday'    => '1',
+                        'Tuesday'   => '2',
+                        'Wednesday' => '3',
+                        'Thursday'  => '4',
+                        'Friday'    => '5',
+                        'Saturday'  => '6'
+                      );
+                      $hari = $daftar_hari[$namahari];
+                      $data = mysqli_query($koneksi,
+                        "SELECT id_sesi, jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hari';");
+                      while($d = mysqli_fetch_array($data)){
+                        echo "<option value='".$d['id_sesi']."'>".$d['jam']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div><br>
+                  <div>
+                    <button id="add" name="add" type="submit" class="btn btn-lg btn-info btn-block">
+                      <span id="search-schedule-amount">Lanjutkan</span>
+                      <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-          </div><!-- .card -->
-        </div><!--/.col-->
-      </div><!--/.row-->
-    </div>
+          </div>
+        </div><!-- .card -->
+      </div><!--/.col-->
+    </div><!--/.row-->
   </div>
-  <nav class="nav-bottom">
-    <a href="help" class="nav-bottom__link">
-      <i class="material-icons nav-bottom__icon">help_outline</i>
-      <span class="nav-bottom__text">Help</span>
-    </a>
-    <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
-      <i class="material-icons nav__icon">dashboard</i>
-      <span class="nav-bottom__text">Home</span>
-    </a>
-    <a href="javascript: history.back()" class="nav-bottom__link">
-      <i class="material-icons nav-bottom__icon">arrow_back</i>
-      <span class="nav-bottom__text">Back</span>
-    </a>
-  </nav>
-  <?php include "views/footer.php"; ?> 
+</div>
+<nav class="nav-bottom">
+  <a href="help" class="nav-bottom__link">
+    <i class="material-icons nav-bottom__icon">help_outline</i>
+    <span class="nav-bottom__text">Help</span>
+  </a>
+  <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
+    <i class="material-icons nav__icon">dashboard</i>
+    <span class="nav-bottom__text">Home</span>
+  </a>
+  <a href="javascript: history.back()" class="nav-bottom__link">
+    <i class="material-icons nav-bottom__icon">arrow_back</i>
+    <span class="nav-bottom__text">Back</span>
+  </a>
+</nav>
+<?php include "views/footer.php"; ?> 
