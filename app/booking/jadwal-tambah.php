@@ -18,19 +18,22 @@
   <?php
   $id_dokter  = $_GET['id_dokter'];
   $data = mysqli_query($koneksi,
-    "SELECT nama_dokter
+    "SELECT nama_dokter, id_unit
     FROM dokter
     WHERE id_dokter = '$id_dokter';");
   while($d = mysqli_fetch_array($data)){
     $nama_dokter = $d['nama_dokter'];
+    $id_unit     = $d['id_unit'];
   }
   if(isset($_POST['submit'])){
     $hari     = $_POST['hari'];
     $jam      = $_POST['jam'];
     $id_sesi  = $_POST['id_sesi'];
+    $kuota    = $_POST['kuota'];
+    $ims      = $_POST['ims'];
 
-    $tambah=mysqli_query($koneksi,"INSERT INTO dokter_jadwal(id_jadwal, id_dokter, id_sesi, hari, jam)
-      VALUES('','$id_dokter','$id_sesi','$hari','$jam')");
+    $tambah=mysqli_query($koneksi,"INSERT INTO dokter_jadwal(id_jadwal, id_dokter, id_sesi, hari, jam, kuota, ims)
+      VALUES('','$id_dokter','$id_sesi','$hari','$jam','$kuota','$ims')");
     if($tambah){
       echo "<script>alert('Berhasil Menambah Jadwal!!!');
       document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
@@ -62,8 +65,22 @@
         </div>
         <div class="form-group">
           <label>Jam</label>
-          <input class="form-control" type="text" name="jam" placeholder="Masukkan Jam Poli.." required="">
+          <input class="form-control" type="text" name="jam" placeholder="Masukkan.." required="">
         </div>
+        <div class="form-group">
+          <label>Kuota</label>
+          <input class="form-control" type="text" name="kuota" placeholder="Masukkan.." required="">
+        </div>
+        <?php
+        if($id_unit==1){ ?>
+          <div class="form-group">
+            <label>Imunisasi</label>
+            <select class="form-control" type="text" name="ims" required="">
+              <option value='0' selected>Tidak</option>
+              <option value='1'>Ya</option>
+            </select>
+          </div>
+        <?php } ?>
         <div class="form-group">
           <label>Sesi</label>
           <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>

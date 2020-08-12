@@ -18,7 +18,7 @@
     <div align="right" class="col-lg-6">
       <a href="jadwal-hapus?id_jadwal=<?php echo $id_jadwal; ?>"
         onclick="javascript: return confirm('Anda yakin hapus?')">
-        <button type="button" class="btn btn-danger">Hapus</button>
+        <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
       </a>
     </div>
   </div><!-- /.row -->
@@ -33,7 +33,8 @@
     WHEN dokter_jadwal.hari='5' THEN 'Jumat'
     WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
     WHEN dokter_jadwal.hari='0' THEN 'Minggu'
-    END AS nama_hari
+    END AS nama_hari,
+    IF (dokter_jadwal.ims='1', 'Ya','Tidak') AS nama_ims
     FROM dokter_jadwal, dokter, sesi
     WHERE dokter_jadwal.id_dokter=dokter.id_dokter
     AND dokter_jadwal.id_sesi=sesi.id_sesi
@@ -47,8 +48,9 @@
       $jam     = $_POST['jam'];
       $id_sesi = $_POST['id_sesi'];
       $kuota   = $_POST['kuota'];
+      $ims     = $_POST['ims'];
 
-      $edit=mysqli_query($koneksi,"UPDATE dokter_jadwal SET id_sesi='$id_sesi', hari='$hari', jam='$jam', kuota='$kuota' WHERE id_jadwal='$id_jadwal'");
+      $edit=mysqli_query($koneksi,"UPDATE dokter_jadwal SET id_sesi='$id_sesi', hari='$hari', jam='$jam', kuota='$kuota', ims='$ims' WHERE id_jadwal='$id_jadwal'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
         document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
@@ -89,6 +91,17 @@
             <input class="form-control" type="text" name="kuota"
             value="<?php echo $d['kuota']; ?>">
           </div>
+          <?php
+          if($d['id_unit']==1){ ?>
+            <div class="form-group">
+              <label>Imunisasi</label>
+              <select class="form-control" type="text" name="ims" required="">
+                <option value='<?php echo $d['ims']; ?>' selected><?php echo $d['nama_ims']; ?></option>
+                <option value='1'>Ya</option>
+                <option value='0'>Yidak</option>
+              </select>
+            </div>
+          <?php } ?>
           <div class="form-group">
             <label>Sesi</label>
             <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>

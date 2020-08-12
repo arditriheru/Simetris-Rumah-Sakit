@@ -82,7 +82,8 @@
               <tr>
                 <?php
                 $hari = mysqli_query($koneksi,
-                  "SELECT *, sesi.nama_sesi
+                  "SELECT *, sesi.nama_sesi,
+                  IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                   FROM dokter_jadwal, sesi
                   WHERE dokter_jadwal.id_dokter = $id_dokter
                   AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -91,7 +92,7 @@
                   ?>
                   <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
                   <td><center>
-                    <?php echo $dt['jam']; ?>
+                    <?php echo $dt['jam'].$dt['ims']; ?>
                   </center></td>
                   <td><center>
                     <?php echo $dt['nama_sesi']; ?>
@@ -103,7 +104,8 @@
                 <tr>
                   <?php
                   $hari = mysqli_query($koneksi,
-                    "SELECT *, sesi.nama_sesi
+                    "SELECT *, sesi.nama_sesi,
+                    IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                     FROM dokter_jadwal, sesi
                     WHERE dokter_jadwal.id_dokter = $id_dokter
                     AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -112,7 +114,7 @@
                     ?>
                     <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
                     <td><center>
-                      <?php echo $dt['jam']; ?>
+                      <?php echo $dt['jam'].$dt['ims']; ?>
                     </center></td>
                     <td><center>
                       <?php echo $dt['nama_sesi']; ?>
@@ -124,7 +126,8 @@
                   <tr>
                     <?php
                     $hari = mysqli_query($koneksi,
-                      "SELECT *, sesi.nama_sesi
+                      "SELECT *, sesi.nama_sesi,
+                      IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                       FROM dokter_jadwal, sesi
                       WHERE dokter_jadwal.id_dokter = $id_dokter
                       AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -133,7 +136,7 @@
                       ?>
                       <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
                       <td><center>
-                        <?php echo $dt['jam']; ?>
+                        <?php echo $dt['jam'].$dt['ims']; ?>
                       </center></td>
                       <td><center>
                         <?php echo $dt['nama_sesi']; ?>
@@ -145,7 +148,8 @@
                     <tr>
                       <?php
                       $hari = mysqli_query($koneksi,
-                        "SELECT *, sesi.nama_sesi
+                        "SELECT *, sesi.nama_sesi,
+                        IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                         FROM dokter_jadwal, sesi
                         WHERE dokter_jadwal.id_dokter = $id_dokter
                         AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -154,7 +158,7 @@
                         ?>
                         <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
                         <td><center>
-                          <?php echo $dt['jam']; ?>
+                          <?php echo $dt['jam'].$dt['ims']; ?>
                         </center></td>
                         <td><center>
                           <?php echo $dt['nama_sesi']; ?>
@@ -166,7 +170,8 @@
                       <tr>
                         <?php
                         $hari = mysqli_query($koneksi,
-                          "SELECT *, sesi.nama_sesi
+                          "SELECT *, sesi.nama_sesi,
+                          IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                           FROM dokter_jadwal, sesi
                           WHERE dokter_jadwal.id_dokter = $id_dokter
                           AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -175,7 +180,7 @@
                           ?>
                           <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
                           <td><center>
-                            <?php echo $dt['jam']; ?>
+                            <?php echo $dt['jam'].$dt['ims']; ?>
                           </center></td>
                           <td><center>
                             <?php echo $dt['nama_sesi']; ?>
@@ -187,7 +192,8 @@
                         <tr>
                           <?php
                           $hari = mysqli_query($koneksi,
-                            "SELECT *, sesi.nama_sesi
+                            "SELECT *, sesi.nama_sesi,
+                            IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                             FROM dokter_jadwal, sesi
                             WHERE dokter_jadwal.id_dokter = $id_dokter
                             AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -196,7 +202,7 @@
                             ?>
                             <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
                             <td><center>
-                              <?php echo $dt['jam']; ?>
+                              <?php echo $dt['jam'].$dt['ims']; ?>
                             </center></td>
                             <td><center>
                               <?php echo $dt['nama_sesi']; ?>
@@ -208,7 +214,8 @@
                           <tr>
                             <?php
                             $hari = mysqli_query($koneksi,
-                              "SELECT *, sesi.nama_sesi
+                              "SELECT *, sesi.nama_sesi,
+                              IF (dokter_jadwal.ims='1', ' + Imunisasi','') AS ims
                               FROM dokter_jadwal, sesi
                               WHERE dokter_jadwal.id_dokter = $id_dokter
                               AND dokter_jadwal.id_sesi = sesi.id_sesi
@@ -217,7 +224,7 @@
                               ?>
                               <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
                               <td><center>
-                                <?php echo $dt['jam']; ?>
+                                <?php echo $dt['jam'].$dt['ims']; ?>
                               </center></td>
                               <td><center>
                                 <?php echo $dt['nama_sesi']; ?>
