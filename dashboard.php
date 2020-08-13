@@ -208,6 +208,20 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
+                    <div class="col-xs-2"><a href="app/kalender">
+                      <i class="fa fa-calendar fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>Kalender</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
                     <div class="col-xs-2"><a href="http://192.168.1.250:8080/kasir">
                       <i class="fa fa-dollar fa-4x"></i>
                     </div>
