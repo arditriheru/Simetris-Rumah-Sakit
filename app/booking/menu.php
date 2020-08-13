@@ -44,7 +44,7 @@
               <li><a href="../kalender?id=booking"><i class="fa fa-calendar"></i> Kalender</a></li>
               <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
               <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Petugas Medis</a></li>
-              <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
+              <li><a href="jadwal-dokter"><i class="fa fa-calendar-check-o"></i> Jadwal</a></li>
               <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
               <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
               <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
