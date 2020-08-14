@@ -63,10 +63,10 @@
 							setTimeout(function() {
 								swal({
 									title: 'Stop',
-									text: 'Anda tidak memiliki akses',
+									text: 'Anda Tidak Memiliki Akses',
 									type: 'error'
 									}, function() {
-										window.location = 'login';
+										window.location = 'javascript: history.back()';
 										});
 										}, 10);
 										</script>";
@@ -75,11 +75,11 @@
 									echo "<script>
 									setTimeout(function() {
 										swal({
-											title: 'Gagal',
+											title: 'Opss..',
 											text: 'Password / Username Salah',
 											type: 'error'
 											}, function() {
-												window.location = 'login';
+												window.location = 'javascript: history.back()';
 												});
 												}, 10);
 												</script>";
@@ -87,13 +87,13 @@
 										}
 										?>
 										<div class="kotak_login">
-											<p class="tulisan_login">Silahkan login</p>
+											<div align="center"><i class="fa fa-user-circle-o fa-3x"></i></div><br>
 											<form method="post">
-												<label>Username</label>
-												<input type="text" name="nama_user" class="form_login" placeholder="Masukkan .." required>
-												<label>Password</label>
-												<input type="password" name="password" class="form_login" placeholder="Masukkan .." required>
-												<input type="submit" class="tombol_login" name="login" value="LOGIN">
+												<!-- <label>Username</label> -->
+												<input type="text" name="nama_user" class="form_login" placeholder="Username" required>
+												<!-- <label>Password</label> -->
+												<input type="password" name="password" class="form_login" placeholder="Password" required>
+												<input type="submit" class="tombol_login" name="login" value="Submit">
 												<br><br>			
 											</form>
 											<a href="../../dashboard"><i class="fa fa-arrow-left"></i> Back</a>
