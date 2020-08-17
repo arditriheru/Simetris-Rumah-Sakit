@@ -289,7 +289,7 @@
                             FROM dokter_jadwal_libur, dokter, sesi
                             WHERE dokter_jadwal_libur.`id_dokter`=dokter.`id_dokter`
                             AND dokter_jadwal_libur.`id_sesi`=sesi.`id_sesi`
-                            ORDER BY dokter_jadwal_libur.`tanggal`, dokter_jadwal_libur.`id_sesi` ASC;");
+                            ORDER BY dokter_jadwal_libur.`tanggal` DESC;");
                           while($b = mysqli_fetch_array($a)){
                            ?>
                            <tr>
