@@ -88,25 +88,24 @@
             $error['id_sesi']='Sesi Harus Diisi!!!';
           }if (empty($error)){
             $hari = date('w', strtotime($booking_tanggal));
-
-            $a = mysqli_query($koneksi,
+            $g = mysqli_query($koneksi,
               "SELECT COUNT(id_jadwal) AS cek_jadwal FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hari'AND id_sesi='$id_sesi';");
-            while($b = mysqli_fetch_array($a)){
-              $cek_jadwal  = $b['cek_jadwal'];
+            while($h = mysqli_fetch_array($g)){
+              $cek_jadwal  = $h['cek_jadwal'];
             }
-
             if($cek_jadwal>0){
-              $e = mysqli_query($koneksi,
-                "SELECT kuota FROM dokter_jadwal WHERE hari='$hari' AND id_dokter='$id_dokter'AND id_sesi='$id_sesi';");
-              while($f = mysqli_fetch_array($e)){
-                $kuota      = $f['kuota'];
+            // Query cek jadwal libur
+              $i = mysqli_query($koneksi,
+                "SELECT COUNT(*) AS cek_libur FROM dokter_jadwal_libur WHERE id_dokter='$id_dokter' AND id_sesi='$id_sesi' AND tanggal='$booking_tanggal';");
+              while($j = mysqli_fetch_array($i)){
+                $cek_libur      = $j['cek_libur'];
               }
-              if($antrian > $kuota){
-            // Cek antrian melebihi kuota / tidak
+              if($cek_libur>0){
+                // Cek jadwal libur
                 echo "<script>
                 setTimeout(function() {
                   swal({
-                    title: 'Kuota Penuh',
+                    title: 'Dokter Cuti',
                     text: 'Silahkan Re-Schedule',
                     type: 'error'
                     }, function() {
@@ -115,95 +114,116 @@
                       }, 10);
                       </script>";
                     }else{
-                      include 'booking-tambah-proses.php';
-                    }
-                  }else{
-                    echo "<script>
-                    setTimeout(function() {
-                      swal({
-                        title: 'Jadwal Kosong',
-                        text: 'Silahkan Pilih Hari Lain',
-                        type: 'error'
-                        }, function() {
-                          window.location = 'booking-tambah';
-                          });
-                          }, 10);
-                          </script>";
-                        }
+                      // Query cek kuota
+                      $k = mysqli_query($koneksi,
+                        "SELECT kuota FROM dokter_jadwal WHERE hari='$hari' AND id_dokter='$id_dokter'AND id_sesi='$id_sesi';");
+                      while($l = mysqli_fetch_array($k)){
+                        $kuota  = $l['kuota'];
                       }
-                    }
-                    ?>
-                    <form method="post" action="" role="form">
-                      <div class="form-group">
-                        <label>Nomor Rekam Medik</label>
-                        <input class="form-control" type="text" name="id_catatan_medik"
-                        value="<?php echo $id_catatan_medik; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['id_catatan_medik']) ? $error['id_catatan_medik'] : ''; ?></p>
-                      </div>
-                      <div class="form-group">
-                        <label>Nama</label>
-                        <input class="form-control" type="text" name="nama"
-                        value="<?php echo $nama; ?>" readonly>
-                        <p style="color:red;"><?php echo ($error['nama']) ? $error['nama'] : ''; ?></p>
-                      </div>
-                      <div class="form-group">
-                        <label>Alamat</label>
-                        <input class="form-control" type="text" name="alamat"
-                        value="<?php echo $alamat; ?>" required="">
-                        <p style="color:red;"><?php echo ($error['alamat']) ? $error['alamat'] : ''; ?></p>
-                      </div>
-                      <div class="form-group">
-                        <label>Kontak</label>
-                        <input class="form-control" type="text" name="kontak"
-                        value="<?php echo $telp; ?>" required="">
-                        <p style="color:red;"><?php echo ($error['kontak']) ? $error['kontak'] : ''; ?></p>
-                      </div>
-                      <div class="form-group">
-                        <label>Dokter</label>
-                        <select class="form-control" type="text" name="id_dokter"
-                        value="<?php echo $d['id_dokter']; ?>" required="">
-                        <p style="color:red;"><?php echo ($error['id_dokter']) ? $error['id_dokter'] : ''; ?></p>
-                        <option disabled selected>Pilih</option>
-                        <?php 
-                        $data = mysqli_query($koneksi,
-                          "SELECT * FROM dokter WHERE status=1;");
-                        while($d = mysqli_fetch_array($data)){
-                          echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
-                        }
-                        ?>
-                      </select>
+                      if($antrian>$kuota){
+                        // Cek kuota
+                        echo "<script>
+                        setTimeout(function() {
+                          swal({
+                            title: 'Kuota Penuh',
+                            text: 'Silahkan Re-Schedule',
+                            type: 'error'
+                            }, function() {
+                              window.location = 'booking-tambah';
+                              });
+                              }, 10);
+                              </script>";
+                            }else{
+                              include 'booking-tambah-proses.php';
+                            }
+                          }
+                        }else{
+                          echo "<script>
+                          setTimeout(function() {
+                            swal({
+                              title: 'Jadwal Kosong',
+                              text: 'Silahkan Pilih Hari Lain',
+                              type: 'error'
+                              }, function() {
+                                window.location = 'booking-tambah';
+                                });
+                                }, 10);
+                                </script>";
+                              }
+                            }
+                          }
+                          ?>
+                          <form method="post" action="" role="form">
+                            <div class="form-group">
+                              <label>Nomor Rekam Medik</label>
+                              <input class="form-control" type="text" name="id_catatan_medik"
+                              value="<?php echo $id_catatan_medik; ?>" readonly>
+                              <p style="color:red;"><?php echo ($error['id_catatan_medik']) ? $error['id_catatan_medik'] : ''; ?></p>
+                            </div>
+                            <div class="form-group">
+                              <label>Nama</label>
+                              <input class="form-control" type="text" name="nama"
+                              value="<?php echo $nama; ?>" readonly>
+                              <p style="color:red;"><?php echo ($error['nama']) ? $error['nama'] : ''; ?></p>
+                            </div>
+                            <div class="form-group">
+                              <label>Alamat</label>
+                              <input class="form-control" type="text" name="alamat"
+                              value="<?php echo $alamat; ?>" required="">
+                              <p style="color:red;"><?php echo ($error['alamat']) ? $error['alamat'] : ''; ?></p>
+                            </div>
+                            <div class="form-group">
+                              <label>Kontak</label>
+                              <input class="form-control" type="text" name="kontak"
+                              value="<?php echo $telp; ?>" required="">
+                              <p style="color:red;"><?php echo ($error['kontak']) ? $error['kontak'] : ''; ?></p>
+                            </div>
+                            <div class="form-group">
+                              <label>Dokter</label>
+                              <select class="form-control" type="text" name="id_dokter"
+                              value="<?php echo $d['id_dokter']; ?>" required="">
+                              <p style="color:red;"><?php echo ($error['id_dokter']) ? $error['id_dokter'] : ''; ?></p>
+                              <option disabled selected>Pilih</option>
+                              <?php 
+                              $data = mysqli_query($koneksi,
+                                "SELECT * FROM dokter WHERE status=1;");
+                              while($d = mysqli_fetch_array($data)){
+                                echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                              }
+                              ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>Jadwal</label>
+                            <input class="form-control" type="date" name="booking_tanggal"
+                            value="<?php echo $d['booking_tanggal']; ?>" required="">
+                            <p style="color:red;"><?php echo ($error['booking_tanggal']) ? $error['booking_tanggal'] : ''; ?></p>
+                          </div>
+                          <div class="form-group">
+                            <label>Sesi</label>
+                            <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>
+                            <select class="form-control" type="text" name="id_sesi"
+                            value="<?php echo $d['id_sesi']; ?>" required="">
+                            <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
+                            <option disabled selected>Pilih</option>
+                            <?php 
+                            $data = mysqli_query($koneksi,
+                              "SELECT * FROM sesi;");
+                            while($d = mysqli_fetch_array($data)){
+                              echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Keterangan</label>
+                          <input class="form-control" type="text" name="keterangan" placeholder="Masukkan..">
+                        </div>
+                        <button type="submit" name="polisubmit" class="btn btn-success">Tambah</button>
+                        <button type="reset" class="btn btn-warning">Reset</button>  
+                      </form>
                     </div>
-                    <div class="form-group">
-                      <label>Jadwal</label>
-                      <input class="form-control" type="date" name="booking_tanggal"
-                      value="<?php echo $d['booking_tanggal']; ?>" required="">
-                      <p style="color:red;"><?php echo ($error['booking_tanggal']) ? $error['booking_tanggal'] : ''; ?></p>
-                    </div>
-                    <div class="form-group">
-                      <label>Sesi</label>
-                      <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>
-                      <select class="form-control" type="text" name="id_sesi"
-                      value="<?php echo $d['id_sesi']; ?>" required="">
-                      <p style="color:red;"><?php echo ($error['id_sesi']) ? $error['id_sesi'] : ''; ?></p>
-                      <option disabled selected>Pilih</option>
-                      <?php 
-                      $data = mysqli_query($koneksi,
-                        "SELECT * FROM sesi;");
-                      while($d = mysqli_fetch_array($data)){
-                        echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
-                      }
-                      ?>
-                    </select>
                   </div>
-                  <div class="form-group">
-                    <label>Keterangan</label>
-                    <input class="form-control" type="text" name="keterangan" placeholder="Masukkan..">
-                  </div>
-                  <button type="submit" name="polisubmit" class="btn btn-success">Tambah</button>
-                  <button type="reset" class="btn btn-warning">Reset</button>  
-                </form>
-              </div>
-            </div>
-          </div><!-- /.row -->
-        </div><!-- /#wrapper -->
-        <?php include "views/footer.php"; ?>
+                </div><!-- /.row -->
+              </div><!-- /#wrapper -->
+              <?php include "views/footer.php"; ?>

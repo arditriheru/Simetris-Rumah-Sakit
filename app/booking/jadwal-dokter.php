@@ -19,12 +19,10 @@
     <?php
     $id_dokter = $_GET['id_dokter'];
     if(isset($id_dokter)){ ?>
-      <div class="col-lg-1">
-        <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success">Tambah</button></a>
-      </div>
-      <div class="col-lg-11">
+      <div class="col-lg-12">
         <form method="post" action="" role="form">
           <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
+          <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal</button></a>
           <div class="btn-group">
             <?php
             $a = mysqli_query($koneksi,
@@ -33,9 +31,9 @@
               WHERE id_dokter = '$id_dokter';");
             while($b = mysqli_fetch_array($a)){ 
               ?>
-              <button type="button" class="btn btn-warning"><?php echo $b['nama_dokter']; ?></button>
+              <button type="button" class="btn btn-primary"><?php echo $b['nama_dokter']; ?></button>
             <?php } ?>
-            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -243,6 +241,7 @@
                 <div class="col-lg-12">
                   <form method="post" action="" role="form">
                     <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
+                    <a href="jadwal-dokter-libur-tambah"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal Libur</button></a>
                     <div class="btn-group">
                       <?php
                       $a = mysqli_query($koneksi,
@@ -251,10 +250,10 @@
                         WHERE id_dokter = '$id_dokter';");
                       while($b = mysqli_fetch_array($a)){ 
                         ?>
-                        <button type="button" class="btn btn-warning"><?php echo $b['nama_dokter']; ?></button>
+                        <button type="button" class="btn btn-primary"><?php echo $b['nama_dokter']; ?></button>
                       <?php } ?>
-                      <button type="button" class="btn btn-warning">Pilih Dokter</button>
-                      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-primary">Jadwal Dokter</button>
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
@@ -269,7 +268,48 @@
                         ?>
                       </ul>
                     </div><!-- /btn-group -->
-                  </form>
-                </div><br><br><br><br><br><br><br><br><br><br>
-              <?php } ?>
-              <?php include "views/footer.php"; ?> 
+                  </form><br>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <table class="table table-bordered table-hover table-striped tablesorter">
+                        <thead>
+                          <tr>
+                            <!-- <th scope="col"><center>#</center></th> -->
+                            <th scope="col"><center>Tanggal Libur</center></th>
+                            <th scope="col"><center>Dokter</center></th>
+                            <th scope="col"><center>Sesi</center></th>
+                            <th scope="col"><center>Action</center></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php 
+                          $no = 1;
+                          $a = mysqli_query($koneksi,
+                            "SELECT *, dokter.`nama_dokter`, sesi.`nama_sesi`
+                            FROM dokter_jadwal_libur, dokter, sesi
+                            WHERE dokter_jadwal_libur.`id_dokter`=dokter.`id_dokter`
+                            AND dokter_jadwal_libur.`id_sesi`=sesi.`id_sesi`
+                            ORDER BY dokter_jadwal_libur.`tanggal`, dokter_jadwal_libur.`id_sesi` ASC;");
+                          while($b = mysqli_fetch_array($a)){
+                           ?>
+                           <tr>
+                            <!-- <td align="center"><?php echo $no++;?></td> -->
+                            <td align="center"><?php echo date("d-m-Y", strtotime($b['tanggal']));?></td>
+                            <td align="center"><?php echo $b['nama_dokter'];?></td>
+                            <td align="center"><?php echo $b['nama_sesi'];?></td>
+                            <td>
+                              <div align="center">
+                                <a href="jadwal-dokter-libur-hapus?id=<?php echo $b['id_jadwal_libur']; ?>"
+                                  onclick="javascript: return confirm('Anda yakin hapus?')">
+                                  <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                </a>
+                              </div>
+                            </td>
+                            </tr><?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div><br><br><br><br><br><br><br><br><br><br>
+                <?php } ?>
+                <?php include "views/footer.php"; ?> 
