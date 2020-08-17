@@ -12,7 +12,7 @@ $title = mysqli_query($koneksi,
     FROM booking, dokter, sesi
     WHERE booking.id_dokter=dokter.id_dokter
     AND booking.id_sesi=sesi.id_sesi
-    -- AND booking.id_sesi = '$id_sesi'
+    AND booking.id_sesi = '$id_sesi'
     AND booking.id_dokter='$id_dokter';");
 while($value = mysqli_fetch_array($title)){
     $nama_dokter    = $value['nama_dokter'];
@@ -59,7 +59,7 @@ function format_akhir($akhir)
 <html>
 <body>
     <table align="center" border="1">
-        <!-- <h3 align="center">List Pasien Poli <?php echo $nama_sesi;?></h3> -->
+        <h3 align="center">List Pasien Poli <?php echo $nama_sesi;?></h3>
         <h3 align="center">List Pasien</h3>
         <h3 align="center">Dokter <?php echo $nama_dokter;?></h3>
         <h4 align="center"><?php echo format_awal($awal);?> - <?php echo format_akhir($akhir);?></h4>
@@ -80,7 +80,7 @@ function format_akhir($akhir)
                                 WHERE booking.id_dokter=dokter.id_dokter
                                 AND booking.id_sesi=sesi.id_sesi
                                 AND booking.booking_tanggal BETWEEN '$awal' AND '$akhir'
-                            -- AND booking.id_sesi = '$id_sesi'
+                            AND booking.id_sesi = '$id_sesi'
                             AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
                             while($d = mysqli_fetch_array($data)){
                                 ?>

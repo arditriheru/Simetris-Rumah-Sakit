@@ -110,7 +110,7 @@ $id_sesi    = $_POST['id_sesi'];
           "SELECT COUNT(id_booking) AS total
           FROM booking
           WHERE booking_tanggal BETWEEN '$awal' AND '$akhir'
-          -- AND id_sesi = '$id_sesi'
+          AND id_sesi = '$id_sesi'
           AND id_dokter='$id_dokter' ORDER BY id_booking ASC;");
         while($d = mysqli_fetch_array($data)){
           ?>
@@ -139,7 +139,7 @@ $id_sesi    = $_POST['id_sesi'];
               WHERE booking.id_dokter=dokter.id_dokter
               AND booking.id_sesi=sesi.id_sesi
               AND booking.booking_tanggal BETWEEN '$awal' AND '$akhir'
-              -- AND booking.id_sesi = '$id_sesi'
+              AND booking.id_sesi = '$id_sesi'
               AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
             while($d = mysqli_fetch_array($data)){
               $id_booking = $d['id_booking'];
