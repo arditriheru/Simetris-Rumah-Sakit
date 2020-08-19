@@ -118,9 +118,9 @@
                         <div class="form-group">
                           <label>Data Kelahiran</label>
                           <div class="row form-group">
-                            <div class="col col-sm-4"><input type="text" name="bb" value="<?php echo $d['bb']; ?>" class="form-control"></div>
-                            <div class="col col-sm-4"><input type="text" name="pb" value="<?php echo $d['pb']; ?>" class="form-control"></div>
-                            <div class="col col-sm-4"><input type="text" name="lk" value="<?php echo $d['lk']; ?>" class="form-control"></div>
+                            <div class="col col-sm-4"><input type="number" name="bb" value="<?php echo $d['bb']; ?>" class="form-control"></div>
+                            <div class="col col-sm-4"><input type="number" name="pb" value="<?php echo $d['pb']; ?>" class="form-control"></div>
+                            <div class="col col-sm-4"><input type="number" name="lk" value="<?php echo $d['lk']; ?>" class="form-control"></div>
                           </div>
                         </div>
                         <div class="form-group">
