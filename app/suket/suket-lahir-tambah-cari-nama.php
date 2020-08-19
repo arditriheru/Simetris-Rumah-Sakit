@@ -24,8 +24,9 @@
             <tr>
               <th><center>#</center></th>
               <th><center>No. RM</center></th>
-              <th><center>Nama Pasien</center></th>
-              <th><center>T.T.L</center></th>
+              <th><center>Nama Anak</center></th>
+              <th><center>Tempat, Tanggal Lahir</center></th>
+              <th><center>Nama Ortu</center></th>
               <th><center>Action</center></th>
             </tr>
           </thead>
@@ -42,6 +43,7 @@
                 <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                 <td><center><?php echo $d['nama']; ?></center></td>
                 <td><center><?php echo $d['tempat']; ?>, <?php echo date("d F Y", strtotime($tgl_lahir)); ?></center></td>
+                <td><center><?php echo $d['nama_ortu']; ?></center></td>
                 <td>
                   <div align="center">
                     <a href="suket-lahir-tambah?id=<?php echo $d['id_register']; ?>"

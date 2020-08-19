@@ -14,7 +14,7 @@
       </ol>
       <?php include "../../system/welcome.php"?>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-7">
       <div class="table-responsive">
         <?php 
         if(isset($_POST['suketlahirsubmit'])){
@@ -188,11 +188,11 @@
                 <?php } ?>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               <form method="post" action="suket-lahir-tambah-cari-nama" role="form">
                 <div class="form-group">
-                  <label>Nama</label>
-                  <input class="form-control" type="text" name="nama" placeholder="Nama Pasien">
+                  <label>Pencarian</label>
+                  <input class="form-control" type="text" name="nama" placeholder="Cari Nama Pasien">
                 </div><button type="submit" class="btn btn-success">Cari</button>
               </form>
             </div>
