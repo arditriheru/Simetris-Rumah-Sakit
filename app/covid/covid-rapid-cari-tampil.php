@@ -60,11 +60,11 @@
                 ?>
                 <div class="row">
                   <form method="post" action="covid-rapid-cari-tampil" role="form">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div class="form-group input-group">
-                        <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik?>">
+                        <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik; ?>">
                         <span class="input-group-btn">
-                          <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Cari</button>
+                          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
                         </span>
                       </div>
                     </div>
