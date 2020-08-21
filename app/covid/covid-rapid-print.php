@@ -8,8 +8,8 @@
 	$id_rapidtest = $_GET['id'];
 	include '../../config/connect.php';
 	$data = mysqli_query($koneksi,
-		"SELECT *, mr_dokter.nama_dokter, mr_unit.nama_unit,
-		IF(rapidtest.sex='1', 'Laki-laki', 'Perempuan') AS nama_sex,
+		"SELECT *, rapidtest.tanggal, mr_pasien.nama AS nama2, mr_pasien.alamat AS alamat2, mr_pasien.tgl_lahir AS tgl_lahir2, mr_dokter.nama_dokter, mr_unit.nama_unit,
+		IF(mr_pasien.sex='1', 'Laki-laki', 'Perempuan') AS nama_sex2,
 		CASE
 		WHEN rapidtest.igm='0' THEN 'Non Reaktif'
 		WHEN rapidtest.igm='1' THEN 'Reaktif'
@@ -21,17 +21,18 @@
 		WHEN rapidtest.igg='3' THEN 'On Process'
 		END AS nama_igg,
 		IF(rapidtest.nilai_rujukan='1', 'Reaktif', 'Non Reaktif') AS nama_nilai_rujukan
-		FROM rapidtest, mr_dokter, mr_unit
+		FROM rapidtest, mr_pasien, mr_dokter, mr_unit
 		WHERE rapidtest.id_dokter=mr_dokter.id_dokter
+		AND rapidtest.id_catatan_medik=mr_pasien.id_catatan_medik
 		AND rapidtest.id_unit=mr_unit.id_unit
 		AND rapidtest.id_rapidtest='$id_rapidtest';");
 	while($d = mysqli_fetch_array($data)){
 		$tgl_periksa  		= $d['tgl_periksa'];
 		$tanggal      		= $d['tanggal'];
-		$lahir        		= new DateTime($d['tgl_lahir']);
+		$lahir        		= new DateTime($d['tgl_lahir2']);
 		$today        		= new DateTime();
 		$umur         		= $today->diff($lahir);
-		$sub_nama     		= substr($d['nama'],0, -2);
+		$sub_nama     		= substr($d['nama2'],0, -2);
 		$sub_nama_dokter 	= substr($d['nama_dokter'],0, -4);
 
 		function format_tgl_periksa($tgl_periksa)
@@ -107,13 +108,13 @@
 									</tr>
 									<tr>
 										<td><b>Gender</b></td>
-										<td><?php echo $d['nama_sex']; ?></td>
+										<td><?php echo $d['nama_sex2']; ?></td>
 										<td><b>Jam Periksa</b></td>
 										<td><?php echo $d['jam_periksa']; ?></td>
 									</tr>
 									<tr>
 										<td><b>Alamat</b></td>
-										<td><?php echo $d['alamat']; ?></td>
+										<td><?php echo $d['alamat2']; ?></td>
 										<td><b>Sampel</b></td>
 										<td><?php echo $d['sampel']; ?></td>
 									</tr>

@@ -49,7 +49,7 @@
             <?php
             $no=$total;
             $data = mysqli_query($koneksi,
-              "SELECT *, mr_dokter.nama_dokter,
+              "SELECT *, mr_pasien.nama, mr_dokter.nama_dokter,
               CASE
               WHEN rapidtest.igm='0' THEN 'Non Reaktif'
               WHEN rapidtest.igm='1' THEN 'Reaktif'
@@ -60,9 +60,10 @@
               WHEN rapidtest.igg='1' THEN 'Reaktif'
               WHEN rapidtest.igg='3' THEN 'On Process'
               END AS nama_igg
-              FROM rapidtest, mr_dokter
-              WHERE rapidtest.id_dokter=mr_dokter.id_dokter
-              AND tanggal BETWEEN '$min' AND '$mak'
+              FROM rapidtest, mr_pasien, mr_dokter
+              WHERE rapidtest.id_catatan_medik=mr_pasien.id_catatan_medik
+              AND rapidtest.id_dokter=mr_dokter.id_dokter
+              AND rapidtest.tanggal BETWEEN '$min' AND '$mak'
               ORDER BY rapidtest.id_rapidtest DESC");
             while($d = mysqli_fetch_array($data)){
               $tgl_periksa  = $d['tgl_periksa'];

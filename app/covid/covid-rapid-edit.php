@@ -27,8 +27,7 @@
       <div class="table-responsive">
         <?php
         $a = mysqli_query($koneksi,
-         "SELECT *, mr_dokter.nama_dokter, mr_unit.nama_unit,
-         IF(rapidtest.sex='1', 'Laki-laki', 'Perempuan') AS nama_sex,
+         "SELECT *, mr_pasien.nama, mr_dokter.nama_dokter, mr_unit.nama_unit,
          CASE
          WHEN rapidtest.igm='0' THEN 'Non Reaktif'
          WHEN rapidtest.igm='1' THEN 'Reaktif'
@@ -38,33 +37,26 @@
          WHEN rapidtest.igg='0' THEN 'Non Reaktif'
          WHEN rapidtest.igg='1' THEN 'Reaktif'
          WHEN rapidtest.igg='3' THEN 'On Process'
-         END AS nama_igg,
-         IF(rapidtest.nilai_rujukan='1', 'Reaktif', 'Non Reaktif') AS nama_nilai_rujukan
-         FROM rapidtest, mr_dokter, mr_unit
-         WHERE rapidtest.id_dokter=mr_dokter.id_dokter
+         END AS nama_igg
+         FROM rapidtest, mr_pasien, mr_dokter, mr_unit
+         WHERE rapidtest.id_catatan_medik=mr_pasien.id_catatan_medik
+         AND rapidtest.id_dokter=mr_dokter.id_dokter
          AND rapidtest.id_unit=mr_unit.id_unit
-         AND rapidtest.id_rapidtest='$id_rapidtest';");
+         AND id_rapidtest='$id_rapidtest';");
         while($b = mysqli_fetch_array($a)){
           $id_catatan_medik = $b['id_catatan_medik'];
           $nama             = $b['nama'];
-          $alamat           = $b['alamat'];
-          $tgl_lahir        = $b['tgl_lahir'];
-          $sex              = $b['sex'];
-          $nama_sex         = $b['nama_sex'];
           $id_dokter        = $b['id_dokter'];
           $nama_dokter      = $b['nama_dokter'];
           $id_unit          = $b['id_unit'];
           $nama_unit        = $b['nama_unit'];
-          $sampel           = $b['sampel'];
-          $pemeriksaan      = $b['pemeriksaan'];
-          $igm              = $b['igm'];
-          $nama_igm         = $b['nama_igm'];
-          $metode           = $b['metode'];
-          $pemeriksa        = $b['pemeriksa'];
           $tgl_periksa      = $b['tgl_periksa'];
           $jam_periksa      = $b['jam_periksa'];
+          $igm              = $b['igm'];
+          $nama_igm         = $b['nama_igm'];
           $igg              = $b['igg'];
           $nama_igg         = $b['nama_igg'];
+          $pemeriksa        = $b['pemeriksa'];
         }
 
         if(isset($_POST['rapidsubmit'])){
@@ -115,18 +107,6 @@
                         <input class="form-control" type="text" name="nama"
                         value="<?php echo $nama; ?>" readonly>
                       </div>
-                      <!-- <div class="form-group">
-                        <label>Jenis Kelamin</label>
-                        <input class="form-control hidden" type="text" name="sex"
-                        value="<?php echo $sex1; ?>" readonly>
-                        <input class="form-control" type="text"
-                        value="<?php echo $nama_sex; ?>" readonly>
-                      </div>
-                      <div class="form-group">
-                        <label>Alamat</label>
-                        <input class="form-control" type="text" name="alamat"
-                        value="<?php echo $alamat; ?>" readonly>
-                      </div> -->
                       <div class="form-group">
                         <label>Dokter</label>
                         <select class="form-control" type="text" name="id_dokter" required="">
@@ -162,10 +142,6 @@
                       <label>Jam Periksa</label>
                       <input class="form-control" type="text" name="jam_periksa" value="<?php echo $jam_periksa; ?>">
                     </div>
-                    <!-- <div class="form-group">
-                      <label>Sampel</label>
-                      <input class="form-control" type="text" name="sampel" value="Darah" readonly>
-                    </div> -->
                     <div class="form-group">
                       <label>IgM</label>
                       <select class="form-control" type="text" name="igm" required="">

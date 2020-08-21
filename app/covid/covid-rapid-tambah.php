@@ -85,8 +85,8 @@ function format_mak($mak)
         }if (empty($igg)){
           $error['igg']='IgG Harus Diisi!!!';
         }if(empty($error)){
-          $simpan=mysqli_query($koneksi,"INSERT INTO rapidtest(id_rapidtest, id_catatan_medik, nama, alamat, tgl_lahir, sex, id_dokter, id_unit, tanggal, jam, sampel, pemeriksaan, igm, nilai_rujukan, metode, pemeriksa, tgl_periksa, jam_periksa, igg)
-            VALUES('','$id_catatan_medik','$nama','$alamat','$tgl_lahir','$sex','$id_dokter','$id_unit','$tanggal','$jam','$sampel','$pemeriksaan','$igm','$nilai_rujukan','$metode','$pemeriksa','$tgl_periksa','$jam_periksa', '$igg')");
+          $simpan=mysqli_query($koneksi,"INSERT INTO rapidtest(id_rapidtest, id_catatan_medik, id_dokter, id_unit, tanggal, jam, sampel, pemeriksaan, igm, nilai_rujukan, metode, pemeriksa, tgl_periksa, jam_periksa, igg)
+            VALUES('','$id_catatan_medik','$id_dokter','$id_unit','$tanggal','$jam','$sampel','$pemeriksaan','$igm','$nilai_rujukan','$metode','$pemeriksa','$tgl_periksa','$jam_periksa', '$igg')");
           if($simpan){
             $a=mysqli_query($koneksi,"SELECT id_rapidtest FROM rapidtest WHERE id_catatan_medik='$id_catatan_medik' AND tanggal='$tanggal' AND jam='$jam'");
             while($b = mysqli_fetch_array($a)){
