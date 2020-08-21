@@ -40,131 +40,151 @@ function format_mak($mak)
     </div>
   </div><!-- /.row -->
   <div class="row">
-   <div class="col-lg-12">
-    <div class="row">
-      <form method="post" action="covid-rapid-tambah-cari-rm" role="form">
-        <div class="col-lg-4">
-          <div class="form-group input-group">
-            <input type="text" class="form-control" name="id_catatan_medik" placeholder="Nomor Rekam Medik..">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button>
-            </span>
-          </div>
-        </div>
-      </form>
-      <div align="right" class="col-lg-8">
-        <?php
-        $m = 30;
-        $n = 30;
-        $nextN = mktime(0, 0, 0, date("m"), date("d") + $m, date("Y"));
-        $prevN = mktime(0, 0, 0, date("m"), date("d") - $n, date("Y"));
-        $mak   = date("Y-m-d", $nextN);
-        $min   = date("Y-m-d", $prevN);
-        $data = mysqli_query($koneksi,
-          "SELECT COUNT(id_rapidtest) AS total
-          FROM rapidtest
-          WHERE tanggal BETWEEN '$min' AND '$mak';");
-        while($d = mysqli_fetch_array($data)){
-          $total = $d['total'];
-          ?>
-          <h1><small>Total <?php echo $total; }?> Pasien</small></h1>
-        </div>
-      </div>
-      <table class="table table-bordered table-hover table-striped tablesorter">
-        <thead>
-          <tr>
-            <th><center>#</center></th>
-            <th><center>No. RM</center></th>
-            <th><center>Nama Pasien</center></th>
-            <th><center>Dokter</center></th>
-            <th><center>IgM</center></th>
-            <th><center>IgG</center></th>
-            <th><center>Registrasi</center></th>
-            <th colspan='3'><center>Action</center></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $no=$total;
-          $data = mysqli_query($koneksi,
-            "SELECT *, mr_dokter.nama_dokter,
-            CASE
-            WHEN rapidtest.igm='0' THEN 'Non Reaktif'
-            WHEN rapidtest.igm='1' THEN 'Reaktif'
-            WHEN rapidtest.igm='3' THEN 'On Process'
-            END AS nama_igm,
-            CASE
-            WHEN rapidtest.igg='0' THEN 'Non Reaktif'
-            WHEN rapidtest.igg='1' THEN 'Reaktif'
-            WHEN rapidtest.igg='3' THEN 'On Process'
-            END AS nama_igg
-            FROM rapidtest, mr_dokter
-            WHERE rapidtest.id_dokter=mr_dokter.id_dokter
-            AND tanggal BETWEEN '$min' AND '$mak'
-            ORDER BY rapidtest.id_rapidtest DESC");
-          while($d = mysqli_fetch_array($data)){
-            $tgl_periksa  = $d['tgl_periksa'];
-            $tanggal      = $d['tanggal'];
-            $lahir        = new DateTime($d['tgl_lahir']);
-            $today        = new DateTime();
-            $umur         = $today->diff($lahir);
-            ?>
-            <tr>
-              <td><center><?php echo $no--; ?></center></td>
-              <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-              <td><center><?php echo $d['nama']; ?></center></td>
-              <td><center><?php echo $d['nama_dokter']; ?></center></td>
-              <td><center>
-                <?php
-                if($d['igm']==1){
-                  ?>
-                  <font class="redtext"><?php echo $d['nama_igm']; ?></font>
-                  <?php
-                }elseif($d['igm']==0){
-                  ?>
-                  <font class="greentext"><?php echo $d['nama_igm']; ?></font>
-                  <?php
+   <div class="col-lg-6">
+    <div class="table-responsive">
+      <?php 
+      $id_catatan_medik = $_POST['id_catatan_medik'];
+
+      $c = mysqli_query($koneksi, "SELECT tgl_lahir, sex, IF(sex='1', 'Laki-laki', 'Perempuan') AS nama_sex FROM mr_pasien WHERE id_catatan_medik=$id_catatan_medik;");
+      while($d = mysqli_fetch_array($c)){
+        $tgl_lahir1        = $d['tgl_lahir'];
+        $nama_sex          = $d['nama_sex'];
+        $sex1              = $d['sex'];
+      }
+
+      if(isset($_POST['rapidsubmit'])){
+        $nama             = $_POST['nama'];
+        $alamat           = $alamat1;
+        $tgl_lahir        = $tgl_lahir1;
+        $sex              = $sex1;
+        $id_dokter        = $_POST['id_dokter'];
+        $id_unit          = $_POST['id_unit'];
+        $tanggal          = $tanggalsekarang;
+        $jam              = $jamsekarang;
+        $sampel           = 'Darah';
+        $pemeriksaan      = 'SARS CoV-2 Antibody';
+        $igm              = '3';
+        $nilai_rujukan    = '0';
+        $metode           = 'ICT';
+        $pemeriksa        = $nama_login;
+        $tgl_periksa      = $_POST['tgl_periksa'];
+        $jam_periksa      = $_POST['jam_periksa'];
+        $igg              = '3';
+
+        $error=array();
+        if(empty($id_dokter)){
+          $error['id_dokter']='Dokter Harus Diisi!!!';
+        }if (empty($id_unit)){
+          $error['id_unit']='Unit Harus Diisi!!!';
+        }if (empty($tgl_periksa)){
+          $error['tgl_periksa']='Tanggal Periksa Harus Diisi!!!';
+        }if (empty($jam_periksa)){
+          $error['jam_periksa']='Jam Periksa Harus Diisi!!!';
+        }if (empty($igm)){
+          $error['igm']='IgM Harus Diisi!!!';
+        }if (empty($igg)){
+          $error['igg']='IgG Harus Diisi!!!';
+        }if(empty($error)){
+          $simpan=mysqli_query($koneksi,"INSERT INTO rapidtest(id_rapidtest, id_catatan_medik, nama, alamat, tgl_lahir, sex, id_dokter, id_unit, tanggal, jam, sampel, pemeriksaan, igm, nilai_rujukan, metode, pemeriksa, tgl_periksa, jam_periksa, igg)
+            VALUES('','$id_catatan_medik','$nama','$alamat','$tgl_lahir','$sex','$id_dokter','$id_unit','$tanggal','$jam','$sampel','$pemeriksaan','$igm','$nilai_rujukan','$metode','$pemeriksa','$tgl_periksa','$jam_periksa', '$igg')");
+          if($simpan){
+            $a=mysqli_query($koneksi,"SELECT id_rapidtest FROM rapidtest WHERE id_catatan_medik='$id_catatan_medik' AND tanggal='$tanggal' AND jam='$jam'");
+            while($b = mysqli_fetch_array($a)){
+              $id_rapidtest = $b['id_rapidtest'];
+            }
+            echo "<script>
+            setTimeout(function() {
+              swal({
+                title: 'Berhasil',
+                text: 'Menambah Hasil Rapid test',
+                type: 'success'
+                }, function() {
+                  window.location = 'dashboard';
+                  });
+                  }, 10);
+                  </script>";
                 }else{
+                  echo "<script>
+                  setTimeout(function() {
+                    swal({
+                      title: 'Gagal',
+                      text: 'Coba Sekali Lagi',
+                      type: 'error'
+                      }, function() {
+                        window.location = 'covid-rapid-tambah';
+                        });
+                        }, 10);
+                        </script>";
+                      }
+                    }
+                  }
                   ?>
-                  <font class="blacktext"><?php echo $d['nama_igm']; ?></font>
-                  <?php
-                }
-                ?>
-              </center></td>
-              <td><center>
-                <?php
-                if($d['igg']==1){
-                  ?>
-                  <font class="redtext"><?php echo $d['nama_igg']; ?></font>
-                  <?php
-                }elseif($d['igg']==0){
-                  ?>
-                  <font class="greentext"><?php echo $d['nama_igg']; ?></font>
-                  <?php
-                }else{
-                  ?>
-                  <font class="blacktext"><?php echo $d['nama_igg']; ?></font>
-                  <?php
-                }
-                ?>
-              </center></td>
-              <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
-              <td>
-                <div align="center">
-                  <a href="covid-rapid-print?id=<?php echo $d['id_rapidtest']; ?>"
-                    <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
-                  </div>
-                </td>
-                <td>
-                  <div align="center">
-                    <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
-                      <button type="button" class="btn btn-warning"><i class='fa fa-edit'></i></button></a>
+                  <form method="post" action="" role="form">
+                    <div class="form-group">
+                      <label>Nomor Rekam Medik</label>
+                      <input class="form-control" type="text" onkeyup="isi_otomatis()" id="id_catatan_medik"
+                      placeholder="Masukkan Nomor Rekam Medik" name="id_catatan_medik" required="">
                     </div>
-                  </td>
-                  </tr><?php } ?>
-                </tbody>
-              </table>
+                    <div class="form-group">
+                      <label>Nama</label>
+                      <input class="form-control" type="text" id="nama" name="nama" 
+                      placeholder="Nama Anak (otomatis)" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label>Dokter</label>
+                      <select class="form-control" type="text" name="id_dokter"
+                      value="<?php echo $d['id_dokter']; ?>" required="">
+                      <option disabled selected>Pilih</option>
+                      <?php 
+                      $data = mysqli_query($koneksi,
+                        "SELECT * FROM mr_dokter;");
+                      while($d = mysqli_fetch_array($data)){
+                        echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Asal</label>
+                    <select class="form-control" type="text" name="id_unit"
+                    value="<?php echo $d['id_unit']; ?>" required="">
+                    <option disabled selected>Pilih</option>
+                    <?php 
+                    $data = mysqli_query($koneksi,
+                      "SELECT * FROM mr_unit;");
+                    while($d = mysqli_fetch_array($data)){
+                      echo "<option value='".$d['id_unit']."'>".$d['nama_unit']."</option>";
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Tanggal Periksa</label>
+                  <input class="form-control" type="date" name="tgl_periksa"
+                  value="<?php echo $d['tgl_periksa']; ?>" required="">
+                </div>
+                <div class="form-group">
+                  <label>Jam Periksa</label>
+                  <input class="form-control" type="text" name="jam_periksa" required="">
+                </div>
+                <button type="submit" name="rapidsubmit" class="btn btn-success">Tambah</button>
+              </form>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+              <script type="text/javascript">
+                function isi_otomatis(){
+                  var id_catatan_medik = $("#id_catatan_medik").val();
+                  $.ajax({
+                    url: 'covid-rapid-tambah-controller.php',
+                    data:"id_catatan_medik="+id_catatan_medik ,
+                  }).success(function (data) {
+                    var json = data,
+                    obj = JSON.parse(json);
+                    $('#nama').val(obj.nama);
+                  });
+                }
+              </script> 
             </div>
           </div>
-        </div><!-- /#wrapper -->
-        <?php include "views/footer.php"; ?> 
+        </div>
+      </div><!-- /#wrapper -->
+      <?php include "views/footer.php"; ?> 
