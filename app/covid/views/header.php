@@ -1,4 +1,7 @@
-<?php error_reporting(0); ?>
+<?php
+error_reporting(0);
+include "session-start.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +39,14 @@
         .navbar-brand{
             color:#ffffff;
         }
-
+        @media print
+        {
+            .noprint {display:none;}
+        }
     </style>
 </head>
 <?php
-include '../../../config/connect.php';
+include '../../config/connect.php';
 date_default_timezone_set("Asia/Jakarta");
 $tanggalsekarang    =   date('Y-m-d');
 $jamsekarang        =   date("H:i:s");
