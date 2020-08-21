@@ -32,7 +32,7 @@
 		$today        		= new DateTime();
 		$umur         		= $today->diff($lahir);
 		$sub_nama     		= substr($d['nama'],0, -2);
-		$sub_nama_dokter 	= substr($d['nama_dokter'],0, -5);
+		$sub_nama_dokter 	= substr($d['nama_dokter'],0, -4);
 
 		function format_tgl_periksa($tgl_periksa)
 		{
