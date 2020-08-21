@@ -55,6 +55,7 @@
                 $lahir        = new DateTime($d['tgl_lahir']);
                 $today        = new DateTime();
                 $umur         = $today->diff($lahir);
+                $sub_nama     = substr($d['nama'],0, -2);
 
                 function format_tgl_periksa($tgl_periksa)
                 {
@@ -99,7 +100,7 @@
                 </tr>
                 <tr>
                   <td><b>Nama Pasien</b></td>
-                  <td><?php echo $d['nama']; ?></td>
+                  <td><?php echo $sub_nama; ?></td>
                 </tr>
                 <tr>
                   <td><b>Umur</b></td>
