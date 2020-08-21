@@ -44,13 +44,14 @@
             }else{
               $no=1;
               $data = mysqli_query($koneksi,
-                "SELECT *, mr_dokter.nama_dokter,
+                "SELECT *, mr_pasien.nama, mr_dokter.nama_dokter,
                 IF(rapidtest.igm='1', 'Reaktif', 'Non Reaktif') AS nama_igm,
                 IF(rapidtest.igg='1', 'Reaktif', 'Non Reaktif') AS nama_igg
-                FROM rapidtest, mr_dokter
-                WHERE rapidtest.id_dokter=mr_dokter.id_dokter
-                AND id_catatan_medik='$id_catatan_medik'
-                ORDER BY id_rapidtest DESC;");
+                FROM rapidtest, mr_pasien, mr_dokter
+                WHERE rapidtest.id_catatan_medik=mr_pasien.id_catatan_medik
+                AND rapidtest.id_dokter=mr_dokter.id_dokter
+                AND rapidtest.id_catatan_medik='$id_catatan_medik'
+                ORDER BY rapidtest.id_rapidtest DESC;");
               while($d = mysqli_fetch_array($data)){
                 $tgl_periksa  = $d['tgl_periksa'];
                 $tanggal      = $d['tanggal'];

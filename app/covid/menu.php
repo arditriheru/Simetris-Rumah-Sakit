@@ -17,8 +17,6 @@
       <ul class="nav navbar-nav side-nav">
         <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="covid-rapid-tambah"><i class="fa fa-plus"></i> Rapid Test</a></li>
-        <li><a href="covid-skrining"><i class="fa fa-plus"></i> Skrining</a></li>
-        <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
         <li class="dropdown user-dropdown">
@@ -50,8 +48,6 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
             <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="covid-skrining"><i class="fa fa-plus"></i> Skrining</a></li>
-            <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown user-dropdown">
