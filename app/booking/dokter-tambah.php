@@ -79,9 +79,10 @@
                                   <label>Spesialis</label>
                                   <select class="form-control" type="text" name="id_unit" required="">
                                     <p style="color:red;"><?php echo ($error['id_unit']) ? $error['id_unit'] : ''; ?></p>
-                                    <option disabled selected>Pilih</option>
+                                    <option value="">Pilih</option>
                                     <option value='1'>Dokter Anak</option>
-                                    <option value='2'>Dokter Kandungan</option>"
+                                    <option value='2'>Dokter Kandungan</option>
+                                    <option value='3'>Dokter Bedah</option>
                                   </select>
                                 </div>
                                 <button type="submit" name="tambah" class="btn btn-success">Tambah</button>
@@ -103,14 +104,20 @@
                                   <?php 
                                   $no = 1;
                                   $data = mysqli_query($koneksi,
-                                    "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status,IF(id_unit='1', 'Dokter Anak', 'Dokter Kandungan') AS nama_unit FROM dokter;");
+                                    "SELECT *,  IF (status='1', 'Aktif', 'Nonaktif') AS status,
+                                    CASE
+                                    WHEN id_unit='1' THEN 'Dokter Anak'
+                                    WHEN id_unit='2' THEN 'Dokter Kandungan'
+                                    WHEN id_unit='3' THEN 'Dokter Bedah'
+                                    END AS nama_unit
+                                    FROM dokter;");
                                   while($d = mysqli_fetch_array($data)){
                                     $status = $d['status'];
                                     ?>
                                     <tr>
                                       <td><center><?php echo $no++; ?></center></td>
                                       <td><left><?php echo $d['nama_dokter']; ?></left></td>
-                                       <td><center><?php echo $d['nama_unit']; ?></center></td>
+                                      <td><center><?php echo $d['nama_unit']; ?></center></td>
                                       <td><center>
                                         <?php
                                         if($status='1'){
