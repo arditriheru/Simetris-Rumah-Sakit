@@ -27,7 +27,7 @@
       <div class="table-responsive">
         <?php
         $c = mysqli_query($koneksi,
-          "SELECT *, mr_pasien.nama, dokter.nama_dokter
+          "SELECT *, mr_pasien.nama, mr_suket.alamat AS suket_alamat, dokter.nama_dokter
           FROM mr_suket, mr_pasien, dokter
           WHERE mr_suket.id_catatan_medik=mr_pasien.id_catatan_medik
           AND mr_suket.id_dokter=dokter.id_dokter
@@ -49,10 +49,11 @@
               $lk               = $_POST['lk'];
               $jam_lahir        = $_POST['jam_lahir'];
               $anak_ke          = $_POST['anak_ke'];
+              $alamat           = $_POST['alamat'];
             }
 
             $simpan=mysqli_query($koneksi,"UPDATE mr_suket 
-              SET id_dokter='$id_dokter', ayah='$ayah', ibu='$ibu', bb='$bb', pb='$pb', lk='$lk', jam_lahir='$jam_lahir', anak_ke='$anak_ke'
+              SET id_dokter='$id_dokter', ayah='$ayah', ibu='$ibu', bb='$bb', pb='$pb', lk='$lk', jam_lahir='$jam_lahir', anak_ke='$anak_ke', alamat='$alamat'
               WHERE id_suket='$id_suket'");
             if($simpan){
               echo "<script>
@@ -130,6 +131,11 @@
                         <div class="form-group">
                           <label>Anak ke-</label>
                           <input class="form-control" type="number" name="anak_ke" value="<?php echo $d['anak_ke']; ?>" required="">
+                        </div>
+                        <div class="form-group">
+                          <label>Alamat</label>
+                          <input class="form-control" type="text" name="alamat" 
+                          value="<?php echo $d['suket_alamat']; ?>" required="">
                         </div>
                         <button type="submit" name="suketlahirsubmit" class="btn btn-success">Perbarui</button>
                         </form><?php } ?> 

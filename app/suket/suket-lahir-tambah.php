@@ -34,13 +34,14 @@
             $jam_lahir        = $_POST['jam_lahir'];
             $anak_ke          = $_POST['anak_ke'];
             $tanggal          = $tanggalsekarang;
+            $alamat           = $_POST['alamat'];
             $jam              = $jamsekarang;
             $kode_abjad       = 'B';
             $kode_jenis       = '1';
           }
 
-          $simpan=mysqli_query($koneksi,"INSERT INTO mr_suket(id_suket, id_catatan_medik, id_dokter, ayah, ibu, bb, pb, lk, jam_lahir, anak_ke, tanggal, jam, kode_abjad, kode_jenis)
-            VALUES('$id_suket','$id_catatan_medik','$id_dokter','$ayah','$ibu','$bb','$pb','$lk','$jam_lahir','$anak_ke','$tanggal','$jam','$kode_abjad','$kode_jenis')");
+          $simpan=mysqli_query($koneksi,"INSERT INTO mr_suket(id_suket, id_catatan_medik, id_dokter, ayah, ibu, bb, pb, lk, jam_lahir, anak_ke, tanggal, jam, kode_abjad, kode_jenis, alamat)
+            VALUES('$id_suket','$id_catatan_medik','$id_dokter','$ayah','$ibu','$bb','$pb','$lk','$jam_lahir','$anak_ke','$tanggal','$jam','$kode_abjad','$kode_jenis','$alamat')");
           if($simpan){
             echo "<script>
             setTimeout(function() {
@@ -128,6 +129,11 @@
                         <label>Anak ke-</label>
                         <input class="form-control" type="number" name="anak_ke" placeholder="Masukkan.." required="">
                       </div>
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <input class="form-control" type="text" id="alamat" name="alamat" 
+                        placeholder="Alamat (otomatis)" required="">
+                      </div>
                       <button type="submit" name="suketlahirsubmit" class="btn btn-success">Submit</button>
                     </form>
                   <?php }else{ ?>
@@ -183,6 +189,11 @@
                       <label>Anak ke-</label>
                       <input class="form-control" type="number" name="anak_ke" placeholder="Masukkan.." required="">
                     </div>
+                    <div class="form-group">
+                      <label>Alamat</label>
+                      <input class="form-control" type="text" id="alamat" name="alamat" 
+                      placeholder="Alamat (otomatis)" required="">
+                    </div>
                     <button type="submit" name="suketlahirsubmit" class="btn btn-success">Submit</button>
                   </form>
                 <?php } ?>
@@ -211,6 +222,7 @@
               $('#nama').val(obj.nama);
               $('#nama_ayah').val(obj.nama_ayah);
               $('#nama_ibu').val(obj.nama_ibu);
+              $('#alamat').val(obj.alamat);
             });
           }
         </script>

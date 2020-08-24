@@ -6,6 +6,7 @@ $pasien = mysqli_fetch_array($query);
 $data = array(
 	'nama'      	=>  $pasien['nama'],
 	'nama_ayah'    	=>  $pasien['nama_ortu'],
-	'nama_ibu'    	=>  $pasien['nama_ortu'],);
+	'nama_ibu'    	=>  $pasien['nama_ortu'],
+	'alamat'    	=>  $pasien['alamat'],);
 echo json_encode($data);
 ?>

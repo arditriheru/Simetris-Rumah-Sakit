@@ -24,7 +24,7 @@
           $data = mysqli_query($koneksi,
             "SELECT COUNT(id_suket) AS total
             FROM mr_suket
-            WHERE tanggal BETWEEN '$min' AND '$mak';");
+            -- WHERE tanggal BETWEEN '$min' AND '$mak';");
           while($d = mysqli_fetch_array($data)){
             $total = $d['total'];
             ?>
@@ -47,12 +47,12 @@
           <?php
           $no=$total;
           $data = mysqli_query($koneksi,
-            "SELECT *, mr_pasien.nama, dokter.nama_dokter,
+            "SELECT *, mr_suket.tanggal AS tgl_reg, mr_pasien.nama, dokter.nama_dokter,
             IF(mr_suket.kode_jenis='1', 'SKL', 'Surat Keterangan') AS nama_jenis
             FROM mr_suket, mr_pasien, dokter
             WHERE mr_suket.id_catatan_medik=mr_pasien.id_catatan_medik
             AND mr_suket.id_dokter=dokter.id_dokter
-            AND mr_suket.tanggal BETWEEN '$min' AND '$mak'
+            -- AND mr_suket.tanggal BETWEEN '$min' AND '$mak'
             ORDER BY mr_suket.id_suket DESC");
           while($d = mysqli_fetch_array($data)){
             ?>
@@ -62,7 +62,7 @@
               <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
               <td><center><?php echo $d['nama']; ?></center></td>
               <td><center><?php echo $d['nama_dokter']; ?></center></td>
-              <td><center><?php echo date("d-m-Y", strtotime($d['tanggal'])).' / '.$d['jam']; ?></center></td>
+              <td><center><?php echo $d['tgl_reg'].' / '.$d['jam']; ?></center></td>
               <td>
                 <div align="center">
                   <a href="suket-lahir-print?id=<?php echo $d['id_suket']; ?>">
