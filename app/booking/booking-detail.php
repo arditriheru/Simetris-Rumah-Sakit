@@ -44,56 +44,59 @@
       <?php }else{ ?>
 
       <?php } ?>
-      <table class="table table-bordered table-hover table-striped tablesorter">
-        <?php 
-        $data = mysqli_query($koneksi,
-          "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
-          IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-          FROM booking, dokter, sesi
-          WHERE booking.id_dokter=dokter.id_dokter
-          AND booking.id_sesi=sesi.id_sesi
-          AND booking.id_booking=$id_booking;");
-        while($d = mysqli_fetch_array($data)){
-          $booking_tanggal = $d['booking_tanggal'];
-          function format_jadwal($booking_tanggal)
-          {
-            $bulan = array (1 =>   'Januari',
-             'Februari',
-             'Maret',
-             'April',
-             'Mei',
-             'Juni',
-             'Juli',
-             'Agustus',
-             'September',
-             'Oktober',
-             'November',
-             'Desember'
-           );
-            $split = explode('-', $booking_tanggal);
-            return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
-          }
-          $tanggal = $d['tanggal'];
-          function format_reservasi($tanggal)
-          {
-            $bulan = array (1 =>   'Januari',
-             'Februari',
-             'Maret',
-             'April',
-             'Mei',
-             'Juni',
-             'Juli',
-             'Agustus',
-             'September',
-             'Oktober',
-             'November',
-             'Desember'
-           );
-            $split = explode('-', $tanggal);
-            return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
-          }
-          ?>
+      <?php 
+      $data = mysqli_query($koneksi,
+        "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
+        IF (booking.status='1', 'Datang', 'Belum Datang') AS status
+        FROM booking, dokter, sesi
+        WHERE booking.id_dokter=dokter.id_dokter
+        AND booking.id_sesi=sesi.id_sesi
+        AND booking.id_booking=$id_booking;");
+      while($d = mysqli_fetch_array($data)){
+        $booking_tanggal = $d['booking_tanggal'];
+        function format_jadwal($booking_tanggal)
+        {
+          $bulan = array (1 =>   'Januari',
+           'Februari',
+           'Maret',
+           'April',
+           'Mei',
+           'Juni',
+           'Juli',
+           'Agustus',
+           'September',
+           'Oktober',
+           'November',
+           'Desember'
+         );
+          $split = explode('-', $booking_tanggal);
+          return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+        }
+        $tanggal = $d['tanggal'];
+        function format_reservasi($tanggal)
+        {
+          $bulan = array (1 =>   'Januari',
+           'Februari',
+           'Maret',
+           'April',
+           'Mei',
+           'Juni',
+           'Juli',
+           'Agustus',
+           'September',
+           'Oktober',
+           'November',
+           'Desember'
+         );
+          $split = explode('-', $tanggal);
+          return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+        }
+        ?>
+        <table class="table table-bordered table-hover table-striped tablesorter">
           <tbody>
+            <tr>
+              <td colspan="2"><div align="center"><b><?php echo "Antrian ".$d['antrian']; ?></b></div></td>
+            </tr>
             <tr>
               <td><b>Nomor RM</b></td>
               <td><?php echo $d['id_catatan_medik']; ?></td>
