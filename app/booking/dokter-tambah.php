@@ -110,7 +110,7 @@
                                     WHEN id_unit='2' THEN 'Dokter Kandungan'
                                     WHEN id_unit='3' THEN 'Dokter Bedah'
                                     END AS nama_unit
-                                    FROM dokter;");
+                                    FROM dokter ORDER BY nama_dokter ASC;");
                                   while($d = mysqli_fetch_array($data)){
                                     $status = $d['status'];
                                     ?>
