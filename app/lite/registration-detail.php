@@ -16,7 +16,6 @@
                   <div class="progress mb-2">
                     <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">100%</div>
                   </div>
-                  <hr>
                 </div><br>
                 <?php 
                 include 'controller/connection.php';
@@ -49,7 +48,13 @@
                   $jadwal_jam = $d['jam'];
                 }
                 ?>
-                <p class="redtext">**Silahkan screenshot dan tunjukkan ke petugas pendaftaran saat melakukan registrasi ulang.</p>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                  <h4 class="alert-heading">Informasi</h4><hr>
+                  <p class="blacktext">Silahkan screenshot dan tunjukkan ke petugas pendaftaran saat melakukan registrasi ulang.</p>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 <table class="table">
                   <tbody>
                     <tr>
@@ -73,7 +78,7 @@
                           <td><?php echo "dr. ".$nama_dokter; ?></td>
                         </tr>
                         <tr>
-                          <td>Jadwal Poli</td>
+                          <td>Jadwal Poliklinik</td>
                           <td>:</td>
                           <td><?php echo format_indo($booking_tanggal); ?></td>
                         </tr>
