@@ -32,9 +32,9 @@
                 while($d = mysqli_fetch_array($data)){
                   $antrian          = $d['antrian'];
                   $id_catatan_medik = $d['id_catatan_medik'];
-                  $nama             = $d['nama'];
+                  $nama             = substr($d['nama'],0, -2);
                   $id_dokter        = $d['id_dokter'];
-                  $nama_dokter      = $d['nama_dokter'];
+                  $nama_dokter      = substr($d['nama_dokter'],0, -5);
                   $booking_tanggal  = $d['booking_tanggal'];
                   $id_sesi          = $d['id_sesi'];
                   $nama_sesi        = $d['nama_sesi'];
@@ -54,34 +54,42 @@
                   <tbody>
                     <tr>
                       <td><h5 class="bluetext"><b>Antrian</h5></td>
+                        <td>:</td>
                         <td><h5 class="bluetext"><b><?php echo $antrian; ?></h5></td>
                         </tr>
                         <tr>
                           <td>Nomor RM</td>
+                          <td>:</td>
                           <td><?php echo $id_catatan_medik; ?></td>
                         </tr>
                         <tr>
-                          <td>Nama</td>
+                          <td>Nama Pasien</td>
+                          <td>:</td>
                           <td><?php echo $nama; ?></td>
                         </tr>
                         <tr>
-                          <td>Dokter</td>
-                          <td><?php echo $nama_dokter; ?></td>
+                          <td>Nama Dokter</td>
+                          <td>:</td>
+                          <td><?php echo "dr. ".$nama_dokter; ?></td>
                         </tr>
                         <tr>
-                          <td>Jadwal</td>
+                          <td>Jadwal Poli</td>
+                          <td>:</td>
                           <td><?php echo format_indo($booking_tanggal); ?></td>
                         </tr>
                         <tr>
                           <td>Jam Sesi</td>
-                          <td><?php echo $jadwal_jam.' ('.$nama_sesi.')'; ?></td>
+                          <td>:</td>
+                          <td><?php echo $jadwal_jam." WIB". ' ('.$nama_sesi.')'; ?></td>
                         </tr>
                         <tr>
                           <td>Reservasi</td>
+                          <td>:</td>
                           <td><?php echo format_indo($tanggal); ?> / <?php echo $jam; ?></td>
                         </tr>
                         <tr>
                           <td>Keterangan</td>
+                          <td>:</td>
                           <td><?php echo $keterangan; ?></td>
                         </tr>
                       </tbody>
