@@ -24,10 +24,10 @@ if($selisih>30){
             }, 10);
             </script>";
           }elseif(empty($error)){
-            $simpan=mysqli_query($koneksi,"INSERT INTO booking (id_booking, nama, alamat, kontak, id_catatan_medik, booking_tanggal, tanggal, jam, status, keterangan, id_dokter, id_sesi, mandiri)
+            $simpan=mysqli_query($koneksi,"INSERT INTO booking (id_booking, nama, alamat, kontak, id_catatan_medik, booking_tanggal, tanggal, jam, status, keterangan, id_dokter, id_sesi, mandiri, antrian)
               VALUES('','$nama','$alamat',
               '$kontak','$id_catatan_medik','$booking_tanggal','$tanggal','$jam','$status','$keterangan',
-              '$id_dokter','$id_sesi','$mandiri')");
+              '$id_dokter','$id_sesi','$mandiri','$antrian')");
             if($simpan){
               $a=mysqli_query($koneksi,"SELECT id_booking FROM booking WHERE id_catatan_medik='$id_catatan_medik' AND booking_tanggal='$booking_tanggal' AND id_dokter='$id_dokter' AND id_sesi='$id_sesi'");
               while($b = mysqli_fetch_array($a)){

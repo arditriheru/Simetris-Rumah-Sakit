@@ -30,7 +30,7 @@
                   AND booking.id_booking=$id_booking");
                 include "date-format.php";
                 while($d = mysqli_fetch_array($data)){
-                  $id_booking       = $d['id_booking'];
+                  $antrian          = $d['antrian'];
                   $id_catatan_medik = $d['id_catatan_medik'];
                   $nama             = $d['nama'];
                   $id_dokter        = $d['id_dokter'];
@@ -53,11 +53,11 @@
                 <table class="table">
                   <tbody>
                     <tr>
-                      <td><h5 class="bluetext"><b>Kode</h5></td>
-                        <td><h5 class="bluetext"><b><?php echo $id_booking; ?></h5></td>
+                      <td><h5 class="bluetext"><b>Antrian</h5></td>
+                        <td><h5 class="bluetext"><b><?php echo $antrian; ?></h5></td>
                         </tr>
                         <tr>
-                          <td>No.RM</td>
+                          <td>Nomor RM</td>
                           <td><?php echo $id_catatan_medik; ?></td>
                         </tr>
                         <tr>
