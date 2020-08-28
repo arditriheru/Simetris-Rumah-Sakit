@@ -29,15 +29,15 @@ if(isset($_POST['submitrekomendasi'])){
       ?>
       <div class="col-lg-12">
         <div align="center" class="row">
-          <h3><b>SEBERAPA INGIN ANDA</b></h3>
-          <h1><b>MEREKOMENDASIKAN RSKIA RACHMI KEPADA KOLEGA ANDA?</b></h1><br><br>
+          <h7><b>SEBERAPA INGIN ANDA MEREKOMENDASIKAN</b></h7><br>
+          <h8><b>RSKIA RACHMI KEPADA KOLEGA ANDA?</b></h8><br><br>
           <form method="post" action="" role="form">
             <div class="col-lg-4">
               <div align="center">
                <input class="form-control" type="hidden" name="bagian" value="rekomendasi">
                <input class="form-control" type="hidden" name="skor" value="4">
                <button type="submit" name="submitrekomendasi" class="btn">
-                <img src="../images/a.png" class="rounded float-right" width="200px">
+                <img src="../images/a.png" class="rounded float-right" width="400px">
               </div>
               <h2>Sangat Ingin</h2>
             </div>
@@ -48,7 +48,7 @@ if(isset($_POST['submitrekomendasi'])){
                 <input class="form-control" type="hidden" name="bagian" value="rekomendasi">
                 <input class="form-control" type="hidden" name="skor" value="5">
                 <button type="submit" name="submitrekomendasi" class="btn">
-                  <img src="../images/b.png" class="rounded float-right" width="200px">
+                  <img src="../images/b.png" class="rounded float-right" width="400px">
                 </div>
                 <h2>Cukup Ingin</h2>
               </div>
@@ -59,7 +59,7 @@ if(isset($_POST['submitrekomendasi'])){
                   <input class="form-control" type="hidden" name="bagian" value="rekomendasi">
                   <input class="form-control" type="hidden" name="skor" value="6">
                   <button type="submit" name="submitrekomendasi" class="btn">
-                    <img src="../images/d.png" class="rounded float-right" width="200px">
+                    <img src="../images/d.png" class="rounded float-right" width="400px">
                   </div>
                   <h2>Tidak Ingin</h2>
                 </div>

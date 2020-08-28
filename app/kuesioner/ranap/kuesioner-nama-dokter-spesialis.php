@@ -22,8 +22,8 @@ if(isset($_POST['submitnamadoktersp'])){
 <div id="page-wrapper">
   <div align="center" class="row">
     <div class="col-lg-12">
-      <h3><b>PELAYANAN</b></h3>
-      <h1><b>DOKTER SPESIALIS</b></h1><br><br>
+      <h7><b>PELAYANAN</b></h7><br>
+      <h8><b>DOKTER SPESIALIS</b></h8><br><br>
       <div class="row">
         <form method="post" action="" role="form">
           <div class="col-lg-2">

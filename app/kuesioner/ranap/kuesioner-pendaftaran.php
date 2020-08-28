@@ -17,15 +17,15 @@ if(isset($_POST['submitpendaftaran'])){
 ?>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h3><b>PELAYANAN</b></h3>
-    <h1><b>PETUGAS PENDAFTARAN</b></h1><br><br>
+    <h7><b>PELAYANAN</b></h7><br>
+    <h8><b>PETUGAS PENDAFTARAN</b></h8><br><br>
     <form method="post" action="" role="form">
       <div class="col-lg-4">
         <div align="center">
          <input class="form-control" type="hidden" name="bagian" value="pendaftaran">
          <input class="form-control" type="hidden" name="skor" value="1">
          <button type="submit" name="submitpendaftaran" class="btn">
-          <img src="../images/a.png" class="rounded float-right" width="200px">
+          <img src="../images/a.png" class="rounded float-right" width="400px">
         </div>
         <h2>Sangat Puas</h2>
       </div>
@@ -36,7 +36,7 @@ if(isset($_POST['submitpendaftaran'])){
           <input class="form-control" type="hidden" name="bagian" value="pendaftaran">
           <input class="form-control" type="hidden" name="skor" value="2">
           <button type="submit" name="submitpendaftaran" class="btn">
-            <img src="../images/b.png" class="rounded float-right" width="200px">
+            <img src="../images/b.png" class="rounded float-right" width="400px">
           </div>
           <h2>Cukup Puas</h2>
         </div>
@@ -47,7 +47,7 @@ if(isset($_POST['submitpendaftaran'])){
             <input class="form-control" type="hidden" name="bagian" value="pendaftaran">
             <input class="form-control" type="hidden" name="skor" value="3">
             <button type="submit" name="submitpendaftaran" class="btn">
-              <img src="../images/d.png" class="rounded float-right" width="200px">
+              <img src="../images/d.png" class="rounded float-right" width="400px">
             </div>
             <h2>Tidak Puas</h2>
           </div>
