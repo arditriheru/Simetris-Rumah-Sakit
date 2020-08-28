@@ -6,8 +6,8 @@ $pelayanan  = $_POST['pelayanan'];
 ?>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h3><b>SILAHKAN PILIH</b></h3>
-    <h1><b>JENIS POLIKLINIK</b></h1><br><br>
+    <h7><b>SILAHKAN PILIH</b></h7><br>
+    <h8><b>JENIS POLIKLINIK</b></h8><br><br>
     <div class="container">
       <form method="post" action="kuesioner-nama-dokter-spesialis" role="form">
         <div class="col-lg-6">
@@ -20,7 +20,7 @@ $pelayanan  = $_POST['pelayanan'];
             value="<?php echo $pelayanan; ?>">
             <input class="form-control" type="hidden" name="jenispoli" value="1">
             <button type="submit" name="submitpage1" class="btn">
-              <img src="../images/kuesioner-3.jpg" class="rounded float-right" width="200px">
+              <img src="../images/kuesioner-3.jpg" class="rounded float-right" width="400px">
             </button>
           </div>
         </div>
@@ -36,7 +36,7 @@ $pelayanan  = $_POST['pelayanan'];
             value="<?php echo $pelayanan; ?>">
             <input class="form-control" type="hidden" name="jenispoli" value="2">
             <button type="submit" name="submitpage1" class="btn">
-              <img src="../images/kuesioner-4.jpg" class="rounded float-right" width="200px">
+              <img src="../images/kuesioner-4.jpg" class="rounded float-right" width="400px">
             </button>
           </div>
         </div>

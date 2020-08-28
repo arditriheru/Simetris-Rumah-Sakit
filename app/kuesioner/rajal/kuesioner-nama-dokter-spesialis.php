@@ -25,13 +25,13 @@ if(isset($_POST['submitnamadoktersp'])){
 <div id="page-wrapper">
   <div align="center" class="row">
     <div class="col-lg-12">
-      <h3><b>PELAYANAN</b></h3>
-      <h1><b>DOKTER SPESIALIS</b></h1><br><br>
+      <h7><b>PELAYANAN</b></h7><br>
+      <h8><b>DOKTER SPESIALIS</b></h8><br><br>
       <div class="row">
         <?php
         if($jenispoli==1){ ?>
           <form method="post" action="" role="form">
-            <div class="col-lg-2">
+            <div class="col-lg-4">
               <div align="center">
                 <input class="form-control" type="hidden" name="nama"
                 value="<?php echo $nama; ?>">
@@ -43,13 +43,13 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="1">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/soeroyo.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/soeroyo.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
           </form>
           <form method="post" action="" role="form">
-            <div class="col-lg-2">
+            <div class="col-lg-4">
               <div align="center">
                 <input class="form-control" type="hidden" name="nama"
                 value="<?php echo $nama; ?>">
@@ -61,13 +61,13 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="5">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/umam.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/umam.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
           </form>
           <form method="post" action="" role="form">
-            <div class="col-lg-2">
+            <div class="col-lg-4">
               <div align="center">
                 <input class="form-control" type="hidden" name="nama"
                 value="<?php echo $nama; ?>">
@@ -79,7 +79,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="7">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/restu.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/restu.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
@@ -98,7 +98,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="2">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/irwan.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/irwan.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
@@ -116,7 +116,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="3">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/irfan.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/irfan.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
@@ -134,7 +134,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="4">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/arsi.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/arsi.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
@@ -152,7 +152,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="8">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/marie.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/marie.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
@@ -170,7 +170,7 @@ if(isset($_POST['submitnamadoktersp'])){
                 value="<?php echo $jenispoli; ?>">
                 <input class="form-control" type="hidden" name="id_dokter" value="9">
                 <button type="submit" name="submitnamadoktersp" class="btn">
-                  <img src="../images/akbar.jpg" class="rounded float-right" width="150px">
+                  <img src="../images/akbar.jpg" class="rounded float-right" width="100%">
                 </button>
               </div>
             </div>
