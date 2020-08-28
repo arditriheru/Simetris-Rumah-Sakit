@@ -8,22 +8,24 @@
 </style>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h1><b>MOHON PENILAIAN ANDA TERHADAP PELAYANAN KAMI</b></h1>
+    <h7><b>MOHON PENILAIAN ANDA</b></h7><br>
+    <h8 size="15"><b>TERHADAP PELAYANAN KAMI</b></h8>
     <div class="col-lg-12">
       <div class="container">
-        <img width="20%" src="images/gif2.gif" alt="Rachmi Online">
+        <img width="30%" src="images/gif2.gif" alt="Rachmi Online">
         <form method="post" action="kuesioner-layanan" role="form">
-          <div align="center">
-            <div class="form-group">
-              <input class="form-control input-lg input-upper" type="text" name="nama" placeholder="Masukkan Nama Anda" required="">
+          <div class="row">
+            <div class="form-group col-lg-6">
+              <input class="form-control input-lg input-upper" style="height:80px" type="text" name="nama" placeholder="Masukkan Nama Anda" required="">
             </div>
-            <input class="form-control input-lg input-upper" type="text" name="kontak" placeholder="Masukkan Nomor WhatsApp" required="">
+            <div class="form-group col-lg-6">
+              <input class="form-control input-lg input-upper" style="height:80px" type="text" name="kontak" placeholder="Masukkan Nomor WhatsApp" required="">
+            </div>
           </div><br>
-          <button type="submit" class="btn btn-success btn-lg btn-block">Lanjutkan</button>
-        </div>
-      </form>
+          <button type="submit" class="btn btn-block"><img src="images/kuesioner-button.jpg" class="rounded float-right" width="100%"></button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div><br>
 <?php include "views/footer.php"; ?>

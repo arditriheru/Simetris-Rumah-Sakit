@@ -5,8 +5,8 @@ $kontak = $_POST['kontak'];
 ?>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h3><b>SILAHKAN PILIH</b></h3>
-    <h1><b>JENIS PELAYANAN</b></h1><br><br>
+    <h7><b>SILAHKAN PILIH</b></h7><br>
+    <h8><b>JENIS PELAYANAN</b></h8><br><br>
     <div class="container">
       <form method="post" action="rajal/kuesioner-jenis-poliklinik" role="form">
         <div class="col-lg-6">
@@ -17,7 +17,7 @@ $kontak = $_POST['kontak'];
             value="<?php echo $kontak; ?>">
             <input class="form-control" type="hidden" name="pelayanan" value="1">
             <button type="submit" name="submitpage1" class="btn">
-              <img src="images/kuesioner-1.jpg" class="rounded float-right" width="200px">
+              <img src="images/kuesioner-1.jpg" class="rounded float-right" width="400px">
             </button>
           </div>
         </div>
@@ -31,7 +31,7 @@ $kontak = $_POST['kontak'];
             value="<?php echo $kontak; ?>">
             <input class="form-control" type="hidden" name="pelayanan" value="2">
             <button type="submit" name="submitpage1" class="btn">
-              <img src="images/kuesioner-2.jpg" class="rounded float-right" width="200px">
+              <img src="images/kuesioner-2.jpg" class="rounded float-right" width="400px">
             </button>
           </div>
         </div>
