@@ -13,7 +13,7 @@ if(isset($_POST['submitgizi'])){
 ?>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h7><b>PELAYANAN</b></h7><br>
+    <h7><b>9. PELAYANAN</b></h7><br>
     <h8><b>PETUGAS GIZI</b></h8><br><br>
     <form method="post" action="" role="form">
       <div class="col-lg-4">

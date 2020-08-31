@@ -29,7 +29,7 @@ if(isset($_POST['submitrekomendasi'])){
       ?>
       <div class="col-lg-12">
         <div align="center" class="row">
-          <h7><b>SEBERAPA INGIN ANDA MEREKOMENDASIKAN</b></h7><br>
+          <h7><b>13. SEBERAPA INGIN ANDA MEREKOMENDASIKAN</b></h7><br>
           <h8><b>RSKIA RACHMI KEPADA KOLEGA ANDA?</b></h8><br><br>
           <form method="post" action="" role="form">
             <div class="col-lg-4">
