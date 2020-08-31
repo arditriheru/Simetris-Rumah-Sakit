@@ -1,7 +1,10 @@
 <?php include "views/header.php"; ?>
 <nav>
   <div id="wrapper">
-    <?php include "menu.php"; ?>
+    <?php
+    include "auto-delete.php";
+    include "menu.php";
+    ?>
   </div><!-- /.navbar-collapse -->
 </nav>
 <?php 
