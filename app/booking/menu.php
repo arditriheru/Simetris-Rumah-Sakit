@@ -41,6 +41,7 @@
                   <li><a href="anc-tambah">Tambah</a></li>
                 </ul>
               </li>
+              <li><a href="whatsapp"><i class="fa fa-send"></i> WhatsApp</a></li>
               <li><a href="../kalender?id=booking"><i class="fa fa-calendar"></i> Kalender</a></li>
               <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
               <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Petugas Medis</a></li>
