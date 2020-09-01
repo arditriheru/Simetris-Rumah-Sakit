@@ -13,8 +13,20 @@ if(isset($_POST['submitdokterspesialis'])){
 ?>
 <div class="col-lg-12">
   <div align="center" class="row">
-    <h7><b>5. PELAYANAN</b></h7><br>
-    <h8><b>DOKTER SPESIALIS</b></h8><br><br>
+    <div class="col-lg-2"><br>
+      <a href="javascript:window.history.go(-1);">
+       <img src="../images/kuesioner-previous.png" class="rounded float-right" width="100px">
+     </a>
+   </div>
+   <div class="col-lg-8">
+     <h7><b>5. PELAYANAN</b></h7><br>
+     <h8><b>DOKTER SPESIALIS</b></h8><br><br>
+   </div>
+   <div class="col-lg-2"><br>
+    <a href="#">
+     <img src="../images/kuesioner-next.png" class="rounded float-right" width="100px">
+   </a>
+ </div>
     <form method="post" action="" role="form">
       <div class="col-lg-4">
         <div align="center">
