@@ -52,6 +52,7 @@
               <li><a href="pendidikan-cari"><i class="fa fa-check-square-o"></i> Pendidikan</a></li>
               <li><a href="kuesioner-cari"><i class="fa fa-check-square-o"></i> Kuesioner</a></li>
               <li><a href="laborat-tarif-tampil"><i class="fa fa-check-square-o"></i> Tarif Laboratorium</a></li>
+              <li><a href="manual-export"><i class="fa fa-check-square-o"></i> Manual Export</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right navbar-user">
