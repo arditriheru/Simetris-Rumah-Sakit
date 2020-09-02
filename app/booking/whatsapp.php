@@ -20,17 +20,18 @@
     <div class="col-lg-6">
       <?php
       if(isset($_POST['submitwa'])){
-        $nomor_wa  = $_POST['nomor_wa'];
+        $sub_kontak = $_POST['nomor_wa'];
+        $nomor_wa   = substr($sub_kontak,1);
       }
       ?>
       <form method="post" action="" role="form">
         <div class="form-group">
-          <label>Nomor WhatsApp</label><small class="redtext"> Tanpa diawali angka Nol</small>
+          <label>Nomor WhatsApp</label>
           <?php
           if(isset($nomor_wa)){ ?>
-            <input class="form-control" type="number" name="nomor_wa" value="<?php echo $nomor_wa; ?>">
+            <input class="form-control" type="number" name="nomor_wa" value="<?php echo $sub_kontak; ?>">
           <?php }else{ ?>
-            <input class="form-control" type="number" name="nomor_wa" placeholder="masukkan Nomor WhtasApp">
+            <input class="form-control" type="number" name="nomor_wa" placeholder="Contoh : 089629671717">
           <?php } ?>
         </div>
         <button type="submit" name="submitwa" class="btn btn-success">Submit</button>
