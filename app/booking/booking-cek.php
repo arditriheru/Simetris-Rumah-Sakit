@@ -217,7 +217,8 @@
                                         <?php 
                                         $data = mysqli_query($koneksi,"SELECT COUNT(id_booking) AS total
                                           FROM booking
-                                          WHERE booking.mandiri = '1';");
+                                          WHERE booking.mandiri = '1'
+                                          AND booking.tanggal = '$tanggalsekarang';");
                                         while($d = mysqli_fetch_array($data)){
                                           ?>
                                           <h1><small>Total <?php echo $d['total']; }?> Pasien</small></h1>
@@ -244,6 +245,7 @@
                                               WHERE booking.id_dokter=dokter.id_dokter
                                               AND booking.id_sesi=sesi.id_sesi
                                               AND booking.mandiri = '1'
+                                              AND booking.tanggal = '$tanggalsekarang'
                                               ORDER BY booking.id_booking DESC;");
                                             while($d = mysqli_fetch_array($data)){
                                               $booking_tanggal = $d['booking_tanggal'];
