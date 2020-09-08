@@ -6,27 +6,29 @@
 </nav>
 <?php 
 $a = mysqli_query($koneksi,
-	"SELECT dokter.nama_dokter
-	FROM booking, dokter
+	"SELECT dokter.nama_dokter, sesi.nama_sesi
+	FROM booking, dokter, sesi
 	WHERE booking.id_dokter=dokter.id_dokter
+	AND booking.id_sesi=sesi.id_sesi
 	AND booking.id_dokter = '$id_dokter';");
 while($b = mysqli_fetch_array($a)){
 	$nama_dokter = $b['nama_dokter'];
+	$nama_sesi = $b['nama_sesi'];
 }
 ?>
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1>Bell<small> Antrian</small></h1>
+			<h1>Antrian<small> <?php echo $nama_dokter; ?></small></h1>
 			<ol class="breadcrumb">
 				<li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li><a href="booking-filter"><i class="fa fa-search"></i> Cari</a></li>
-				<li class="active"><i class="fa fa-bell-o"></i> dr. <?php echo $nama_dokter; ?></li>
+				<li><a href="booking-filter"><i class="fa fa-bell-o"></i> Antrian</a></li>
+				<li class="active"><i class="fa fa-thumb-tack"></i> Poliklinik <?php echo $nama_sesi; ?></li>
 			</ol>  
 			<?php include "../../system/welcome.php"?>
 		</div>
 	</div>
-	<div align="right" class="col-lg-12">
+	<!-- <div align="right" class="col-lg-12">
 		<?php 
 		$a = mysqli_query($koneksi,
 			"SELECT COUNT(id_booking) AS total
@@ -39,7 +41,7 @@ while($b = mysqli_fetch_array($a)){
 		}
 		?>
 		<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-	</div>
+	</div> -->
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover table-striped tablesorter">
 			<thead>
@@ -110,7 +112,7 @@ while($b = mysqli_fetch_array($a)){
 			</div>
 		</div><!-- /#wrapper -->
 		<?php include "views/footer.php"; ?>
-		
+
 		<!-- /#rekaman -->
 		<audio id="suarabel" src="rekaman/bell-bandara.mp3"></audio>
 		<audio id="suarabelnomorurut" src="rekaman/nomor-antrian.mp3"></audio>

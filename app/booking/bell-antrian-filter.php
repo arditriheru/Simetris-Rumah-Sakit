@@ -18,7 +18,12 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-6">
+			<input type="button" onclick="redirect('bell-antrian-tampil')" value="klik lagi" <br/>
 			<?php
+			unset($_SESSION['id_dokter']);
+			unset($_SESSION['id_sesi']);
+			unset($_SESSION['jadwal']);
+
 			if(isset($_POST['submitfilterbell'])){
 				$_SESSION['id_dokter']  = $_POST['id_dokter'];
 				$_SESSION['id_sesi']  	= $_POST['id_sesi'];
@@ -40,7 +45,7 @@
 						<form method="post" action="" role="form">
 							<div class="form-group">
 								<label>Nama Dokter</label>
-								<select class="form-control" type="text" name="id_dokter" onchange="unSet()" required="">
+								<select class="form-control" type="text" name="id_dokter" required="">
 									<option value="">Pilih</option>
 									<?php 
 									$data = mysqli_query($koneksi,"SELECT * FROM dokter WHERE status=1;");
