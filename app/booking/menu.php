@@ -81,6 +81,7 @@
                 <ul class="nav navbar-nav side-nav">
                   <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                   <li><a href="booking-cek"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
+                  <li><a href="bell-antrian-filter"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
                   <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
                   <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
                   <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
