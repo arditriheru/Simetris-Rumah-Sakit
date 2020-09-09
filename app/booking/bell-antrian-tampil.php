@@ -12,8 +12,7 @@ $a = mysqli_query($koneksi,
 	AND booking.id_sesi=sesi.id_sesi
 	AND booking.id_dokter = '$id_dokter';");
 while($b = mysqli_fetch_array($a)){
-	$nama_dokter = $b['nama_dokter'];
-	$nama_sesi = $b['nama_sesi'];
+	$nama_dokter 	= $b['nama_dokter'];
 }
 ?>
 <div id="page-wrapper">
@@ -23,12 +22,12 @@ while($b = mysqli_fetch_array($a)){
 			<ol class="breadcrumb">
 				<li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li><a href="booking-filter"><i class="fa fa-bell-o"></i> Antrian</a></li>
-				<li class="active"><i class="fa fa-thumb-tack"></i> Poliklinik <?php echo $nama_sesi; ?></li>
+				<li class="active"><i class="fa fa-thumb-tack"></i> Poliklinik</li>
 			</ol>  
 			<?php include "../../system/welcome.php"?>
 		</div>
 	</div>
-	<!-- <div align="right" class="col-lg-12">
+	<div align="right">
 		<?php 
 		$a = mysqli_query($koneksi,
 			"SELECT COUNT(id_booking) AS total
@@ -39,9 +38,15 @@ while($b = mysqli_fetch_array($a)){
 		while($b = mysqli_fetch_array($a)){
 			$total = $b['total'];
 		}
+
+		$id_booking = $_GET['id'];
+		if(isset($id_booking)){
+			mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
+			mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_booking");
+		}
 		?>
 		<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-	</div> -->
+	</div>
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover table-striped tablesorter">
 			<thead>
@@ -52,6 +57,7 @@ while($b = mysqli_fetch_array($a)){
 					<th><center>No.RM</center></th>
 					<th><center>Nama</center></th>
 					<th><center>Alamat</center></th>
+					<th><center>Sesi</center></th>
 					<th><center>Action</center></th>
 				</tr>
 			</thead>
@@ -67,9 +73,9 @@ while($b = mysqli_fetch_array($a)){
 					AND booking.id_sesi = '$id_sesi'
 					AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
 				while($d = mysqli_fetch_array($data)){
-					$id_booking = $d['id_booking'];
-					$nama_dokter = $d['nama_dokter'];
-					$id_unit = $d['id_unit'];
+					$id_booking 	= $d['id_booking'];
+					$nama_dokter 	= $d['nama_dokter'];
+					$id_unit 		= $d['id_unit'];
 					?>
 					<tr>
 						<td><center><?php echo $d['antrian']; ?></center></td>
@@ -77,9 +83,9 @@ while($b = mysqli_fetch_array($a)){
 							<div align="center">
 								<?php
 								if($d['aktif']=='1'){
-									echo "<a href='bell-antrian-next?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
+									echo "<a href='bell-antrian-tampil?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
 								}else{
-									echo "<a href='bell-antrian-next?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+									echo "<a href='bell-antrian-tampil?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
 								}
 								?>
 							</div>
@@ -100,6 +106,7 @@ while($b = mysqli_fetch_array($a)){
 					<td><center><?php echo $d['id_catatan_medik']; ?></center></td>
 					<td><center><?php echo $d['nama']; ?></center></td>
 					<td><center><?php echo $d['alamat']; ?></center></td>
+					<td><center><?php echo $d['nama_sesi']; ?></center></td>
 					<td>
 						<div align="center">
 							<a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
@@ -124,7 +131,7 @@ while($b = mysqli_fetch_array($a)){
 			<audio id="suarabelabjad" src="rekaman/b.mp3"></audio>
 			<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
 		<?php } ?>
-		
+
 		<audio id="belas" src="rekaman/belas.mp3"></audio> 
 		<audio id="sebelas" src="rekaman/sebelas.mp3"></audio> 
 		<audio id="puluh" src="rekaman/puluh.mp3"></audio> 
