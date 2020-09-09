@@ -30,7 +30,7 @@ while($b = mysqli_fetch_array($a)){
 	<div align="right">
 		<?php 
 		$a = mysqli_query($koneksi,
-			"SELECT COUNT(id_booking) AS total
+			"SELECT antrian, COUNT(id_booking) AS total
 			FROM booking
 			WHERE id_dokter='$id_dokter'
 			AND id_sesi='$id_sesi'
@@ -43,6 +43,20 @@ while($b = mysqli_fetch_array($a)){
 		if(isset($id_booking)){
 			mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
 			mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_booking");
+			$c = mysqli_query($koneksi,
+				"SELECT booking.antrian, mr_unit.id_unit
+				FROM booking, mr_unit, dokter
+				WHERE booking.id_dokter=dokter.id_dokter
+				AND dokter.id_unit=mr_unit.id_unit
+				AND booking.booking_tanggal = '$jadwal'
+				AND booking.id_sesi = '$id_sesi'
+				AND booking.id_dokter='$id_dokter'
+				AND booking.aktif=1;");
+			while($d = mysqli_fetch_array($c)){
+				$id_unit	= $d['id_unit'];
+				$ant 		= $d['antrian'];
+			}
+			mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
 		}
 		?>
 		<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
@@ -75,7 +89,6 @@ while($b = mysqli_fetch_array($a)){
 				while($d = mysqli_fetch_array($data)){
 					$id_booking 	= $d['id_booking'];
 					$nama_dokter 	= $d['nama_dokter'];
-					$id_unit 		= $d['id_unit'];
 					?>
 					<tr>
 						<td><center><?php echo $d['antrian']; ?></center></td>
@@ -139,17 +152,17 @@ while($b = mysqli_fetch_array($a)){
 		<audio id="ratus" src="rekaman/ratus.mp3"></audio> 
 		<audio id="seratus" src="rekaman/seratus.mp3"></audio>
 		<?php
-		$c = mysqli_query($koneksi,
+		$e = mysqli_query($koneksi,
 			"SELECT antrian
 			FROM booking
 			WHERE booking_tanggal = '$jadwal'
 			AND id_sesi = '$id_sesi'
 			AND id_dokter='$id_dokter'
 			AND aktif=1;");
-		while($d = mysqli_fetch_array($c)){
-			$tcounter   = $d['antrian'];
-			$panjang  = strlen($tcounter);
-			$antrian  = $tcounter;
+		while($f = mysqli_fetch_array($e)){
+			$tcounter   = $f['antrian'];
+			$panjang  	= strlen($tcounter);
+			$antrian  	= $tcounter;
 		}
 		for($i=0;$i<$panjang;$i++){
 			?>

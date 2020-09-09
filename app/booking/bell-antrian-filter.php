@@ -38,7 +38,19 @@
 					$total = $b['total'];
 				}
 
+				$c = mysqli_query($koneksi,
+					"SELECT id_unit FROM dokter WHERE id_dokter='$id_dokter';");
+				while($d = mysqli_fetch_array($c)){
+					$id_unit = $d['id_unit'];
+				}
+
 				if($total>0){
+					mysqli_query($koneksi,
+						"DELETE FROM antrian WHERE id_unit='$id_unit';");
+					mysqli_query($koneksi,
+						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, antrian, total)
+						VALUES('','$id_dokter','$id_unit','','$total');");
+					
 					$_SESSION['id_dokter']  = $id_dokter;
 					$_SESSION['id_sesi']  	= $id_sesi;
 					$_SESSION['jadwal']    	= $jadwal;
