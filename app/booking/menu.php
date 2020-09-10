@@ -41,6 +41,7 @@
                   <li><a href="anc-tambah">Tambah</a></li>
                 </ul>
               </li>
+              <li><a href="bell-antrian-filter"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
               <li><a href="whatsapp"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
               <li><a href="../kalender?id=booking"><i class="fa fa-calendar"></i> Kalender</a></li>
               <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>

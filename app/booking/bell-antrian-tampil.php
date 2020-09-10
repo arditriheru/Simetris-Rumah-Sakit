@@ -27,39 +27,45 @@ while($b = mysqli_fetch_array($a)){
 			<?php include "../../system/welcome.php"?>
 		</div>
 	</div>
-	<div align="right">
-		<?php 
-		$a = mysqli_query($koneksi,
-			"SELECT antrian, COUNT(id_booking) AS total
-			FROM booking
-			WHERE id_dokter='$id_dokter'
-			AND id_sesi='$id_sesi'
-			AND booking_tanggal='$jadwal';");
-		while($b = mysqli_fetch_array($a)){
-			$total = $b['total'];
-		}
-
-		$id_booking = $_GET['id'];
-		if(isset($id_booking)){
-			mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
-			mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_booking");
-			$c = mysqli_query($koneksi,
-				"SELECT booking.antrian, mr_unit.id_unit
-				FROM booking, mr_unit, dokter
-				WHERE booking.id_dokter=dokter.id_dokter
-				AND dokter.id_unit=mr_unit.id_unit
-				AND booking.booking_tanggal = '$jadwal'
-				AND booking.id_sesi = '$id_sesi'
-				AND booking.id_dokter='$id_dokter'
-				AND booking.aktif=1;");
-			while($d = mysqli_fetch_array($c)){
-				$id_unit	= $d['id_unit'];
-				$ant 		= $d['antrian'];
+	<div class="row">
+		<div class="col-lg-4"><br>
+			<button name="next" type="submit" 
+			class="btn btn-primary" onClick="window.location.reload()">Refresh</button>
+		</div>
+		<div align="right" class="col-lg-8">
+			<?php 
+			$a = mysqli_query($koneksi,
+				"SELECT antrian, COUNT(id_booking) AS total
+				FROM booking
+				WHERE id_dokter='$id_dokter'
+				AND id_sesi='$id_sesi'
+				AND booking_tanggal='$jadwal';");
+			while($b = mysqli_fetch_array($a)){
+				$total = $b['total'];
 			}
-			mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
-		}
-		?>
-		<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+
+			$id_booking = $_GET['id'];
+			if(isset($id_booking)){
+				mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
+				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_booking");
+				$c = mysqli_query($koneksi,
+					"SELECT booking.antrian, mr_unit.id_unit
+					FROM booking, mr_unit, dokter
+					WHERE booking.id_dokter=dokter.id_dokter
+					AND dokter.id_unit=mr_unit.id_unit
+					AND booking.booking_tanggal = '$jadwal'
+					AND booking.id_sesi = '$id_sesi'
+					AND booking.id_dokter='$id_dokter'
+					AND booking.aktif=1;");
+				while($d = mysqli_fetch_array($c)){
+					$id_unit	= $d['id_unit'];
+					$ant 		= $d['antrian'];
+				}
+				mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
+			}
+			?>
+			<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+		</div>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover table-striped tablesorter">
@@ -138,10 +144,10 @@ while($b = mysqli_fetch_array($a)){
 		<audio id="suarabelnomorurut" src="rekaman/nomor-antrian.mp3"></audio>
 		<?php
 		if($id_unit=='1'){ ?>
-			<audio id="suarabelabjad" src="rekaman/a.mp3"></audio> 
+			<audio id="suarabelabjad" src="rekaman/b.mp3"></audio> 
 			<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-anak.mp3"></audio>
 		<?php }else{ ?>
-			<audio id="suarabelabjad" src="rekaman/b.mp3"></audio>
+			<audio id="suarabelabjad" src="rekaman/a.mp3"></audio>
 			<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
 		<?php } ?>
 
