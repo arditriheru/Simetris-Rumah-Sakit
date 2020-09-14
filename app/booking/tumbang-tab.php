@@ -94,6 +94,7 @@ while($b = mysqli_fetch_array($a)){
                               FROM tumbang, mr_petugas, sesi
                               WHERE tumbang.id_petugas=mr_petugas.id_petugas
                               AND tumbang.id_sesi=sesi.id_sesi
+                              AND tumbang.id_petugas='$id_petugas'
                               AND tumbang.jadwal='$tanggalsekarang'
                               ORDER BY tumbang.nama ASC;");
                             while($d = mysqli_fetch_array($data)){
@@ -168,6 +169,7 @@ while($b = mysqli_fetch_array($a)){
                                   WHERE tumbang.id_petugas=mr_petugas.id_petugas
                                   AND tumbang.id_sesi=sesi.id_sesi
                                   AND tumbang.id_sesi=1
+                                  AND tumbang.id_petugas='$id_petugas'
                                   AND tumbang.jadwal='$tanggalsekarang'
                                   ORDER BY tumbang.nama ASC;");
                                 while($d = mysqli_fetch_array($data)){
@@ -242,6 +244,7 @@ while($b = mysqli_fetch_array($a)){
                                     WHERE tumbang.id_petugas=mr_petugas.id_petugas
                                     AND tumbang.id_sesi=sesi.id_sesi
                                     AND tumbang.id_sesi=2
+                                    AND tumbang.id_petugas='$id_petugas'
                                     AND tumbang.jadwal='$tanggalsekarang'
                                     ORDER BY tumbang.nama ASC;");
                                   while($d = mysqli_fetch_array($data)){
@@ -316,6 +319,7 @@ while($b = mysqli_fetch_array($a)){
                                       WHERE tumbang.id_petugas=mr_petugas.id_petugas
                                       AND tumbang.id_sesi=sesi.id_sesi
                                       AND tumbang.id_sesi=3
+                                      AND tumbang.id_petugas='$id_petugas'
                                       AND tumbang.jadwal='$tanggalsekarang'
                                       ORDER BY tumbang.nama ASC;");
                                     while($d = mysqli_fetch_array($data)){
@@ -390,6 +394,7 @@ while($b = mysqli_fetch_array($a)){
                                         WHERE tumbang.id_petugas=mr_petugas.id_petugas
                                         AND tumbang.id_sesi=sesi.id_sesi
                                         AND tumbang.id_sesi=4
+                                        AND tumbang.id_petugas='$id_petugas'
                                         AND tumbang.jadwal='$tanggalsekarang'
                                         ORDER BY tumbang.nama ASC;");
                                       while($d = mysqli_fetch_array($data)){
