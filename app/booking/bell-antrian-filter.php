@@ -26,14 +26,13 @@
 			if(isset($_POST['submitfilterbell'])){
 				$id_dokter 	= $_POST['id_dokter'];
 				$id_sesi 	= $_POST['id_sesi'];
-				$jadwal 	= $_POST['jadwal'];
 
 				$a = mysqli_query($koneksi,
 					"SELECT COUNT(id_booking) AS total
 					FROM booking
 					WHERE id_dokter='$id_dokter'
 					AND id_sesi='$id_sesi'
-					AND booking_tanggal='$jadwal';");
+					AND booking_tanggal='$tanggalsekarang';");
 				while($b = mysqli_fetch_array($a)){
 					$total = $b['total'];
 				}
@@ -53,7 +52,7 @@
 					
 					$_SESSION['id_dokter']  = $id_dokter;
 					$_SESSION['id_sesi']  	= $id_sesi;
-					$_SESSION['jadwal']    	= $jadwal;
+					$_SESSION['jadwal']    	= $tanggalsekarang;
 					
 					echo "<script>
 					setTimeout(function() {
@@ -94,10 +93,10 @@
 												?>
 											</select>
 										</div>
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<label>Jadwal</label>
 											<input class="form-control" type="date" name="jadwal" required="">
-										</div>
+										</div> -->
 										<div class="form-group">
 											<label>Sesi</label>
 											<select class="form-control" type="text" name="id_sesi" required="">
