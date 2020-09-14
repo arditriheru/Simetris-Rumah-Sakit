@@ -30,7 +30,7 @@ while($b = mysqli_fetch_array($a)){
 	<div class="row">
 		<div class="col-lg-4"><br>
 			<button name="next" type="submit" 
-			class="btn btn-primary" onClick="window.location.reload()">Refresh</button>
+			class="btn btn-primary" onClick="window.location.reload()"><i class="fa fa-refresh"></i> Refresh</button>
 		</div>
 		<div align="right" class="col-lg-8">
 			<?php 
