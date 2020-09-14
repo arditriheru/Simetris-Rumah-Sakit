@@ -27,6 +27,11 @@
         <li><a href="ruangan-tambah"><i class="fa fa-home"></i> Ruangan</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
+        <li>
+          <a href="https://instagram.com/arditriheru" target="_blank">
+            <span class="label label-success">ONLINE</span>
+          </a>
+        </li>
         <li class="dropdown user-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i>&nbsp;<b class="caret"></b></a>
           <ul class="dropdown-menu">
