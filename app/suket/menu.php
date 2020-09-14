@@ -23,6 +23,11 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
+        <li>
+          <a href="https://instagram.com/arditriheru" target="_blank">
+            <span class="label label-success">ONLINE</span>
+          </a>
+        </li>
         <li class="dropdown user-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $status.' | '.$nama_login;?>&nbsp;<b class="caret"></b></a>
           <ul class="dropdown-menu">
