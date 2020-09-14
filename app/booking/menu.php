@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="https://instagram.com/arditriheru" class="navbar-brand">S I M E T R I S</a>
+      <a href="https://instagram.com/arditriheru" class="navbar-brand" target="_blank">S I M E T R I S</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,6 +53,11 @@
               <li><a href="../../system/tutorial?id_buku=50"><i class="fa fa-file"></i> Dokumentasi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
+              <li>
+                <a href="https://instagram.com/arditriheru" target="_blank">
+                  <span class="label label-success">ONLINE</span>
+                </a>
+              </li>
               <li class="dropdown user-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $status.' | '.$nama_login;?>&nbsp;<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -90,6 +95,11 @@
                   <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-user">
+                  <li>
+                    <a href="https://instagram.com/arditriheru" target="_blank">
+                      <span class="label label-success">ONLINE</span>
+                    </a>
+                  </li>
                   <li class="dropdown user-dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $status.' | '.$nama_login;?>&nbsp;<b class="caret"></b></a>
                     <ul class="dropdown-menu">
