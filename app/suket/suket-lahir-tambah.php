@@ -50,7 +50,7 @@
                 text: 'Menambah Surat Keterangan Lahir',
                 type: 'success'
                 }, function() {
-                  window.location = 'suket-lahir-print?id=$id_suket';
+                  window.location = 'suket-lahir-print.php?id=$id_suket';
                   });
                   }, 10);
                   </script>";

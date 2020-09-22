@@ -13,12 +13,12 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-plus"></i> Surat <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="suket-lahir-tambah">Keterangan Lahir</a></li>
+            <li><a href="suket-lahir-tambah.php">Keterangan Lahir</a></li>
           </ul>
         </li>
       </ul>
@@ -33,7 +33,7 @@
           <ul class="dropdown-menu">
             <li class="divider"></li>
             <li>
-              <a href="logout"><i class="fa fa-power-off">
+              <a href="logout.php"><i class="fa fa-power-off">
               </i> Log Out</a>
             </li>
           </ul>

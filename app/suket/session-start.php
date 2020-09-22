@@ -1,10 +1,10 @@
 <?php 
 session_start();
-if(!isset($_SESSION['username'])) {
-	header('location:login');
+if(!isset($_SESSION['suket_username'])) {
+	header('location:login.php');
 }else{ 
-	$username 		= $_SESSION['username'];
-	$nama_login 	= $_SESSION['nama_login'];
-	$status 		= $_SESSION['status'];
+	$username 		= $_SESSION['suket_username'];
+	$nama_login 	= $_SESSION['suket_nama_login'];
+	$status 		= $_SESSION['suket_status'];
 }
 ?>

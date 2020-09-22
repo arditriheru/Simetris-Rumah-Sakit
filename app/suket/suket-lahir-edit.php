@@ -18,7 +18,7 @@
       <td>
         <?php $id_suket = $_GET['id']; ?>
         <div align="right">
-          <a href="suket-lahir-hapus?id=<?php echo $id_suket; ?>"
+          <a href="suket-lahir-hapus.php?id=<?php echo $id_suket; ?>"
             onclick="javascript: return confirm('Anda yakin hapus?')">
             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
           </a>
@@ -63,7 +63,7 @@
                   text: 'Memperbarui Suket Keterangan Lahir',
                   type: 'success'
                   }, function() {
-                    window.location = 'dashboard';
+                    window.location = 'dashboard.php';
                     });
                     }, 10);
                     </script>";

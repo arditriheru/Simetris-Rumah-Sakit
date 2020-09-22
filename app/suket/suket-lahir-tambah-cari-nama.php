@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Hasil <small>Pencarian</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li><a href="javascript: history.back()"><i class="fa fa-search"></i> Cari</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
@@ -46,7 +46,7 @@
                 <td><center><?php echo $d['nama_ortu']; ?></center></td>
                 <td>
                   <div align="center">
-                    <a href="suket-lahir-tambah?id=<?php echo $d['id_register']; ?>"
+                    <a href="suket-lahir-tambah.php?id=<?php echo $d['id_register']; ?>"
                       <button type="button" class="btn btn-success">Pilih</a><br><br>
                       </div>
                     </td>

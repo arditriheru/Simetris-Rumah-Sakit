@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="table-responsive">
       <div class="row">
-        <form method="post" action="suket-lahir-cari" role="form">
+        <form method="post" action="suket-lahir-cari.php" role="form">
           <div class="col-lg-4">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
@@ -65,13 +65,13 @@
               <td><center><?php echo $d['tgl_reg'].' / '.$d['jam']; ?></center></td>
               <td>
                 <div align="center">
-                  <a href="suket-lahir-print?id=<?php echo $d['id_suket']; ?>">
+                  <a href="suket-lahir-print.php?id=<?php echo $d['id_suket']; ?>">
                     <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                   </div>
                 </td>
                 <td>
                   <div align="center">
-                    <a href="suket-lahir-edit?id=<?php echo $d['id_suket']; ?>">
+                    <a href="suket-lahir-edit.php?id=<?php echo $d['id_suket']; ?>">
                       <button type="button" class="btn btn-warning"><i class='fa fa-edit'></i></button></a>
                     </div>
                   </td>

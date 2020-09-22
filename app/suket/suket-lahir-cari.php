@@ -11,7 +11,7 @@
       <h1>Pencarian <small>"<?php echo $id_catatan_medik; ?>"</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-plus"></i> Tambah</a></li>
+        <li><a href="booking-tambah.php"><i class="fa fa-plus"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -37,14 +37,14 @@
             text: 'Pasien Belum Terdaftar',
             type: 'error'
             }, function() {
-              window.location = 'dashboard';
+              window.location = 'dashboard.php';
               });
               }, 10);
               </script>";
             }else{
               ?>
               <div class="row">
-                <form method="post" action="covid-rapid-cari-tampil" role="form">
+                <form method="post" action="covid-rapid-cari-tampil.php" role="form">
                   <div class="col-lg-6">
                     <div class="form-group input-group">
                       <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik?>">
@@ -91,13 +91,13 @@
                     <td><center><?php echo date("d-m-Y", strtotime($d['tanggal'])).' / '.$d['jam']; ?></center></td>
                     <td>
                       <div align="center">
-                        <a href="suket-lahir-print?id=<?php echo $d['id_suket']; ?>">
+                        <a href="suket-lahir-print.php?id=<?php echo $d['id_suket']; ?>">
                           <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                         </div>
                       </td>
                       <td>
                         <div align="center">
-                          <a href="suket-lahir-edit?id=<?php echo $d['id_suket']; ?>">
+                          <a href="suket-lahir-edit.php?id=<?php echo $d['id_suket']; ?>">
                             <button type="button" class="btn btn-warning"><i class='fa fa-edit'></i></button></a>
                           </div>
                         </td>

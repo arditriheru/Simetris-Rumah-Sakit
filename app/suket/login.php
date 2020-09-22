@@ -44,9 +44,9 @@
 		$cek = mysqli_num_rows($a);
 		if($cek > 0){
 			if($akses > 0){
-				$_SESSION['username'] = $nama_user;
-				$_SESSION['nama_login'] = $nama_login;
-				$_SESSION['status'] = "Admin";
+				$_SESSION['suket_username'] = $nama_user;
+				$_SESSION['suket_nama_login'] = $nama_login;
+				$_SESSION['suket_status'] = "Admin";
 				echo "<script>
 				setTimeout(function() {
 					swal({
@@ -54,7 +54,7 @@
 						text: 'Selamat Datang $nama_login',
 						type: 'success'
 						}, function() {
-							window.location = 'dashboard';
+							window.location = 'dashboard.php';
 							});
 							}, 10);
 							</script>";
