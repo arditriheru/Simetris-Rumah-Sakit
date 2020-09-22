@@ -82,20 +82,6 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-xs-2"><a href="app/antrian/dashboard">
-                      <i class="fa fa-group fa-4x"></i>
-                    </div>
-                    <div class="col-xs-10 text-right">
-                      <h2>Antrian</h2>
-                    </div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <div class="row">
                     <div class="col-xs-2"><a href="http://192.168.1.10:81">
                       <i class="fa fa-mobile fa-4x"></i>
                     </div>
@@ -232,7 +218,7 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-lg-3">
+            <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
@@ -245,7 +231,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
             <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
@@ -274,34 +260,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-lg-3">
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <div class="row">
-                    <div class="col-xs-2"><a href="https://bit.ly/2tCozeL">
-                      <i class="fa fa-arrow-circle-right fa-4x"></i>
-                    </div>
-                    <div class="col-xs-10 text-right">
-                      <h2>MedScape</h2>
-                    </div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                  <div class="row">
-                    <div class="col-xs-2"><a href="https://bit.ly/2QpaMRM">
-                      <i class="fa fa-arrow-circle-right fa-4x"></i>
-                    </div>
-                    <div class="col-xs-10 text-right">
-                      <h2>MIMS</h2>
-                    </div></a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
             <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
@@ -362,11 +320,11 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-xs-2"><a href="app/sdm">
-                      <i class="fa fa-child fa-4x"></i>
+                    <div class="col-xs-2"><a href="http://192.168.1.10:8080">
+                      <i class="fa fa-database fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
-                      <h2>SDM</h2>
+                      <h2>Sismadak</h2>
                     </div></a>
                   </div>
                 </div>
@@ -376,11 +334,25 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-xs-2"><a href="http://192.168.1.10:8080">
-                      <i class="fa fa-database fa-4x"></i>
+                    <div class="col-xs-2"><a href="https://sisrute.kemkes.go.id/baru/index.php">
+                      <i class="fa fa-ambulance fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
-                      <h2>Sismadak</h2>
+                      <h2>SISRUTE</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-2"><a href="app/suket">
+                      <i class="fa fa-file-o fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>SuKet</h2>
                     </div></a>
                   </div>
                 </div>
