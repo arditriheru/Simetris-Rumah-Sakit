@@ -20,6 +20,7 @@ header("Content-Disposition: attachment; filename=laporan-pasien-rapidtest ".dat
         <th><div align="center">Tanggal</div></th>
         <th><div align="center">No.RM</div></th>
         <th><div align="center">Nama Pasien</div></th>
+        <th><div align="center">Unit</div></th>
         <th><div align="center">IgM</div></th>
         <th><div align="center">IgG</div></th>
       </tr>
@@ -28,11 +29,12 @@ header("Content-Disposition: attachment; filename=laporan-pasien-rapidtest ".dat
       <?php
       $no=1;
       $data = mysqli_query($koneksi,"
-        SELECT *, rapidtest.tanggal AS tgl, mr_pasien.nama,
+        SELECT *, rapidtest.tanggal AS tgl, mr_pasien.nama, mr_unit.nama_unit,
         IF (rapidtest.igm='1', 'Reaktif', 'Non Reaktif') AS igm,
         IF (rapidtest.igg='1', 'Reaktif', 'Non Reaktif') AS igg
-        FROM rapidtest, mr_pasien
+        FROM rapidtest, mr_pasien, mr_unit
         WHERE rapidtest.id_catatan_medik = mr_pasien.id_catatan_medik
+        AND rapidtest.id_unit = mr_unit.id_unit
         AND rapidtest.tanggal BETWEEN '$awal' AND '$akhir'
         ORDER BY rapidtest.tanggal ASC;");
       while($d = mysqli_fetch_array($data)){
@@ -42,6 +44,7 @@ header("Content-Disposition: attachment; filename=laporan-pasien-rapidtest ".dat
           <td><div align="center"><?php echo $d['tgl']; ?></div></td>
           <td><div align="center"><?php echo $d['id_catatan_medik']; ?></div></td>
           <td><div align="center"><?php echo $d['nama']; ?></div></td>
+          <td><div align="center"><?php echo $d['nama_unit']; ?></div></td>
           <td><div align="center"><?php echo $d['igm']; ?></div></td>
           <td><div align="center"><?php echo $d['igg']; ?></div></td>
         </tr>

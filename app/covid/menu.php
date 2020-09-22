@@ -15,9 +15,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="covid-rapid-tambah"><i class="fa fa-plus"></i> Rapid Test</a></li>
-        <li><a href="covid-rapid-laporan"><i class="fa fa-file-o"></i> Laporan</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="covid-rapid-tambah.php"><i class="fa fa-plus"></i> Rapid Test</a></li>
+        <li><a href="covid-rapid-laporan.php"><i class="fa fa-file-o"></i> Laporan</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
         <li>
@@ -30,7 +30,7 @@
           <ul class="dropdown-menu">
             <li class="divider"></li>
             <li>
-              <a href="logout"><i class="fa fa-power-off">
+              <a href="logout.php"><i class="fa fa-power-off">
               </i> Log Out</a>
             </li>
           </ul>
@@ -53,7 +53,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li>
@@ -66,7 +66,7 @@
               <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
-                  <a href="logout"><i class="fa fa-power-off">
+                  <a href="logout.php"><i class="fa fa-power-off">
                   </i> Log Out</a>
                 </li>
               </ul>

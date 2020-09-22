@@ -99,7 +99,7 @@ function format_mak($mak)
                 text: 'Menambah Hasil Rapid test',
                 type: 'success'
                 }, function() {
-                  window.location = 'dashboard';
+                  window.location = 'dashboard.php';
                   });
                   }, 10);
                   </script>";
@@ -111,7 +111,7 @@ function format_mak($mak)
                       text: 'Coba Sekali Lagi',
                       type: 'error'
                       }, function() {
-                        window.location = 'covid-rapid-tambah';
+                        window.location = 'covid-rapid-tambah.php';
                         });
                         }, 10);
                         </script>";

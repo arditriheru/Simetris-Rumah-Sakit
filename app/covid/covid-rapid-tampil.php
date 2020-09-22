@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="table-responsive">
       <div class="row">
-        <form method="post" action="covid-rapid-cari-tampil" role="form">
+        <form method="post" action="covid-rapid-cari-tampil.php" role="form">
           <div class="col-lg-4">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
@@ -114,13 +114,13 @@
                 <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
                 <td>
                   <div align="center">
-                    <a href="covid-rapid-print?id=<?php echo $d['id_rapidtest']; ?>">
+                    <a href="covid-rapid-print.php?id=<?php echo $d['id_rapidtest']; ?>">
                       <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                     </div>
                   </td>
                   <td>
                     <div align="center">
-                      <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>">
+                      <a href="covid-rapid-edit.php?id=<?php echo $d['id_rapidtest']; ?>">
                         <button type="button" class="btn btn-warning"><i class='fa fa-edit'></i></button></a>
                       </div>
                     </td>

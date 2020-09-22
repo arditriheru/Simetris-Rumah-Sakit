@@ -11,7 +11,7 @@
       <h1>Pencarian <small>"<?php echo $id_catatan_medik; ?>"</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-plus"></i> Tambah</a></li>
+        <li><a href="booking-tambah.php"><i class="fa fa-plus"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -37,7 +37,7 @@
             text: 'Pasien Belum Terdaftar',
             type: 'error'
             }, function() {
-              window.location = 'dashboard';
+              window.location = 'dashboard.php';
               });
               }, 10);
               </script>";
@@ -60,7 +60,7 @@
                 $umur         = $today->diff($lahir);
                 ?>
                 <div class="row">
-                  <form method="post" action="covid-rapid-cari-tampil" role="form">
+                  <form method="post" action="covid-rapid-cari-tampil.php" role="form">
                     <div class="col-lg-4">
                       <div class="form-group input-group">
                         <input type="text" class="form-control" name="id_catatan_medik" value="<?php echo $id_catatan_medik; ?>">
@@ -107,13 +107,13 @@
                       <td><center><?php echo $d['tanggal'].' / '.$d['jam']; ?></center></td>
                       <td>
                         <div align="center">
-                          <a href="covid-rapid-print?id=<?php echo $d['id_rapidtest']; ?>"
+                          <a href="covid-rapid-print.php?id=<?php echo $d['id_rapidtest']; ?>"
                             <button type="button" class="btn btn-primary"><i class='fa fa-print'></i></button></a>
                           </div>
                         </td>
                         <td>
                           <div align="center">
-                            <a href="covid-rapid-edit?id=<?php echo $d['id_rapidtest']; ?>"
+                            <a href="covid-rapid-edit.php?id=<?php echo $d['id_rapidtest']; ?>"
                               <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                             </div>
                           </td>

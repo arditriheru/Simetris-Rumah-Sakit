@@ -44,9 +44,9 @@
 		$cek = mysqli_num_rows($a);
 		if($cek > 0){
 			if($akses > 0){
-				$_SESSION['username'] = $nama_user;
-				$_SESSION['nama_login'] = $nama_login;
-				$_SESSION['status'] = "Admin";
+				$_SESSION['covid_username'] = $nama_user;
+				$_SESSION['covid_nama_login'] = $nama_login;
+				$_SESSION['covid_status'] = "Admin";
 				echo "<script>
 				setTimeout(function() {
 					swal({
@@ -54,14 +54,14 @@
 						text: 'Selamat Datang $nama_login',
 						type: 'success'
 						}, function() {
-							window.location = 'dashboard';
+							window.location = 'dashboard.php';
 							});
 							}, 10);
 							</script>";
 						}else{
-							$_SESSION['username'] = $nama_user;
-							$_SESSION['nama_login'] = $nama_login;
-							$_SESSION['status'] = "Operator";
+							$_SESSION['covid_username'] = $nama_user;
+							$_SESSION['covid_nama_login'] = $nama_login;
+							$_SESSION['covid_status'] = "Operator";
 							echo "<script>
 							setTimeout(function() {
 								swal({
@@ -69,7 +69,7 @@
 									text: 'Selamat Datang $nama_login',
 									type: 'success'
 									}, function() {
-										window.location = 'dashboard';
+										window.location = 'dashboard.php';
 										});
 										}, 10);
 										</script>";
@@ -99,7 +99,7 @@
 												<input type="submit" class="tombol_login" name="login" value="Submit">
 												<br><br>			
 											</form>
-											<a href="../../dashboard"><i class="fa fa-arrow-left"></i> Back</a>
+											<a href="../../dashboard.php"><i class="fa fa-arrow-left"></i> Back</a>
 										</div>
 										<?php include "../../system/copyright.php";?>
 										<!-- JavaScript -->

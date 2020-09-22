@@ -78,7 +78,7 @@
 					<div class="container">
 						<div class="container">
 							<div class="noprint">
-								<a href="dashboard"><button type="button" class="btn btn-success">Dashboard</button></a>
+								<a href="dashboard.php"><button type="button" class="btn btn-success">Dashboard</button></a>
 							</div>
 							<br><br><br>
 							<center>

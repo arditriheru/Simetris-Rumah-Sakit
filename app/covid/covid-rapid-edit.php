@@ -18,7 +18,7 @@
       <td>
         <?php $id_rapidtest = $_GET['id']; ?>
         <div align="right">
-          <a href="covid-rapid-hapus?id=<?php echo $id_rapidtest; ?>"
+          <a href="covid-rapid-hapus.php?id=<?php echo $id_rapidtest; ?>"
             onclick="javascript: return confirm('Anda yakin hapus?')">
             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
           </a>
@@ -77,7 +77,7 @@
                 text: 'Memperbarui Data',
                 type: 'success'
                 }, function() {
-                  window.location = 'dashboard';
+                  window.location = 'dashboard.php';
                   });
                   }, 10);
                   </script>";
@@ -89,7 +89,7 @@
                       text: 'Coba Sekali Lagi',
                       type: 'error'
                       }, function() {
-                        window.location = 'covid-rapid-edit?id=$id_rapidtest';
+                        window.location = 'covid-rapid-edit.php?id=$id_rapidtest';
                         });
                         }, 10);
                         </script>";
