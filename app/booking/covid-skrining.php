@@ -10,7 +10,7 @@
       <h1>Skrining <small>COVID-19</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-plus"></i> Tambah</a></li>
+        <li><a href="booking-tambah.php"><i class="fa fa-plus"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-thumb-tack"></i> Skrining</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -44,7 +44,7 @@
               text: 'Curiga Pasien Dalam Pengawasan',
               type: 'error'
               }, function() {
-                window.location = 'covid-skrining';
+                window.location = 'covid-skrining.php';
                 });
                 }, 10);
                 </script>";
@@ -59,7 +59,7 @@
                     text: 'Curiga Orang Dalam Pengawasan',
                     type: 'warning'
                     }, function() {
-                      window.location = 'covid-skrining';
+                      window.location = 'covid-skrining.php';
                       });
                       }, 10);
                       </script>";
@@ -71,7 +71,7 @@
                           text: 'Curiga Orang Tanpa Gejala',
                           type: 'warning'
                           }, function() {
-                            window.location = 'covid-skrining';
+                            window.location = 'covid-skrining.php';
                             });
                             }, 10);
                             </script>";
@@ -83,7 +83,7 @@
                                 text: 'Wajib Skrining Lanjutan di UGD',
                                 type: 'warning'
                                 }, function() {
-                                  window.location = 'covid-skrining';
+                                  window.location = 'covid-skrining.php';
                                   });
                                   }, 10);
                                   </script>";

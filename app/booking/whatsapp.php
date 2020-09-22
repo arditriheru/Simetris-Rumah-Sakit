@@ -10,7 +10,6 @@
       <h1>WhatsApp <small>Chat</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-plus"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-whatsapp"></i> WhatsApp</li>
       </ol>
       <?php include "../../system/welcome.php"?>

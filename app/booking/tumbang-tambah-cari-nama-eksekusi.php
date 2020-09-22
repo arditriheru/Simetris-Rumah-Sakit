@@ -85,7 +85,7 @@
               text: 'Lebih dari 30 Hari',
               type: 'error'
               }, function() {
-                window.location = 'tumbang-tambah';
+                window.location = 'tumbang-tambah.php';
                 });
                 }, 10);
                 </script>";
@@ -97,7 +97,7 @@
                     text: 'Sudah Mendaftar Sebelumnya',
                     type: 'error'
                     }, function() {
-                      window.location = 'tumbang-tambah';
+                      window.location = 'tumbang-tambah.php';
                       });
                       }, 10);
                       </script>";
@@ -112,7 +112,7 @@
                             text: 'Mendaftar Tumbuh Kembang',
                             type: 'success'
                             }, function() {
-                              window.location = 'tumbang-tambah';
+                              window.location = 'tumbang-tambah.php';
                               });
                               }, 10);
                               </script>";
@@ -124,7 +124,7 @@
                                   text: 'Hilangkan Tanda Petik di Nama Pasien',
                                   type: 'error'
                                   }, function() {
-                                    window.location = 'tumbang-tambah';
+                                    window.location = 'tumbang-tambah.php';
                                     });
                                     }, 10);
                                     </script>";

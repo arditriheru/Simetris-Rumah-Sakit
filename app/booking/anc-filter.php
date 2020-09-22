@@ -17,7 +17,7 @@
     <div class="col-lg-6">
       <div class="table-responsive">
         <div id="myTabContent" class="tab-content">
-          <form method="post" action="anc-filter-tampil" role="form">
+          <form method="post" action="anc-filter-tampil.php" role="form">
             <div class="form-group">
               <label>Nama Petugas</label>
               <select class="form-control" type="text" name="id_petugas">

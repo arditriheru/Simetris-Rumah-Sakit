@@ -7,7 +7,7 @@ if($selisih>30){
     text: 'Silahkan Re-Schedule',
     type: 'error'
     }, function() {
-      window.location = 'booking-tambah';
+      window.location = 'booking-tambah.php';
       });
       }, 10);
       </script>";
@@ -19,7 +19,7 @@ if($selisih>30){
           text: 'Silahkan Periksa Kembali',
           type: 'error'
           }, function() {
-            window.location = 'booking-tambah';
+            window.location = 'booking-tambah.php';
             });
             }, 10);
             </script>";
@@ -36,7 +36,7 @@ if($selisih>30){
                   text: 'Mendaftar Poliklinik',
                   type: 'success'
                   }, function() {
-                    window.location = 'booking-tambah';
+                    window.location = 'booking-tambah.php';
                     });
                     }, 10);
                     </script>";
@@ -48,7 +48,7 @@ if($selisih>30){
                         text: 'Hilangkan Tanda Petik di Nama Pasien',
                         type: 'error'
                         }, function() {
-                          window.location = 'booking-tambah';
+                          window.location = 'booking-tambah.php';
                           });
                           }, 10);
                           </script>";

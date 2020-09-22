@@ -45,7 +45,7 @@ function format_mak($mak)
   </div><!-- /.row -->
   <div class="row">
     <div class="table-responsive">
-      <form method="post" action="booking-tambah-cari-rm" role="form">
+      <form method="post" action="booking-tambah-cari-rm.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nomor RM</label>
@@ -53,7 +53,7 @@ function format_mak($mak)
           </div><button type="submit" class="btn btn-success">Cari</button>
         </div>
       </form>
-      <form method="post" action="booking-tambah-cari-nama" role="form">
+      <form method="post" action="booking-tambah-cari-nama.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nama</label>
@@ -132,7 +132,7 @@ function format_mak($mak)
                     text: 'Silahkan Re-Schedule',
                     type: 'error'
                     }, function() {
-                      window.location = 'booking-tambah';
+                      window.location = 'booking-tambah.php';
                       });
                       }, 10);
                       </script>";
@@ -152,7 +152,7 @@ function format_mak($mak)
                             text: 'Silahkan Re-Schedule',
                             type: 'error'
                             }, function() {
-                              window.location = 'booking-tambah';
+                              window.location = 'booking-tambah.php';
                               });
                               }, 10);
                               </script>";
@@ -168,7 +168,7 @@ function format_mak($mak)
                               text: 'Silahkan Pilih Hari Lain',
                               type: 'error'
                               }, function() {
-                                window.location = 'booking-tambah';
+                                window.location = 'booking-tambah.php';
                                 });
                                 }, 10);
                                 </script>";

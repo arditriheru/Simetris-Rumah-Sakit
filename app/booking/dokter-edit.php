@@ -47,9 +47,9 @@
          SET nama_dokter='$nama_dokter',id_unit='$id_unit',status='$status'
          WHERE id_dokter='$id_dokter'");
         if($simpan){
-          echo "<script>alert('Berhasil Diperbarui!!!');document.location='dokter-tambah'</script>";
+          echo "<script>alert('Berhasil Diperbarui!!!');document.location='dokter-tambah.php'</script>";
         }else{
-          echo "<script>alert('Gagal Memperbarui!!!');document.location='dokter-tambah'</script>";
+          echo "<script>alert('Gagal Memperbarui!!!');document.location='dokter-tambah.php'</script>";
         }
       }
       ?>

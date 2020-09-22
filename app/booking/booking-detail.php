@@ -10,7 +10,7 @@
     <div class="col-lg-12">
       <h1>Detail <small>Poliklinik</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-flash"></i> Detail</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -22,15 +22,15 @@
        <?php if($status=='Admin'){ ?>
         <div clas="row">
           <div class="col-lg-6">
-            <a href="booking-datang-proses?id_booking=<?php echo $id_booking; ?>"
+            <a href="booking-datang-proses.php?id_booking=<?php echo $id_booking; ?>"
               <button onclick="javascript: return confirm('Sudah Datang?')"
               type="button" class="btn btn-success"><i class="fa fa-check"></i></button>
             </a>
-            <a href="booking-belum-datang-proses?id_booking=<?php echo $id_booking; ?>"
+            <a href="booking-belum-datang-proses.php?id_booking=<?php echo $id_booking; ?>"
               <button onclick="javascript: return confirm('Ubah Belum Datang?')"
               type="button" class="btn btn-warning"><i class="fa fa-times"></i></button>
             </a>
-            <a href="booking-edit?id_booking=<?php echo $id_booking; ?>"
+            <a href="booking-edit.php?id_booking=<?php echo $id_booking; ?>"
               <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</button>
             </a>
           </div>

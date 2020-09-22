@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Zona Merah <small>COVID-19</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</li></a>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</li></a>
         <li class="active"><i class="fa fa-exclamation-triangle"></i> Peringatan</li>
       </ol>  
       <?php include "../notifikasi1.php"?>

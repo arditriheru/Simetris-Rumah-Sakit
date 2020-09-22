@@ -45,7 +45,7 @@ function format_mak($mak)
   </div><!-- /.row -->
   <div class="row">
     <div class="table-responsive">
-      <form method="post" action="anc-tambah-cari-rm" role="form">
+      <form method="post" action="anc-tambah-cari-rm.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nomor RM</label>
@@ -53,7 +53,7 @@ function format_mak($mak)
           </div><button type="submit" class="btn btn-success">Cari</button>
         </div>
       </form>
-      <form method="post" action="anc-tambah-cari-nama" role="form">
+      <form method="post" action="anc-tambah-cari-nama.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nama</label>
@@ -104,7 +104,7 @@ function format_mak($mak)
             }if (empty($id_sesi)){
               $error['id_sesi']='Sesi Harus Diisi!!!';
             }if($selisih>30){
-              echo "<script>alert('GAGAL!!! Lebih dari 30 Hari!');document.location='anc-tambah'</script>";
+              echo "<script>alert('GAGAL!!! Lebih dari 30 Hari!');document.location='anc-tambah.php'</script>";
               break;
             }if(empty($error)){
               $simpan=mysqli_query($koneksi,"INSERT INTO anc (id_anc, id_catatan_medik, id_petugas, nama, alamat, kontak, jadwal, id_sesi, tanggal, jam, status, keterangan)
@@ -117,7 +117,7 @@ function format_mak($mak)
                     text: 'Mendaftar Antenatal Care',
                     type: 'success'
                     }, function() {
-                      window.location = 'anc-tambah';
+                      window.location = 'anc-tambah.php';
                       });
                       }, 10);
                       </script>";
@@ -129,7 +129,7 @@ function format_mak($mak)
                           text: 'Hilangkan Tanda Petik di Nama Pasien',
                           type: 'error'
                           }, function() {
-                            window.location = 'anc-tambah';
+                            window.location = 'anc-tambah.php';
                             });
                             }, 10);
                             </script>";

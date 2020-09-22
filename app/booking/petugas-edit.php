@@ -44,7 +44,7 @@
                   text: "Berhasil Memperbarui",
                   type: "success"
                   }, function() {
-                    window.location = "dokter-tambah";
+                    window.location = "dokter-tambah.php";
                     });
                     }, 10);
                     </script>';
@@ -55,7 +55,7 @@
                         title: "Gagal!!!",
                         type: "error"
                         }, function() {
-                          window.location = "dokter-tambah";
+                          window.location = "dokter-tambah.php";
                           });
                           }, 10);
                           </script>';

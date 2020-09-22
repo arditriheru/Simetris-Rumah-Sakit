@@ -9,8 +9,7 @@
 		<div class="col-lg-12">
 			<h1>Bell<small> Antrian</small></h1>
 			<ol class="breadcrumb">
-				<li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li><a href="booking-filter"><i class="fa fa-search"></i> Cari</a></li>
+				<li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li class="active"><i class="fa fa-bell-o"></i> Antrian</li>
 			</ol>  
 			<?php include "../../system/welcome.php"?>
@@ -61,7 +60,7 @@
 							text: 'Bell Antrian',
 							type: 'success'
 							}, function() {
-								window.location = 'bell-antrian-tampil';
+								window.location = 'bell-antrian-tampil.php';
 								});
 								}, 10);
 								</script>";
@@ -86,17 +85,17 @@
 											<select class="form-control" type="text" name="id_dokter" required="">
 												<option value="">Pilih</option>
 												<?php 
-												$data = mysqli_query($koneksi,"SELECT * FROM dokter WHERE status=1;");
+												$data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter
+													FROM booking, dokter
+													WHERE booking.id_dokter=dokter.id_dokter
+													AND booking.booking_tanggal='$tanggalsekarang'
+													GROUP BY booking.id_dokter;");
 												while($d = mysqli_fetch_array($data)){
 													echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
 												}
 												?>
 											</select>
 										</div>
-										<!-- <div class="form-group">
-											<label>Jadwal</label>
-											<input class="form-control" type="date" name="jadwal" required="">
-										</div> -->
 										<div class="form-group">
 											<label>Sesi</label>
 											<select class="form-control" type="text" name="id_sesi" required="">

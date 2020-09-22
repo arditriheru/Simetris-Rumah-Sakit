@@ -21,7 +21,7 @@
         ?>
       "</small></h1>
       <ol class="breadcrumb">
-        <li><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-search"></i> Pencarian</li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -35,7 +35,7 @@
             <div class="table-responsive">
               <div class="row">
                 <div align="right" class="col-lg-4">
-                  <form method="post" action="booking-tampil-cari" role="form">
+                  <form method="post" action="booking-tampil-cari.php" role="form">
                     <div class="form-group input-group">
                       <?php
                       if(!$carirm){ ?>
@@ -116,21 +116,21 @@
                       <td><center><?php echo $d['keterangan']; ?></center></td>
                       <td><center><?php
                       if($status=='Datang'){
-                        echo "<a class='whitetext' href='booking-belum-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                        echo "<a class='whitetext' href='booking-belum-datang-proses.php?id_booking=$id_booking'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                       }else{
-                        echo "<a class='whitetext' href='booking-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                        echo "<a class='whitetext' href='booking-datang-proses.php?id_booking=$id_booking'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                       }
                       ?>
                     </center></td>
                     <td>
                       <div align="center">
-                        <a href="booking-edit?id_booking=<?php echo $id_booking; ?>"
+                        <a href="booking-edit.php?id_booking=<?php echo $id_booking; ?>"
                           <button type="button" class="btn btn-primary"><i class='fa fa-pencil'></i></button></a>
                         </div>
                       </td>
                       <td>
                         <div align="center">
-                          <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                          <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                           </div>
                         </td>

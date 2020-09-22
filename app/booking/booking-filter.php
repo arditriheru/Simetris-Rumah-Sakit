@@ -17,7 +17,7 @@
     <div class="col-lg-6">
       <div class="table-responsive">
         <div id="myTabContent" class="tab-content">
-          <form method="post" action="booking-filter-tampil" role="form">
+          <form method="post" action="booking-filter-tampil.php" role="form">
             <div class="form-group">
               <label>Nama Dokter</label>
               <select class="form-control" type="text" name="id_dokter">

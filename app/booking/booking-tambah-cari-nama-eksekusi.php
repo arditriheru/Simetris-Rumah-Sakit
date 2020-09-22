@@ -109,7 +109,7 @@
                     text: 'Silahkan Re-Schedule',
                     type: 'error'
                     }, function() {
-                      window.location = 'booking-tambah';
+                      window.location = 'booking-tambah.php';
                       });
                       }, 10);
                       </script>";
@@ -129,7 +129,7 @@
                             text: 'Silahkan Re-Schedule',
                             type: 'error'
                             }, function() {
-                              window.location = 'booking-tambah';
+                              window.location = 'booking-tambah.php';
                               });
                               }, 10);
                               </script>";
@@ -145,7 +145,7 @@
                               text: 'Silahkan Pilih Hari Lain',
                               type: 'error'
                               }, function() {
-                                window.location = 'booking-tambah';
+                                window.location = 'booking-tambah.php';
                                 });
                                 }, 10);
                                 </script>";

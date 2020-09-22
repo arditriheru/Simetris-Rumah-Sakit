@@ -21,7 +21,7 @@
         ?>
       "</small></h1>
       <ol class="breadcrumb">
-        <li><a href="index"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-search"></i> Pencarian</li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -35,7 +35,7 @@
             <div class="table-responsive">
               <div class="row">
                 <div align="right" class="col-lg-4">
-                  <form method="post" action="anc-tampil-cari" role="form">
+                  <form method="post" action="anc-tampil-cari.php" role="form">
                     <div class="form-group input-group">
                       <?php
                       if(!$carirm){ ?>
@@ -116,21 +116,21 @@
                       <td><center><?php echo $d['keterangan']; ?></center></td>
                       <td><center><?php
                       if($status=='Datang'){
-                        echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                        echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                       }else{
-                        echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                        echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                       }
                       ?>
                     </center></td>
                     <td>
                       <div align="center">
-                        <a href="anc-edit?id_anc=<?php echo $id_anc; ?>"
+                        <a href="anc-edit.php?id_anc=<?php echo $id_anc; ?>"
                           <button type="button" class="btn btn-primary"><i class='fa fa-pencil'></i></button></a>
                         </div>
                       </td>
                       <td>
                         <div align="center">
-                          <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                          <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                           </div>
                         </td>

@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Jadwal <small>Libur</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-calendar"></i> Jadwal</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -25,9 +25,9 @@
       VALUES('','$id_dokter','$id_sesi','$tanggal')");
     if($tambah){
       echo "<script>alert('Berhasil Menambah!!!');
-      document.location='jadwal-dokter'</script>";
+      document.location='jadwal-dokter.php'</script>";
     }else{
-      echo "<script>alert('Gagal! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter'</script>";
+      echo "<script>alert('Gagal! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter.php'</script>";
     }
   }
   ?>

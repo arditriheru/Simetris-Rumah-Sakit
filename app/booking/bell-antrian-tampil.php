@@ -102,9 +102,9 @@ while($b = mysqli_fetch_array($a)){
 							<div align="center">
 								<?php
 								if($d['aktif']=='1'){
-									echo "<a href='bell-antrian-tampil?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
+									echo "<a href='bell-antrian-tampil.php?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
 								}else{
-									echo "<a href='bell-antrian-tampil?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+									echo "<a href='bell-antrian-tampil.php?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
 								}
 								?>
 							</div>
@@ -128,7 +128,7 @@ while($b = mysqli_fetch_array($a)){
 					<td><center><?php echo $d['nama_sesi']; ?></center></td>
 					<td>
 						<div align="center">
-							<a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+							<a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
 								<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
 							</div>
 						</td>
@@ -254,12 +254,12 @@ while($b = mysqli_fetch_array($a)){
 					document.getElementById('suarabel0').currentTime=0;
 					document.getElementById('suarabel0').play();
 				}, totalwaktu);
-				// totalwaktu=totalwaktu+800;
-				// setTimeout(function() {
-				// 	document.getElementById('puluh').pause();
-				// 	document.getElementById('puluh').currentTime=0;
-				// 	document.getElementById('puluh').play();
-				// }, totalwaktu);
+				totalwaktu=totalwaktu+800;
+				setTimeout(function() {
+					document.getElementById('puluh').pause();
+					document.getElementById('puluh').currentTime=0;
+					document.getElementById('puluh').play();
+				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				setTimeout(function() {
 					document.getElementById('suarabel1').pause();

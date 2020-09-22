@@ -15,42 +15,42 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-cek"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="booking-cek.php"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-plus"></i> Poliklinik <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="booking-filter">Lihat</a></li>
-              <li><a href="booking-tambah">Tambah</a></li>
+              <li><a href="booking-filter.php">Lihat</a></li>
+              <li><a href="booking-tambah.php">Tambah</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-plus"></i> Tumbuh Kembang <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="tumbang-filter">Lihat</a></li>
-                <li><a href="tumbang-tambah">Tambah</a></li>
+                <li><a href="tumbang-filter.php">Lihat</a></li>
+                <li><a href="tumbang-tambah.php">Tambah</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-plus"></i> Antenatal Care <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="anc-filter">Lihat</a></li>
-                  <li><a href="anc-tambah">Tambah</a></li>
+                  <li><a href="anc-filter.php">Lihat</a></li>
+                  <li><a href="anc-tambah.php">Tambah</a></li>
                 </ul>
               </li>
-              <li><a href="bell-antrian-filter"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
-              <li><a href="whatsapp"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
-              <li><a href="../kalender?id=booking"><i class="fa fa-calendar"></i> Kalender</a></li>
-              <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
-              <li><a href="dokter-tambah"><i class="fa fa-user-md"></i> Petugas Medis</a></li>
-              <li><a href="jadwal-dokter"><i class="fa fa-calendar-check-o"></i> Jadwal</a></li>
-              <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
-              <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
-              <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
-              <li><a href="../../system/tutorial?id_buku=50"><i class="fa fa-file"></i> Dokumentasi</a></li>
+              <li><a href="bell-antrian-filter.php"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
+              <li><a href="whatsapp.php"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
+              <li><a href="../kalender?id=booking.php"><i class="fa fa-calendar"></i> Kalender</a></li>
+              <li><a href="covid-skrining.php"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
+              <li><a href="dokter-tambah.php"><i class="fa fa-user-md"></i> Petugas Medis</a></li>
+              <li><a href="jadwal-dokter.php"><i class="fa fa-calendar-check-o"></i> Jadwal</a></li>
+              <li><a href="info-kamar.php"><i class="fa fa-bed"></i> Info Kamar</a></li>
+              <li><a href="laporan-per-dokter.php"><i class="fa fa-search"></i> Pencarian</a></li>
+              <li><a href="zona-merah.php"><i class="fa fa-warning"></i> Zona Merah</a></li>
+              <li><a href="../../system/tutorial?id_buku=50.php"><i class="fa fa-file"></i> Dokumentasi</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
               <li>
@@ -63,7 +63,7 @@
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a href="logout"><i class="fa fa-power-off">
+                    <a href="logout.php"><i class="fa fa-power-off">
                     </i> Log Out</a>
                   </li>
                 </ul>
@@ -85,14 +85,14 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                  <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                  <li><a href="booking-cek"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
-                  <li><a href="bell-antrian-filter"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
-                  <li><a href="covid-skrining"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
-                  <li><a href="jadwal-dokter"><i class="fa fa-calendar"></i> Jadwal</a></li>
-                  <li><a href="info-kamar"><i class="fa fa-bed"></i> Info Kamar</a></li>
-                  <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Pencarian</a></li>
-                  <li><a href="zona-merah"><i class="fa fa-warning"></i> Zona Merah</a></li>
+                  <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                  <li><a href="booking-cek.php"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
+                  <li><a href="bell-antrian-filter.php"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
+                  <li><a href="covid-skrining.php"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
+                  <li><a href="jadwal-dokter.php"><i class="fa fa-calendar"></i> Jadwal</a></li>
+                  <li><a href="info-kamar.php"><i class="fa fa-bed"></i> Info Kamar</a></li>
+                  <li><a href="laporan-per-dokter.php"><i class="fa fa-search"></i> Pencarian</a></li>
+                  <li><a href="zona-merah.php"><i class="fa fa-warning"></i> Zona Merah</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-user">
                   <li>
@@ -105,7 +105,7 @@
                     <ul class="dropdown-menu">
                       <li class="divider"></li>
                       <li>
-                        <a href="logout"><i class="fa fa-power-off">
+                        <a href="logout.php"><i class="fa fa-power-off">
                         </i> Log Out</a>
                       </li>
                     </ul>

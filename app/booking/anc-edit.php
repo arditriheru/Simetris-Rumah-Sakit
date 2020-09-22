@@ -10,7 +10,7 @@
       <h1>Edit <small>Registrasi</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="anc-detail?id_anc=<?php echo $id_anc?>"><i class="fa fa-eye"></i> Detail</a></li>
+        <li><a href="anc-detail.php?id_anc=<?php echo $id_anc?>"><i class="fa fa-eye"></i> Detail</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -63,9 +63,9 @@
       $edit=mysqli_query($koneksi,"UPDATE anc SET nama='$nama',alamat='$alamat',kontak='$kontak',keterangan='$keterangan' WHERE id_anc='$id_anc'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='anc-detail?id_anc=$id_anc'</script>";
+        document.location='anc-detail.php?id_anc=$id_anc'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='anc-edit?id_anc=$id_anc'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='anc-edit.php?id_anc=$id_anc'</script>";
       }
     }
     ?>

@@ -10,7 +10,7 @@
       <h1>Daftar <small>Tumbuh Kembang</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-plus"></i> Tambah</a></li>
+        <li><a href="booking-tambah.php"><i class="fa fa-plus"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
      <?php include "../../system/welcome.php"?>
@@ -44,7 +44,7 @@
                 <td><center><?php echo $d['tempat']; ?>, <?php echo date("d F Y", strtotime($tgl_lahir)); ?></center></td>
                 <td>
                   <div align="center">
-                    <a href="tumbang-tambah-cari-nama-eksekusi?id_register=<?php echo $d['id_register']; ?>"
+                    <a href="tumbang-tambah-cari-nama-eksekusi.php?id_register=<?php echo $d['id_register']; ?>"
                       <button type="button" class="btn btn-success">Daftar</a><br><br>
                       </div>
                     </td>

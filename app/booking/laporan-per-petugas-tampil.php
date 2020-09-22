@@ -59,8 +59,8 @@ function akhir($akhir)
     <div class="col-lg-12">
       <h1>Pencarian <small> Tumbuh Kembang</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="laporan-per-petugas"><i class="fa fa-search"></i> Cari</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="laporan-per-petugas.php"><i class="fa fa-search"></i> Cari</a></li>
         <li class="active"><i class="fa fa-list"></i> <?php echo awal($awal);?> - <?php echo akhir($akhir);?></li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -72,7 +72,7 @@ function akhir($akhir)
         <div class="col-lg-8">
          <div class="row">
           <div class="col-lg-2">
-            <form method="post" action="laporan-per-petugas-export" role="form">
+            <form method="post" action="laporan-per-petugas-export.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="hidden" name="id_petugas" value="<?php echo $id_petugas?>">
               </div>
@@ -90,7 +90,7 @@ function akhir($akhir)
             </form>
           </div>
           <div class="col-lg-2">
-            <form method="post" action="laporan-per-petugas-print" role="form">
+            <form method="post" action="laporan-per-petugas-print.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="hidden" name="id_petugas" value="<?php echo $id_petugas?>">
               </div>
@@ -169,7 +169,7 @@ function akhir($akhir)
                 </center></td>
                 <td>
                   <div align="center">
-                    <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                    <a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"
                       <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                     </div>
                   </td>
@@ -205,7 +205,7 @@ function akhir($akhir)
                     </center></td>
                     <td>
                       <div align="center">
-                        <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                        <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                           <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                         </div>
                       </td>

@@ -10,7 +10,7 @@
       <h1>Hasil <small>Pencarian</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-tambah"><i class="fa fa-pencil"></i> Tambah</a></li>
+        <li><a href="booking-tambah.php"><i class="fa fa-pencil"></i> Tambah</a></li>
         <li class="active"><i class="fa fa-search"></i> Cari</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -53,7 +53,7 @@
                                     <td><center><?php echo date("d/m/Y", strtotime($booking_tanggal)); ?></td>
                                       <td>
                                         <div align="center">
-                                          <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                          <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                             <button type="button" class="btn btn-warning">Detail</a><br><br>
                                             </div>
                                           </td>

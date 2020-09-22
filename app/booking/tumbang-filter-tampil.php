@@ -42,8 +42,8 @@
         ?>
         <h1><?php echo $total;}?> Pasien<small> Terdaftar</small></h1>
         <ol class="breadcrumb">
-          <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li><a href="booking-filter"><i class="fa fa-search"></i> Cari</a></li>
+          <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a href="booking-filter.php"><i class="fa fa-search"></i> Cari</a></li>
           <li class="active"><i class="fa fa-calendar"></i> <?php echo jadwal($jadwal); ?></li>
         </ol>  
         <?php include "../../system/welcome.php"?>
@@ -93,7 +93,7 @@
                   <td><center><?php echo $d['keterangan']; ?></center></td>
                   <td>
                     <div align="center">
-                      <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                      <a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"
                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                       </div>
                     </td>

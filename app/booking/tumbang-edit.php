@@ -10,7 +10,7 @@
       <h1>Edit <small>Registrasi</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="tumbang-detail?id_tumbang=<?php echo $id_tumbang?>"><i class="fa fa-eye"></i> Detail</a></li>
+        <li><a href="tumbang-detail.php?id_tumbang=<?php echo $id_tumbang?>"><i class="fa fa-eye"></i> Detail</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -63,9 +63,9 @@
       $edit=mysqli_query($koneksi,"UPDATE tumbang SET nama='$nama',alamat='$alamat',kontak='$kontak',keterangan='$keterangan' WHERE id_tumbang='$id_tumbang'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='tumbang-detail?id_tumbang=$id_tumbang'</script>";
+        document.location='tumbang-detail.php?id_tumbang=$id_tumbang'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='tumbang-edit?id_tumbang=$id_tumbang'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='tumbang-edit.php?id_tumbang=$id_tumbang'</script>";
       }
     }
     ?>

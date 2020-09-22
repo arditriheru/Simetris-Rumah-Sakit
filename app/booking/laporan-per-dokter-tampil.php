@@ -54,8 +54,8 @@ $id_sesi    = $_POST['id_sesi'];
     <div class="col-lg-12">
       <h1>Pencarian <small> Poliklinik</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Cari</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="laporan-per-dokter.php"><i class="fa fa-search"></i> Cari</a></li>
         <li class="active"><i class="fa fa-list"></i> <?php echo awal($awal);?> - <?php echo akhir($akhir);?></li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -67,7 +67,7 @@ $id_sesi    = $_POST['id_sesi'];
         <div class="col-lg-8">
          <div class="row">
           <div class="col-lg-2">
-            <form method="post" action="laporan-per-dokter-export" role="form">
+            <form method="post" action="laporan-per-dokter-export.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="hidden" name="id_dokter" value="<?php echo $id_dokter?>">
               </div>
@@ -85,7 +85,7 @@ $id_sesi    = $_POST['id_sesi'];
             </form>
           </div>
           <div class="col-lg-2">
-            <form method="post" action="laporan-per-dokter-print" role="form">
+            <form method="post" action="laporan-per-dokter-print.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="hidden" name="id_dokter" value="<?php echo $id_dokter?>">
               </div>
@@ -163,7 +163,7 @@ $id_sesi    = $_POST['id_sesi'];
               </center></td>
               <td>
                 <div align="center">
-                  <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                  <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                     <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                   </div>
                 </td>

@@ -19,7 +19,7 @@ while($b = mysqli_fetch_array($a)){
     <div class="col-lg-12">
       <h1>Jadwal <small><?php include 'tanggal-sekarang.php';?></small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-list"></i> Petugas <?php echo $nama_petugas ?> </li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -32,7 +32,7 @@ while($b = mysqli_fetch_array($a)){
           <button type="button" class="btn btn-warning">Filter</button>
           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li disabled selected><a href="dashboard">All</a></li>
+            <li disabled selected><a href="dashboard.php">All</a></li>
             <?php 
             $data = mysqli_query($koneksi,
               "SELECT *, mr_petugas.nama_petugas
@@ -111,15 +111,15 @@ while($b = mysqli_fetch_array($a)){
                                <td><center><?php echo $d['keterangan']; ?></center></td>
                                <td><center><?php
                                if($status=='Datang'){
-                                echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                               }else{
-                                echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                               }
                               ?>
                             </center></td>
                             <td>
                               <div align="center">
-                                <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                 </div>
                               </td>
@@ -186,15 +186,15 @@ while($b = mysqli_fetch_array($a)){
                                    <td><center><?php echo $d['keterangan']; ?></center></td>
                                    <td><center><?php
                                    if($status=='Datang'){
-                                    echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                   }else{
-                                    echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                   }
                                   ?>
                                 </center></td>
                                 <td>
                                   <div align="center">
-                                    <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                    <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                       <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                     </div>
                                   </td>
@@ -261,15 +261,15 @@ while($b = mysqli_fetch_array($a)){
                                      <td><center><?php echo $d['keterangan']; ?></center></td>
                                      <td><center><?php
                                      if($status=='Datang'){
-                                      echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                      echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                     }else{
-                                      echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                      echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                     }
                                     ?>
                                   </center></td>
                                   <td>
                                     <div align="center">
-                                      <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                      <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                       </div>
                                     </td>
@@ -336,15 +336,15 @@ while($b = mysqli_fetch_array($a)){
                                        <td><center><?php echo $d['keterangan']; ?></center></td>
                                        <td><center><?php
                                        if($status=='Datang'){
-                                        echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                        echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                       }else{
-                                        echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                        echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                       }
                                       ?>
                                     </center></td>
                                     <td>
                                       <div align="center">
-                                        <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                        <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                           <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                         </div>
                                       </td>
@@ -411,15 +411,15 @@ while($b = mysqli_fetch_array($a)){
                                          <td><center><?php echo $d['keterangan']; ?></center></td>
                                          <td><center><?php
                                          if($status=='Datang'){
-                                          echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                                          echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                                         }else{
-                                          echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                          echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                         }
                                         ?>
                                       </center></td>
                                       <td>
                                         <div align="center">
-                                          <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                          <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                           </div>
                                         </td>
@@ -485,7 +485,7 @@ while($b = mysqli_fetch_array($a)){
                                              <td><center><?php echo $d['keterangan']; ?></center></td>
                                              <td>
                                               <div align="center">
-                                                <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                                <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                 </div>
                                               </td>
@@ -552,7 +552,7 @@ while($b = mysqli_fetch_array($a)){
                                                    <td><center><?php echo $d['keterangan']; ?></center></td>
                                                    <td>
                                                     <div align="center">
-                                                      <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                                      <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                       </div>
                                                     </td>
@@ -619,7 +619,7 @@ while($b = mysqli_fetch_array($a)){
                                                        <td><center><?php echo $d['keterangan']; ?></center></td>
                                                        <td>
                                                         <div align="center">
-                                                          <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                                          <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                           </div>
                                                         </td>
@@ -686,7 +686,7 @@ while($b = mysqli_fetch_array($a)){
                                                            <td><center><?php echo $d['keterangan']; ?></center></td>
                                                            <td>
                                                             <div align="center">
-                                                              <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                                              <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                                                 <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                               </div>
                                                             </td>
@@ -753,7 +753,7 @@ while($b = mysqli_fetch_array($a)){
                                                                <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                <td>
                                                                 <div align="center">
-                                                                  <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                                                  <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                                                     <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                   </div>
                                                                 </td>

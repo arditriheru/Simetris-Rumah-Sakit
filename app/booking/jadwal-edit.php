@@ -9,14 +9,14 @@
     <div class="col-lg-12">
       <h1>Edit <small>Jadwal</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-calendar"></i> Jadwal</li>
       </ol>
       <?php include "../../system/welcome.php"?>
     </div>
     <?php $id_jadwal = $_GET['id_jadwal']; ?>
     <div align="right" class="col-lg-6">
-      <a href="jadwal-hapus?id_jadwal=<?php echo $id_jadwal; ?>"
+      <a href="jadwal-hapus.php?id_jadwal=<?php echo $id_jadwal; ?>"
         onclick="javascript: return confirm('Anda yakin hapus?')">
         <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
       </a>
@@ -53,9 +53,9 @@
       $edit=mysqli_query($koneksi,"UPDATE dokter_jadwal SET id_sesi='$id_sesi', hari='$hari', jam='$jam', kuota='$kuota', ims='$ims' WHERE id_jadwal='$id_jadwal'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
+        document.location='jadwal-dokter.php?id_dokter=$id_dokter'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='jadwal-dokter.php?id_dokter=$id_dokter'</script>";
       }
     }
     ?>

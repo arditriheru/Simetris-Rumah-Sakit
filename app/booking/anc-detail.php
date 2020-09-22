@@ -10,7 +10,7 @@
     <div class="col-lg-12">
       <h1>Detail <small>Antenatal Care</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-flash"></i> Detail</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -22,20 +22,20 @@
        <?php if($status=='Admin'){ ?>
          <div clas="row">
           <div align="left" class="col-lg-10">
-            <a href="anc-datang-proses?id_anc=<?php echo $id_anc; ?>"
+            <a href="anc-datang-proses.php?id_anc=<?php echo $id_anc; ?>"
               <button onclick="javascript: return confirm('Sudah Datang?')"
               type="button" class="btn btn-success">Datang</button>
             </a>
-            <a href="anc-belum-datang-proses?id_anc=<?php echo $id_anc; ?>"
+            <a href="anc-belum-datang-proses.php?id_anc=<?php echo $id_anc; ?>"
               <button onclick="javascript: return confirm('Ubah Belum Datang?')"
               type="button" class="btn btn-warning">Belum Datang</button>
             </a>
-            <a href="anc-edit?id_anc=<?php echo $id_anc; ?>"
+            <a href="anc-edit.php?id_anc=<?php echo $id_anc; ?>"
               <button type="button" class="btn btn-primary">Edit</button>
             </a>
           </div>
           <div align="right" class="col-lg-2">
-            <a href="anc-hapus?id_anc=<?php echo $id_anc; ?>"
+            <a href="anc-hapus.php?id_anc=<?php echo $id_anc; ?>"
               onclick="javascript: return confirm('Anda yakin hapus?')">
               <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
             </a>

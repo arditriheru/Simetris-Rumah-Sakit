@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Registrasi <small><?php include 'tanggal-sekarang.php';?></small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</li></a>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</li></a>
         <li class="active"><i class="fa fa-check-square-o"></i> Hari Ini</li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -71,7 +71,7 @@
                             <td><center><?php echo $d['keterangan']; ?></center></td>
                             <td>
                               <div align="center">
-                                <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                 </div>
                               </td>
@@ -135,7 +135,7 @@
                                     <td><center><?php echo $d['keterangan']; ?></center>
                                     </td>
                                     <td>
-                                      <div align="center"><a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                      <div align="center"><a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                       </div>
                                     </td>
                                     </tr><?php } ?>
@@ -198,7 +198,7 @@
                                           <td><center><?php echo $d['keterangan']; ?></center>
                                           </td>
                                           <td>
-                                            <div align="center"><a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+                                            <div align="center"><a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                             </div>
                                           </td>
                                           </tr><?php } ?>
@@ -269,7 +269,7 @@
                                               </center></td>
                                               <td>
                                                 <div align="center">
-                                                  <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                  <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                     <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                   </div>
                                                 </td>

@@ -10,8 +10,8 @@ while($d = mysqli_fetch_array($data)){
 }
 $hapus=mysqli_query($koneksi,"DELETE FROM dokter_jadwal WHERE id_jadwal='$id_jadwal'");
 if($hapus){
-	echo "<script>alert('Berhasil Dihapus!!!');document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
+	echo "<script>alert('Berhasil Dihapus!!!');document.location='jadwal-dokter.php?id_dokter=$id_dokter'</script>";
 }else{
-	echo "<script>alert('Gagal Hapus!!!');document.location='jadwal-dokter?id_dokter=$id_dokter'</script>";
+	echo "<script>alert('Gagal Hapus!!!');document.location='jadwal-dokter.php?id_dokter=$id_dokter'</script>";
 }
 ?>

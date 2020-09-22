@@ -72,7 +72,7 @@
         <div class="tab-pane fade active in" id="1">
           <div class="row">
             <div class="table-responsive">
-              <form method="post" action="laporan-per-dokter-tampil" role="form">
+              <form method="post" action="laporan-per-dokter-tampil.php" role="form">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label>Nama Dokter</label>
@@ -114,7 +114,7 @@
                 </div>
               </form>
               <div class="col-lg-6">
-                <form method="post" action="booking-cari-rm" role="form">
+                <form method="post" action="booking-cari-rm.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nomor RM</label>
@@ -122,7 +122,7 @@
                     </div><button type="submit" class="btn btn-success">Cari</button>
                   </div>
                 </form><br>
-                <form method="post" action="booking-cari-nama" role="form">
+                <form method="post" action="booking-cari-nama.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nama Pasien</label>
@@ -138,7 +138,7 @@
         <div class="tab-pane fade in" id="2">
           <div class="row">
             <div class="table-responsive">
-              <form method="post" action="laporan-per-petugas-tampil" role="form">
+              <form method="post" action="laporan-per-petugas-tampil.php" role="form">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label>Nama Petugas</label>
@@ -180,7 +180,7 @@
                 </div>
               </form>
               <div class="col-lg-6">
-                <form method="post" action="tumbang-cari-rm" role="form">
+                <form method="post" action="tumbang-cari-rm.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nomor RM</label>
@@ -188,7 +188,7 @@
                     </div><button type="submit" class="btn btn-success">Cari</button>
                   </div>
                 </form><br>
-                <form method="post" action="tumbang-cari-nama" role="form">
+                <form method="post" action="tumbang-cari-nama.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nama Pasien</label>
@@ -204,7 +204,7 @@
         <div class="tab-pane fade in" id="3">
           <div class="row">
             <div class="table-responsive">
-              <form method="post" action="laporan-per-petugas-tampil" role="form">
+              <form method="post" action="laporan-per-petugas-tampil.php" role="form">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label>Nama Petugas</label>
@@ -246,7 +246,7 @@
                 </div>
               </form>
               <div class="col-lg-6">
-                <form method="post" action="anc-cari-rm" role="form">
+                <form method="post" action="anc-cari-rm.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nomor RM</label>
@@ -254,7 +254,7 @@
                     </div><button type="submit" class="btn btn-success">Cari</button>
                   </div>
                 </form><br>
-                <form method="post" action="anc-cari-nama" role="form">
+                <form method="post" action="anc-cari-nama.php" role="form">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label>Nama Pasien</label>

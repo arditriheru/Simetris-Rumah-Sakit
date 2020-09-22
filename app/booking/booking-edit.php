@@ -11,7 +11,7 @@
       <h1>Edit <small>Registrasi</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="booking-detail?id_booking=<?php echo $id_booking?>"><i class="fa fa-eye"></i> Detail</a></li>
+        <li><a href="booking-detail.php?id_booking=<?php echo $id_booking?>"><i class="fa fa-eye"></i> Detail</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -66,9 +66,9 @@
         WHERE id_booking='$id_booking'");
       if($edit){
         echo "<script>alert('Berhasil Mengubah!!!');
-        document.location='booking-detail?id_booking=$id_booking'</script>";
+        document.location='booking-detail.php?id_booking=$id_booking'</script>";
       }else{
-        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='booking-edit?id_booking=$id_booking'</script>";
+        echo "<script>alert('Gagal Mendaftar! Hilangkan Tanda Petik Pada Nama Pasien!');document.location='booking-edit.php?id_booking=$id_booking'</script>";
       }
     }
     ?>

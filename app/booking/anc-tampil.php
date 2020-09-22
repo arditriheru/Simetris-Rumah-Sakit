@@ -1,6 +1,6 @@
          <div class="row">
           <div class="col-lg-12">
-            <form method="post" action="laporan-anc-hari-ini-export" role="form">
+            <form method="post" action="laporan-anc-hari-ini-export.php" role="form">
               <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
               <div class="btn-group">
                 <button type="button" class="btn btn-warning">Filter</button>
@@ -18,7 +18,7 @@
                     AND anc.jadwal='$tanggalsekarang'
                     GROUP BY anc.id_petugas;");
                   while($d = mysqli_fetch_array($data)){
-                    echo "<li><a href='anc-tab?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
+                    echo "<li><a href='anc-tab.php?id_petugas=".$d['id_petugas']."'>".$d['nama_petugas']."</a></li>";
                   }
                   ?>
                 </ul>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="row">
-          <form method="post" action="anc-tampil-cari" role="form">
+          <form method="post" action="anc-tampil-cari.php" role="form">
             <div class="col-lg-4"><br>
               <div class="form-group input-group">
                 <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -95,15 +95,15 @@
                    <td><center><?php echo $d['keterangan']; ?></center></td>
                    <td><center><?php
                    if($status=='Datang'){
-                    echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
+                    echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-success'><i class='fa fa-check'></i></button></a>";
                   }else{
-                    echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                    echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                   }
                   ?>
                 </center></td>
                 <td>
                   <div align="center">
-                    <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                    <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                       <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                     </div>
                   </td>
@@ -135,7 +135,7 @@
                      <td><center><?php echo $d['keterangan']; ?></center></td>
                      <td>
                       <div align="center">
-                        <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                        <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                           <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                         </div>
                       </td>

@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Jadwal <small>Dokter</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-calendar"></i> Jadwal</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -22,7 +22,7 @@
       <div class="col-lg-12">
         <form method="post" action="" role="form">
           <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
-          <a href="jadwal-tambah?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal</button></a>
+          <a href="jadwal-tambah.php?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal</button></a>
           <div class="btn-group">
             <?php
             $a = mysqli_query($koneksi,
@@ -88,7 +88,7 @@
                   AND dokter_jadwal.hari=1;");
                 while($dt = mysqli_fetch_array($hari)){
                   ?>
-                  <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
+                  <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Senin</a></center></td>
                   <td><center>
                     <?php echo $dt['jam'].$dt['ims']; ?>
                   </center></td>
@@ -110,7 +110,7 @@
                     AND dokter_jadwal.hari=2;");
                   while($dt = mysqli_fetch_array($hari)){
                     ?>
-                    <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
+                    <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Selasa</a></center></td>
                     <td><center>
                       <?php echo $dt['jam'].$dt['ims']; ?>
                     </center></td>
@@ -132,7 +132,7 @@
                       AND dokter_jadwal.hari=3;");
                     while($dt = mysqli_fetch_array($hari)){
                       ?>
-                      <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
+                      <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Rabu</a></center></td>
                       <td><center>
                         <?php echo $dt['jam'].$dt['ims']; ?>
                       </center></td>
@@ -154,7 +154,7 @@
                         AND dokter_jadwal.hari=4;");
                       while($dt = mysqli_fetch_array($hari)){
                         ?>
-                        <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
+                        <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Kamis</a></center></td>
                         <td><center>
                           <?php echo $dt['jam'].$dt['ims']; ?>
                         </center></td>
@@ -176,7 +176,7 @@
                           AND dokter_jadwal.hari=5;");
                         while($dt = mysqli_fetch_array($hari)){
                           ?>
-                          <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
+                          <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Jumat</a></center></td>
                           <td><center>
                             <?php echo $dt['jam'].$dt['ims']; ?>
                           </center></td>
@@ -198,7 +198,7 @@
                             AND dokter_jadwal.hari=6;");
                           while($dt = mysqli_fetch_array($hari)){
                             ?>
-                            <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
+                            <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Sabtu</a></center></td>
                             <td><center>
                               <?php echo $dt['jam'].$dt['ims']; ?>
                             </center></td>
@@ -220,7 +220,7 @@
                               AND dokter_jadwal.hari=0;");
                             while($dt = mysqli_fetch_array($hari)){
                               ?>
-                              <td><center><a href="jadwal-edit?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
+                              <td><center><a href="jadwal-edit.php?id_jadwal=<?php echo $dt['id_jadwal'];?>">Minggu</a></center></td>
                               <td><center>
                                 <?php echo $dt['jam'].$dt['ims']; ?>
                               </center></td>
@@ -241,7 +241,7 @@
                 <div class="col-lg-12">
                   <form method="post" action="" role="form">
                     <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
-                    <a href="jadwal-dokter-libur-tambah"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal Libur</button></a>
+                    <a href="jadwal-dokter-libur-tambah.php"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal Libur</button></a>
                     <div class="btn-group">
                       <?php
                       $a = mysqli_query($koneksi,
@@ -263,7 +263,7 @@
                           FROM dokter
                           GROUP BY id_dokter;");
                         while($d = mysqli_fetch_array($c)){
-                          echo "<li><a href='jadwal-dokter?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+                          echo "<li><a href='jadwal-dokter.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
                         }
                         ?>
                       </ul>
@@ -299,7 +299,7 @@
                             <td align="center"><?php echo $b['nama_sesi'];?></td>
                             <td>
                               <div align="center">
-                                <a href="jadwal-dokter-libur-hapus?id=<?php echo $b['id_jadwal_libur']; ?>"
+                                <a href="jadwal-dokter-libur-hapus.php?id=<?php echo $b['id_jadwal_libur']; ?>"
                                   onclick="javascript: return confirm('Anda yakin hapus?')">
                                   <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                                 </a>

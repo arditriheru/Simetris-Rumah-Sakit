@@ -19,7 +19,7 @@ while($b = mysqli_fetch_array($a)){
     <div class="col-lg-12">
       <h1>Jadwal <small><?php include 'tanggal-sekarang.php';?></small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-list"></i> Dokter <?php echo $nama_dokter ?> </li>
       </ol>  
       <?php include "../../system/welcome.php"?>
@@ -41,7 +41,7 @@ while($b = mysqli_fetch_array($a)){
               AND booking.booking_tanggal='$tanggalsekarang'
               GROUP BY booking.id_dokter;");
             while($d = mysqli_fetch_array($data)){
-              echo "<li><a href='booking-tab?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+              echo "<li><a href='booking-tab.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
             }
             ?>
           </ul>
@@ -112,7 +112,7 @@ while($b = mysqli_fetch_array($a)){
                               <td><center><?php echo $d['keterangan']; ?></center></td>
                               <td><center><?php
                               if($status=='Datang'){
-                                echo "<form method='post' action='booking-belum-datang-proses-tab' role='form'>
+                                echo "<form method='post' action='booking-belum-datang-proses-tab.php' role='form'>
                                 <input type='text' name='id_booking'
                                 value='$id_booking;' hidden>
                                 <input type='text' name='id_dokter'
@@ -120,7 +120,7 @@ while($b = mysqli_fetch_array($a)){
                                 <button type='submit' class='btn btn-primary'><i class='fa fa-check'></i></button>
                                 </form>";
                               }else{
-                                echo "<form method='post' action='booking-datang-proses-tab' role='form'>
+                                echo "<form method='post' action='booking-datang-proses-tab.php' role='form'>
                                 <input type='text' name='id_booking'
                                 value='$id_booking;' hidden>
                                 <input type='text' name='id_dokter'
@@ -212,7 +212,7 @@ while($b = mysqli_fetch_array($a)){
                                         <td><center><?php echo $d['keterangan']; ?></center></td>
                                         <td><center><?php
                                         if($status=='Datang'){
-                                          echo "<form method='post' action='booking-belum-datang-proses-tab' role='form'>
+                                          echo "<form method='post' action='booking-belum-datang-proses-tab.php' role='form'>
                                           <input type='text' name='id_booking'
                                           value='$id_booking;' hidden>
                                           <input type='text' name='id_dokter'
@@ -220,7 +220,7 @@ while($b = mysqli_fetch_array($a)){
                                           <button type='submit' class='btn btn-primary'><i class='fa fa-check'></i></button>
                                           </form>";
                                         }else{
-                                          echo "<form method='post' action='booking-datang-proses-tab' role='form'>
+                                          echo "<form method='post' action='booking-datang-proses-tab.php' role='form'>
                                           <input type='text' name='id_booking'
                                           value='$id_booking;' hidden>
                                           <input type='text' name='id_dokter'
@@ -312,7 +312,7 @@ while($b = mysqli_fetch_array($a)){
                                               <td><center><?php echo $d['keterangan']; ?></center></td>
                                               <td><center><?php
                                               if($status=='Datang'){
-                                                echo "<form method='post' action='booking-belum-datang-proses-tab' role='form'>
+                                                echo "<form method='post' action='booking-belum-datang-proses-tab.php' role='form'>
                                                 <input type='text' name='id_booking'
                                                 value='$id_booking;' hidden>
                                                 <input type='text' name='id_dokter'
@@ -320,7 +320,7 @@ while($b = mysqli_fetch_array($a)){
                                                 <button type='submit' class='btn btn-primary'><i class='fa fa-check'></i></button>
                                                 </form>";
                                               }else{
-                                                echo "<form method='post' action='booking-datang-proses-tab' role='form'>
+                                                echo "<form method='post' action='booking-datang-proses-tab.php' role='form'>
                                                 <input type='text' name='id_booking'
                                                 value='$id_booking;' hidden>
                                                 <input type='text' name='id_dokter'
@@ -412,7 +412,7 @@ while($b = mysqli_fetch_array($a)){
                                                     <td><center><?php echo $d['keterangan']; ?></center></td>
                                                     <td><center><?php
                                                     if($status=='Datang'){
-                                                      echo "<form method='post' action='booking-belum-datang-proses-tab' role='form'>
+                                                      echo "<form method='post' action='booking-belum-datang-proses-tab.php' role='form'>
                                                       <input type='text' name='id_booking'
                                                       value='$id_booking;' hidden>
                                                       <input type='text' name='id_dokter'
@@ -420,7 +420,7 @@ while($b = mysqli_fetch_array($a)){
                                                       <button type='submit' class='btn btn-primary'><i class='fa fa-check'></i></button>
                                                       </form>";
                                                     }else{
-                                                      echo "<form method='post' action='booking-datang-proses-tab' role='form'>
+                                                      echo "<form method='post' action='booking-datang-proses-tab.php' role='form'>
                                                       <input type='text' name='id_booking'
                                                       value='$id_booking;' hidden>
                                                       <input type='text' name='id_dokter'
@@ -512,7 +512,7 @@ while($b = mysqli_fetch_array($a)){
                                                           <td><center><?php echo $d['keterangan']; ?></center></td>
                                                           <td><center><?php
                                                           if($status=='Datang'){
-                                                            echo "<form method='post' action='booking-belum-datang-proses-tab' role='form'>
+                                                            echo "<form method='post' action='booking-belum-datang-proses-tab.php' role='form'>
                                                             <input type='text' name='id_booking'
                                                             value='$id_booking;' hidden>
                                                             <input type='text' name='id_dokter'
@@ -520,7 +520,7 @@ while($b = mysqli_fetch_array($a)){
                                                             <button type='submit' class='btn btn-primary'><i class='fa fa-check'></i></button>
                                                             </form>";
                                                           }else{
-                                                            echo "<form method='post' action='booking-datang-proses-tab' role='form'>
+                                                            echo "<form method='post' action='booking-datang-proses-tab.php' role='form'>
                                                             <input type='text' name='id_booking'
                                                             value='$id_booking;' hidden>
                                                             <input type='text' name='id_dokter'

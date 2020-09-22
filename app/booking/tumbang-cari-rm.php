@@ -9,8 +9,8 @@
     <div class="col-lg-12">
       <h1>Hasil <small>Pencarian</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="laporan-per-dokter"><i class="fa fa-search"></i> Cari</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="laporan-per-dokter.php"><i class="fa fa-search"></i> Cari</a></li>
         <li class="active"><i class="fa fa-list"></i> List</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -53,7 +53,7 @@
                 <td><center><?php echo date("d/m/Y", strtotime($jadwal)); ?></center></td>
                 <td>
                   <div align="center">
-                    <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                    <a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"
                       <button type="button" class="btn btn-warning">Detail</a><br><br>
                       </div>
                     </td>

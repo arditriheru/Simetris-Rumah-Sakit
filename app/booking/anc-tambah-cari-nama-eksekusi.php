@@ -85,7 +85,7 @@
               text: 'Lebih dari 30 Hari',
               type: 'error'
               }, function() {
-                window.location = 'anc-tambah';
+                window.location = 'anc-tambah.php';
                 });
                 }, 10);
                 </script>";
@@ -97,7 +97,7 @@
                     text: 'Sudah Mendaftar Sebelumnya',
                     type: 'error'
                     }, function() {
-                      window.location = 'anc-tambah';
+                      window.location = 'anc-tambah.php';
                       });
                       }, 10);
                       </script>";
@@ -112,7 +112,7 @@
                             text: 'Mendaftar Antenatal Care',
                             type: 'success'
                             }, function() {
-                              window.location = 'anc-tambah';
+                              window.location = 'anc-tambah.php';
                               });
                               }, 10);
                               </script>";
@@ -124,7 +124,7 @@
                                   text: 'Hilangkan Tanda Petik di Nama Pasien',
                                   type: 'error'
                                   }, function() {
-                                    window.location = 'anc-tambah';
+                                    window.location = 'anc-tambah.php';
                                     });
                                     }, 10);
                                     </script>";

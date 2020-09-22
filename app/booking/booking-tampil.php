@@ -13,7 +13,7 @@
             <div class="col-lg-12">
              <div class="row">
               <div class="col-lg-12">
-                <form method="post" action="laporan-booking-hari-ini-export" role="form">
+                <form method="post" action="laporan-booking-hari-ini-export.php" role="form">
                   <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
                   <div class="btn-group">
                     <button type="button" class="btn btn-warning">Filter</button>
@@ -30,7 +30,7 @@
                         AND booking.booking_tanggal='$tanggalsekarang'
                         GROUP BY booking.id_dokter;");
                       while($d = mysqli_fetch_array($data)){
-                        echo "<li><a href='booking-tab?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+                        echo "<li><a href='booking-tab.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
                       }
                       ?>
                     </ul>
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="row">
-              <form method="post" action="booking-tampil-cari" role="form">
+              <form method="post" action="booking-tampil-cari.php" role="form">
                 <div class="col-lg-4"><br>
                   <div class="form-group input-group">
                     <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -107,9 +107,9 @@
                       <td><center><?php echo $d['keterangan']; ?></center></td>
                       <td><center><?php
                       if($status=='Datang'){
-                        echo "<a class='whitetext' href='booking-belum-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
+                        echo "<a class='whitetext' href='booking-belum-datang-proses.php?id_booking=$id_booking'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
                       }else{
-                        echo "<a class='whitetext' href='booking-datang-proses?id_booking=$id_booking'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                        echo "<a class='whitetext' href='booking-datang-proses.php?id_booking=$id_booking'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                       }
                       ?>
                     </center></td>
@@ -121,7 +121,7 @@
                         </td> -->
                         <td>
                           <div align="center">
-                            <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                            <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                               <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                             </div>
                           </td>
@@ -146,7 +146,7 @@
                     <div class="table-responsive">
                      <div class="row">
                       <div class="col-lg-12">
-                        <form method="post" action="laporan-tumbang-hari-ini-export" role="form">
+                        <form method="post" action="laporan-tumbang-hari-ini-export.php" role="form">
                           <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
                           <div class="btn-group">
                             <button type="button" class="btn btn-warning">Filter</button>
@@ -173,7 +173,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <form method="post" action="tumbang-tampil-cari" role="form">
+                      <form method="post" action="tumbang-tampil-cari.php" role="form">
                         <div class="col-lg-4"><br>
                           <div class="form-group input-group">
                             <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -241,9 +241,9 @@
                              <td><center><?php echo $d['keterangan']; ?></center></td>
                              <td><center><?php
                              if($status=='Datang'){
-                              echo "<a class='whitetext' href='tumbang-belum-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
+                              echo "<a class='whitetext' href='tumbang-belum-datang-proses.php?id_tumbang=$id_tumbang'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
                             }else{
-                              echo "<a class='whitetext' href='tumbang-datang-proses?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                              echo "<a class='whitetext' href='tumbang-datang-proses.php?id_tumbang=$id_tumbang'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                             }
                             ?>
                           </center></td>
@@ -255,7 +255,7 @@
                             </td> -->
                             <td>
                               <div align="center">
-                                <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                <a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"
                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                 </div>
                               </td>
@@ -278,7 +278,7 @@
                           <div class="table-responsive">
                            <div class="row">
                             <div class="col-lg-12">
-                              <form method="post" action="laporan-anc-hari-ini-export" role="form">
+                              <form method="post" action="laporan-anc-hari-ini-export.php" role="form">
                                 <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
                                 <div class="btn-group">
                                   <button type="button" class="btn btn-warning">Filter</button>
@@ -305,7 +305,7 @@
                             </div>
                           </div>
                           <div class="row">
-                            <form method="post" action="anc-tampil-cari" role="form">
+                            <form method="post" action="anc-tampil-cari.php" role="form">
                               <div class="col-lg-4"><br>
                                 <div class="form-group input-group">
                                   <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -373,9 +373,9 @@
                                    <td><center><?php echo $d['keterangan']; ?></center></td>
                                    <td><center><?php
                                    if($status=='Datang'){
-                                    echo "<a class='whitetext' href='anc-belum-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-belum-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button></a>";
                                   }else{
-                                    echo "<a class='whitetext' href='anc-datang-proses?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
+                                    echo "<a class='whitetext' href='anc-datang-proses.php?id_anc=$id_anc'><button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button></a>";
                                   }
                                   ?>
                                 </center></td>
@@ -387,7 +387,7 @@
                                   </td> -->
                                   <td>
                                     <div align="center">
-                                      <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                      <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                       </div>
                                     </td>
@@ -410,7 +410,7 @@
                               <div class="col-lg-12">
                                <div class="row">
                                 <div class="col-lg-12">
-                                  <form method="post" action="laporan-booking-hari-ini-export" role="form">
+                                  <form method="post" action="laporan-booking-hari-ini-export.php" role="form">
                                     <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
                                     <div class="btn-group">
                                       <button type="button" class="btn btn-warning">Filter</button>
@@ -427,7 +427,7 @@
                                           AND booking.booking_tanggal='$tanggalsekarang'
                                           GROUP BY booking.id_dokter;");
                                         while($d = mysqli_fetch_array($data)){
-                                          echo "<li><a href='booking-tab?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+                                          echo "<li><a href='booking-tab.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
                                         }
                                         ?>
                                       </ul>
@@ -436,7 +436,7 @@
                                 </div>
                               </div>
                               <div class="row">
-                                <form method="post" action="booking-tampil-cari" role="form">
+                                <form method="post" action="booking-tampil-cari.php" role="form">
                                   <div class="col-lg-4"><br>
                                     <div class="form-group input-group">
                                       <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -511,7 +511,7 @@
                                       </center></td>
                                       <td>
                                         <div align="center">
-                                          <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                          <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                           </div>
                                         </td>
@@ -535,7 +535,7 @@
                                 <div class="table-responsive">
                                  <div class="row">
                                   <div class="col-lg-12">
-                                    <form method="post" action="laporan-tumbang-hari-ini-export" role="form">
+                                    <form method="post" action="laporan-tumbang-hari-ini-export.php" role="form">
                                       <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
                                       <div class="btn-group">
                                         <button type="button" class="btn btn-warning">Filter</button>
@@ -562,7 +562,7 @@
                                   </div>
                                 </div>
                                 <div class="row">
-                                  <form method="post" action="tumbang-tampil-cari" role="form">
+                                  <form method="post" action="tumbang-tampil-cari.php" role="form">
                                     <div class="col-lg-4"><br>
                                       <div class="form-group input-group">
                                         <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -637,7 +637,7 @@
                                       </center></td>
                                       <td>
                                         <div align="center">
-                                          <a href="tumbang-detail?id_tumbang=<?php echo $d['id_tumbang']; ?>"
+                                          <a href="tumbang-detail.php?id_tumbang=<?php echo $d['id_tumbang']; ?>"
                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                           </div>
                                         </td>
@@ -686,7 +686,7 @@
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <form method="post" action="anc-tampil-cari" role="form">
+                                    <form method="post" action="anc-tampil-cari.php" role="form">
                                       <div class="col-lg-4"><br>
                                         <div class="form-group input-group">
                                           <input type="text" class="form-control" name="carirm" placeholder="Pencarian No.RM Pasien..">
@@ -761,7 +761,7 @@
                                         </center></td>
                                         <td>
                                           <div align="center">
-                                            <a href="anc-detail?id_anc=<?php echo $d['id_anc']; ?>"
+                                            <a href="anc-detail.php?id_anc=<?php echo $d['id_anc']; ?>"
                                               <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                             </div>
                                           </td>
