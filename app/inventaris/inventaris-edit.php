@@ -10,7 +10,7 @@
       <h1>Edit <small>Inventaris</small></h1>
       <ol class="breadcrumb">
         <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="inventaris-detail?id=<?php echo $kode_registrasi?>"><i class="fa fa-eye"></i> Detail</a></li>
+        <li><a href="inventaris-detail.php?id=<?php echo $kode_registrasi?>"><i class="fa fa-eye"></i> Detail</a></li>
         <li class="active"><i class="fa fa-edit"></i> Form</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -52,7 +52,7 @@
             text: 'Berhasil Mengubah',
             type: 'success'
             }, function() {
-              window.location = 'inventaris-detail?id=$kode_registrasi';
+              window.location = 'inventaris-detail?id=$kode_registrasi.php';
               });
               }, 10);
               </script>";
@@ -64,7 +64,7 @@
                   text: 'Gagal Mengubah',
                   type: 'error'
                   }, function() {
-                    window.location = 'inventaris-detail?id=$kode_registrasi';
+                    window.location = 'inventaris-detail?id=$kode_registrasi.php';
                     });
                     }, 10);
                     </script>";

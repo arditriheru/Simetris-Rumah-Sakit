@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="table-responsive">
-        <form method="post" action="inventaris-filter-tampil" role="form">
+        <form method="post" action="inventaris-filter-tampil.php" role="form">
           <div class="col-lg-6">
            <div class="form-group">
             <label>Nama Ruangan</label>
@@ -36,7 +36,7 @@
           <button type="submit" class="btn btn-success">Cari</button>
         </div>
       </form>
-      <form method="post" action="inventaris-detail" role="form">
+      <form method="post" action="inventaris-detail.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Nomor Inventaris</label>
@@ -50,7 +50,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="table-responsive">
-      <form method="post" action="kondisi-filter-tampil" role="form">
+      <form method="post" action="kondisi-filter-tampil.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Kondisi</label>
@@ -63,7 +63,7 @@
           <button type="submit" class="btn btn-success">Cari</button>
         </div>
       </form>
-      <form method="post" action="status-filter-tampil" role="form">
+      <form method="post" action="status-filter-tampil.php" role="form">
         <div class="col-lg-6">
           <div class="form-group">
             <label>Status</label>

@@ -42,7 +42,7 @@
               title: "Kode Sudah Ada!!",
               type: "error"
               }, function() {
-                window.location = "ruangan-tambah";
+                window.location = "ruangan-tambah.php";
                 });
                 }, 10);
                 </script>';
@@ -56,7 +56,7 @@
                       text: "Berhasil Menambahkan",
                       type: "success"
                       }, function() {
-                        window.location = "ruangan-tambah";
+                        window.location = "ruangan-tambah.php";
                         });
                         }, 10);
                         </script>';
@@ -67,7 +67,7 @@
                             title: "Gagal!!!",
                             type: "error"
                             }, function() {
-                              window.location = "ruangan-tambah";
+                              window.location = "ruangan-tambah.php";
                               });
                               }, 10);
                               </script>';
@@ -116,7 +116,7 @@
                                                 <td><left><?php echo $d['nama_ruangan']; ?></td>
                                                   <td>
                                                     <div align="center">
-                                                      <a href="ruangan-hapus?id=<?php echo $d['kode_ruangan']; ?>"
+                                                      <a href="ruangan-hapus.php?id=<?php echo $d['kode_ruangan']; ?>"
                                                        onclick="javascript: return confirm('Anda yakin hapus?')"
                                                        <button type="button" name="hapus" class="btn btn-danger">Hapus</a><br><br>
                                                        </div>

@@ -9,7 +9,7 @@
     <div class="col-lg-12">
       <h1>Detail <small>Inventaris</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-flash"></i> Detail</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -182,7 +182,7 @@
             $back_kode_ruangan = $back['kode_ruangan'];
           }
           ?>
-          <form method="post" action="inventaris-filter-tampil" role="form">
+          <form method="post" action="inventaris-filter-tampil.php" role="form">
             <div class="form-group">
               <input class="form-control" type="hidden" name="kode_ruangan" value="<?php echo $back_kode_ruangan?>">
             </div>
@@ -193,7 +193,7 @@
           <a href="inventaris-tambah"
           <button type="button" class="btn btn-success">Tambah Baru</button>
         </a>
-        <a href="inventaris-edit?id=<?php echo $kode_registrasi; ?>"
+        <a href="inventaris-edit.php?id=<?php echo $kode_registrasi; ?>"
           <button type="button" class="btn btn-primary">Edit</button>
         </a>
       </div><br><br><br>
@@ -261,7 +261,7 @@
   <div class="col-lg-6">
     <div class="table-responsive">
       <div clas="row">
-        <a href="inventaris-hapus?id=<?php echo $kode_registrasi; ?>"
+        <a href="inventaris-hapus.php?id=<?php echo $kode_registrasi; ?>"
           onclick="javascript: return confirm('Anda yakin hapus?')">
           <button type="button" class="btn btn-danger">Hapus</button>
         </a>

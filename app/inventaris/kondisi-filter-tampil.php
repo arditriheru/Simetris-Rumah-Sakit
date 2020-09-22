@@ -18,8 +18,8 @@
         ?>
         <h1>Jumlah <small> <?php echo $total;}?> Barang</small></h1>
         <ol class="breadcrumb">
-          <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li><a href="inventaris-filter"><i class="fa fa-search"></i> Cari</a></li>
+          <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a href="inventaris-filter.php"><i class="fa fa-search"></i> Cari</a></li>
           <li class="active"><i class="fa fa-list"></i> List</li>
         </ol>  
         <?php include "../../system/welcome.php"?>
@@ -71,7 +71,7 @@
                   <td><center><?php echo $d['kondisi']; ?></center></td>
                   <td>
                     <div align="center">
-                      <a href="inventaris-detail?id=<?php echo $d['kode_registrasi']; ?>"
+                      <a href="inventaris-detail.php?id=<?php echo $d['kode_registrasi']; ?>"
                         <button type="button" class="btn btn-warning">Detail</a><br><br>
                         </div>
                       </td>

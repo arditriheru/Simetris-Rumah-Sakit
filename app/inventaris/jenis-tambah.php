@@ -52,7 +52,7 @@
               title: "Kode Sudah Ada!!",
               type: "error"
               }, function() {
-                window.location = "jenis-tambah";
+                window.location = "jenis-tambah.php";
                 });
                 }, 10);
                 </script>';
@@ -66,7 +66,7 @@
                       text: "Berhasil Menambahkan",
                       type: "success"
                       }, function() {
-                        window.location = "jenis-tambah";
+                        window.location = "jenis-tambah.php";
                         });
                         }, 10);
                         </script>';
@@ -77,7 +77,7 @@
                             title: "Gagal!!!",
                             type: "error"
                             }, function() {
-                              window.location = "jenis-tambah";
+                              window.location = "jenis-tambah.php";
                               });
                               }, 10);
                               </script>';
@@ -120,7 +120,7 @@
                                   <td><left><?php echo $d['nama_jenis']; ?></center></td>
                                     <td>
                                       <div align="center">
-                                        <a href="jenis-hapus?id=<?php echo $d['kode_jenis']; ?>"
+                                        <a href="jenis-hapus.php?id=<?php echo $d['kode_jenis']; ?>"
                                          onclick="javascript: return confirm('Anda yakin hapus?')"
                                          <button type="button" name="hapus" class="btn btn-danger">Hapus</a><br><br>
                                          </div>

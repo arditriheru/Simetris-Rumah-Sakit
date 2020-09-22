@@ -51,7 +51,7 @@
                 text: 'Berhasil Menambahkan',
                 type: 'success'
                 }, function() {
-                  window.location = 'inventaris-detail?id=$max';
+                  window.location = 'inventaris-detail.php?id=$max';
                   });
                   }, 10);
                   </script>";
@@ -63,7 +63,7 @@
                       text: 'Hilangkan Tanda Petik di Nama Pasien',
                       type: 'error'
                       }, function() {
-                        window.location = 'inventaris-tambah';
+                        window.location = 'inventaris-tambah.php';
                         });
                         }, 10);
                         </script>";
