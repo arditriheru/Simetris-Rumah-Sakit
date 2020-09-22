@@ -43,65 +43,102 @@
                           FROM booking, dokter, sesi
                           WHERE booking.id_dokter=dokter.id_dokter
                           AND booking.id_sesi=sesi.id_sesi
-                          AND booking.id_catatan_medik=$id_catatan_medik
+                          AND booking.id_catatan_medik='$id_catatan_medik'
                           AND booking.booking_tanggal='$booking_tanggal'
-                          ORDER BY id_booking ASC");
+                          ORDER BY booking.id_booking ASC");
                         include "date-format.php";
                         while($d = mysqli_fetch_array($data)){
-                          ?>
-                          <p class="redtext">**Silahkan screenshot dan tunjukkan ke petugas pendaftaran saat melakukan registrasi ulang.</p>
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td><h5 class="bluetext"><b>Kode</h5></td>
-                                  <td><h5 class="bluetext"><b><?php echo $d['id_booking']; ?></h5></td>
-                                  </tr>
-                                  <tr>
-                                    <td>No.RM</td>
-                                    <td><?php echo $d['id_catatan_medik']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Nama</td>
-                                    <td><?php echo $d['nama']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Dokter</td>
-                                    <td><?php echo $d['nama_dokter']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Jadwal</td>
-                                    <td><?php echo format_indo($d['booking_tanggal']); ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Sesi</td>
-                                    <td><?php echo $d['nama_sesi']; ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Reservasi</td>
-                                    <td><?php echo format_indo($d['tanggal']); ?> / <?php echo $d['jam']; ?></td>
-                                  </tr>
-                                </tbody>
-                                </table> <?php }} ?>
-                              </div>
-                            </div>
-                          </div>
-                        </div><!-- .card -->
-                      </div><!--/.col-->
-                    </div><!--/.row-->
+                         $antrian          = $d['antrian'];
+                         $id_catatan_medik = $d['id_catatan_medik'];
+                         $nama             = substr($d['nama'],0, -2);
+                         $id_dokter        = $d['id_dokter'];
+                         $nama_dokter      = substr($d['nama_dokter'],0, -5);
+                         $booking_tanggal  = $d['booking_tanggal'];
+                         $id_sesi          = $d['id_sesi'];
+                         $nama_sesi        = $d['nama_sesi'];
+                         $tanggal          = $d['tanggal'];
+                         $jam              = $d['jam'];
+                         $keterangan       = $d['keterangan'];
+                       }
+                       $hbt = date('w', strtotime($booking_tanggal));
+                       $c = mysqli_query($koneksi,
+                        "SELECT jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hbt' AND id_sesi='$id_sesi';");
+                       while($d = mysqli_fetch_array($c)){
+                        $jadwal_jam = $d['jam'];
+                      }
+                    }
+                    ?>
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                      <h4 class="alert-heading">Informasi</h4><hr>
+                      <p class="blacktext">Silahkan screenshot dan tunjukkan ke petugas pendaftaran saat melakukan registrasi ulang.</p>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td><h5 class="bluetext"><b>Antrian</h5></td>
+                            <td>:</td>
+                            <td><h5 class="bluetext"><b><?php echo $antrian; ?></h5></td>
+                            </tr>
+                            <tr>
+                              <td>Nomor RM</td>
+                              <td>:</td>
+                              <td><?php echo $id_catatan_medik; ?></td>
+                            </tr>
+                            <tr>
+                              <td>Nama Pasien</td>
+                              <td>:</td>
+                              <td><?php echo $nama; ?></td>
+                            </tr>
+                            <tr>
+                              <td>Nama Dokter</td>
+                              <td>:</td>
+                              <td><?php echo "dr. ".$nama_dokter; ?></td>
+                            </tr>
+                            <tr>
+                              <td>Jadwal Poliklinik</td>
+                              <td>:</td>
+                              <td><?php echo format_indo($booking_tanggal); ?></td>
+                            </tr>
+                            <tr>
+                              <td>Jam Sesi</td>
+                              <td>:</td>
+                              <td><?php echo $jadwal_jam." WIB". ' ('.$nama_sesi.')'; ?></td>
+                            </tr>
+                            <tr>
+                              <td>Reservasi</td>
+                              <td>:</td>
+                              <td><?php echo format_indo($tanggal); ?> / <?php echo $jam; ?></td>
+                            </tr>
+                            <tr>
+                              <td>Keterangan</td>
+                              <td>:</td>
+                              <td><?php echo $keterangan; ?></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <nav class="nav-bottom">
-                  <a href="help" class="nav-bottom__link">
-                    <i class="material-icons nav-bottom__icon">help_outline</i>
-                    <span class="nav-bottom__text">Help</span>
-                  </a>
-                  <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
-                    <i class="material-icons nav__icon">dashboard</i>
-                    <span class="nav-bottom__text">Home</span>
-                  </a>
-                  <a href="javascript: history.back()" class="nav-bottom__link">
-                    <i class="material-icons nav-bottom__icon">arrow_back</i>
-                    <span class="nav-bottom__text">Back</span>
-                  </a>
-                </nav>
-                <?php include "views/footer.php"; ?> 
+                </div><!-- .card -->
+              </div><!--/.col-->
+            </div><!--/.row-->
+          </div>
+        </div>
+        <nav class="nav-bottom">
+          <a href="help" class="nav-bottom__link">
+            <i class="material-icons nav-bottom__icon">help_outline</i>
+            <span class="nav-bottom__text">Help</span>
+          </a>
+          <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
+            <i class="material-icons nav__icon">dashboard</i>
+            <span class="nav-bottom__text">Home</span>
+          </a>
+          <a href="javascript: history.back()" class="nav-bottom__link">
+            <i class="material-icons nav-bottom__icon">arrow_back</i>
+            <span class="nav-bottom__text">Back</span>
+          </a>
+        </nav>
+        <?php include "views/footer.php"; ?> 
