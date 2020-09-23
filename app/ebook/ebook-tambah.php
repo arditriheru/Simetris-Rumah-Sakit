@@ -26,7 +26,7 @@
           $judul        = $_POST['judul'];
           $penulis      = $_POST['penulis'];
           $penerbit     = $_POST['penerbit'];
-          $tahun        = date("Ymd");
+          $tahun        = date("Y-m-d");
           $kategori     = $_POST['kategori'];
           $upload       = move_uploaded_file($lokasi_file,"$folder");
 

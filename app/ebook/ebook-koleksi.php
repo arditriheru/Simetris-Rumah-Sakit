@@ -1,6 +1,16 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
+      <h1>E-Book <small>Koleksi</small></h1>
+      <ol class="breadcrumb">
+        <li><a href="../../dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active"><i class="fa fa-plus"></i> Koleksi</li>
+      </ol>
+      <?php include "../../system/welcome.php"?>
+    </div>
+  </div><!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
      <ul class="nav nav-tabs" style="margin-bottom: 15px;">
       <li><a href="#1" data-toggle="tab">Umum</a></li>
       <li><a href="#2" data-toggle="tab">Manajemen</a></li>
@@ -19,8 +29,7 @@
                     <th><center>No</center></th>
                     <th><center>Kategori</center></th>
                     <th><center>Judul Buku</center></th>
-                    <th><center>Penulis</center></th>
-                    <th><center>Penerbit</center></th>
+                    <th><center>Tahun</center></th>
                     <th><center>Dokumen</center></th>
                   </tr>
                 </thead>
@@ -35,9 +44,8 @@
                     <tr>
                       <td><center><?php echo $no++; ?></center></td>
                       <td><center><?php echo $d['kategori']; ?></center></td>
-                      <td><center><?php echo $d['judul']; ?></center></td>
-                      <td><center><?php echo $d['penulis']; ?></center></td>
-                      <td><center><?php echo $d['penerbit']; ?></center></td>
+                      <td><left><?php echo $d['judul']; ?></left></td>
+                      <td><center><?php echo $d['tahun']; ?></center></td>
                       <td><div align="center">
                         <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
                           <button type="button" class="btn btn-success">PDF</a>
@@ -60,8 +68,7 @@
                         <th><center>No</center></th>
                         <th><center>Kategori</center></th>
                         <th><center>Judul Buku</center></th>
-                        <th><center>Penulis</center></th>
-                        <th><center>Penerbit</center></th>
+                        <th><center>Tahun</center></th>
                         <th><center>Dokumen</center></th>
                       </tr>
                     </thead>
@@ -76,9 +83,8 @@
                         <tr>
                           <td><center><?php echo $no++; ?></center></td>
                           <td><center><?php echo $d['kategori']; ?></center></td>
-                          <td><center><?php echo $d['judul']; ?></center></td>
-                          <td><center><?php echo $d['penulis']; ?></center></td>
-                          <td><center><?php echo $d['penerbit']; ?></center></td>
+                          <td><left><?php echo $d['judul']; ?></left></td>
+                          <td><center><?php echo $d['tahun']; ?></center></td>
                           <td><div align="center">
                             <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
                               <button type="button" class="btn btn-success">PDF</a>
@@ -101,8 +107,7 @@
                             <th><center>No</center></th>
                             <th><center>Kategori</center></th>
                             <th><center>Judul Buku</center></th>
-                            <th><center>Penulis</center></th>
-                            <th><center>Penerbit</center></th>
+                            <th><center>Tahun</center></th>
                             <th><center>Dokumen</center></th>
                           </tr>
                         </thead>
@@ -117,9 +122,8 @@
                             <tr>
                               <td><center><?php echo $no++; ?></center></td>
                               <td><center><?php echo $d['kategori']; ?></center></td>
-                              <td><center><?php echo $d['judul']; ?></center></td>
-                              <td><center><?php echo $d['penulis']; ?></center></td>
-                              <td><center><?php echo $d['penerbit']; ?></center></td>
+                              <td><left><?php echo $d['judul']; ?></left></td>
+                              <td><center><?php echo $d['tahun']; ?></center></td>
                               <td><div align="center">
                                 <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
                                   <button type="button" class="btn btn-success">PDF</a>
@@ -142,8 +146,7 @@
                                 <th><center>No</center></th>
                                 <th><center>Kategori</center></th>
                                 <th><center>Judul Buku</center></th>
-                                <th><center>Penulis</center></th>
-                                <th><center>Penerbit</center></th>
+                                <th><center>Tahun</center></th>
                                 <th><center>Dokumen</center></th>
                               </tr>
                             </thead>
@@ -158,9 +161,8 @@
                                 <tr>
                                   <td><center><?php echo $no++; ?></center></td>
                                   <td><center><?php echo $d['kategori']; ?></center></td>
-                                  <td><center><?php echo $d['judul']; ?></center></td>
-                                  <td><center><?php echo $d['penulis']; ?></center></td>
-                                  <td><center><?php echo $d['penerbit']; ?></center></td>
+                                  <td><left><?php echo $d['judul']; ?></left></td>
+                                  <td><center><?php echo $d['tahun']; ?></center></td>
                                   <td><div align="center">
                                     <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
                                       <button type="button" class="btn btn-success">PDF</a>
@@ -183,6 +185,7 @@
                                     <th><center>No</center></th>
                                     <th><center>Kategori</center></th>
                                     <th><center>Judul Buku</center></th>
+                                    <th><center>Tahun</center></th>
                                     <th><center>Dokumen</center></th>
                                   </tr>
                                 </thead>
@@ -197,7 +200,8 @@
                                     <tr>
                                       <td><center><?php echo $no++; ?></center></td>
                                       <td><center><?php echo $d['kategori']; ?></center></td>
-                                      <td><center><?php echo $d['judul']; ?></center></td>
+                                      <td><left><?php echo $d['judul']; ?></left></td>
+                                      <td><center><?php echo $d['tahun']; ?></center></td>
                                       <td><div align="center">
                                         <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
                                           <button type="button" class="btn btn-success">PDF</a>
