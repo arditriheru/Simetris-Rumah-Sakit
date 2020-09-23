@@ -11,9 +11,9 @@ if($kandunganreseta){
 	if($updateantkandungan){
 		session_start();
 		unset($_SESSION['kandungan_id_dokter']);
-		header("location:../../../dashboard");
+		header("location:../../../dashboard.php");
 	}
 }else{
-	header("location:kandungan-reset-a");
+	header("location:kandungan-reset-a.php");
 }
 ?>

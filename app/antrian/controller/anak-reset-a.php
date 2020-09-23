@@ -11,9 +11,9 @@ if($anakreseta){
 	if($updateantanak){
 		session_start();
 		unset($_SESSION['anak_id_dokter']);
-		header("location:../../../dashboard");
+		header("location:../../../dashboard.php");
 	}
 }else{
-	header("location:anak-reset-a");
+	header("location:anak-reset-a.php");
 }
 ?>
