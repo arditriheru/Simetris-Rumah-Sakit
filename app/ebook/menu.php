@@ -13,12 +13,12 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active"><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li class="dropdown">
-        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Buku <b class="caret"></b></a>
+        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i> E-Buku <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="ebook-tampil">Lihat Buku</a></li>
-          <li><a href="ebook-tambah">Tambah Buku</a></li>
+          <li><a href="ebook-tampil.php">Lihat</a></li>
+          <li><a href="ebook-tambah.php">Tambah</a></li>
         </ul>
       </l>
     </ul>
@@ -27,7 +27,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i><b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li class="divider"></li>
-          <li><a href="logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+          <li><a href="logout.php"><i class="fa fa-power-off"></i> Log Out</a></li>
         </ul>
       </li>
     </ul>

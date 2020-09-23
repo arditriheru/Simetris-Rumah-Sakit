@@ -7,10 +7,10 @@
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <h1>E-Book <small>Tampil</small></h1>
+      <h1>E-Book <small>Daftar</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active"><i class="fa fa-list"></i> E-Book</li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active"><i class="fa fa-list"></i> Daftar</li>
       </ol>
       <?php include "../../system/welcome.php"?>
     </div>
@@ -24,7 +24,7 @@
               <th><center>No</center></th>
               <th><center>Kategori</center></th>
               <th><center>Judul</center></th>
-              <th><center>Action</center></th>
+              <th colspan="3"><center>Action</center></th>
             </tr>
           </thead>
           <tbody>
@@ -42,17 +42,28 @@
                 <td>
                   <div align="center">
                     <a href="dokumen-tampil.php?id_buku=<?php echo $d['id_buku']; ?>"
-                      <button type="button" class="btn btn-warning"><i class="fa fa-book"></i></a>
-                        <a href="ebook-hapus.php?id_buku=<?php echo $d['id_buku']; ?>"
-                          <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                      <button type="button" class="btn btn-primary"><i class="fa fa-book"></i></a>
+                      </div>
+                    </td>
+                    <td>
+                      <div align="center">
+                        <a href="ebook-edit.php?id_buku=<?php echo $d['id_buku']; ?>"
+                          <button type="button" class="btn btn-success"><i class="fa fa-pencil"></i></a>
                           </div>
                         </td>
-                        </tr><?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div><!-- /.row -->
-            </div><!-- /#wrapper -->
-            <?php include "views/footer.php"; ?> 
+                        <td>
+                          <div align="center">
+                            <a href="ebook-hapus.php?id_buku=<?php echo $d['id_buku']; ?>"
+                              onclick="javascript: return confirm('Anda yakin hapus?')">
+                              <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i>
+                              </div>
+                            </td>
+                            </tr><?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div><!-- /.row -->
+                </div><!-- /#wrapper -->
+                <?php include "views/footer.php"; ?> 
 

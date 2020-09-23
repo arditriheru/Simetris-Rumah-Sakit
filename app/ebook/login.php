@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>SIMETRIS | Ebook</title>
+	<title>SIMETRIS | Inventaris</title>
 	<!-- Login page CSS -->
 	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/style.css">
 	<!-- Bootstrap core CSS -->
@@ -17,37 +17,29 @@
 	<link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
 </head>
 <body>
-	<div class="kotak_login">
-		<p class="tulisan_login">Silahkan login</p>
-		<form method="post" action="">
-			<label>Username</label>
-			<input type="text" name="username" class="form_login" placeholder="Username ..">
-			<label>Password</label>
-			<input type="password" name="password" class="form_login" placeholder="Password ..">
-			<input type="submit" name="login" class="tombol_login" value="LOGIN">
-			<br/>
-			<br/>
-		</form>
-		<a href="../">Kembali</a>
-	</div>
 	<?php
 	if (isset($_POST['login'])){
+		session_start();
 		include '../../config/connect.php';
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
-		$data = mysqli_query($koneksi,"SELECT * FROM admin WHERE username='$username' AND password='$password'");
+		$data = mysqli_query($koneksi,"SELECT * FROM admin WHERE username='$username' AND password='$password' AND id_unit=34");
+		while($d = mysqli_fetch_array($data)){
+			$nama = $d['nama'];
+		}
 		$cek = mysqli_num_rows($data);
+
 		if($cek > 0){
 			$_SESSION['username'] = $username;
+			$_SESSION['status'] = "login";
 			echo "<script>
 			setTimeout(function() {
 				swal({
-					title: 'Uyeah!!',
-					text: 'Berhasil Login',
+					title: 'Sukses',
+					text: 'Selamat Datang $nama',
 					type: 'success'
 					}, function() {
-						window.location = 'dashboard';
+						window.location = 'dashboard.php';
 						});
 						}, 10);
 						</script>";
@@ -55,17 +47,39 @@
 						echo "<script>
 						setTimeout(function() {
 							swal({
-								title: 'Tetot!!',
-								text: 'Username atau Password Salah!',
+								title: 'Opss..',
+								text: 'Password / Username Salah',
 								type: 'error'
 								}, function() {
-									window.location = 'login';
+									window.location = 'javascript: history.back()';
 									});
 									}, 10);
 									</script>";
 								}
 							}
 							?>
-							<script src="../../vendors/js/sweetalert.min.js"></script>
+							<div class="kotak_login">
+								<div align="center"><i class="fa fa-user-circle-o fa-3x"></i></div><br>
+								<form method="post">
+									<!-- <label>Username</label> -->
+									<input type="text" name="username" class="form_login" placeholder="Username" required>
+									<!-- <label>Password</label> -->
+									<input type="password" name="password" class="form_login" placeholder="Password" required>
+									<input type="submit" class="tombol_login" name="login" value="Submit">
+									<br><br>			
+								</form>
+								<a href="../../dashboard.php"><i class="fa fa-arrow-left"></i> Back</a>
+							</div>
+							<?php include "../../system/copyright.php";?>
+							<!-- JavaScript -->
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/font-awesome.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/jquery-1.10.2.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/bootstrap.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/sweetalert.min.js"></script>
+							<!-- Page Specific Plugins -->
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/chartjs/Chart.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/morris/chart-data-morris.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/jquery.tablesorter.js"></script>
+							<script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/tablesorter/tables.js"></script>
 						</body>
 						</html>
