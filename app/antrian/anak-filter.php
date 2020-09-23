@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
         UPDATE ant_anak 
         SET id_sesi = $anak_id_sesi, id_dokter = $anak_id_dokter
         WHERE id_ant_anak=0");
-      header("location:anak-dashboard");
+      header("location:anak-dashboard.php");
     }else{
       mysqli_query($koneksi,"
         UPDATE dokter 
@@ -58,11 +58,11 @@ if(isset($_POST['submit'])){
         UPDATE ant_anak 
         SET id_sesi = $anak_id_sesi, id_dokter = $anak_id_dokter
         WHERE id_ant_anak=0");
-      header("location:anak-dashboard");
+      header("location:anak-dashboard.php");
     }
   }else{
     echo "<script>alert('Tidak Ada Jadwal!!');
-    document.location='anak-filter'</script>";
+    document.location='anak-filter.php'</script>";
   }
 }
 ?>

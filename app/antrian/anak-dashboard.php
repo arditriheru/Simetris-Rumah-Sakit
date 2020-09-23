@@ -56,7 +56,7 @@ include "controller/anak-controller.php";
 					<font class="redtext" size="4"><?php echo $nama_dokter?></font><br><br>
 					<font size="10">A<?php echo $tcounter; ?></font><br>
 					<font size="6">Poli Anak</font><br><br>
-					<a href="anak-next"><button name="next" type="submit" 
+					<a href="anak-next.php"><button name="next" type="submit" 
 						class="btn btn-success btn-lg">Next</button></a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a name="play" onclick="mulai();" type="button" 

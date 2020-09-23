@@ -56,7 +56,7 @@ include "controller/kandungan-controller.php";
 					<font class="redtext" size="4"><?php echo $nama_dokter?></font><br><br>
 					<font size="10">B<?php echo $tcounter; ?></font><br>
 					<font size="6">Poli Kandungan</font><br><br>
-					<a href="kandungan-next"><button name="next" type="submit" 
+					<a href="kandungan-next.php"><button name="next" type="submit" 
 						class="btn btn-success btn-lg">Next</button></a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a name="play" onclick="mulai();" type="button" 

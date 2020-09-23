@@ -15,7 +15,7 @@
 
 			for ($x = $id_ant_kandungan; $x<=$loop; $x++) {
 				mysqli_query($koneksi,"INSERT INTO ant_kandungan(id_ant_kandungan, status)VALUES('$id_ant_kandungan','$status')");
-				header("location:kandungan-dashboard");
+				header("location:kandungan-dashboard.php");
 			}
 		}
 		?>

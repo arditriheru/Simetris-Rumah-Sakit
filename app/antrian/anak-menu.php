@@ -14,10 +14,10 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
       <li>
-        <a href="anak-dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        <a href="anak-dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a>
       </li>
       <li>
-        <a href="controller/anak-reset-a" type="submit" name="anak-logout"><i class="fa fa-power-off">
+        <a href="controller/anak-reset-a.php" type="submit" name="anak-logout"><i class="fa fa-power-off">
         </i> Log Out</a>
       </li>
     </ul>
@@ -27,7 +27,7 @@
         <ul class="dropdown-menu">
           <li class="divider"></li>
           <li>
-            <a href="controller/anak-reset-a" type="submit" name="anak-logout"><i class="fa fa-power-off">
+            <a href="controller/anak-reset-a.php" type="submit" name="anak-logout.php"><i class="fa fa-power-off">
             </i> Log Out</a>
           </li>
         </ul>

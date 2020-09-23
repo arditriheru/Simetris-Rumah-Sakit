@@ -11,7 +11,7 @@
       <div class="panel panel-info">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-2"><a href="anak-filter">
+            <div class="col-xs-2"><a href="anak-filter.php">
               <i class="fa fa-group fa-4x"></i>
             </div>
             <div class="col-xs-10 text-right">
@@ -25,7 +25,7 @@
       <div class="panel panel-info">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-2"><a href="kandungan-filter">
+            <div class="col-xs-2"><a href="kandungan-filter.php">
               <i class="fa fa-group fa-4x"></i>
             </div>
             <div class="col-xs-10 text-right">

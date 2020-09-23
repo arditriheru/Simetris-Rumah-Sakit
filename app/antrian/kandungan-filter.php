@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
         UPDATE ant_kandungan 
         SET id_sesi = $kandungan_id_sesi, id_dokter = $kandungan_id_dokter
         WHERE id_ant_kandungan=0");
-      header("location:kandungan-dashboard");
+      header("location:kandungan-dashboard.php");
     }else{
       mysqli_query($koneksi,"
         UPDATE dokter 
@@ -58,11 +58,11 @@ if(isset($_POST['submit'])){
         UPDATE ant_kandungan 
         SET id_sesi = $kandungan_id_sesi, id_dokter = $kandungan_id_dokter
         WHERE id_ant_kandungan=0");
-      header("location:kandungan-dashboard");
+      header("location:kandungan-dashboard.php");
     }
   }else{
     echo "<script>alert('Tidak Ada jadwal!!');
-    document.location='kandungan-filter'</script>";
+    document.location='kandungan-filter.php'</script>";
   }
 }
 ?>

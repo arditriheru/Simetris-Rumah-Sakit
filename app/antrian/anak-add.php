@@ -16,7 +16,7 @@
 			for ($x = $id_ant_anak; $x<=$loop; $x++) {
 				mysqli_query($koneksi,"INSERT INTO ant_anak(id_ant_anak, status)VALUES('$id_ant_anak',
 					'$status')");
-				header("location:anak-dashboard");
+				header("location:anak-dashboard.php");
 			}
 		}
 		?>
