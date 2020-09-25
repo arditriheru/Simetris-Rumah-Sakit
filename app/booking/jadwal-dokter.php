@@ -43,7 +43,7 @@
                 FROM dokter
                 GROUP BY id_dokter;");
               while($d = mysqli_fetch_array($c)){
-                echo "<li><a href='jadwal-dokter?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
+                echo "<li><a href='jadwal-dokter.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
               }
               ?>
             </ul>
