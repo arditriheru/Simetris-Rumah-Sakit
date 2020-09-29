@@ -37,7 +37,7 @@
                   $telp    = $d['telp'];
                 }
                 $e = mysqli_query($koneksi,
-                  "SELECT jam FROM dokter_jadwal WHERE id_sesi='$id_sesi';");
+                  "SELECT jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND id_sesi='$id_sesi';");
                 while($f = mysqli_fetch_array($e)){
                   $jam = $f['jam'];
                 }
@@ -71,10 +71,8 @@
                         });
                         }, 10);
                         </script>";
-                      }else{
-                        if($cek==$kuota){
-                          $notifpenuh = "Kuota Penuh";
-                        }
+                      }if($cek>$kuota){
+                        $notifpenuh = true;
                       }
                       ?>
                       <form action="registration-add-process" method="post" class="">

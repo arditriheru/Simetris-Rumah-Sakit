@@ -1,10 +1,6 @@
 <?php
 include 'views/header.php';
-include 'controller/connection.php';
-date_default_timezone_set("Asia/Jakarta");
-$tanggal=date('Y-m-d');
-$jam=date("G:i:s");
-                // menangkap data yang di kirim dari form
+// menangkap data yang di kirim dari form
 $id_catatan_medik = $_POST['id_catatan_medik'];
 $nama             = $_POST['nama'];
 $alamat           = $_POST['alamat'];
@@ -47,21 +43,6 @@ $e = mysqli_query($koneksi,
   AND id_sesi='$id_sesi';");
 while($f = mysqli_fetch_array($e)){
   $terdaftar  = $f['terdaftar'];
-}
-
-$error=array();
-if (empty($nama)){
-  $error['nama']='Nama Harus Diisi!!!';
-}if (empty($alamat)){
-  $error['alamat']='Alamat Harus Diisi!!!';
-}if (empty($kontak)){
-  $error['kontak']='Kontak Harus Diisi!!!';
-}if (empty($id_dokter)){
-  $error['id_dokter']='Dokter Harus Diisi!!!';
-}if (empty($booking_tanggal)){
-  $error['booking_tanggal']='Tanggal Harus Diisi!!!';
-}if (empty($id_sesi)){
-  $error['id_sesi']='Sesi Harus Diisi!!!';
 }
 if($kuota_status == 0){
             // Cek kuota_status tidak aktif
