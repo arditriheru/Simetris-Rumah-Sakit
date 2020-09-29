@@ -35,7 +35,7 @@
             </a>
           </div>
           <div align="right" class="col-lg-6">
-            <a href="booking-hapus?id_booking=<?php echo $id_booking; ?>"
+            <a href="booking-hapus.php?id_booking=<?php echo $id_booking; ?>"
               onclick="javascript: return confirm('Anda yakin hapus?')">
               <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
             </a>
