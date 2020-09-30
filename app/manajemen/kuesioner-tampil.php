@@ -51,7 +51,7 @@ function format2($akhir)
     <div class="col-lg-12">
       <h1>Rekap <small>Kuesioner</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active"><i class="fa fa-bolt"></i> Kuesioner</li>
       </ol>  
       <?php include "../notifikasi1.php"?>

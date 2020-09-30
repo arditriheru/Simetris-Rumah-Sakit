@@ -17,7 +17,7 @@
           <div class="col-lg-6">
           </div>
           <div align="right" class="col-lg-6">
-            <form method="post" action="laborat-tarif-cari" role="form">
+            <form method="post" action="laborat-tarif-cari.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="text" name="cari" placeholder="Pencarian..">
               </div>

@@ -4,8 +4,8 @@
     <div class="col-lg-12">
       <h1>Detail <small>Poliklinik</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="laborat-tarif-tampil"><i class="fa fa-check"></i> Laboratorium</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="laborat-tarif-tampil.php"><i class="fa fa-check"></i> Laboratorium</a></li>
         <li class="active"><i class="fa fa-flash"></i> Edit</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -38,7 +38,7 @@
                   text: 'Memperbarui Tarif Laborat',
                   type: 'success'
                   }, function() {
-                    window.location = 'laborat-tarif-detail?id=$id_lab_tarif';
+                    window.location = 'laborat-tarif-detail.php?id=$id_lab_tarif';
                     });
                     }, 10);
                     </script>";
@@ -50,7 +50,7 @@
                         text: 'Memperbarui Tarif Laborat',
                         type: 'error'
                         }, function() {
-                          window.location = 'laborat-tarif-edit?id=$id_lab_tarif';
+                          window.location = 'laborat-tarif-edit.php?id=$id_lab_tarif';
                           });
                           }, 10);
                           </script>";

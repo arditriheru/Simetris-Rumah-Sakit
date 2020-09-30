@@ -17,7 +17,7 @@
           <div class="col-lg-6">
           </div>
           <div align="right" class="col-lg-6">
-            <form method="post" action="laborat-tarif-cari" role="form">
+            <form method="post" action="laborat-tarif-cari.php" role="form">
               <div class="form-group">
                 <input class="form-control" type="text" name="cari" placeholder="Pencarian..">
               </div>
@@ -52,7 +52,7 @@
                 <td><div align="center"><?php echo number_format($d['infrastruktur']); ?></div></td>
                 <td><div align="center"><?php echo number_format($d['jasa_rs']); ?></div></td>
                 <td><div align="center"><?php echo number_format($d['tarif']); ?></div></td>
-                <td><div align="center"><a href="laborat-tarif-detail?id=<?php echo $d['id_lab_tarif']; ?>"
+                <td><div align="center"><a href="laborat-tarif-detail.php?id=<?php echo $d['id_lab_tarif']; ?>"
                   <button type="button" class="btn btn-primary">Detail</a></div>
                   </td>
                   </tr><?php } ?>

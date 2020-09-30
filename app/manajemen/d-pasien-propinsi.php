@@ -23,7 +23,7 @@ while($d = mysqli_fetch_array($data)){
       <div class="row">
         <div class="col-lg-12">
           <div class="table-responsive">
-          	<form method="post" action="propinsi-export" role="form">
+          	<form method="post" action="propinsi-export.php" role="form">
               <div class="col-lg-6">
                 <div class="form-group">
                   <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">

@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="table-responsive">
-        <form method="post" action="pembelian-obat-ranap-export" role="form">
+        <form method="post" action="pembelian-obat-ranap-export.php" role="form">
           <div class="col-lg-6">
             <div class="form-group">
               <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">

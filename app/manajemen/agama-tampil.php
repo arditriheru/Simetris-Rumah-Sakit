@@ -17,7 +17,7 @@
         $awal = $_POST['awal'];
         $akhir = $_POST['akhir'];
         ?>
-        <form method="post" action="agama-export" role="form">
+        <form method="post" action="agama-export.php" role="form">
           <div class="col-lg-6">
             <div class="form-group">
               <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">

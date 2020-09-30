@@ -18,7 +18,7 @@
         $awal = $_POST['awal'];
         $akhir = $_POST['akhir'];
         ?>
-        <form method="post" action="diagnosa-export" role="form">
+        <form method="post" action="diagnosa-export.php" role="form">
           <div class="col-lg-6">
             <div class="form-group">
               <input class="form-control" type="hidden" name="id_dokter" value="<?php echo $id_dokter?>">

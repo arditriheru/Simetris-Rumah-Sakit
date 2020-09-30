@@ -4,8 +4,8 @@
     <div class="col-lg-12">
       <h1>Detail <small>Poliklinik</small></h1>
       <ol class="breadcrumb">
-        <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li><a href="laborat-tarif-tampil"><i class="fa fa-check"></i> Laboratorium</a></li>
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="laborat-tarif-tampil.php"><i class="fa fa-check"></i> Laboratorium</a></li>
         <li class="active"><i class="fa fa-flash"></i> Detail</li>
       </ol>
       <?php include "../../system/welcome.php"?>
@@ -21,7 +21,7 @@
         <div class="table-responsive">
           <div clas="row">
             <div class="col-lg-6">
-              <a href="laborat-tarif-edit?id=<?php echo $d['id_lab_tarif']; ?>"
+              <a href="laborat-tarif-edit.php?id=<?php echo $d['id_lab_tarif']; ?>"
                 <button type="button" class="btn btn-primary">Edit</button>
               </a>
             </div>
