@@ -136,5 +136,10 @@
         </div>
       </div>
     </header><br><br><br><br>
-    <?php include 'controller/connection.php';
-    include 'controller/date-format.php'; ?>
+    <?php
+    include 'controller/connection.php';
+    include 'controller/date-format.php';
+    date_default_timezone_set("Asia/Jakarta");
+    $tanggal=date('Y-m-d');
+    $jam=date("G:i:s");
+    ?>
