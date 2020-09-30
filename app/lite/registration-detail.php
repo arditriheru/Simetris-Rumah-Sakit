@@ -1,4 +1,10 @@
-<?php include "views/header.php"; ?>
+<?php 
+session_start();
+if(!isset($_SESSION['id'])) {
+  header('location:registration');
+}
+include "views/header.php";
+?>
 <div class="content mt-3">
   <div class="animated fadeIn">
     <div class="row">

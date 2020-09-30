@@ -1,4 +1,10 @@
-<?php include "views/header.php"; ?>
+<?php
+session_start();
+if(!isset($_SESSION['id'])) {
+  header('location:registration');
+}
+include "views/header.php";
+?>
 <div class="content mt-3">
   <div class="animated fadeIn">
     <div class="row">
@@ -13,7 +19,6 @@
                 </div>
                 <hr>
                 <?php
-                $id_catatan_medik = $_GET['id'];
                 $a = mysqli_query($koneksi,
                   "SELECT nama FROM mr_pasien WHERE id_catatan_medik='$id_catatan_medik';");
                 while($b = mysqli_fetch_array($a)){

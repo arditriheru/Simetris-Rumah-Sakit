@@ -24,16 +24,19 @@
                   </li>
                 </ul>
                 <?php
+                unset($_SESSION['id']);
                 if(isset($_POST['ceklogin'])){
                   $id_catatan_medik = $_POST['id_catatan_medik'];
                   $tgl_lahir        = $_POST['tgl_lahir'];
 
                   $a = mysqli_query($koneksi,
-                    "SELECT COUNT(*) AS cekdata FROM mr_pasien WHERE id_catatan_medik='$id_catatan_medik' AND tgl_lahir='$tgl_lahir';");
+                    "SELECT COUNT(id_catatan_medik) AS cekdata FROM mr_pasien WHERE id_catatan_medik='$id_catatan_medik' AND tgl_lahir='$tgl_lahir';");
                   while($b = mysqli_fetch_array($a)){
                    $cekdata = $b['cekdata'];
                  }
                  if($cekdata>0){
+                  session_start();
+                  $_SESSION['id'] = "$id_catatan_medik";
                   echo "<script>
                   setTimeout(function() {
                     swal({
@@ -41,7 +44,7 @@
                       text: 'Berhasil Login',
                       type: 'success'
                       }, function() {
-                        window.location = 'registration-form?id=$id_catatan_medik';
+                        window.location = 'registration-form';
                         });
                         }, 10);
                         </script>";
