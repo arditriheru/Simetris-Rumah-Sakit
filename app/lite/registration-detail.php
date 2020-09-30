@@ -31,9 +31,9 @@
                 while($d = mysqli_fetch_array($data)){
                   $antrian          = $d['antrian'];
                   $id_catatan_medik = $d['id_catatan_medik'];
-                  $nama             = substr($d['nama'],0, -2);
+                  $nama             = $d['nama'];
                   $id_dokter        = $d['id_dokter'];
-                  $nama_dokter      = substr($d['nama_dokter'],0, -5);
+                  $nama_dokter      = $d['nama_dokter'];
                   $booking_tanggal  = $d['booking_tanggal'];
                   $id_sesi          = $d['id_sesi'];
                   $nama_sesi        = $d['nama_sesi'];

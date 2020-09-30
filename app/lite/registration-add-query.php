@@ -3,11 +3,11 @@ if($selisih>30){
  echo "<script>
  setTimeout(function() {
   swal({
-    title: 'Gagal',
+    title: 'Upss..',
     text: 'Lebih dari 30 Hari',
     type: 'error'
     }, function() {
-      window.location = 'registration';
+      window.location = 'javascript:history.back()';
       });
       }, 10);
       </script>";
@@ -15,11 +15,11 @@ if($selisih>30){
       echo "<script>
       setTimeout(function() {
         swal({
-          title: 'Sudah Terdaftar',
-          text: 'Hanya dapat mendaftar sekali pada dokter, jadwal dan sesi yang sama',
+          title: 'Upss..',
+          text: 'Sudah Mendaftar Sebelumnya',
           type: 'error'
           }, function() {
-            window.location = 'registration';
+            window.location = 'javascript:history.back()';
             });
             }, 10);
             </script>";
@@ -48,11 +48,11 @@ if($selisih>30){
                     echo "<script>
                     setTimeout(function() {
                       swal({
-                        title: 'Gagal',
+                        title: 'Upss..',
                         text: 'Hilangkan Tanda Petik di Nama Pasien',
                         type: 'error'
                         }, function() {
-                          window.location = 'registration';
+                          window.location = 'javascript:history.back()';
                           });
                           }, 10);
                           </script>";
