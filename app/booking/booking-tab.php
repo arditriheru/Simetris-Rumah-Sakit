@@ -138,7 +138,7 @@ while($b = mysqli_fetch_array($a)){
                               </td> -->
                               <td>
                                 <div align="center">
-                                  <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                  <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                     <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                   </div>
                                 </td>
@@ -238,7 +238,7 @@ while($b = mysqli_fetch_array($a)){
                                       </td> -->
                                       <td>
                                         <div align="center">
-                                          <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                          <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                             <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                           </div>
                                         </td>
@@ -338,7 +338,7 @@ while($b = mysqli_fetch_array($a)){
                                             </td> -->
                                             <td>
                                               <div align="center">
-                                                <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                   <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                 </div>
                                               </td>
@@ -438,7 +438,7 @@ while($b = mysqli_fetch_array($a)){
                                                   </td> -->
                                                   <td>
                                                     <div align="center">
-                                                      <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                      <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                         <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                       </div>
                                                     </td>
@@ -538,7 +538,7 @@ while($b = mysqli_fetch_array($a)){
                                                         </td> -->
                                                         <td>
                                                           <div align="center">
-                                                            <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                            <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                               <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                             </div>
                                                           </td>
@@ -611,7 +611,7 @@ while($b = mysqli_fetch_array($a)){
                                                                 <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                 <td>
                                                                   <div align="center">
-                                                                    <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                                    <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                                       <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                     </div>
                                                                   </td>
@@ -684,7 +684,7 @@ while($b = mysqli_fetch_array($a)){
                                                                         <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                         <td>
                                                                           <div align="center">
-                                                                            <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                                            <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                                               <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                             </div>
                                                                           </td>
@@ -757,7 +757,7 @@ while($b = mysqli_fetch_array($a)){
                                                                               <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                               <td>
                                                                                 <div align="center">
-                                                                                  <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                                                  <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                                                     <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                                   </div>
                                                                                 </td>
@@ -830,7 +830,7 @@ while($b = mysqli_fetch_array($a)){
                                                                                     <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                                     <td>
                                                                                       <div align="center">
-                                                                                        <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                                                        <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                                                           <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                                         </div>
                                                                                       </td>
@@ -903,7 +903,7 @@ while($b = mysqli_fetch_array($a)){
                                                                                           <td><center><?php echo $d['keterangan']; ?></center></td>
                                                                                           <td>
                                                                                             <div align="center">
-                                                                                              <a href="booking-detail?id_booking=<?php echo $d['id_booking']; ?>"
+                                                                                              <a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
                                                                                                 <button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
                                                                                               </div>
                                                                                             </td>
