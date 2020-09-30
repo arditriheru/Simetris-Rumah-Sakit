@@ -124,6 +124,20 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
+                    <div class="col-xs-2"><a href="app/manajemen/tarif-semua.php">
+                      <i class="fa fa-dollar fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>Daftar Tarif</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
                     <div class="col-xs-2"><a href="app/ebook">
                       <i class="fa fa-book fa-4x"></i>
                     </div>
@@ -209,7 +223,7 @@
                 <div class="panel-heading">
                   <div class="row">
                     <div class="col-xs-2"><a href="http://192.168.1.250:8080/kasir">
-                      <i class="fa fa-dollar fa-4x"></i>
+                      <i class="fa fa-calculator fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
                       <h2>Kasir</h2>
