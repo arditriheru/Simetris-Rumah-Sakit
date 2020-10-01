@@ -72,7 +72,7 @@
           <div class="col-lg-12">
             <h1>Daftar <small>Tarif</small></h1>
             <ol class="breadcrumb">
-              <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
               <li class="active"><i class="fa fa-check"></i> Tarif</li>
             </ol>
             <?php include "../../system/welcome.php"?>
@@ -83,9 +83,9 @@
             <div class="col-lg-4">
               <form method="post" action="" role="form">
                 <div class="form-group">
-                  <label>Tarif Kasir</label>
+                  <label>Tarif Tindakan</label>
                   <input class="form-control" type="text" name="cari" placeholder="Pencarian..">
-                </div><button name="kasirsubmit" type="submit" class="btn btn-success">Tampilkan</button>
+                </div><button name="tindakansubmit" type="submit" class="btn btn-success">Tampilkan</button>
               </form>
             </div>
             <div class="col-lg-4">
@@ -104,31 +104,36 @@
                 </div><button name="laboratsubmit" type="submit" class="btn btn-success">Tampilkan</button>
               </form>
             </div>
-          </div><br><br><br><br><br><br><br>
+          </div>
+        </div><br><br>
+        <div class="row">
           <div class="col-lg-6">
             <!-- pencarian tarif kasir -->
             <?php
-            if(isset($_POST['kasirsubmit'])){
+            if(isset($_POST['tindakansubmit'])){
               $kasircari = $_POST['cari']; ?>
 
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
+                  <tr style="background-color: #dddddd;">
+                    <td colspan="3"><div align="center">Tindakan</div></td>
+                  </tr>
                   <tr>
                     <th><div align="center">#</div></th>
-                    <th><div align="center">Tindakan Kasir</div></th>
+                    <th><div align="center">Nama Tindakan</div></th>
                     <th><div align="center">Tarif</div></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT nama, tarif FROM ksr_tarif WHERE nama LIKE '%' '$kasircari' '%' ORDER BY nama ASC;");
+                  $data = mysqli_query($koneksi,"SELECT nama, tarif FROM ksr_tarif WHERE nama LIKE '%' '$kasircari' '%' AND publish=1 ORDER BY nama ASC;");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td><div align="center"><?php echo $no++; ?></div></td>
                       <td><div align="left"><?php echo $d['nama']; ?></div></td>
-                      <td><div align="center"><?php echo number_format($d['tarif']); ?></div></td>
+                      <td><div align="right"><?php echo number_format($d['tarif']); ?></div></td>
                       </tr><?php } ?>
                     </tbody>
                   </table>
@@ -140,9 +145,12 @@
 
                   <table class="table table-bordered table-hover table-striped tablesorter">
                     <thead>
+                      <tr style="background-color: #dddddd;">
+                        <td colspan="3"><div align="center">Farmasi</div></td>
+                      </tr>
                       <tr>
                         <th><div align="center">#</div></th>
-                        <th><div align="center">Tindakan Farmasi</div></th>
+                        <th><div align="center">Nama Obat</div></th>
                         <th><div align="center">Tarif</div></th>
                       </tr>
                     </thead>
@@ -155,7 +163,7 @@
                         <tr>
                           <td><div align="center"><?php echo $no++; ?></div></td>
                           <td><div align="left"><?php echo $d['nama']; ?></div></td>
-                          <td><div align="center"><?php echo number_format($d['harga_jual']); ?></div></td>
+                          <td><div align="right"><?php echo number_format($d['harga_jual']); ?></div></td>
                           </tr><?php } ?>
                         </tbody>
                       </table>
@@ -167,9 +175,12 @@
 
                       <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
+                          <tr style="background-color: #dddddd;">
+                            <td colspan="3"><div align="center">Laboratorium</div></td>
+                          </tr>
                           <tr>
                             <th><div align="center">#</div></th>
-                            <th><div align="center">Tindakan Laboratorium</div></th>
+                            <th><div align="center">Jenis Pemeriksaan</div></th>
                             <th><div align="center">Tarif</div></th>
                           </tr>
                         </thead>
@@ -182,7 +193,7 @@
                             <tr>
                               <td><div align="center"><?php echo $no++; ?></div></td>
                               <td><div align="left"><?php echo $d['nama']; ?></div></td>
-                              <td><div align="center"><?php echo number_format($d['tarif']); ?></div></td>
+                              <td><div align="right"><?php echo number_format($d['tarif']); ?></div></td>
                               </tr><?php } ?>
                             </tbody>
                           </table>
