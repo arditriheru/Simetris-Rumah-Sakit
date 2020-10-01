@@ -116,10 +116,11 @@
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
                   <tr style="background-color: #dddddd;">
-                    <td colspan="3"><div align="center">Hasil Pencarian Tindakan</div></td>
+                    <td colspan="4"><div align="center">Hasil Pencarian Tindakan</div></td>
                   </tr>
                   <tr>
                     <th><div align="center">#</div></th>
+                    <th><div align="center">Kode</div></th>
                     <th><div align="center">Nama Tindakan</div></th>
                     <th><div align="center">Tarif</div></th>
                   </tr>
@@ -127,11 +128,12 @@
                 <tbody>
                   <?php
                   $no=1;
-                  $data = mysqli_query($koneksi,"SELECT nama, tarif FROM ksr_tarif WHERE nama LIKE '%' '$kasircari' '%' AND publish=1 ORDER BY nama ASC;");
+                  $data = mysqli_query($koneksi,"SELECT kode, nama, tarif FROM ksr_tarif WHERE nama LIKE '%' '$kasircari' '%' AND publish=1 ORDER BY nama ASC;");
                   while($d = mysqli_fetch_array($data)){
                     ?>
                     <tr>
                       <td><div align="center"><?php echo $no++; ?></div></td>
+                      <td><div align="center"><?php echo $d['kode']; ?></div></td>
                       <td><div align="left"><?php echo $d['nama']; ?></div></td>
                       <td><div align="right"><?php echo number_format($d['tarif']); ?></div></td>
                       </tr><?php } ?>
@@ -146,10 +148,11 @@
                   <table class="table table-bordered table-hover table-striped tablesorter">
                     <thead>
                       <tr style="background-color: #dddddd;">
-                        <td colspan="3"><div align="center">Hasil Pencarian Farmasi</div></td>
+                        <td colspan="4"><div align="center">Hasil Pencarian Farmasi</div></td>
                       </tr>
                       <tr>
                         <th><div align="center">#</div></th>
+                        <th><div align="center">Kode</div></th>
                         <th><div align="center">Nama Obat</div></th>
                         <th><div align="center">Tarif</div></th>
                       </tr>
@@ -157,11 +160,12 @@
                     <tbody>
                       <?php
                       $no=1;
-                      $data = mysqli_query($koneksi,"SELECT nama, harga_jual FROM far_stok WHERE nama LIKE '%' '$farmasicari' '%' ORDER BY nama ASC;");
+                      $data = mysqli_query($koneksi,"SELECT no_urut, nama, harga_jual FROM far_stok WHERE nama LIKE '%' '$farmasicari' '%' ORDER BY nama ASC;");
                       while($d = mysqli_fetch_array($data)){
                         ?>
                         <tr>
                           <td><div align="center"><?php echo $no++; ?></div></td>
+                          <td><div align="center"><?php echo $d['no_urut']; ?></div></td>
                           <td><div align="left"><?php echo $d['nama']; ?></div></td>
                           <td><div align="right"><?php echo number_format($d['harga_jual']); ?></div></td>
                           </tr><?php } ?>
@@ -176,10 +180,11 @@
                       <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
                           <tr style="background-color: #dddddd;">
-                            <td colspan="3"><div align="center">Hasil Pencarian Laboratorium</div></td>
+                            <td colspan="4"><div align="center">Hasil Pencarian Laboratorium</div></td>
                           </tr>
                           <tr>
                             <th><div align="center">#</div></th>
+                            <th><div align="center">Kode</div></th>
                             <th><div align="center">Jenis Pemeriksaan</div></th>
                             <th><div align="center">Tarif</div></th>
                           </tr>
@@ -187,11 +192,12 @@
                         <tbody>
                           <?php
                           $no=1;
-                          $data = mysqli_query($koneksi,"SELECT nama, tarif FROM lab_tarif WHERE nama LIKE '%' '$laboratcari' '%' ORDER BY nama ASC;");
+                          $data = mysqli_query($koneksi,"SELECT id_lab_tarif, nama, tarif FROM lab_tarif WHERE nama LIKE '%' '$laboratcari' '%' ORDER BY nama ASC;");
                           while($d = mysqli_fetch_array($data)){
                             ?>
                             <tr>
                               <td><div align="center"><?php echo $no++; ?></div></td>
+                              <td><div align="center"><?php echo $d['id_lab_tarif']; ?></div></td>
                               <td><div align="left"><?php echo $d['nama']; ?></div></td>
                               <td><div align="right"><?php echo number_format($d['tarif']); ?></div></td>
                               </tr><?php } ?>
