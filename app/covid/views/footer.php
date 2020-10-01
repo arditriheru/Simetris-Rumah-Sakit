@@ -1,4 +1,4 @@
-<br><?php include "../../../system/copyright.php";?><br><br><!-- /#page-wrapper -->
+<br><?php include "../../system/copyright.php";?><br><br><!-- /#page-wrapper -->
 <!-- JavaScript -->
 <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/font-awesome.js"></script>
 <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/jquery-1.10.2.js"></script>
