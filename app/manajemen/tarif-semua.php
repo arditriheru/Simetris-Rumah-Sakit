@@ -122,7 +122,7 @@
                     <th><div align="center">#</div></th>
                     <th><div align="center">Kode</div></th>
                     <th><div align="center">Nama Tindakan</div></th>
-                    <th><div align="center">Tarif</div></th>
+                    <th><div align="center">Tarif <small>(Rp)</small></div></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,7 +154,7 @@
                         <th><div align="center">#</div></th>
                         <th><div align="center">Kode</div></th>
                         <th><div align="center">Nama Obat</div></th>
-                        <th><div align="center">Tarif</div></th>
+                        <th><div align="center">Tarif <small>(Rp)</small></div></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -186,7 +186,7 @@
                             <th><div align="center">#</div></th>
                             <th><div align="center">Kode</div></th>
                             <th><div align="center">Jenis Pemeriksaan</div></th>
-                            <th><div align="center">Tarif</div></th>
+                            <th><div align="center">Tarif <small>(Rp)</small></div></th>
                           </tr>
                         </thead>
                         <tbody>
