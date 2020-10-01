@@ -51,14 +51,13 @@
             <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="tarif-semua.php"><i class="fa fa-check-square-o"></i> Daftar Tarif</a></li>
           </ul>
-
           <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> <?php echo $nama_login;?>&nbsp;<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
-                  <a href="logout.php"><i class="fa fa-power-off">
+                  <a href="../../dashboard.php"><i class="fa fa-power-off">
                   </i> Log Out</a>
                 </li>
               </ul>
