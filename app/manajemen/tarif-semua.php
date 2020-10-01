@@ -116,7 +116,7 @@
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
                   <tr style="background-color: #dddddd;">
-                    <td colspan="3"><div align="center">Tindakan</div></td>
+                    <td colspan="3"><div align="center">Hasil Pencarian Tindakan</div></td>
                   </tr>
                   <tr>
                     <th><div align="center">#</div></th>
@@ -146,7 +146,7 @@
                   <table class="table table-bordered table-hover table-striped tablesorter">
                     <thead>
                       <tr style="background-color: #dddddd;">
-                        <td colspan="3"><div align="center">Farmasi</div></td>
+                        <td colspan="3"><div align="center">Hasil Pencarian Farmasi</div></td>
                       </tr>
                       <tr>
                         <th><div align="center">#</div></th>
@@ -176,7 +176,7 @@
                       <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
                           <tr style="background-color: #dddddd;">
-                            <td colspan="3"><div align="center">Laboratorium</div></td>
+                            <td colspan="3"><div align="center">Hasil Pencarian Laboratorium</div></td>
                           </tr>
                           <tr>
                             <th><div align="center">#</div></th>
