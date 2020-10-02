@@ -180,6 +180,20 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
+                    <div class="col-xs-2"><a href="app/manajemen/hpl">
+                      <i class="fa fa-calendar-check-o fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>HPL</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
                     <div class="col-xs-2"><a href="app/kamar">
                       <i class="fa fa-bed fa-4x"></i>
                     </div>
