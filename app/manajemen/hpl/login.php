@@ -97,7 +97,7 @@
 												<input type="submit" class="tombol_login" name="login" value="Submit">
 												<br><br>			
 											</form>
-											<a href="../../dashboard.php"><i class="fa fa-arrow-left"></i> Back</a>
+											<a href="../../../dashboard.php"><i class="fa fa-arrow-left"></i> Back</a>
 										</div>
 										<?php include "../../system/copyright.php";?>
 										<!-- JavaScript -->
