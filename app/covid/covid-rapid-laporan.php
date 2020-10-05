@@ -48,7 +48,7 @@
           </div>
           <button type="submit" name="submitlapperiode" class="btn btn-success">Tampilkan</button>
         </form>
-        <form method="post" action="covid-rapid-export" role="form">
+        <form method="post" action="covid-rapid-export.php" role="form">
           <div class="form-group">
             <input class="form-control" type="hidden" name="awal" value="<?php echo $awal?>">
           </div>
