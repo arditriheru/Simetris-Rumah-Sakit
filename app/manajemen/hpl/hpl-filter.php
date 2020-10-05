@@ -19,7 +19,7 @@
     <div class="col-lg-12">
       <form method="post" action="" role="form">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-2">
             <div class="form-group">
               <label>Bulan</label>
               <select class="form-control" type="text" name="bulan"required="">
@@ -39,13 +39,13 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-2">
             <div class="form-group">
               <label>Tahun</label>
               <input class="form-control" type="number" name="tahun" placeholder="Contoh : <?php echo $tahun; ?>" required="">
             </div>
           </div>
-          <div class="col-lg-3"><br>
+          <div class="col-lg-2"><br>
             <button type="submit" name="hplsubmit" class="btn btn-primary">Tampilkan</button>
           </div>
         </div>
