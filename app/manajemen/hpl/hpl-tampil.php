@@ -21,18 +21,30 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href='hpl-tab.php?bulan=1'><?php echo $tahun; ?> Januari</a></li>
-        <li><a href='hpl-tab.php?bulan=2'><?php echo $tahun; ?> Februari</a></li>
-        <li><a href='hpl-tab.php?bulan=3'><?php echo $tahun; ?> Maret</a></li>
-        <li><a href='hpl-tab.php?bulan=4'><?php echo $tahun; ?> April</a></li>
-        <li><a href='hpl-tab.php?bulan=5'><?php echo $tahun; ?> Mei</a></li>
-        <li><a href='hpl-tab.php?bulan=6'><?php echo $tahun; ?> Juni</a></li>
-        <li><a href='hpl-tab.php?bulan=7'><?php echo $tahun; ?> Juli</a></li>
-        <li><a href='hpl-tab.php?bulan=8'><?php echo $tahun; ?> Agustus</a></li>
-        <li><a href='hpl-tab.php?bulan=9'><?php echo $tahun; ?> September</a></li>
-        <li><a href='hpl-tab.php?bulan=10'><?php echo $tahun; ?> Oktober</a></li>
-        <li><a href='hpl-tab.php?bulan=11'><?php echo $tahun; ?> November</a></li>
-        <li><a href='hpl-tab.php?bulan=12'><?php echo $tahun; ?> Desember</a></li>
+        <?php 
+        $c = mysqli_query($koneksi,
+          "SELECT MONTH(tgl_hpl) AS id_bulan,
+          CASE
+          WHEN MONTH(tgl_hpl)='1' THEN 'Januari'
+          WHEN MONTH(tgl_hpl)='2' THEN 'Februari'
+          WHEN MONTH(tgl_hpl)='3' THEN 'Maret'
+          WHEN MONTH(tgl_hpl)='4' THEN 'April'
+          WHEN MONTH(tgl_hpl)='5' THEN 'Mei'
+          WHEN MONTH(tgl_hpl)='6' THEN 'Juni'
+          WHEN MONTH(tgl_hpl)='7' THEN 'Juli'
+          WHEN MONTH(tgl_hpl)='8' THEN 'Agustus'
+          WHEN MONTH(tgl_hpl)='9' THEN 'September'
+          WHEN MONTH(tgl_hpl)='10' THEN 'Oktober'
+          WHEN MONTH(tgl_hpl)='11' THEN 'November'
+          WHEN MONTH(tgl_hpl)='12' THEN 'Desember'
+          END AS nama_bulan
+          FROM hpl_register
+          WHERE YEAR(tgl_hpl)='$tahun'
+          GROUP BY id_bulan;");
+        while($d = mysqli_fetch_array($c)){
+          echo "<li><a href='hpl-tab.php?bulan=".$d['id_bulan']."'>"."$tahun"."&nbsp;".$d['nama_bulan']."</a></li>";
+        }
+        ?>
       </ul>
     </div><!-- /btn-group -->
     <div class="row">
