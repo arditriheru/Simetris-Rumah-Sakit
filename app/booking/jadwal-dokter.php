@@ -21,7 +21,6 @@
     if(isset($id_dokter)){ ?>
       <div class="col-lg-12">
         <form method="post" action="" role="form">
-          <!-- <button type="submit" class="btn btn-success"><i class='fa fa-download'></i></button> -->
           <a href="jadwal-tambah.php?id_dokter=<?php echo $id_dokter; ?>"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Jadwal</button></a>
           <div class="btn-group">
             <?php
@@ -41,6 +40,7 @@
               $c = mysqli_query($koneksi,
                 "SELECT id_dokter, nama_dokter
                 FROM dokter
+                WHERE status=1
                 GROUP BY id_dokter;");
               while($d = mysqli_fetch_array($c)){
                 echo "<li><a href='jadwal-dokter.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
@@ -261,6 +261,7 @@
                         $c = mysqli_query($koneksi,
                           "SELECT id_dokter, nama_dokter
                           FROM dokter
+                          WHERE status=1
                           GROUP BY id_dokter;");
                         while($d = mysqli_fetch_array($c)){
                           echo "<li><a href='jadwal-dokter.php?id_dokter=".$d['id_dokter']."'>".$d['nama_dokter']."</a></li>";
