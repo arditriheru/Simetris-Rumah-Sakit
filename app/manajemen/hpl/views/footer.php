@@ -1,4 +1,3 @@
-<br><br>
 <?php include "../../../system/copyright.php";?>
 </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
