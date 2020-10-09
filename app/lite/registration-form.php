@@ -277,9 +277,9 @@ include "views/header.php";
                                 <?php
                           // menampilkan notifikasi
                                 if($id_dokter==5 && $hbt==3){ ?>
-                                  <div class="alert alert-danger" role="alert">
-                                    <h4 class="alert-heading">Peringatan</h4><hr>
-                                    <p class="blacktext">Jadwal khusus pelayanan imunisasi.</p>
+                                  <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading">Pemberitahuan</h4><hr>
+                                    <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
                                   </div>
                                 <?php }elseif($id_unit==1 && $ims==1){ ?>
                                   <div class="alert alert-success" role="alert">
