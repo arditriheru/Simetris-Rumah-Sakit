@@ -11,12 +11,12 @@
       $id = $_GET['id'];
       if($id==1){
         $medis='1'; ?>
-        <h1>Tenaga <small>Medis</small></h1>
+        <h1>Medis <small>Data</small></h1>
       <?php }elseif ($id==2){ ?>
-        <h1>Tenaga <small>Non Medis</small></h1>
+        <h1>Non Medis <small>Data</small></h1>
         <?php $medis='0'; ?>
       <?php }else{ ?>
-        <h1>Pegawai <small>Kontrak Habis</small></h1>
+        <h1>Kontrak Habis <small>Data</small></h1>
       <?php }
       ?>
       <ol class="breadcrumb">
