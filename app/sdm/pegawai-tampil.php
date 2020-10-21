@@ -27,6 +27,7 @@
           <li><a href='pegawai-tab.php?id=1'>Tenaga Medis</a></li>
           <li><a href='pegawai-tab.php?id=2'>Tenaga Non Medis</a></li>
           <li><a href='pegawai-tab.php?id=3'>Kontrak Habis</a></li>
+          <li><a href='pegawai-tab.php?id=4'>Legalitas Habis</a></li>
         </ul>
       </div><!-- /btn-group -->
     </div>

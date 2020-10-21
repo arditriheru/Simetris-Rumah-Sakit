@@ -25,12 +25,12 @@
     </ol>  
     <?php include "../../system/welcome.php"?>
   </div>
-<?php }else{ ?>
+<?php }elseif($getMedis=='2'){ ?>
  <div class="col-lg-12">
   <h1>Pegawai <small>Tambah</small></h1>
   <ol class="breadcrumb">
     <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li class="active"><i class="fa fa-check"></i> Tenaga Medis</li>
+    <li class="active"><i class="fa fa-check"></i> Pegawai Baru</li>
   </ol>  
   <?php include "../../system/welcome.php"?>
 </div>
@@ -316,62 +316,65 @@
                       </div>
                     </div>
                   </div><hr>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Nomor STR</label>
-                        <input class="form-control" type="number" placeholder="Surat Tanda Registrasi" name="no_str">
+                  <?php
+                  if($getMedis=='2'){ ?>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Nomor STR</label>
+                          <input class="form-control" type="number" placeholder="Surat Tanda Registrasi" name="no_str">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Berlaku Sampai</label>
+                          <input class="form-control" type="date" placeholder="Surat Tanda Registrasi" name="berlaku_str">
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Berlaku Sampai</label>
-                        <input class="form-control" type="date" placeholder="Surat Tanda Registrasi" name="berlaku_str">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Nomor SIP</label>
+                          <input class="form-control" type="number" placeholder="Surat Ijin Prakter" name="no_sip">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Berlaku Sampai</label>
+                          <input class="form-control" type="date" placeholder="Surat Ijin Praktek" name="berlaku_sip">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Nomor SIP</label>
-                        <input class="form-control" type="number" placeholder="Surat Ijin Prakter" name="no_sip">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Nomor SPK</label>
+                          <input class="form-control" type="number" placeholder="Surat Penugasan Klinis" name="no_spk">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Berlaku Sampai</label>
+                          <input class="form-control" type="date" placeholder="Surat Penugasan Klinis" name="berlaku_spk">
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Berlaku Sampai</label>
-                        <input class="form-control" type="date" placeholder="Surat Ijin Praktek" name="berlaku_sip">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Nomor RKK</label>
+                          <input class="form-control" type="number" placeholder="Surat Kewenangan Klinik" name="no_rkk">
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Nomor SPK</label>
-                        <input class="form-control" type="number" placeholder="Surat Penugasan Klinis" name="no_spk">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Berlaku Sampai</label>
+                          <input class="form-control" type="date" placeholder="Surat Kewenangan Klinik" name="berlaku_rkk">
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Berlaku Sampai</label>
-                        <input class="form-control" type="date" placeholder="Surat Penugasan Klinis" name="berlaku_spk">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Nomor RKK</label>
-                        <input class="form-control" type="number" placeholder="Surat Kewenangan Klinik" name="no_rkk">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label>Berlaku Sampai</label>
-                        <input class="form-control" type="date" placeholder="Surat Kewenangan Klinik" name="berlaku_rkk">
-                      </div>
-                    </div>
-                  </div><hr>
+                    </div><hr>
+                  <?php } ?>
                   <div align="center">
                     <button type="submit" name="submit" class="btn btn-success">Daftar</button>
                   </div>

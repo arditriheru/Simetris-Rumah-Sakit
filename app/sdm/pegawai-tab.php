@@ -15,8 +15,10 @@
       <?php }elseif ($id==2){ ?>
         <h1>Non Medis <small>Data</small></h1>
         <?php $medis='0'; ?>
-      <?php }else{ ?>
+      <?php }elseif($id==3){ ?>
         <h1>Kontrak Habis <small>Data</small></h1>
+      <?php }elseif($id==4){ ?>
+        <h1>Legalitas <small>Habis</small></h1>
       <?php }
       ?>
       <ol class="breadcrumb">
@@ -34,10 +36,11 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li><a href=''>All</a></li>
+          <!-- <li><a href=''>All</a></li> -->
           <li><a href='pegawai-tab.php?id=1'>Tenaga Medis</a></li>
           <li><a href='pegawai-tab.php?id=2'>Tenaga Non Medis</a></li>
           <li><a href='pegawai-tab.php?id=3'>Kontrak Habis</a></li>
+          <li><a href='pegawai-tab.php?id=4'>Legalitas Habis</a></li>
         </ul>
       </div><!-- /btn-group -->
     </div>
@@ -59,12 +62,13 @@
         <thead>
           <tr>
            <th><center>#</center></th>
-           <th><center>NIK</center></th>
            <th><center>Nama Pegawai</center></th>
            <th><center>Profesi</center></th>
-           <th><center>Tanggal Masuk</center></th>
-           <th><center>Kontrak Berakhir</center></th>
            <th><center>Status</center></th>
+           <th><center>Tanggal Masuk</center></th>
+           <th><center>Habis Kontrak</center></th>
+           <th><center>STR</center></th>
+           <th><center>Habis STR</center></th>
            <th colspan='3'><center>Action</center></th>
          </tr>
        </thead>
@@ -75,7 +79,7 @@
           $carinama = $_POST['carinama'];
           $no=1;
           $data = mysqli_query($koneksi,
-            "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.nik, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
+            "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.no_str, sdm_pegawai.berlaku_str, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
             IF (sdm_pegawai.tetap='1', 'Tetap', 'Kontrak') AS nama_tetap
             FROM sdm_pegawai
             INNER JOIN mr_profesi
@@ -86,9 +90,9 @@
             ?>
             <tr>
               <td><center><?php echo $no++; ?></center></td>
-              <td><center><?php echo $d['nik']; ?></center></td>
               <td><center><?php echo $d['nama']; ?></center></td>
               <td><center><?php echo $d['nama_profesi']; ?></center></td>
+              <td><center><?php echo $d['nama_tetap']; ?></center></td>
               <td><center><?php echo date('d F Y', strtotime($d['tgl_masuk'])); ?></center></td>
               <td><center>
                 <?php
@@ -99,7 +103,24 @@
                 }
                 ?>
               </center></td>
-              <td><center><?php echo $d['nama_tetap']; ?></center></td>
+              <td><center>
+                <?php
+                if(!$d['no_str']){
+                  echo '-';
+                }else{
+                  echo $d['no_str']; 
+                }
+                ?>
+              </center></td>
+              <td><center>
+                <?php
+                if($d['berlaku_str']=='0000-00-00'){
+                  echo '-';
+                }else{
+                  echo date('d F Y', strtotime($d['berlaku_str'])); 
+                }
+                ?>
+              </center></td>
               <td>
                 <div align="center">
                   <a href="pegawai-detail.php?id=<?php echo $d['id_sdm_pegawai']; ?>">
@@ -114,7 +135,7 @@
                 $no=1;
                 if($id==1 || $id==2){
                   $data = mysqli_query($koneksi,
-                    "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.nik, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
+                    "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.no_str, sdm_pegawai.berlaku_str, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
                     IF (sdm_pegawai.tetap='1', 'Tetap', 'Kontrak') AS nama_tetap
                     FROM sdm_pegawai
                     INNER JOIN mr_profesi
@@ -123,7 +144,7 @@
                     ORDER BY sdm_pegawai.nama ASC;");
                 }elseif($id==3) {
                   $data = mysqli_query($koneksi,
-                    "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.nik, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
+                    "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.no_str, sdm_pegawai.berlaku_str, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
                     IF (sdm_pegawai.tetap='1', 'Tetap', 'Kontrak') AS nama_tetap
                     FROM sdm_pegawai
                     INNER JOIN mr_profesi
@@ -132,14 +153,25 @@
                     AND sdm_pegawai.tgl_habis
                     BETWEEN (SELECT MIN(sdm_pegawai.tgl_habis) FROM sdm_pegawai WHERE sdm_pegawai.tetap = '0')
                     AND '$limit';");
+                }elseif($id==4) {
+                  $data = mysqli_query($koneksi,
+                    "SELECT sdm_pegawai.id_sdm_pegawai, sdm_pegawai.no_str, sdm_pegawai.berlaku_str, sdm_pegawai.nama, sdm_pegawai.tgl_masuk, sdm_pegawai.id_profesi, sdm_pegawai.tgl_habis, sdm_pegawai.tetap, mr_profesi.nama_profesi,
+                    IF (sdm_pegawai.tetap='1', 'Tetap', 'Kontrak') AS nama_tetap
+                    FROM sdm_pegawai
+                    INNER JOIN mr_profesi
+                    ON sdm_pegawai.id_profesi = mr_profesi.id_profesi
+                    WHERE sdm_pegawai.medis = '1'
+                    AND sdm_pegawai.berlaku_str
+                    BETWEEN (SELECT MIN(sdm_pegawai.berlaku_str) FROM sdm_pegawai WHERE sdm_pegawai.medis = '1')
+                    AND '$limit';");
                 }
                 while($d = mysqli_fetch_array($data)){
                   ?>
                   <tr>
                     <td><center><?php echo $no++; ?></center></td>
-                    <td><center><?php echo $d['nik']; ?></center></td>
                     <td><center><?php echo $d['nama']; ?></center></td>
                     <td><center><?php echo $d['nama_profesi']; ?></center></td>
+                    <td><center><?php echo $d['nama_tetap']; ?></center></td>
                     <td><center><?php echo date('d F Y', strtotime($d['tgl_masuk'])); ?></center></td>
                     <td><center>
                       <?php
@@ -150,7 +182,24 @@
                       }
                       ?>
                     </center></td>
-                    <td><center><?php echo $d['nama_tetap']; ?></center></td>
+                    <td><center>
+                      <?php
+                      if(!$d['no_str']){
+                        echo '-';
+                      }else{
+                        echo $d['no_str']; 
+                      }
+                      ?>
+                    </center></td>
+                    <td><center>
+                      <?php
+                      if($d['berlaku_str']=='0000-00-00'){
+                        echo '-';
+                      }else{
+                        echo date('d F Y', strtotime($d['berlaku_str'])); 
+                      }
+                      ?>
+                    </center></td>
                     <td>
                       <div align="center">
                         <a href="pegawai-detail.php?id=<?php echo $d['id_sdm_pegawai']; ?>">
