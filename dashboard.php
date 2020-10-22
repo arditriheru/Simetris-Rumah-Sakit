@@ -1,3 +1,4 @@
+<?php error_reporting(0); $id = $_GET['id']; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,13 +73,19 @@
       <img class="img-responsive" src="images/header.jpg" width="100%" alt="Gambar Bootstrap 3"><br>
       <div class="row">
         <div class="col-lg-12">
+          <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <?php if(isset($id)){ echo "<li class='active'><i class='fa fa-plus'></i> ".$id."</li>"; } ?>
+          </ol>
           <?php include "system/welcome.php"?>
         </div>
       </div><!-- /.row -->
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-lg-3">
+            <?php
+            if(!isset($id)){ ?>
+             <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
@@ -236,7 +243,7 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-xs-2"><a href="http://192.168.1.250:8080/kasir">
+                    <div class="col-xs-2"><a href="?id=Kasir">
                       <i class="fa fa-calculator fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
@@ -400,15 +407,45 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div><br>
-        <?php include "system/copyright.php";?>
-      </div><!-- /.row -->
-      <br><br>
-    </div><!-- /#page-wrapper -->
-  </div><!-- /#wrapper -->
-  <!-- JavaScript -->
-  <script>
+          <?php }elseif($id=='Kasir'){ ?>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-2"><a href="http://192.168.1.250:8080/kasir">
+                      <i class="fa fa-calculator fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>Kasir</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-xs-2"><a href="app/manajemen/kuesioner-whatsapp.php">
+                      <i class="fa fa-whatsapp fa-4x"></i>
+                    </div>
+                    <div class="col-xs-10 text-right">
+                      <h2>WhatsApp</h2>
+                    </div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+        </div>
+      </div><br>
+      <?php include "system/copyright.php";?>
+    </div><!-- /.row -->
+    <br><br>
+  </div><!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
+<!-- JavaScript -->
+<script>
       // Loading Page
       var myVar;
       function myFunction() {
