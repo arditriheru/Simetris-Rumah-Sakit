@@ -430,7 +430,7 @@
                       <i class="fa fa-whatsapp fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
-                      <h2>WhatsApp</h2>
+                      <h2>Kuesioner</h2>
                     </div></a>
                   </div>
                 </div>
