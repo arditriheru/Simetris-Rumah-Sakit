@@ -49,7 +49,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">SIMETRIS</a>
+          <a class="navbar-brand">S I M E T R I S</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -96,7 +96,13 @@ $nm = $_GET['nm'];
     <div class="col-lg-4">
         <form method="get" action="" role="form"><br>
           <div class="form-group input-group">
-            <input type="number" class="form-control" name="rm" placeholder="Pencarian Nomor Rekam Medik">
+            <?php
+            if(isset($rm)){ ?>
+                <input type="number" class="form-control" name="rm" value="<?php echo $rm;?>">
+            <?php }else{ ?>
+                <input type="number" class="form-control" name="rm" placeholder="Pencarian Nomor Rekam Medik">
+            <?php }
+            ?>
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
             </span>
@@ -106,7 +112,13 @@ $nm = $_GET['nm'];
 <div class="col-lg-4">
     <form method="get" action="" role="form"><br>
       <div class="form-group input-group">
-        <input type="text" class="form-control" name="nm" placeholder="Pencarian Nama Pasien">
+        <?php
+        if(isset($nm)){ ?>
+            <input type="text" class="form-control" name="nm" value="<?php echo $nm; ?>">
+        <?php }else{ ?>
+            <input type="text" class="form-control" name="nm" placeholder="Pencarian Nama Pasien">
+        <?php }
+        ?>
         <span class="input-group-btn">
             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
         </span>
@@ -153,47 +165,41 @@ $nm = $_GET['nm'];
         <th><center>#</center></th>
         <th><center>Action</center></th>
         <th><center>No. RM</center></th>
+        <!-- <th><center>Register</center></th> -->
         <th><center>Nama Pasien</center></th>
-        <th><center>Dokter</center></th>
-    </tr>
+        <!-- <th><center>Dokter</center></th> -->
+        <!-- <th><center>Tanggal / Jam</center></th> -->
+    </tr> 
 </thead>
 <tbody>
   <?php 
   $no = 1;
   if(!isset($rm) && !isset($nm)){
    $data = mysqli_query($koneksi,
-    "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
-    IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-    FROM booking, dokter, sesi
-    WHERE booking.id_dokter=dokter.id_dokter
-    AND booking.id_sesi=sesi.id_sesi
-    AND booking.booking_tanggal='$tanggalsekarang'
-    ORDER BY booking.nama ASC;");
+    "SELECT ksr_trn.id_catatan_medik, mr_pasien.nama, mr_pasien.telp, ksr_trn.posting
+    FROM ksr_trn
+    JOIN mr_pasien
+    ON ksr_trn.id_catatan_medik = mr_pasien.id_catatan_medik
+    WHERE ksr_trn.posting IS NULL
+    GROUP BY ksr_trn.id_catatan_medik
+    ORDER BY ksr_trn.id_ksr_trn DESC
+    LIMIT 50;");
 }elseif(isset($rm)){
     $data = mysqli_query($koneksi,
-        "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
-        IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-        FROM booking, dokter, sesi
-        WHERE booking.id_dokter=dokter.id_dokter
-        AND booking.id_sesi=sesi.id_sesi
-        AND booking.booking_tanggal='$tanggalsekarang'
-        AND id_catatan_medik = '$rm'
-        ORDER BY booking.nama ASC;");
+        "SELECT id_catatan_medik, nama, telp
+        FROM mr_pasien
+        WHERE id_catatan_medik = '$rm'
+        GROUP BY id_catatan_medik;");
 }elseif(isset($nm)){
    $data = mysqli_query($koneksi,
-    "SELECT *, dokter.nama_dokter, sesi.nama_sesi,
-    IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-    FROM booking, dokter, sesi
-    WHERE booking.id_dokter=dokter.id_dokter
-    AND booking.id_sesi=sesi.id_sesi
-    AND booking.booking_tanggal='$tanggalsekarang'
-    AND nama LIKE '%' '$nm' '%'
-    ORDER BY booking.nama ASC;");
+    "SELECT id_catatan_medik, nama, telp
+    FROM mr_pasien
+    WHERE nama LIKE '%' '$nm' '%'
+    GROUP BY id_catatan_medik
+    ORDER BY nama ASC;");
 }
 while($d = mysqli_fetch_array($data)){
-    $id_booking = $d['id_booking'];
-    $status     = $d['status'];
-    $sub_kontak = substr($d['kontak'],1);
+    $sub_kontak = substr($d['telp'],1);
     ?>
     <tr>
       <td><center><?php echo $no++; ?></center></td>
@@ -204,8 +210,10 @@ while($d = mysqli_fetch_array($data)){
         </div>
     </td>
     <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+    <!-- <td><center><?php //echo $d['id_register']; ?></center></td> -->
     <td><center><?php echo $d['nama']; ?></center></td>
-    <td><center><?php echo $d['nama_dokter']; ?></center></td>
+    <!-- <td><center><?php //echo $d['nama_dokter']; ?></center></td> -->
+    <!-- <td><center><?php //echo date('d-m-Y', strtotime($d['tgl_kunj'])).' / '.$d['jam_kunj']; ?></center></td> -->
 </tr>
 <?php 
 }
