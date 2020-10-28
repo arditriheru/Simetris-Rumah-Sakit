@@ -44,10 +44,10 @@ while($b = mysqli_fetch_array($a)){
 				$total = $b['total'];
 			}
 
-			$id_booking = $_GET['id'];
-			if(isset($id_booking)){
+			$id_aktif = $_GET['id'];
+			if(isset($id_aktif)){
 				mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
-				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_booking");
+				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
 				$c = mysqli_query($koneksi,
 					"SELECT booking.antrian, mr_unit.id_unit
 					FROM booking, mr_unit, dokter
@@ -84,9 +84,10 @@ while($b = mysqli_fetch_array($a)){
 			<tbody>
 				<?php 
 				$no = 1;
-				$data = mysqli_query($koneksi,"SELECT *, dokter.nama_dokter, dokter.id_unit, sesi.nama_sesi,
+				$data = mysqli_query($koneksi,"SELECT @no:=@no+1 AS noant, booking.id_booking, booking.id_catatan_medik, booking.alamat, booking.nama, booking.aktif, booking.antrian, dokter.nama_dokter, dokter.id_unit, sesi.nama_sesi,
 					IF (booking.status='1', 'Datang', 'Belum Datang') AS status
 					FROM booking, dokter, sesi
+					JOIN (SELECT @no:=0) r
 					WHERE booking.id_dokter=dokter.id_dokter
 					AND booking.id_sesi=sesi.id_sesi
 					AND booking.booking_tanggal = '$jadwal'
@@ -94,24 +95,23 @@ while($b = mysqli_fetch_array($a)){
 					AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
 				while($d = mysqli_fetch_array($data)){
 					$id_booking 	= $d['id_booking'];
-					$nama_dokter 	= $d['nama_dokter'];
 					?>
 					<tr>
-						<td><center><?php echo $d['antrian']; ?></center></td>
+						<td><center><?php echo $d['noant']; ?></center></td>
 						<td>
 							<div align="center">
 								<?php
 								if($d['aktif']=='1'){
-									echo "<a href='bell-antrian-tampil.php?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
+									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
 								}else{
-									echo "<a href='bell-antrian-tampil.php?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
 								}
 								?>
 							</div>
 						</td>
 						<td>
 							<div align="center">
-								<button type="button" onclick="mulai();" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
+								<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
 							</div>
 						</td>
 						<td><center><?php
@@ -158,17 +158,27 @@ while($b = mysqli_fetch_array($a)){
 		<audio id="ratus" src="rekaman/ratus.mp3"></audio> 
 		<audio id="seratus" src="rekaman/seratus.mp3"></audio>
 		<?php
+		// $id_booking = $_GET['id'];
+	// 	SELECT id, name, score, FIND_IN_SET( score, (
+	// 		SELECT GROUP_CONCAT( score
+	// 			ORDER BY score DESC ) 
+	// 		FROM scores )
+	// ) AS rank
+	// 	FROM scores
 		$e = mysqli_query($koneksi,
-			"SELECT antrian
-			FROM booking
+			"SELECT id_booking, nama, FIND_IN_SET( id_booking, (    
+			SELECT GROUP_CONCAT( id_booking
+			ORDER BY id_booking ASC ) 
+			FROM booking 
 			WHERE booking_tanggal = '$jadwal'
-			AND id_sesi = '$id_sesi'
-			AND id_dokter='$id_dokter'
-			AND aktif=1;");
+			AND id_dokter = '$id_dokter'
+			AND id_sesi = '$id_sesi')
+			) AS noant
+			FROM booking
+			WHERE id_booking = '$id_aktif';");
 		while($f = mysqli_fetch_array($e)){
-			$tcounter   = $f['antrian'];
+			$tcounter   = $f['noant'];
 			$panjang  	= strlen($tcounter);
-			$antrian  	= $tcounter;
 		}
 		for($i=0;$i<$panjang;$i++){
 			?>
@@ -178,7 +188,9 @@ while($b = mysqli_fetch_array($a)){
 			</audio>
 		<?php } ?>
 		<script type="text/javascript">
-			function mulai(){
+			function mulai(clicked_id){
+				var variableToSend = clicked_id;
+				$.post('bell-antrian-tampil.php', {variable: variableToSend});
 			//MAINKAN SUARA BEL PADA SAAT AWAL
 			document.getElementById('suarabel').pause();
 			document.getElementById('suarabel').currentTime=0;
@@ -201,7 +213,7 @@ while($b = mysqli_fetch_array($a)){
 			totalwaktu=totalwaktu+500;
 			<?php
 				//JIKA KURANG DARI 10 MAKA MAIKAN SUARA ANGKA1
-			if($antrian<10){
+			if($tcounter<10){
 				?>
 				setTimeout(function() {
 					document.getElementById('suarabel0').pause();
@@ -210,7 +222,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php		
-			}elseif($antrian ==10){
+			}elseif($tcounter ==10){
 					//JIKA 10 MAKA MAIKAN SUARA SEPULUH
 				?>  
 				setTimeout(function() {
@@ -220,7 +232,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php		
-			}elseif($antrian ==11){
+			}elseif($tcounter ==11){
 					//JIKA 11 MAKA MAIKAN SUARA SEBELAS
 				?>  
 				setTimeout(function() {
@@ -230,7 +242,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php		
-			}elseif($antrian < 20){
+			}elseif($tcounter < 20){
 					//JIKA 12-20 MAKA MAIKAN SUARA ANGKA2+"BELAS"
 				?>  				
 				setTimeout(function() {
@@ -246,7 +258,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php		
-			}elseif($antrian < 100){				
+			}elseif($tcounter < 100){				
 					//JIKA PULUHAN MAKA MAINKAN SUARA ANGKA1+PULUH+AKNGKA2
 				?>  
 				setTimeout(function() {
@@ -268,7 +280,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php
-			}elseif($antrian == 100){
+			}elseif($tcounter == 100){
 				//JIKA 100 MAKA MAIKAN SUARA SERATUS
 				?>
 				setTimeout(function() {
@@ -278,7 +290,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php
-			}elseif($antrian < 200){
+			}elseif($tcounter < 200){
 				//JIKA 101-109 MAKA MAIKAN SUARA SERATUS
 				?>
 				setTimeout(function() {
@@ -294,7 +306,7 @@ while($b = mysqli_fetch_array($a)){
 				}, totalwaktu);
 				totalwaktu=totalwaktu+800;
 				<?php
-			}elseif($antrian == 110){
+			}elseif($tcounter == 110){
 				//JIKA 101-109 MAKA MAIKAN SUARA SERATUS
 				?>
 				setTimeout(function() {
