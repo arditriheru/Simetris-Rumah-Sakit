@@ -94,9 +94,9 @@
         ?>
         <table class="table table-bordered table-hover table-striped tablesorter">
           <tbody>
-            <tr>
+            <!-- <tr>
               <td colspan="2"><div align="center"><b><?php echo "Antrian ".$d['antrian']; ?></b></div></td>
-            </tr>
+            </tr> -->
             <tr>
               <td><b>Nomor RM</b></td>
               <td><?php echo $d['id_catatan_medik']; ?></td>
