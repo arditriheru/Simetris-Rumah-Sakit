@@ -64,7 +64,7 @@ include "views/header.php";
                         text: 'Silahkan Re-Schedule',
                         type: 'error'
                         }, function() {
-                          window.location = 'javascript: history.back()';
+                          javascript:window.location = document.referrer;
                           });
                           }, 10);
                           </script>";
@@ -84,23 +84,18 @@ include "views/header.php";
                         if($terdaftar>0){
                           $notifsudahterdaftar = true;
                           $k = mysqli_query($koneksi,
-                            "SELECT nama, alamat, telp FROM mr_pasien WHERE id_catatan_medik=$id_catatan_medik;");
+                            "SELECT alamat, telp FROM mr_pasien WHERE id_catatan_medik=$id_catatan_medik;");
                           while($l = mysqli_fetch_array($k)){
                             $alamat  = $l['alamat'];
                             $telp    = $l['telp'];
                           }
-                          // echo "<script>
-                          // setTimeout(function() {
-                          //   swal({
-                          //     title: 'Upss..',
-                          //     text: 'Sudah Mendaftar Sebelumnya',
-                          //     type: 'error'
-                          //     }, function() {
-                          //       window.location = 'javascript: history.back()';
-                          //       });
-                          //       }, 10);
-                          //       </script>";
                         }else{
+                          $k = mysqli_query($koneksi,
+                            "SELECT alamat, telp FROM mr_pasien WHERE id_catatan_medik=$id_catatan_medik;");
+                          while($l = mysqli_fetch_array($k)){
+                            $alamat  = $l['alamat'];
+                            $telp    = $l['telp'];
+                          }
                           $i = mysqli_query($koneksi,
                             "SELECT jam, kuota FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hbt' AND id_sesi='$id_sesi';");
                           while($j = mysqli_fetch_array($i)){
@@ -127,7 +122,7 @@ include "views/header.php";
                               text: 'Silahkan Re-Schedule',
                               type: 'error'
                               }, function() {
-                                window.location = 'javascript: history.back()';
+                                javascript:window.location = document.referrer;
                                 });
                                 }, 10);
                                 </script>";
@@ -401,7 +396,7 @@ include "views/header.php";
           <i class="material-icons nav__icon">dashboard</i>
           <span class="nav-bottom__text">Home</span>
         </a>
-        <a href="javascript: history.back()" class="nav-bottom__link">
+        <a href="javascript:window.location = document.referrer;" class="nav-bottom__link">
           <i class="material-icons nav-bottom__icon">arrow_back</i>
           <span class="nav-bottom__text">Back</span>
         </a>
