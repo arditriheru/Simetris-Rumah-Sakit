@@ -112,293 +112,295 @@ include "views/header.php";
                           while($p = mysqli_fetch_array($o)){
                             $cek = $p['cek']+1;
                           }
+                          //cari selisih jadwal
+                          $tglsekarang  = new DateTime();
+                          $jadwal       = new DateTime("$booking_tanggal");
+                          $selisih      = $tglsekarang->diff($jadwal)->format("%a");
                         }
                         // Cek jadwal libur
                         if($cek_libur>0){
-                          echo "<script>
-                          setTimeout(function() {
-                            swal({
-                              title: 'Dokter Cuti',
-                              text: 'Silahkan Re-Schedule',
-                              type: 'error'
-                              }, function() {
-                                javascript:window.location = document.referrer;
-                                });
-                                }, 10);
-                                </script>";
-                                // cek apakah kuota masih tersedia
-                              }if($cek>$kuota){
-                                $notifpenuh = true;
-                              }
-                            }
-                          }
+                          $notifcuti = true;
+                        // cek apakah kuota masih tersedia
+                        }elseif($cek>$kuota){
+                          $notifpenuh = true;
+                        }elseif($selisih>30){
+                          $notifbatas = true;
+                        }
+                      }
+                    }
                 // jika belum memilihi dokter
-                          if(!$id_dokter){
-                            ?>
-                            <div class="col-md-12">
-                              <div class="progress mb-2">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">20%</div>
-                              </div>
-                              <hr>
-                            </div>
-                            <form action="" method="post" class="">
-                              <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
-                                <input class="form-control" type="text" name="id_catatan_medik"
-                                value="<?php echo $id_catatan_medik; ?>" readonly>
-                              </div>
-                              <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
-                                <input class="form-control" type="text" name="nama"
-                                value="<?php echo $nama; ?>" readonly>
-                              </div>
-                              <div class="form-group">
-                                <label for="cc-payment" class="control-label mb-1">Pilih Dokter</label>
-                                <select class="form-control" type="text" name="id_dokter"
-                                value="<?php echo $d['id_dokter']; ?>" required="">
-                                <option value="">Pilih</option>
-                                <?php 
-                                include '../koneksi.php';
-                                $data = mysqli_query($koneksi,
-                                  "SELECT * FROM dokter WHERE status=1;");
-                                while($d = mysqli_fetch_array($data)){
-                                  echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
-                                }
-                                ?>
-                              </select>
-                            </div><br>
-                            <div>
-                              <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
-                                <span id="search-schedule-amount">Lanjutkan</span>
-                                <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                              </button>
-                            </div>
-                          </form>
-                        <?php }
+                    if(!$id_dokter){
+                      ?>
+                      <div class="col-md-12">
+                        <div class="progress mb-2">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">20%</div>
+                        </div>
+                        <hr>
+                      </div>
+                      <form action="" method="post" class="">
+                        <div class="form-group">
+                          <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
+                          <input class="form-control" type="text" name="id_catatan_medik"
+                          value="<?php echo $id_catatan_medik; ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
+                          <input class="form-control" type="text" name="nama"
+                          value="<?php echo $nama; ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="cc-payment" class="control-label mb-1">Pilih Dokter</label>
+                          <select class="form-control" type="text" name="id_dokter"
+                          value="<?php echo $d['id_dokter']; ?>" required="">
+                          <option value="">Pilih</option>
+                          <?php 
+                          include '../koneksi.php';
+                          $data = mysqli_query($koneksi,
+                            "SELECT * FROM dokter WHERE status=1;");
+                          while($d = mysqli_fetch_array($data)){
+                            echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                          }
+                          ?>
+                        </select>
+                      </div><br>
+                      <div>
+                        <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
+                          <span id="search-schedule-amount">Lanjutkan</span>
+                          <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                        </button>
+                      </div>
+                    </form>
+                  <?php }
                         // jika belum memilih jadwal
-                        if($id_dokter && !$booking_tanggal){ ?>
-                          <div class="col-md-12">
-                            <div class="progress mb-2">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">40%</div>
-                            </div>
-                            <hr>
-                          </div>
-                          <form action="" method="post" class="">
-                            <div class="form-group">
-                              <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
-                              <input class="form-control" type="text" name="id_catatan_medik"
-                              value="<?php echo $id_catatan_medik; ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                              <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
-                              <input class="form-control" type="text" name="nama"
-                              value="<?php echo $nama; ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                              <label class="control-label mb-1">Nama Dokter</label>
-                              <input class="form-control" type="text" name="id_dokter"
-                              value="<?php echo $id_dokter; ?>" hidden>
-                              <input class="form-control" type="text"
-                              value="<?php echo $nama_dokter; ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                              <label class="control-label mb-1">Jadwal Tersedia</label><br>
-                              <?php 
-                              $e = mysqli_query($koneksi,
-                                "SELECT hari,
-                                CASE
-                                WHEN dokter_jadwal.hari='1' THEN 'Senin'
-                                WHEN dokter_jadwal.hari='2' THEN 'Selasa'
-                                WHEN dokter_jadwal.hari='3' THEN 'Rabu'
-                                WHEN dokter_jadwal.hari='4' THEN 'Kamis'
-                                WHEN dokter_jadwal.hari='5' THEN 'Jumat'
-                                WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
-                                WHEN dokter_jadwal.hari='0' THEN 'Minggu'
-                                END AS nama_hari
-                                FROM dokter_jadwal WHERE id_dokter='$id_dokter'
-                                GROUP BY hari;");
-                              while($f = mysqli_fetch_array($e)){
-                                $hari = $f['nama_hari'];
-                                $hari_jadwal = array($hari);
-                                for($x=0;$x<count($hari_jadwal);$x++){
-                                 echo  "<span class='badge badge-success'>".$hari_jadwal[$x]." </span>  ";
-                               }
-                             }
-                             ?>
-                           </div>
-                           <div class="form-group">
-                            <label class="control-label mb-1">Untuk Tanggal</label>
-                            <input class="form-control" type="date" name="booking_tanggal"
-                            value="<?php echo $d['booking_tanggal']; ?>" required="">
-                          </div><br>
-                          <div>
-                            <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
-                              <span id="search-schedule-amount">Lanjutkan</span>
-                              <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                            </button>
-                          </div>
-                        </form>
-                      <?php }
+                  if($id_dokter && !$booking_tanggal){ ?>
+                    <div class="col-md-12">
+                      <div class="progress mb-2">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">40%</div>
+                      </div>
+                      <hr>
+                    </div>
+                    <form action="" method="post" class="">
+                      <div class="form-group">
+                        <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
+                        <input class="form-control" type="text" name="id_catatan_medik"
+                        value="<?php echo $id_catatan_medik; ?>" readonly>
+                      </div>
+                      <div class="form-group">
+                        <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
+                        <input class="form-control" type="text" name="nama"
+                        value="<?php echo $nama; ?>" readonly>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label mb-1">Nama Dokter</label>
+                        <input class="form-control" type="text" name="id_dokter"
+                        value="<?php echo $id_dokter; ?>" hidden>
+                        <input class="form-control" type="text"
+                        value="<?php echo $nama_dokter; ?>" readonly>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label mb-1">Jadwal Tersedia</label><br>
+                        <?php 
+                        $e = mysqli_query($koneksi,
+                          "SELECT hari,
+                          CASE
+                          WHEN dokter_jadwal.hari='1' THEN 'Senin'
+                          WHEN dokter_jadwal.hari='2' THEN 'Selasa'
+                          WHEN dokter_jadwal.hari='3' THEN 'Rabu'
+                          WHEN dokter_jadwal.hari='4' THEN 'Kamis'
+                          WHEN dokter_jadwal.hari='5' THEN 'Jumat'
+                          WHEN dokter_jadwal.hari='6' THEN 'Sabtu'
+                          WHEN dokter_jadwal.hari='0' THEN 'Minggu'
+                          END AS nama_hari
+                          FROM dokter_jadwal WHERE id_dokter='$id_dokter'
+                          GROUP BY hari;");
+                        while($f = mysqli_fetch_array($e)){
+                          $hari = $f['nama_hari'];
+                          $hari_jadwal = array($hari);
+                          for($x=0;$x<count($hari_jadwal);$x++){
+                           echo  "<span class='badge badge-success'>".$hari_jadwal[$x]." </span>  ";
+                         }
+                       }
+                       ?>
+                     </div>
+                     <div class="form-group">
+                      <label class="control-label mb-1">Untuk Tanggal</label>
+                      <input class="form-control" type="date" name="booking_tanggal"
+                      value="<?php echo $d['booking_tanggal']; ?>" required="">
+                    </div><br>
+                    <div>
+                      <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
+                        <span id="search-schedule-amount">Lanjutkan</span>
+                        <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                      </button>
+                    </div>
+                  </form>
+                <?php }
                       // jika belum memilih sesi jam
-                      if($booking_tanggal && $booking_tanggal && !$id_sesi){ ?>
-                        <div class="col-md-12">
-                          <div class="progress mb-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">60%</div>
-                          </div>
-                          <hr>
-                        </div>
-                        <form action="" method="post" class="">
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
-                            <input class="form-control" type="text" name="id_catatan_medik"
-                            value="<?php echo $id_catatan_medik; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
-                            <input class="form-control" type="text" name="nama"
-                            value="<?php echo $nama; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Nama Dokter</label>
-                            <input class="form-control" type="text" name="id_dokter"
-                            value="<?php echo $id_dokter; ?>" hidden>
-                            <input class="form-control" type="text"
-                            value="<?php echo $nama_dokter; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Untuk Tanggal</label>
-                            <input class="form-control" type="text" name='booking_tanggal'
-                            value="<?php echo $booking_tanggal; ?>" readonly>
-                          </div>
-                          <?php
+                if($booking_tanggal && $booking_tanggal && !$id_sesi){ ?>
+                  <div class="col-md-12">
+                    <div class="progress mb-2">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                    <hr>
+                  </div>
+                  <form action="" method="post" class="">
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
+                      <input class="form-control" type="text" name="id_catatan_medik"
+                      value="<?php echo $id_catatan_medik; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
+                      <input class="form-control" type="text" name="nama"
+                      value="<?php echo $nama; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Nama Dokter</label>
+                      <input class="form-control" type="text" name="id_dokter"
+                      value="<?php echo $id_dokter; ?>" hidden>
+                      <input class="form-control" type="text"
+                      value="<?php echo $nama_dokter; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Untuk Tanggal</label>
+                      <input class="form-control" type="text" name='booking_tanggal'
+                      value="<?php echo $booking_tanggal; ?>" readonly>
+                    </div>
+                    <?php
                           // menampilkan notifikasi
-                          if($id_dokter==5 && $hbt==3){ ?>
-                            <div class="alert alert-success" role="alert">
-                              <h4 class="alert-heading">Pemberitahuan</h4><hr>
-                              <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
-                            </div>
-                          <?php }elseif($id_unit==1 && $ims==1){ ?>
-                            <div class="alert alert-success" role="alert">
-                              <h4 class="alert-heading">Pemberitahuan</h4><hr>
-                              <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
-                            </div>
-                          <?php } ?>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Jam Praktek</label>
-                            <select class="form-control" type="text" name="id_sesi" required="">
-                              <option value="">Pilih</option>
-                              <?php
-                              $namahari = date('l', strtotime($booking_tanggal));
-                              $daftar_hari = array(
-                                'Sunday'    => '7',
-                                'Monday'    => '1',
-                                'Tuesday'   => '2',
-                                'Wednesday' => '3',
-                                'Thursday'  => '4',
-                                'Friday'    => '5',
-                                'Saturday'  => '6'
-                              );
-                              $hari = $daftar_hari[$namahari];
-                              $data = mysqli_query($koneksi,
-                                "SELECT id_sesi, jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hari';");
-                              while($d = mysqli_fetch_array($data)){
-                                echo "<option value='".$d['id_sesi']."'>".$d['jam']."</option>";
-                              }
-                              ?>
-                            </select>
-                          </div><br>
-                          <div>
-                            <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
-                              <span id="search-schedule-amount">Lanjutkan</span>
-                              <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                            </button>
-                          </div>
-                        </form>
-                      <?php }
+                    if($id_dokter==5 && $hbt==3){ ?>
+                      <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Pemberitahuan</h4><hr>
+                        <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
+                      </div>
+                    <?php }elseif($id_unit==1 && $ims==1){ ?>
+                      <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Pemberitahuan</h4><hr>
+                        <p class="blacktext">Pelayanan imunisasi dilaksanakan di sesi awal poli.</p>
+                      </div>
+                    <?php } ?>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Jam Praktek</label>
+                      <select class="form-control" type="text" name="id_sesi" required="">
+                        <option value="">Pilih</option>
+                        <?php
+                        $namahari = date('l', strtotime($booking_tanggal));
+                        $daftar_hari = array(
+                          'Sunday'    => '7',
+                          'Monday'    => '1',
+                          'Tuesday'   => '2',
+                          'Wednesday' => '3',
+                          'Thursday'  => '4',
+                          'Friday'    => '5',
+                          'Saturday'  => '6'
+                        );
+                        $hari = $daftar_hari[$namahari];
+                        $data = mysqli_query($koneksi,
+                          "SELECT id_sesi, jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hari';");
+                        while($d = mysqli_fetch_array($data)){
+                          echo "<option value='".$d['id_sesi']."'>".$d['jam']."</option>";
+                        }
+                        ?>
+                      </select>
+                    </div><br>
+                    <div>
+                      <button id="add" name="addsubmita" type="submit" class="btn btn-lg btn-info btn-block">
+                        <span id="search-schedule-amount">Lanjutkan</span>
+                        <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                      </button>
+                    </div>
+                  </form>
+                <?php }
                       // tahap akhir menampilkan detail booking
-                      if($booking_tanggal && $booking_tanggal && $id_sesi){ ?>
-                        <div class="col-md-12">
-                          <div class="progress mb-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">80%</div>
-                          </div>
-                          <hr>
-                        </div>
-                        <form action="registration-add-process" method="post" class="">
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
-                            <input class="form-control" type="text" name="id_catatan_medik"
-                            value="<?php echo $id_catatan_medik; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
-                            <input class="form-control" type="text" name="nama"
-                            value="<?php echo $nama; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Alamat</label>
-                            <input class="form-control" type="text" name="alamat"
-                            value="<?php echo $alamat; ?>" required="">
-                          </div>
-                          <div class="form-group">
-                            <label for="cc-payment" class="control-label mb-1">Kontak</label>
-                            <input class="form-control" type="text" name="kontak"
-                            value="<?php echo $telp; ?>" required="">
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Nama Dokter</label>
-                            <input class="form-control" type="text" name="id_dokter"
-                            value="<?php echo $id_dokter; ?>" hidden>
-                            <input class="form-control" type="text"
-                            value="<?php echo $nama_dokter; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Untuk Tanggal</label>
-                            <input class="form-control" type="text" name='booking_tanggal' value="<?php echo $booking_tanggal; ?>" readonly>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label mb-1">Sesi Jam</label>
-                            <input class="form-control" type="text" name='id_sesi'
-                            value="<?php echo $id_sesi; ?>" hidden>
-                            <input class="form-control" type="text" value="<?php echo $jam; ?>" readonly>
-                          </div><br>
-                          <div>
-                            <?php
+                if($booking_tanggal && $booking_tanggal && $id_sesi){ ?>
+                  <div class="col-md-12">
+                    <div class="progress mb-2">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                    <hr>
+                  </div>
+                  <form action="registration-add-process" method="post" class="">
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Nomor Rekam Medik</label>
+                      <input class="form-control" type="text" name="id_catatan_medik"
+                      value="<?php echo $id_catatan_medik; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Nama Pasien</label>
+                      <input class="form-control" type="text" name="nama"
+                      value="<?php echo $nama; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Alamat</label>
+                      <input class="form-control" type="text" name="alamat"
+                      value="<?php echo $alamat; ?>" required="">
+                    </div>
+                    <div class="form-group">
+                      <label for="cc-payment" class="control-label mb-1">Kontak</label>
+                      <input class="form-control" type="text" name="kontak"
+                      value="<?php echo $telp; ?>" required="">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Nama Dokter</label>
+                      <input class="form-control" type="text" name="id_dokter"
+                      value="<?php echo $id_dokter; ?>" hidden>
+                      <input class="form-control" type="text"
+                      value="<?php echo $nama_dokter; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Untuk Tanggal</label>
+                      <input class="form-control" type="text" name='booking_tanggal' value="<?php echo $booking_tanggal; ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label mb-1">Sesi Jam</label>
+                      <input class="form-control" type="text" name='id_sesi'
+                      value="<?php echo $id_sesi; ?>" hidden>
+                      <input class="form-control" type="text" value="<?php echo $jam; ?>" readonly>
+                    </div><br>
+                    <div>
+                      <?php
                             // menampilkan notifikasi jika kuota penuh
-                            if(isset($notifpenuh)){ ?>
-                              <button type="button" class="btn btn-lg btn-danger btn-block">Kuota Penuh</button>
-                              <p align="center" class="blacktext">Silahkan Re-Schedule</p>
-                            <?php }if($notifsudahterdaftar){ ?>
-                              <button type="button" class="btn btn-lg btn-danger btn-block">Sudah Terdaftar Sebelumnya</button>
-                            <?php }else{ ?>
-                              <p>**Pastikan data sudah terisi dengan benar..</p>
-                              <button id="add" name="daftarsubmit" type="submit" class="btn btn-lg btn-info btn-block">
-                                <span id="search-schedule-amount">Daftar Sekarang</span>
-                                <span id="search-schedule-sending" style="display:none;">Sending…</span>
-                              </button>
-                            <?php } ?>
-                          </div>
-                        </form>
+                      if(isset($notifpenuh)){ ?>
+                        <button type="button" class="btn btn-lg btn-danger btn-block">Kuota Penuh</button>
+                        <p align="center" class="blacktext">Silahkan Re-Schedule</p>
+                      <?php }elseif(isset($notifsudahterdaftar)){ ?>
+                        <button type="button" class="btn btn-lg btn-danger btn-block">Sudah Mendaftar Sebelumnya</button>
+                      <?php }elseif(isset($notifcuti)){ ?>
+                        <button type="button" class="btn btn-lg btn-danger btn-block">Dokter Cuti</button>
+                        <p align="center" class="blacktext">Silahkan Re-Schedule</p>
+                      <?php }elseif(isset($notifbatas)){ ?>
+                        <button type="button" class="btn btn-lg btn-danger btn-block">Lebih dari 30 Hari</button>
+                        <p align="center" class="blacktext">Silahkan Re-Schedule</p>
+                      <?php }else{ ?>
+                        <p>**Pastikan data sudah terisi dengan benar..</p>
+                        <button id="add" name="daftarsubmit" type="submit" class="btn btn-lg btn-info btn-block">
+                          <span id="search-schedule-amount">Daftar Sekarang</span>
+                          <span id="search-schedule-sending" style="display:none;">Sending…</span>
+                        </button>
                       <?php } ?>
                     </div>
-                  </div>
-                </div>
-              </div><!-- .card -->
-            </div><!--/.col-->
-          </div><!--/.row-->
-        </div>
-      </div>
-      <nav class="nav-bottom">
-        <a href="help" class="nav-bottom__link">
-          <i class="material-icons nav-bottom__icon">help_outline</i>
-          <span class="nav-bottom__text">Help</span>
-        </a>
-        <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
-          <i class="material-icons nav__icon">dashboard</i>
-          <span class="nav-bottom__text">Home</span>
-        </a>
-        <a href="javascript:window.location = document.referrer;" class="nav-bottom__link">
-          <i class="material-icons nav-bottom__icon">arrow_back</i>
-          <span class="nav-bottom__text">Back</span>
-        </a>
-      </nav>
-      <?php include "views/footer.php"; ?> 
+                  </form>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </div><!-- .card -->
+      </div><!--/.col-->
+    </div><!--/.row-->
+  </div>
+</div>
+<nav class="nav-bottom">
+  <a href="help" class="nav-bottom__link">
+    <i class="material-icons nav-bottom__icon">help_outline</i>
+    <span class="nav-bottom__text">Help</span>
+  </a>
+  <a href="https://pendaftaran.rskiarachmi.co.id/" class="nav-bottom__link nav-bottom__link--active">
+    <i class="material-icons nav__icon">dashboard</i>
+    <span class="nav-bottom__text">Home</span>
+  </a>
+  <a href="javascript:window.location = document.referrer;" class="nav-bottom__link">
+    <i class="material-icons nav-bottom__icon">arrow_back</i>
+    <span class="nav-bottom__text">Back</span>
+  </a>
+</nav>
+<?php include "views/footer.php"; ?> 

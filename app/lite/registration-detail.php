@@ -25,17 +25,16 @@ include "views/header.php";
                 </div><br>
                 <?php 
                 include 'controller/connection.php';
-                $id_booking = $_GET['registration'];
-
+                $id_booking = $_GET['id'];
+                $antrian    = $_GET['no'];
                 $data = mysqli_query($koneksi,
-                  "SELECT *, dokter.nama_dokter, sesi.nama_sesi
+                  "SELECT booking.id_catatan_medik, booking.nama, booking.booking_tanggal, booking.tanggal, booking.jam, booking.id_dokter, booking.id_sesi, booking.keterangan, dokter.nama_dokter, sesi.nama_sesi
                   FROM booking, dokter, sesi
                   WHERE booking.id_dokter=dokter.id_dokter
                   AND booking.id_sesi=sesi.id_sesi
-                  AND booking.id_booking=$id_booking");
+                  AND booking.id_booking='$id_booking'");
                 include "date-format.php";
                 while($d = mysqli_fetch_array($data)){
-                  $antrian          = $d['antrian'];
                   $id_catatan_medik = $d['id_catatan_medik'];
                   $nama             = $d['nama'];
                   $id_dokter        = $d['id_dokter'];
@@ -46,8 +45,8 @@ include "views/header.php";
                   $tanggal          = $d['tanggal'];
                   $jam              = $d['jam'];
                   $keterangan       = $d['keterangan'];
+                  $hbt = date('w', strtotime($d['booking_tanggal']));
                 }
-                $hbt = date('w', strtotime($booking_tanggal));
                 $c = mysqli_query($koneksi,
                   "SELECT jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hbt' AND id_sesi='$id_sesi';");
                 while($d = mysqli_fetch_array($c)){
