@@ -15,13 +15,16 @@
                 <?php 
                 include 'controller/connection.php';
                 $id_catatan_medik = $_POST['id_catatan_medik'];
-                $booking_tanggal = $_POST['booking_tanggal'];
+                $id_dokter        = $_POST['id_dokter'];
+                $id_sesi          = $_POST['id_sesi'];
+                $booking_tanggal  = $_POST['booking_tanggal'];
 
-                include 'controller/connection.php';
                 $a = mysqli_query($koneksi,
                   "SELECT COUNT(*) AS cek
                   FROM booking
                   WHERE id_catatan_medik='$id_catatan_medik'
+                  AND id_dokter='$id_dokter'
+                  AND id_sesi='$id_sesi'
                   AND booking_tanggal='$booking_tanggal';");
                 while($b = mysqli_fetch_array($a)){
                   $cek = $b['cek'];
@@ -29,8 +32,8 @@
                   echo "<script>
                   setTimeout(function() {
                     swal({
-                      title: 'Tidak Ditemukan',
-                      text: 'Belum Pernah Mendaftar!',
+                      title: 'Upss..',
+                      text: 'Belum Pernah Mendaftar',
                       type: 'error'
                       }, function() {
                         window.location = 'registration';
@@ -38,32 +41,44 @@
                         }, 10);
                         </script>";
                       }else{
-                        $data = mysqli_query($koneksi,
-                          "SELECT *, dokter.nama_dokter, sesi.nama_sesi
-                          FROM booking, dokter, sesi
-                          WHERE booking.id_dokter=dokter.id_dokter
-                          AND booking.id_sesi=sesi.id_sesi
-                          AND booking.id_catatan_medik='$id_catatan_medik'
-                          AND booking.booking_tanggal='$booking_tanggal'
-                          ORDER BY booking.id_booking ASC");
-                        include "date-format.php";
-                        while($d = mysqli_fetch_array($data)){
-                         $antrian          = $d['antrian'];
-                         $id_catatan_medik = $d['id_catatan_medik'];
-                         $nama             = substr($d['nama'],0, -2);
-                         $id_dokter        = $d['id_dokter'];
-                         $nama_dokter      = substr($d['nama_dokter'],0, -5);
-                         $booking_tanggal  = $d['booking_tanggal'];
-                         $id_sesi          = $d['id_sesi'];
-                         $nama_sesi        = $d['nama_sesi'];
-                         $tanggal          = $d['tanggal'];
-                         $jam              = $d['jam'];
-                         $keterangan       = $d['keterangan'];
-                       }
-                       $hbt = date('w', strtotime($booking_tanggal));
-                       $c = mysqli_query($koneksi,
+                       $a = mysqli_query($koneksi,
+                        "SELECT FIND_IN_SET( id_booking, (    
+                        SELECT GROUP_CONCAT(id_booking) 
+                        FROM booking 
+                        WHERE booking_tanggal = '$booking_tanggal'
+                        AND id_dokter = '$id_dokter'
+                        AND id_sesi = '$id_sesi')
+                        ) AS antrian
+                        FROM booking
+                        WHERE id_catatan_medik = '$id_catatan_medik';");
+                       while($b = mysqli_fetch_array($a)){
+                        $antrian = $b['antrian'];
+                      }
+                      $c = mysqli_query($koneksi,
+                        "SELECT *, dokter.nama_dokter, sesi.nama_sesi
+                        FROM booking, dokter, sesi
+                        WHERE booking.id_dokter=dokter.id_dokter
+                        AND booking.id_sesi=sesi.id_sesi
+                        AND booking.id_catatan_medik='$id_catatan_medik'
+                        AND booking.booking_tanggal='$booking_tanggal'
+                        ORDER BY booking.id_booking ASC");
+                      include "date-format.php";
+                      while($d = mysqli_fetch_array($c)){
+                        $id_catatan_medik = $d['id_catatan_medik'];
+                        $nama             = substr($d['nama'],0, -2);
+                        $id_dokter        = $d['id_dokter'];
+                        $nama_dokter      = substr($d['nama_dokter'],0, -5);
+                        $booking_tanggal  = $d['booking_tanggal'];
+                        $id_sesi          = $d['id_sesi'];
+                        $nama_sesi        = $d['nama_sesi'];
+                        $tanggal          = $d['tanggal'];
+                        $jam              = $d['jam'];
+                        $keterangan       = $d['keterangan'];
+                      }
+                      $hbt = date('w', strtotime($booking_tanggal));
+                      $c = mysqli_query($koneksi,
                         "SELECT jam FROM dokter_jadwal WHERE id_dokter='$id_dokter' AND hari='$hbt' AND id_sesi='$id_sesi';");
-                       while($d = mysqli_fetch_array($c)){
+                      while($d = mysqli_fetch_array($c)){
                         $jadwal_jam = $d['jam'];
                       }
                     }

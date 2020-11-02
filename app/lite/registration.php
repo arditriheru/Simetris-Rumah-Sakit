@@ -139,8 +139,35 @@
                       <input class="form-control" type="text" name="id_catatan_medik" required="" placeholder="Masukkan Nomor RM Anda">
                     </div>
                     <div class="form-group">
+                      <label>Nama Dokter</label>
+                      <select class="form-control" type="text" name="id_dokter" required="">
+                        <option value="">Pilih</option>
+                        <?php 
+                        $data = mysqli_query($koneksi,
+                          "SELECT * FROM dokter WHERE status=1;");
+                        while($d = mysqli_fetch_array($data)){
+                          echo "<option value='".$d['id_dokter']."'>".$d['nama_dokter']."</option>";
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>Jadwal Poli</label>
-                      <input class="form-control" type="date" name="booking_tanggal" required="" placeholder="Masukkan Jadwal Poli">
+                      <input class="form-control" type="date" name="booking_tanggal">
+                    </div>
+                    <div class="form-group">
+                      <label>Sesi Poli</label>
+                      <p class="bluetext"><b>Pagi :</b> 07.00 - 10.59 | <b>Siang :</b> 11.00 - 14.59 | <b>Sore :</b> 15.00 - 17.59 | <b>Malam :</b> 18.00 - selesai</p>
+                      <select class="form-control" type="text" name="id_sesi" required="">
+                        <option value="">Pilih</option>
+                        <?php 
+                        $data = mysqli_query($koneksi,
+                          "SELECT * FROM sesi;");
+                        while($d = mysqli_fetch_array($data)){
+                          echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
+                        }
+                        ?>
+                      </select>
                     </div>
                     <div>
                       <button id="cetak" type="submit" class="btn btn-lg btn-info btn-block">
