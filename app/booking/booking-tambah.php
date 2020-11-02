@@ -79,16 +79,6 @@ function format_mak($mak)
           $tglsekarang      = new DateTime();
           $jadwal           = new DateTime("$booking_tanggal");
           $selisih          = $tglsekarang->diff($jadwal)->format("%a");
-                // cek antrian
-          $a = mysqli_query($koneksi,
-            "SELECT COUNT(*) AS antrian
-            FROM booking
-            WHERE id_dokter='$id_dokter'
-            AND booking_tanggal='$booking_tanggal'
-            AND id_sesi='$id_sesi';");
-          while($b = mysqli_fetch_array($a)){
-            $antrian       =  $b['antrian']+1;
-          }
 
           $c = mysqli_query($koneksi,
             "SELECT kuota_status FROM dokter WHERE id_dokter='$id_dokter';");

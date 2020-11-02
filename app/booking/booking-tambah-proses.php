@@ -29,6 +29,20 @@ if($selisih>30){
               '$kontak','$id_catatan_medik','$booking_tanggal','$tanggal','$jam','$status','$keterangan',
               '$id_dokter','$id_sesi','$mandiri','$antrian')");
             if($simpan){
+                // cek antrian
+              $a = mysqli_query($koneksi,
+                "SELECT FIND_IN_SET( id_booking, (    
+                SELECT GROUP_CONCAT(id_booking) 
+                FROM booking 
+                WHERE booking_tanggal = '$booking_tanggal'
+                AND id_dokter = '$id_dokter'
+                AND id_sesi = '$id_sesi')
+                ) AS antrian
+                FROM booking
+                WHERE id_catatan_medik = '$id_catatan_medik';");
+              while($b = mysqli_fetch_array($a)){
+                $antrian =  $b['antrian'];
+              }
               echo "<script>
               setTimeout(function() {
                 swal({

@@ -42,7 +42,7 @@
 		}
 
 		$cek = mysqli_num_rows($a);
-		if($cek > 0){
+		if(isset($id_petugas)){
 			if($akses > 0){
 				$_SESSION['booking_username'] = $nama_user;
 				$_SESSION['booking_nama_login'] = $nama_login;
