@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="table-responsive">
       <div class="row">
-        <form method="post" action="covid-rapid-cari-tampil.php" role="form">
+        <!-- <form method="post" action="covid-rapid-cari-tampil.php" role="form">
           <div class="col-lg-4">
             <div class="form-group input-group">
               <input type="text" class="form-control" name="id_catatan_medik" placeholder="Pencarian..">
@@ -11,7 +11,11 @@
               </span>
             </div>
           </div>
-        </form>
+        </form> -->
+        <div class="col-lg-4"><br>
+          <button name="next" type="submit" 
+          class="btn btn-primary" onClick="window.location.reload()"><i class="fa fa-refresh"></i> Refresh</button>
+        </div>
         <div align="right" class="col-lg-8">
           <?php
           $m = 30;
@@ -49,7 +53,7 @@
             <?php
             $no=$total;
             $data = mysqli_query($koneksi,
-              "SELECT *, mr_pasien.nama, mr_dokter.nama_dokter,
+              "SELECT rapidtest.id_catatan_medik, rapidtest.tanggal, rapidtest.jam, mr_pasien.nama, mr_dokter.nama_dokter,
               CASE
               WHEN rapidtest.igm='0' THEN 'Non Reaktif'
               WHEN rapidtest.igm='1' THEN 'Reaktif'
@@ -144,7 +148,7 @@
                   <?php
                   $no=$total;
                   $data = mysqli_query($koneksi,
-                    "SELECT *, mr_pasien.nama, mr_dokter.nama_dokter,
+                    "SELECT rapidtest.id_catatan_medik, rapidtest.tanggal, rapidtest.jam, mr_pasien.nama, mr_dokter.nama_dokter,
                     CASE
                     WHEN rapidtest.igm='0' THEN 'Non Reaktif'
                     WHEN rapidtest.igm='1' THEN 'Reaktif'
