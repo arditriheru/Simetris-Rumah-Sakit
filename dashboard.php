@@ -422,7 +422,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
+            <!-- <div class="col-lg-3">
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
@@ -435,7 +435,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           <?php } ?>
         </div>
       </div><br>
