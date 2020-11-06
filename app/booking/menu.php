@@ -88,6 +88,7 @@
                   <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                   <li><a href="booking-cek.php"><i class="fa fa-check-square-o"></i> Hari Ini</a></li>
                   <li><a href="bell-antrian-filter.php"><i class="fa fa-bell-o"></i> Bell Antrian</a></li>
+                  <li><a href="kuesioner-whatsapp.php"><i class="fa fa-pencil-square-o"></i> Kuesioner</a></li>
                   <li><a href="covid-skrining.php"><i class="fa fa-pencil-square-o"></i> Skrining</a></li>
                   <li><a href="jadwal-dokter.php"><i class="fa fa-calendar"></i> Jadwal</a></li>
                   <li><a href="info-kamar.php"><i class="fa fa-bed"></i> Info Kamar</a></li>
