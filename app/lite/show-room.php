@@ -17,11 +17,11 @@
                 </div> -->
                 <table class="table">
                   <div class="col-lg-6">
-                    <div style="background-color: #b7efcd; height: auto; margin: 10px 0px; padding: 5px; text-align: center; width: auto;">
+                    <div style="background-color: #ffffff; height: auto; margin: 10px 0px; padding: 5px; text-align: center; width: auto;">
                     Kosong</div>
                   </div>
                   <div class="col-lg-6">
-                    <div style="background-color: #eeeeee; height: auto; margin: 10px 0px; padding: 5px; text-align: center; width: auto;">
+                    <div style="background-color: #fa7f72; height: auto; margin: 10px 0px; padding: 5px; text-align: center; width: auto;">
                     Terpakai</div>
                   </div>
                   <thead>
@@ -36,7 +36,7 @@
                     <?php 
                     $no = 1;
                     $data = mysqli_query($koneksi,
-                     "SELECT mr_tt.kelas, mr_unit.nama_unit, mr_tt.no_bed, mr_tt.id_register,
+                     "SELECT mr_tt.kelas, mr_unit.nama_unit, mr_tt.no_bed, mr_tt.ket_antri,
                      IF(mr_tt.no_bed='1', 'A', 'B') AS bed
                      FROM mr_tt, mr_unit
                      WHERE mr_tt.id_unit = mr_unit.id_unit
@@ -44,13 +44,13 @@
                      IN ('6','29','24','26','7','28','27','31','30','25')
                      ORDER BY mr_unit.nama_unit ASC;");
                     while($d = mysqli_fetch_array($data)){
-                      $id_register = $d['id_register'];
+                      $ket_antri = $d['ket_antri'];
                       ?>
                       <?php
-                      if($id_register=='123'){ ?>
-                        <tr style="background-color: #b7efcd;">
+                      if($ket_antri=='3'){ ?>
+                        <tr>
                         <?php }else{ ?>
-                          <tr style="background-color: #eeeeee;">
+                          <tr style="background-color: #fa7f72;">
                           <?php } ?>
                           <td><center><?php echo $d['kelas'];?></center></td>
                           <td><center><?php echo $d['nama_unit']; ?></center></td>
