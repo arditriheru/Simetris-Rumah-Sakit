@@ -369,7 +369,7 @@
               <div class="panel panel-info">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-xs-2"><a href="http://192.168.1.10:8080">
+                    <div class="col-xs-2"><a href="http://192.168.1.100:8080">
                       <i class="fa fa-database fa-4x"></i>
                     </div>
                     <div class="col-xs-10 text-right">
