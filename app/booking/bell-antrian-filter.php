@@ -46,8 +46,8 @@
 					mysqli_query($koneksi,
 						"DELETE FROM antrian WHERE id_unit='$id_unit';");
 					mysqli_query($koneksi,
-						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, antrian, total)
-						VALUES('','$id_dokter','$id_unit','','$total');");
+						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, id_sesi)
+						VALUES('','$id_dokter','$id_unit','$id_sesi');");
 					
 					$_SESSION['id_dokter']  = $id_dokter;
 					$_SESSION['id_sesi']  	= $id_sesi;

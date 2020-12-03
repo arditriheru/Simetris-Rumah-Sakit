@@ -28,136 +28,138 @@ while($b = mysqli_fetch_array($a)){
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-4"><br>
+		<div class="col-lg-4">
 			<button name="next" type="submit" 
 			class="btn btn-primary" onClick="window.location.reload()"><i class="fa fa-refresh"></i> Refresh</button>
-		</div>
-		<div align="right" class="col-lg-8">
-			<?php 
-			$a = mysqli_query($koneksi,
-				"SELECT antrian, COUNT(id_booking) AS total
-				FROM booking
-				WHERE id_dokter='$id_dokter'
-				AND id_sesi='$id_sesi'
-				AND booking_tanggal='$jadwal';");
-			while($b = mysqli_fetch_array($a)){
-				$total = $b['total'];
-			}
-
-			$id_aktif = $_GET['id'];
-			if(isset($id_aktif)){
-				mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
-				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
-				$c = mysqli_query($koneksi,
-					"SELECT booking.antrian, mr_unit.id_unit
-					FROM booking, mr_unit, dokter
-					WHERE booking.id_dokter=dokter.id_dokter
-					AND dokter.id_unit=mr_unit.id_unit
-					AND booking.booking_tanggal = '$jadwal'
-					AND booking.id_sesi = '$id_sesi'
-					AND booking.id_dokter='$id_dokter'
-					AND booking.aktif=1;");
-				while($d = mysqli_fetch_array($c)){
-					$id_unit	= $d['id_unit'];
-					$ant 		= $d['antrian'];
-				}
-				mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
-			}
-			?>
-			<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-		</div>
-	</div>
-	<div class="table-responsive">
-		<table class="table table-bordered table-hover table-striped tablesorter">
-			<thead>
-				<tr>
-					<th><center>#</center></th>
-					<th colspan="2"><center>Bell</center></th>
-					<th><center>Status</center></th>
-					<th><center>No.RM</center></th>
-					<th><center>Nama</center></th>
-					<th><center>Alamat</center></th>
-					<th><center>Sesi</center></th>
-					<th><center>Action</center></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-				$no = 1;
-				$data = mysqli_query($koneksi,"SELECT @no:=@no+1 AS noant, booking.id_booking, booking.id_catatan_medik, booking.alamat, booking.nama, booking.aktif, booking.antrian, dokter.nama_dokter, dokter.id_unit, sesi.nama_sesi,
-					IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-					FROM booking, dokter, sesi
-					JOIN (SELECT @no:=0) r
-					WHERE booking.id_dokter=dokter.id_dokter
-					AND booking.id_sesi=sesi.id_sesi
-					AND booking.booking_tanggal = '$jadwal'
-					AND booking.id_sesi = '$id_sesi'
-					AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
-				while($d = mysqli_fetch_array($data)){
-					$id_booking 	= $d['id_booking'];
-					?>
-					<tr>
-						<td><center><?php echo $d['noant']; ?></center></td>
-						<td>
-							<div align="center">
-								<?php
-								if($d['aktif']=='1'){
-									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
-								}else{
-									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
-								}
-								?>
-							</div>
-						</td>
-						<td>
-							<div align="center">
-								<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
-							</div>
-						</td>
-						<td><center><?php
-						if($d['status']=='Datang'){
-							echo "<button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button>";
-						}else{
-							echo "<button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button>";
-						}
-						?>
-					</center></td>
-					<td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-					<td><center><?php echo $d['nama']; ?></center></td>
-					<td><center><?php echo $d['alamat']; ?></center></td>
-					<td><center><?php echo $d['nama_sesi']; ?></center></td>
-					<td>
-						<div align="center">
-							<a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
-								<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
-							</div>
-						</td>
-						</tr><?php } ?>
-					</tbody>
-				</table>
+			<a href="bell-antrian-selesai.php?<?php echo 'dokter='.$id_dokter.'&'.'sesi='.$id_sesi ?>"><button name="next" type="submit" 
+				class="btn btn-danger""><i class="fa fa-close"></i> Selesai</button></a>
 			</div>
-		</div><!-- /#wrapper -->
-		<?php include "views/footer.php"; ?>
+			<div align="right" class="col-lg-8">
+				<?php 
+				$a = mysqli_query($koneksi,
+					"SELECT antrian, COUNT(id_booking) AS total
+					FROM booking
+					WHERE id_dokter='$id_dokter'
+					AND id_sesi='$id_sesi'
+					AND booking_tanggal='$jadwal';");
+				while($b = mysqli_fetch_array($a)){
+					$total = $b['total'];
+				}
 
-		<!-- /#rekaman -->
-		<audio id="suarabel" src="rekaman/bell-bandara.mp3"></audio>
-		<audio id="suarabelnomorurut" src="rekaman/nomor-antrian.mp3"></audio>
-		<?php
-		if($id_unit=='1'){ ?>
-			<audio id="suarabelabjad" src="rekaman/b.mp3"></audio> 
-			<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-anak.mp3"></audio>
-		<?php }else{ ?>
-			<audio id="suarabelabjad" src="rekaman/a.mp3"></audio>
-			<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
-		<?php } ?>
+				$id_aktif = $_GET['id'];
+				if(isset($id_aktif)){
+					mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
+					mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
+					$c = mysqli_query($koneksi,
+						"SELECT booking.antrian, mr_unit.id_unit
+						FROM booking, mr_unit, dokter
+						WHERE booking.id_dokter=dokter.id_dokter
+						AND dokter.id_unit=mr_unit.id_unit
+						AND booking.booking_tanggal = '$jadwal'
+						AND booking.id_sesi = '$id_sesi'
+						AND booking.id_dokter='$id_dokter'
+						AND booking.aktif=1;");
+					while($d = mysqli_fetch_array($c)){
+						$id_unit	= $d['id_unit'];
+						$ant 		= $d['antrian'];
+					}
+					mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
+				}
+				?>
+				<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th><center>#</center></th>
+						<th colspan="2"><center>Bell</center></th>
+						<th><center>Status</center></th>
+						<th><center>No.RM</center></th>
+						<th><center>Nama</center></th>
+						<th><center>Alamat</center></th>
+						<th><center>Sesi</center></th>
+						<th><center>Action</center></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php 
+					$no = 1;
+					$data = mysqli_query($koneksi,"SELECT @no:=@no+1 AS noant, booking.id_booking, booking.id_catatan_medik, booking.alamat, booking.nama, booking.aktif, booking.antrian, dokter.nama_dokter, dokter.id_unit, sesi.nama_sesi,
+						IF (booking.status='1', 'Datang', 'Belum Datang') AS status
+						FROM booking, dokter, sesi
+						JOIN (SELECT @no:=0) r
+						WHERE booking.id_dokter=dokter.id_dokter
+						AND booking.id_sesi=sesi.id_sesi
+						AND booking.booking_tanggal = '$jadwal'
+						AND booking.id_sesi = '$id_sesi'
+						AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
+					while($d = mysqli_fetch_array($data)){
+						$id_booking 	= $d['id_booking'];
+						?>
+						<tr>
+							<td><center><?php echo $d['noant']; ?></center></td>
+							<td>
+								<div align="center">
+									<?php
+									if($d['aktif']=='1'){
+										echo "<a href='?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
+									}else{
+										echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+									}
+									?>
+								</div>
+							</td>
+							<td>
+								<div align="center">
+									<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
+								</div>
+							</td>
+							<td><center><?php
+							if($d['status']=='Datang'){
+								echo "<button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button>";
+							}else{
+								echo "<button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button>";
+							}
+							?>
+						</center></td>
+						<td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+						<td><center><?php echo $d['nama']; ?></center></td>
+						<td><center><?php echo $d['alamat']; ?></center></td>
+						<td><center><?php echo $d['nama_sesi']; ?></center></td>
+						<td>
+							<div align="center">
+								<a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
+									<button type="button" class="btn btn-warning"><i class='fa fa-folder-open-o'></i></button></a>
+								</div>
+							</td>
+							</tr><?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div><!-- /#wrapper -->
+			<?php include "views/footer.php"; ?>
 
-		<audio id="belas" src="rekaman/belas.mp3"></audio> 
-		<audio id="sebelas" src="rekaman/sebelas.mp3"></audio> 
-		<audio id="puluh" src="rekaman/puluh.mp3"></audio> 
-		<audio id="sepuluh" src="rekaman/sepuluh.mp3"></audio> 
-		<audio id="ratus" src="rekaman/ratus.mp3"></audio> 
-		<audio id="seratus" src="rekaman/seratus.mp3"></audio>
-		<?php
+			<!-- /#rekaman -->
+			<audio id="suarabel" src="rekaman/bell-bandara.mp3"></audio>
+			<audio id="suarabelnomorurut" src="rekaman/nomor-antrian.mp3"></audio>
+			<?php
+			if($id_unit=='1'){ ?>
+				<audio id="suarabelabjad" src="rekaman/b.mp3"></audio> 
+				<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-anak.mp3"></audio>
+			<?php }else{ ?>
+				<audio id="suarabelabjad" src="rekaman/a.mp3"></audio>
+				<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
+			<?php } ?>
+
+			<audio id="belas" src="rekaman/belas.mp3"></audio> 
+			<audio id="sebelas" src="rekaman/sebelas.mp3"></audio> 
+			<audio id="puluh" src="rekaman/puluh.mp3"></audio> 
+			<audio id="sepuluh" src="rekaman/sepuluh.mp3"></audio> 
+			<audio id="ratus" src="rekaman/ratus.mp3"></audio> 
+			<audio id="seratus" src="rekaman/seratus.mp3"></audio>
+			<?php
 		// $id_booking = $_GET['id'];
 	// 	SELECT id, name, score, FIND_IN_SET( score, (
 	// 		SELECT GROUP_CONCAT( score
@@ -165,32 +167,32 @@ while($b = mysqli_fetch_array($a)){
 	// 		FROM scores )
 	// ) AS rank
 	// 	FROM scores
-		$e = mysqli_query($koneksi,
-			"SELECT id_booking, nama, FIND_IN_SET( id_booking, (    
-			SELECT GROUP_CONCAT( id_booking
-			ORDER BY id_booking ASC ) 
-			FROM booking 
-			WHERE booking_tanggal = '$jadwal'
-			AND id_dokter = '$id_dokter'
-			AND id_sesi = '$id_sesi')
-			) AS noant
-			FROM booking
-			WHERE id_booking = '$id_aktif';");
-		while($f = mysqli_fetch_array($e)){
-			$tcounter   = $f['noant'];
-			$panjang  	= strlen($tcounter);
-		}
-		for($i=0;$i<$panjang;$i++){
-			?>
-			<!--SUARA NOMOR URUT-->
-			<audio id="suarabel<?php echo $i;?>"
-				src="rekaman/<?php echo substr($tcounter,$i,1); ?>.mp3" >
-			</audio>
-		<?php } ?>
-		<script type="text/javascript">
-			function mulai(clicked_id){
-				var variableToSend = clicked_id;
-				$.post('bell-antrian-tampil.php', {variable: variableToSend});
+			$e = mysqli_query($koneksi,
+				"SELECT id_booking, nama, FIND_IN_SET( id_booking, (    
+				SELECT GROUP_CONCAT( id_booking
+				ORDER BY id_booking ASC ) 
+				FROM booking 
+				WHERE booking_tanggal = '$jadwal'
+				AND id_dokter = '$id_dokter'
+				AND id_sesi = '$id_sesi')
+				) AS noant
+				FROM booking
+				WHERE id_booking = '$id_aktif';");
+			while($f = mysqli_fetch_array($e)){
+				$tcounter   = $f['noant'];
+				$panjang  	= strlen($tcounter);
+			}
+			for($i=0;$i<$panjang;$i++){
+				?>
+				<!--SUARA NOMOR URUT-->
+				<audio id="suarabel<?php echo $i;?>"
+					src="rekaman/<?php echo substr($tcounter,$i,1); ?>.mp3" >
+				</audio>
+			<?php } ?>
+			<script type="text/javascript">
+				function mulai(clicked_id){
+					var variableToSend = clicked_id;
+					$.post('bell-antrian-tampil.php', {variable: variableToSend});
 			//MAINKAN SUARA BEL PADA SAAT AWAL
 			document.getElementById('suarabel').pause();
 			document.getElementById('suarabel').currentTime=0;
