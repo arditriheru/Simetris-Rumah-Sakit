@@ -17,15 +17,6 @@ include "session-start.php";
     <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
     <style>
-        .whitetext {
-            color: #ffffff;
-        }
-        .bluetext {
-            color: #008cba;
-        }
-        .redtext {
-            color: #e71414;
-        }
         .navbar-rachmi{
             background-color:#e67e22;
             border-color:#d35400
@@ -33,8 +24,60 @@ include "session-start.php";
         .navbar-brand{
             color:#ffffff;
         }
+        .jam-digital {
+          overflow: hidden;
+          width: 20px;
+          margin: 20px auto;
+          border: 5px solid #efefef;
+      }
+      .box{
+          float: left;
+          width: 40px;
+          height: 40px;
+          background-color: transparent;
+      }
+      .jam-digital p {
+          color: #ffffff;
+          font-size: 20px;
+          text-align: right;
+          margin-top: 30px;
+      }
 
-    </style>
+      .bluetext {
+          color: #008cba;
+      }
+      .whitetext {
+          color: #ffffff;
+      }
+      .blacktext {
+          color: #000000;
+      }
+      .redtext {
+          color: #FF0000;
+      }
+      .greentext {
+          color: #005082;
+      }
+      .antrian {
+          font-size: 120px;
+          color: #000000;
+      }
+      .marquee1 {
+          font-size: 30px;
+          color: #ffffff;
+      }
+      .marquee2 {
+          font-size: 40px;
+          color: #ffffff;
+      }
+      .navbar-rachmi{
+         background-color:#e67e22;
+         border-color:#d35400
+     }
+     .navbar-brand{
+         color:#ffffff;
+     }
+ </style>
 </head>
 <?php
 include '../../config/connect.php';
