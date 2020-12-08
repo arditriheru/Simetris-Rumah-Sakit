@@ -25,6 +25,8 @@
 			if(isset($_POST['submitfilterbell'])){
 				$id_dokter 	= $_POST['id_dokter'];
 				$id_sesi 	= $_POST['id_sesi'];
+				$tanggal    = $tanggalsekarang;
+				$jam        = $jamsekarang;
 
 				$a = mysqli_query($koneksi,
 					"SELECT COUNT(id_booking) AS total
@@ -46,8 +48,8 @@
 					mysqli_query($koneksi,
 						"DELETE FROM antrian WHERE id_unit='$id_unit';");
 					mysqli_query($koneksi,
-						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, id_sesi)
-						VALUES('','$id_dokter','$id_unit','$id_sesi');");
+						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, id_sesi, tanggal, jam)
+						VALUES('','$id_dokter','$id_unit','$id_sesi','$tanggal','$jam');");
 					
 					$_SESSION['id_dokter']  = $id_dokter;
 					$_SESSION['id_sesi']  	= $id_sesi;
