@@ -21,10 +21,12 @@
 			unset($_SESSION['id_dokter']);
 			unset($_SESSION['id_sesi']);
 			unset($_SESSION['jadwal']);
+			unset($_SESSION['konter']);
 
 			if(isset($_POST['submitfilterbell'])){
 				$id_dokter 	= $_POST['id_dokter'];
 				$id_sesi 	= $_POST['id_sesi'];
+				$konter 	= $_POST['konter'];
 				$tanggal    = $tanggalsekarang;
 				$jam        = $jamsekarang;
 
@@ -46,14 +48,15 @@
 
 				if($total>0){
 					mysqli_query($koneksi,
-						"DELETE FROM antrian WHERE id_unit='$id_unit';");
+						"DELETE FROM antrian WHERE id_unit='$id_unit' AND konter='$konter';");
 					mysqli_query($koneksi,
-						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, id_sesi, tanggal, jam)
-						VALUES('','$id_dokter','$id_unit','$id_sesi','$tanggal','$jam');");
+						"INSERT INTO antrian(id_antrian, id_dokter, id_unit, id_sesi, tanggal, jam, konter)
+						VALUES('','$id_dokter','$id_unit','$id_sesi','$tanggal','$jam','$konter');");
 					
 					$_SESSION['id_dokter']  = $id_dokter;
 					$_SESSION['id_sesi']  	= $id_sesi;
 					$_SESSION['jadwal']    	= $tanggalsekarang;
+					$_SESSION['konter']    	= $konter;
 					
 					echo "<script>
 					setTimeout(function() {
@@ -108,6 +111,15 @@
 													echo "<option value='".$d['id_sesi']."'>".$d['nama_sesi']."</option>";
 												}
 												?>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>Konter</label>
+											<select class="form-control" type="text" name="konter" required="">
+												<option value="">Pilih</option>
+												<option value="1">Poli Obsgyn Selatan</option>
+												<option value="3">Poli Obsgyn Utara</option>
+												<option value="2">Poli Anak</option>
 											</select>
 										</div>
 										<button type="submit" name="submitfilterbell" class="btn btn-success">Tampilkan</button>

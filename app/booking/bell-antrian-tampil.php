@@ -145,11 +145,14 @@ while($b = mysqli_fetch_array($a)){
 			<audio id="suarabel" src="rekaman/bell-bandara.mp3"></audio>
 			<audio id="suarabelnomorurut" src="rekaman/nomor-antrian.mp3"></audio>
 			<?php
-			if($id_unit=='1'){ ?>
-				<audio id="suarabelabjad" src="rekaman/b.mp3"></audio> 
+			if($konter==1){ ?>
+				<audio id="suarabelabjad" src="rekaman/a.mp3"></audio> 
+				<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
+			<?php }elseif($konter==2){ ?>
+				<audio id="suarabelabjad" src="rekaman/b.mp3"></audio>
 				<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-anak.mp3"></audio>
-			<?php }else{ ?>
-				<audio id="suarabelabjad" src="rekaman/a.mp3"></audio>
+			<?php }elseif($konter==3){ ?>
+				<audio id="suarabelabjad" src="rekaman/c.mp3"></audio> 
 				<audio id="suarabelsuarabelloket" src="rekaman/ke-poli-kandungan.mp3"></audio>
 			<?php } ?>
 

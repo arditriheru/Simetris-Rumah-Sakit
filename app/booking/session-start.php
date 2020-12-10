@@ -10,5 +10,6 @@ if(!isset($_SESSION['booking_username'])) {
 	$id_dokter 		= $_SESSION['id_dokter'];
 	$id_sesi 		= $_SESSION['id_sesi'];
 	$jadwal 		= $_SESSION['jadwal'];
+	$konter 		= $_SESSION['konter'];
 }
 ?>
