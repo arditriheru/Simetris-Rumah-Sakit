@@ -73,14 +73,14 @@ while($b = mysqli_fetch_array($a)){
 			<table class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
 					<tr>
+						<th><center>Datang</center></th>
 						<th><center>#</center></th>
-						<th colspan="2"><center>Bell</center></th>
-						<th><center>Status</center></th>
+						<th><center>Bell</center></th>
+						<th><center>Timer</center></th>
 						<th><center>No.RM</center></th>
 						<th><center>Nama</center></th>
 						<th><center>Alamat</center></th>
 						<th><center>Sesi</center></th>
-						<th><center>Timer</center></th>
 						<th><center>Action</center></th>
 					</tr>
 				</thead>
@@ -100,23 +100,6 @@ while($b = mysqli_fetch_array($a)){
 						$id_booking 	= $d['id_booking'];
 						?>
 						<tr>
-							<td><center><?php echo $d['noant']; ?></center></td>
-							<td>
-								<div align="center">
-									<?php
-									if($d['aktif']=='1'){
-										echo "<a href='?id=$id_booking'><button type='button' class='btn btn-info'><i class='fa fa-play'></i></button></a>";
-									}else{
-										echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
-									}
-									?>
-								</div>
-							</td>
-							<td>
-								<div align="center">
-									<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
-								</div>
-							</td>
 							<td><center><?php
 							if($d['status']=='Datang'){
 								echo "<button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button>";
@@ -125,10 +108,18 @@ while($b = mysqli_fetch_array($a)){
 							}
 							?>
 						</center></td>
-						<td><center><?php echo $d['id_catatan_medik']; ?></center></td>
-						<td><center><?php echo $d['nama']; ?></center></td>
-						<td><center><?php echo $d['alamat']; ?></center></td>
-						<td><center><?php echo $d['nama_sesi']; ?></center></td>
+						<td><center><?php echo $d['noant']; ?></center></td>
+						<td>
+							<div align="center">
+								<?php
+								if($d['aktif']=='1'){ ?>
+									<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
+								<?php }else{
+									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+								}
+								?>
+							</div>
+						</td>
 						<td><center>
 							<?php
 							if($d['mulai']=="00:00:00"){ ?>
@@ -137,7 +128,7 @@ while($b = mysqli_fetch_array($a)){
 
 							<?php }elseif($d['akhir']=="00:00:00"){ ?>
 
-								<a href="jam-dilayani-akhir.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-danger'><i class='fa fa-hourglass-end'></i></button></a>
+								<a href="jam-dilayani-akhir.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-warning'><i class='fa fa-hourglass-end'></i></button></a>
 
 							<?php }else{
 
@@ -150,6 +141,10 @@ while($b = mysqli_fetch_array($a)){
 
                 } ?>
             </center></td>
+            <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
+            <td><center><?php echo $d['nama']; ?></center></td>
+            <td><center><?php echo $d['alamat']; ?></center></td>
+            <td><center><?php echo $d['nama_sesi']; ?></center></td>
             <td>
             	<div align="center">
             		<a href="booking-detail.php?id_booking=<?php echo $d['id_booking']; ?>"
