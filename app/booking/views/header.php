@@ -83,5 +83,5 @@ include "session-start.php";
 include '../../config/connect.php';
 date_default_timezone_set("Asia/Jakarta");
 $tanggalsekarang    =   date('Y-m-d');
-$jamsekarang        =   date("G:i:s");
+$jamsekarang        =   date("H:i:s");
 ?>
