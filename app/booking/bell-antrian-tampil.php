@@ -31,106 +31,112 @@ while($b = mysqli_fetch_array($a)){
 		<div class="col-lg-4">
 			<button name="next" type="submit" 
 			class="btn btn-primary" onClick="window.location.reload()"><i class="fa fa-refresh"></i> Refresh</button>
-			<a href="bell-antrian-selesai.php?<?php echo 'dokter='.$id_dokter.'&'.'sesi='.$id_sesi ?>"><button name="next" type="submit" 
-				class="btn btn-danger""><i class="fa fa-close"></i> Selesai</button></a>
-			</div>
-			<div align="right" class="col-lg-8">
-				<?php 
-				$a = mysqli_query($koneksi,
-					"SELECT antrian, COUNT(id_booking) AS total
-					FROM booking
-					WHERE id_dokter='$id_dokter'
-					AND id_sesi='$id_sesi'
-					AND booking_tanggal='$jadwal';");
-				while($b = mysqli_fetch_array($a)){
-					$total = $b['total'];
-				}
-
-				$id_aktif = $_GET['id'];
-				if(isset($id_aktif)){
-					mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
-					mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
-					$c = mysqli_query($koneksi,
-						"SELECT booking.antrian, mr_unit.id_unit
-						FROM booking, mr_unit, dokter
-						WHERE booking.id_dokter=dokter.id_dokter
-						AND dokter.id_unit=mr_unit.id_unit
-						AND booking.booking_tanggal = '$jadwal'
-						AND booking.id_sesi = '$id_sesi'
-						AND booking.id_dokter='$id_dokter'
-						AND booking.aktif=1;");
-					while($d = mysqli_fetch_array($c)){
-						$id_unit	= $d['id_unit'];
-						$ant 		= $d['antrian'];
-					}
-					mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
-				}
-				?>
-				<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
-			</div>
+			<a href="bell-antrian-selesai.php?<?php echo 'dokter='.$id_dokter.'&'.'sesi='.$id_sesi ?>">
+				<button name="next" type="submit" 
+				class="btn btn-danger""><i class="fa fa-close"></i> Selesai</button>
+			</a>
+			<a href="jam-dilayani-export.php?<?php echo 'dokter='.$id_dokter.'&'.'sesi='.$id_sesi ?>">
+				<button name="next" type="submit" 
+				class="btn btn-success""><i class="fa fa-download"></i> Excel</button>
+			</a>
 		</div>
-		<div class="table-responsive">
-			<table class="table table-bordered table-hover table-striped tablesorter">
-				<thead>
+		<div align="right" class="col-lg-8">
+			<?php 
+			$a = mysqli_query($koneksi,
+				"SELECT antrian, COUNT(id_booking) AS total
+				FROM booking
+				WHERE id_dokter='$id_dokter'
+				AND id_sesi='$id_sesi'
+				AND booking_tanggal='$jadwal';");
+			while($b = mysqli_fetch_array($a)){
+				$total = $b['total'];
+			}
+
+			$id_aktif = $_GET['id'];
+			if(isset($id_aktif)){
+				mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
+				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
+				$c = mysqli_query($koneksi,
+					"SELECT booking.antrian, mr_unit.id_unit
+					FROM booking, mr_unit, dokter
+					WHERE booking.id_dokter=dokter.id_dokter
+					AND dokter.id_unit=mr_unit.id_unit
+					AND booking.booking_tanggal = '$jadwal'
+					AND booking.id_sesi = '$id_sesi'
+					AND booking.id_dokter='$id_dokter'
+					AND booking.aktif=1;");
+				while($d = mysqli_fetch_array($c)){
+					$id_unit	= $d['id_unit'];
+					$ant 		= $d['antrian'];
+				}
+				mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
+			}
+			?>
+			<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-striped tablesorter">
+			<thead>
+				<tr>
+					<th><center>Datang</center></th>
+					<th><center>#</center></th>
+					<th><center>Bell</center></th>
+					<th><center>Timer</center></th>
+					<th><center>No.RM</center></th>
+					<th><center>Nama</center></th>
+					<th><center>Alamat</center></th>
+					<th><center>Sesi</center></th>
+					<th><center>Action</center></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$no = 1;
+				$data = mysqli_query($koneksi,"SELECT @no:=@no+1 AS noant, booking.id_booking, booking.id_catatan_medik, booking.alamat, booking.nama, booking.aktif, booking.antrian, dokter.nama_dokter, booking.mulai, booking.akhir, dokter.id_unit, sesi.nama_sesi,
+					IF (booking.status='1', 'Datang', 'Belum Datang') AS status
+					FROM booking, dokter, sesi
+					JOIN (SELECT @no:=0) r
+					WHERE booking.id_dokter=dokter.id_dokter
+					AND booking.id_sesi=sesi.id_sesi
+					AND booking.booking_tanggal = '$jadwal'
+					AND booking.id_sesi = '$id_sesi'
+					AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
+				while($d = mysqli_fetch_array($data)){
+					$id_booking 	= $d['id_booking'];
+					?>
 					<tr>
-						<th><center>Datang</center></th>
-						<th><center>#</center></th>
-						<th><center>Bell</center></th>
-						<th><center>Timer</center></th>
-						<th><center>No.RM</center></th>
-						<th><center>Nama</center></th>
-						<th><center>Alamat</center></th>
-						<th><center>Sesi</center></th>
-						<th><center>Action</center></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					$no = 1;
-					$data = mysqli_query($koneksi,"SELECT @no:=@no+1 AS noant, booking.id_booking, booking.id_catatan_medik, booking.alamat, booking.nama, booking.aktif, booking.antrian, dokter.nama_dokter, booking.mulai, booking.akhir, dokter.id_unit, sesi.nama_sesi,
-						IF (booking.status='1', 'Datang', 'Belum Datang') AS status
-						FROM booking, dokter, sesi
-						JOIN (SELECT @no:=0) r
-						WHERE booking.id_dokter=dokter.id_dokter
-						AND booking.id_sesi=sesi.id_sesi
-						AND booking.booking_tanggal = '$jadwal'
-						AND booking.id_sesi = '$id_sesi'
-						AND booking.id_dokter='$id_dokter' ORDER BY booking.id_booking ASC;");
-					while($d = mysqli_fetch_array($data)){
-						$id_booking 	= $d['id_booking'];
+						<td><center><?php
+						if($d['status']=='Datang'){
+							echo "<button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button>";
+						}else{
+							echo "<button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button>";
+						}
 						?>
-						<tr>
-							<td><center><?php
-							if($d['status']=='Datang'){
-								echo "<button type='button' class='btn btn-primary'><i class='fa fa-check'></i></button>";
-							}else{
-								echo "<button type='button' class='btn btn-danger'><i class='fa fa-times'></i></button>";
+					</center></td>
+					<td><center><?php echo $d['noant']; ?></center></td>
+					<td>
+						<div align="center">
+							<?php
+							if($d['aktif']=='1'){ ?>
+								<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
+							<?php }else{
+								echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
 							}
 							?>
-						</center></td>
-						<td><center><?php echo $d['noant']; ?></center></td>
-						<td>
-							<div align="center">
-								<?php
-								if($d['aktif']=='1'){ ?>
-									<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
-								<?php }else{
-									echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
-								}
-								?>
-							</div>
-						</td>
-						<td><center>
-							<?php
-							if($d['mulai']=="00:00:00"){ ?>
+						</div>
+					</td>
+					<td><center>
+						<?php
+						if($d['mulai']=="00:00:00"){ ?>
 
-								<a href="jam-dilayani-mulai.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-primary'><i class='fa fa-hourglass-start'></i></button></a>
+							<a href="jam-dilayani-mulai.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-primary'><i class='fa fa-hourglass-start'></i></button></a>
 
-							<?php }elseif($d['akhir']=="00:00:00"){ ?>
+						<?php }elseif($d['akhir']=="00:00:00"){ ?>
 
-								<a href="jam-dilayani-akhir.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-warning'><i class='fa fa-hourglass-end'></i></button></a>
+							<a href="jam-dilayani-akhir.php?id_booking=<?php echo $d['id_booking']; ?>"><button type='button' class='btn btn-warning'><i class='fa fa-hourglass-end'></i></button></a>
 
-							<?php }else{
+						<?php }else{
 
                     $mulai = strtotime($d['mulai']); //waktu mulai
                     $akhir = strtotime($d['akhir']); //waktu akhir
