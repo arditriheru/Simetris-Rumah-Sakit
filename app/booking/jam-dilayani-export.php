@@ -15,7 +15,7 @@ while($b = mysqli_fetch_array($a)){
 
 ?>
 <body>
-   <table align="center" border="1">
+   <table align="center" border="0">
     <p align="center">Rekap Waktu Pelayanan<br>
         Dokter <?php echo $nama_dokter ?><br>
         Tanggal : <?php echo $tanggalsekarang ?></p>
