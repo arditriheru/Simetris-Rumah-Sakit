@@ -52,11 +52,7 @@ while($b = mysqli_fetch_array($a)){
 				$total = $b['total'];
 			}
 
-			$id_aktif = $_GET['id'];
-			if(isset($id_aktif)){
-				mysqli_query($koneksi,"UPDATE booking SET aktif='0' WHERE aktif='1' AND booking_tanggal = '$jadwal' AND id_sesi = '$id_sesi' AND id_dokter='$id_dokter'");
-				mysqli_query($koneksi,"UPDATE booking SET aktif='1' WHERE id_booking=$id_aktif");
-				$c = mysqli_query($koneksi,
+			$c = mysqli_query($koneksi,
 					"SELECT booking.antrian, mr_unit.id_unit
 					FROM booking, mr_unit, dokter
 					WHERE booking.id_dokter=dokter.id_dokter
@@ -70,7 +66,6 @@ while($b = mysqli_fetch_array($a)){
 					$ant 		= $d['antrian'];
 				}
 				mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
-			}
 			?>
 			<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
 		</div>
@@ -121,7 +116,7 @@ while($b = mysqli_fetch_array($a)){
 							if($d['aktif']=='1'){ ?>
 								<button type="button" id="<?php echo $noant; ?>" onclick="mulai(this.id);" class="btn btn-success"><i class='fa fa-volume-up'></i></button>
 							<?php }else{
-								echo "<a href='?id=$id_booking'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
+								echo "<a href='bell-antrian-aktif.php?id=$id_booking&id_dokter=$id_dokter&id_sesi=$id_sesi&jadwal=$jadwal'><button type='button' class='btn btn-link'><i class='fa fa-stop'></i></button></a>";
 							}
 							?>
 						</div>
