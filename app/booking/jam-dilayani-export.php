@@ -31,7 +31,7 @@ while($b = mysqli_fetch_array($a)){
         $no = 1;
         $data = mysqli_query($koneksi,
             "SELECT id_catatan_medik,nama,mulai,akhir FROM booking
-            WHERE id_dokter = '$id_dokter' AND id_sesi = '$id_sesi' AND booking_tanggal = '$tanggalsekarang';");
+            WHERE id_dokter = '$id_dokter' AND id_sesi = '$id_sesi' AND booking_tanggal = '$tanggalsekarang' ORDER BY id_booking ASC;");
         while($d = mysqli_fetch_array($data)){
             ?>
             <tr>
