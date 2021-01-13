@@ -53,19 +53,19 @@ while($b = mysqli_fetch_array($a)){
 			}
 
 			$c = mysqli_query($koneksi,
-					"SELECT booking.antrian, mr_unit.id_unit
-					FROM booking, mr_unit, dokter
-					WHERE booking.id_dokter=dokter.id_dokter
-					AND dokter.id_unit=mr_unit.id_unit
-					AND booking.booking_tanggal = '$jadwal'
-					AND booking.id_sesi = '$id_sesi'
-					AND booking.id_dokter='$id_dokter'
-					AND booking.aktif=1;");
-				while($d = mysqli_fetch_array($c)){
-					$id_unit	= $d['id_unit'];
-					$ant 		= $d['antrian'];
-				}
-				mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
+				"SELECT booking.antrian, mr_unit.id_unit
+				FROM booking, mr_unit, dokter
+				WHERE booking.id_dokter=dokter.id_dokter
+				AND dokter.id_unit=mr_unit.id_unit
+				AND booking.booking_tanggal = '$jadwal'
+				AND booking.id_sesi = '$id_sesi'
+				AND booking.id_dokter='$id_dokter'
+				AND booking.aktif=1;");
+			while($d = mysqli_fetch_array($c)){
+				$id_unit	= $d['id_unit'];
+				$ant 		= $d['antrian'];
+			}
+			mysqli_query($koneksi,"UPDATE antrian SET antrian='$ant', total='$total' WHERE id_unit='$id_unit'");
 			?>
 			<h1><small>Total <?php echo $total; ?> Pasien</small></h1>
 		</div>
@@ -188,6 +188,7 @@ if($konter==1){ ?>
 	// 		FROM scores )
 	// ) AS rank
 	// 	FROM scores
+$id_aktif 	= $_GET['id'];
 $e = mysqli_query($koneksi,
 	"SELECT id_booking, nama, FIND_IN_SET( id_booking, (    
 	SELECT GROUP_CONCAT( id_booking
