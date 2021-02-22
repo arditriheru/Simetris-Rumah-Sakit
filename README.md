@@ -1,2 +1,2 @@
 # simetris
-SIMETRIS Full Pack
+SIMETRIS Full Pack. Pemrograman PHP Native
