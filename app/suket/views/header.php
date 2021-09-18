@@ -52,3 +52,4 @@ $tanggalsekarang    =   date('Y-m-d');
 $jamsekarang        =   date("H:i:s");
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
+

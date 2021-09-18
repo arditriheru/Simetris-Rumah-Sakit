@@ -1,4 +1,8 @@
-<?php error_reporting(0); ?>
+<?php 
+error_reporting(0); 
+session_start();
+$id_catatan_medik = $_SESSION['id'];
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>

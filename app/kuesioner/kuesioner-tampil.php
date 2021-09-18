@@ -97,4 +97,5 @@
             </tbody>
           </table>
         </div>
-      </div><!-- /.row -->
+      </div>
+    </div><!-- /.row -->

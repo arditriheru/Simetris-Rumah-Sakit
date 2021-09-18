@@ -16,6 +16,7 @@ include "session-start.php";
   <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sb-admin.css">
   <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://pendaftaran.rskiarachmi.co.id/vendors/css/sweetalert.css">
+  <script type="text/javascript" src="https://pendaftaran.rskiarachmi.co.id/vendors/js/chartjs/Chart.js"></script>
 </head>
 <?php
 include '../../config/connect.php';
@@ -54,4 +55,4 @@ $jamsekarang        =   date("H:i:s");
     </div>
   </nav>
 </div>
-</nav><br>
+</nav><br><br>

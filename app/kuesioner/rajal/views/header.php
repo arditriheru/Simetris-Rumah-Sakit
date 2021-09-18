@@ -33,4 +33,4 @@ $jamsekarang        =   date("H:i:s");
       </div>
     </nav>
   </div>
-</nav><br>
+</nav><br><br>
